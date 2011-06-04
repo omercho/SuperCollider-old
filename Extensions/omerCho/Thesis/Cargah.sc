@@ -118,8 +118,13 @@ Cargah {
 
 	*freqsControl {
 		
-		^SinOsc.kr(1).range(400, 440);
-	
+		
+		//^SinOsc.kr(1).range(400, 440);
+		^Demand.kr(
+			Impulse.kr(1), 
+			0, 
+			Drand([Dseq((1..5).mirror1, 1), Drand((4..10), 8)], 2000) * 100
+		);
 
 	}
 	
@@ -139,9 +144,24 @@ Cargah {
 
 
 
+/*
 
-//{ SinOsc.ar(Cargah.freqsControl, 0, 0.5 ) }.play;
+{ SinOsc.ar(Cargah.freqsControl, 0, 0.5 ) }.play;
 
+
+
+var trig, seq, freq;
+	trig = Impulse.kr(24);
+	seq = Drand([Dseq((1..5).mirror1, 1), Drand((4..10), 8)], 2000);
+	freq = Demand.kr(trig, 0, seq * 100);
+
+		Demand.kr(
+			Impulse.kr(24), 
+			0, 
+			Dseq((300..500), inf) * 100
+		);
+
+*/
 
 
 
