@@ -121,7 +121,7 @@ Cargah {
 		
 		//^SinOsc.kr(1).range(400, 440);
 		^Demand.kr(
-			Impulse.kr(1), 
+			Impulse.kr(8), 
 			0, 
 			Drand([Dseq((1..5).mirror1, 1), Drand((4..10), 8)], 2000) * 100
 		);
