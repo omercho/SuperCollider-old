@@ -45,8 +45,8 @@ Cargah.aralik[\t]
 
 
 Cargah {
-	//classvar <aralik, <kademe, <frekans;
-/*
+	classvar <aralik, <kademe, <frekans;
+
 	*initClass {
 		StartUp add: {
 			this.aralikYap;
@@ -111,29 +111,18 @@ Cargah {
 			~muhayyer = ~gerdaniye * kademe[4];
 			~tizBuselik = ~muhayyer * kademe[5];
 			~tizCargah = ~tizBuselik * kademe[6];
+			~huseyni;
 		}
 	
-	}*/
+	}
 
 	*freqsControl {
 		
 		
 		^Demand.kr(
-			Impulse.kr(4), 
+			Impulse.kr(8), 
 			0, 
-			Dseq(
-				[
-					~cargah, 
-					~neva, 
-					~huseyni, 
-					~acem, 
-					~gerdaniye,
-					~muhayyer, 
-					~tizBuselik, 
-					~tizCargah
-				], 
-				inf
-			)
+			Dseq([1, 5 ,6, 9], 300)*100
 		);
 		
 		/*
@@ -166,7 +155,7 @@ Cargah {
 /*
 
 { SinOsc.ar(Cargah.freqsControl, 0, 0.5 ) }.play;
-Perde.frekansYap(440)
+
 
 
 var trig, seq, freq;

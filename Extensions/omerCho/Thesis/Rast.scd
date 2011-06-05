@@ -83,9 +83,9 @@ Rast {
 		
 		
 		^Demand.kr(
-			Impulse.kr(8), 
+			Impulse.kr(4), 
 			0, 
-			Dseq([1, 5 ,6, 9], 300)*100
+			Dseq([~rast, ~segah ,~neva, ~acem], inf)
 		);
 		
 		/*
@@ -119,6 +119,17 @@ Rast {
 
 { SinOsc.ar(Cargah.freqsControl, 0, 0.5 ) }.play;
 
+
+{ SinOsc.ar(
+		Demand.kr(
+			Impulse.kr(4), 
+			0, 
+			Dseq([~rast, ~segah , ~neva, ~acem], inf)
+		), 
+		0, 
+		0.5
+	) 
+}.play;
 
 */
 
