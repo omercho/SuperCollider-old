@@ -169,6 +169,9 @@ Cargah {
 Perde.frekansYap(440)
 
 
+
+
+a = Pseq(#[60, 61, 63, 65, 72], inf).asStream.next;
 var trig, seq, freq;
 	trig = Impulse.kr(24);
 	seq = Drand([Dseq((1..5).mirror1, 1), Drand((4..10), 8)], 2000);
