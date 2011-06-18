@@ -15,7 +15,7 @@ FlowMic {
 		var mx, my;
 		mx = MouseX.kr(1,118);
 		my = MouseY.kr(0,3);
-		in = Mix.new(SoundIn.ar(6));
+		in = Mix.new(SoundIn.ar(0));
 		amp = Amplitude.kr(in, 0.05, 0.05);
 		# freq, hasFreq = Pitch.kr(
 							in,

@@ -9,20 +9,20 @@ JODSynths {
 	*load {
 
 		~rev = Synth.tail(~effe,"reverb", 
-			[\in,  ~revBus, \out, ~limBus, \amp, 0.5
+			[\in,  ~revBus, \out, 0, \amp, 0.5
 			]
 		);
 		~dly = Synth.tail(~effe,"delay", 
-			[\in,  ~dlyBus, \out, ~limBus, \amp, 0.8
+			[\in,  ~dlyBus, \out, 0, \amp, 0.8
 			]
 		);
 		~rlp = Synth.tail(~effe,"rlpf", 
-			[\in,  ~rlpBus, \out, ~limBus, 
+			[\in,  ~rlpBus, \out, 0, 
 			\ffreq, 220, \rq, 1.5, \amp, 0.1
 			]
 		);
 		~wah = Synth.tail(~effe,"wah", 
-			[\in,  ~wahBus, \out, ~limBus
+			[\in,  ~wahBus, \out, 0
 			]
 		);
 		~lim = Synth.tail(~effe, "limiter",

@@ -73,7 +73,7 @@ JODOsc {
 				[
 				\freq, [42.0 rrand: 49.9],
 				\pan, [-1.0 rrand: 1.0],
-				\out, 6, \amp, 0.2
+				\out, 0, \amp, 0.4
 				]
 			);
 	}{

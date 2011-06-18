@@ -14,7 +14,7 @@ JODSynthDefs {
 		
 		s = Server.default;	
 
-SynthDef(\baxx,{|out = 6, amp = 0.1, vol = 0.1, gate = 1,
+SynthDef(\baxx,{|out = 0, amp = 0.1, vol = 0.1, gate = 1,
 	freq = 50, pan = 0,
 	att = 0.1, dec = 0.005, sus = 0.5, rls = 1.5 |
 	
@@ -29,7 +29,7 @@ SynthDef(\baxx,{|out = 6, amp = 0.1, vol = 0.1, gate = 1,
 }).send(s);
 
 
-SynthDef("abs",{|i, k, j, out, gate =1, vol = 0.5, 
+SynthDef("abs",{|i, k, j, out = 0, gate =1, vol = 0.5, 
 	mx1=0.2, mx2=0.5, my1=0.4,my2=1.3|
 	var mul,decay, ses, comb, ses1, pulse, env;
 	
