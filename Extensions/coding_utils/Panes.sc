@@ -3,7 +3,7 @@ Arrange Document windows conveniently for a laptop-sized monitor screen.
 */
 
 Panes {
-	classvar <>listenerY = 300, <>onePaneListenerWidth = 640, <>twoPaneListenerHeight = 300;
+	classvar <>listenerY = 64, <>onePaneListenerWidth = 850, <>twoPaneListenerHeight = 550;
 	classvar <>panePos;
 	classvar <>listenerPos, <>tryoutPos;
 	classvar <session;		// for saving / restoring doc positions and doc texts to archive
@@ -21,7 +21,7 @@ Panes {
 		Dock.addMenu;
 		BufferResource.addMenu;
 		Document.allDocuments do: this.setDocActions(_);
-//		this.arrange1Pane;
+		//this.arrange1Pane;
 		this.arrange2Panes;
 		Dock.showDocListWindow;
 		// confuses post and Untitled windows if not deferred on startup:
@@ -57,7 +57,7 @@ Panes {
 		doc.front;
 	}
 
-	*openTryoutWindow {
+/*	*openTryoutWindow {
 		var tryout, path;
 		if ((tryout = Document.allDocuments.detect({ | d | d.name == tryoutName })).isNil) {
 		path = Platform.userAppSupportDir ++ "/" ++ tryoutName;
@@ -68,27 +68,39 @@ Panes {
 			};
 		};
 		tryout.front;
-	}
+	}*/
+
+/*	*arrange1Pane {
+		var width;
+		width = Dock.width;
+		listenerPos = Rect(0, listenerY, this.twoPaneWidth, 
+			Window.screenBounds.height - listenerY );
+		tryoutPos = Rect(0, 0, this.twoPaneWidth, listenerY - 256);
+		panePos = Rect(this.twoPaneWidth, 0, this.twoPaneWidth, Window.screenBounds.height);
+		this changeArrangement: { | doc | this.placeDoc(doc) };
+		Dock.showDocListWindow;
+	}*/
+
 
 	*arrange1Pane {
 		var width;
 		width = Dock.width;
-		listenerPos = Rect(0, listenerY, this.twoPaneWidth, 
-			Window.screenBounds.height - listenerY);
-		tryoutPos = Rect(0, 0, this.twoPaneWidth, listenerY - 28);
-		panePos = Rect(this.twoPaneWidth, 0, this.twoPaneWidth, Window.screenBounds.height);
+		listenerPos = Rect(0, listenerY , this.twoPaneWidth2, 
+			Window.screenBounds.height - listenerY );
+		//tryoutPos = Rect(0, 0, this.twoPaneWidth2, listenerY - 256);
+		panePos = Rect(this.twoPaneWidth , 0, this.twoPaneWidth, Window.screenBounds.height);
 		this changeArrangement: { | doc | this.placeDoc(doc) };
 		Dock.showDocListWindow;
 	}
 
 	*arrange2Panes {
-		listenerPos = Rect(0, 0, this.twoPaneWidth, twoPaneListenerHeight - 25);
-		panePos = Rect(0, twoPaneListenerHeight, this.twoPaneWidth, 
+		listenerPos = Rect(0, 42, this.twoPaneWidth2, twoPaneListenerHeight-40 );
+		panePos = Rect(10, twoPaneListenerHeight , this.twoPaneWidth, 
 			Window.screenBounds.height - twoPaneListenerHeight
 		);
-		tryoutPos = Rect(0, twoPaneListenerHeight, this.twoPaneWidth, 
+		/*tryoutPos = Rect(0, twoPaneListenerHeight, this.twoPaneWidth, 
 			Window.screenBounds.height - twoPaneListenerHeight
-		);
+		);*/
 		this changeArrangement: { | doc | 
 			this.placeDoc(doc);
 			this.next2Pane;
@@ -96,7 +108,10 @@ Panes {
 		Document.listener.front;
 	}
 
-	*twoPaneWidth { ^min(640, Window.screenBounds.width / 2) }
+	*twoPaneWidth { ^min(720, Window.screenBounds.width /2 ) }
+
+	*twoPaneWidth2 { ^min(620, Window.screenBounds.width /2 ) }
+
 
 	*changeArrangement { | arrangeFunc |
 		currentPositionAction = arrangeFunc;

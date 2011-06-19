@@ -21,7 +21,7 @@
 		if(w.isNil) {
 			label = name.asString + "server";
 			w = window = SCWindow(label, 
-						Rect(Window.screenBounds.width - 404 , named.values.indexOf(this) * 22, 449-17-10 - 18, 21),
+						Rect(Window.screenBounds.width - 1680 , named.values.indexOf(this) * 22, 449-17-10 - 18, 21),
 						border: false);
 			w.view.background_(gray);
 			w.alpha = 1;

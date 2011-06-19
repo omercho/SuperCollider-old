@@ -46,6 +46,7 @@ CocoaMenuItem.addToMenu("Utils", "Open log file in orgmode", ["l", true, true], 
 
 //:rest
 Panes.activate;
+Panes.arrange1Pane;
 
 { Document.listener.front }.defer(0.5);
 
@@ -70,3 +71,5 @@ MySynths.sendToServer;
 
 
 (Platform.userAppSupportDir ++ "/startupOC/*").pathMatch do: _.load;
+
+s = Server.default.boot;

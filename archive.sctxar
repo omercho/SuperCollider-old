@@ -10,7 +10,7 @@ o = [
 	Event.prNew,  Array.prNew(12),  "+NcircReceive.sc",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/NcircleClasses/+NcircReceive.sc",  
 	Rect.prNew,  Event.prNew,  Array.prNew(12),  "ERGASTIRIO_DUYEK_11.rtf",  
 	"/Users/omerchatziserif/Dropbox/SC/+09MAY2011/~Ncircle_rtf/ERGASTIRIO_DUYEK_11.rtf",  Rect.prNew,  Event.prNew,  Array.prNew(12),  
-	"101027_xorBuffOSC2_01.rtf",  "/Users/omerchatziserif/Dropbox/SC/-Projects/4_IperatouLiveOct2010@NewFortress/101027_xorBuffOSC2_01.rtf",  Rect.prNew,  "Bummer.sc",  
+	"101027_xorBuffOSC2_01.rtf",  "/Users/omerchatziserif/Dropbox/SC/-Projects/4_IperatouLiveOct2010@NewFortress/101027_xorBuffOSC2_01.rtf",  Rect.prNew,  "Untitled",  
 	Array.prNew(4),  Rect.prNew,  Rect.prNew,  Rect.prNew,  
 	Rect.prNew
 ];
