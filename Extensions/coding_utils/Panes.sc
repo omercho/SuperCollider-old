@@ -25,7 +25,7 @@ Panes {
 		this.arrange2Panes;
 		Dock.showDocListWindow;
 		// confuses post and Untitled windows if not deferred on startup:
-		{ this.openTryoutWindow; }.defer(0.5); 
+		//{ this.openTryoutWindow; }.defer(0.5); 
 	}
 
 	*stop { this.deactivate } // synonym

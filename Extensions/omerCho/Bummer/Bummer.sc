@@ -3,7 +3,14 @@
 /*
 ~int1 = Bummer.read(s, "sounds/_Evfer/int01.aif");
 
-~int1.brate_(-1).play0(0.001, 0.5, 0.1);
+~dlStr = Bummer.read(s, "sounds/_Evfer/dlStr.aif");
+~dlyStr1 = Bummer.read(s, "sounds/_Evfer/dlyStrA1.aif");
+~dlyStr2 = Bummer.read(s, "sounds/_Evfer/dlyStrA2.aif");
+~dlyStr3 = Bummer.read(s, "sounds/_Evfer/dlyStrA3.aif");
+
+~dlStr.brate_(0.8).play0(0.001, 2.5, 2.1, 2.1);
+
+~dlyStr1.brate_(1).play0(0.1, 0.5, 0.1);
 
 */
 
