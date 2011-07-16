@@ -10,7 +10,7 @@ Perde.kademe;
 Perde.frekansYap;
 Perde.frekans;
 
-Perde.frekansYap(1.0);
+Perde.frekansYap(256);
 Perde.frekans;
 
 
