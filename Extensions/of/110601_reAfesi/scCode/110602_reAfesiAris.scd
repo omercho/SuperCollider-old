@@ -6,21 +6,134 @@ Aris Bezas Wed, 01 June 2011, 23:24
 ["af1","af2","af3","af4","af5","af6","af7"].choose
 (0..60).choose
 //:mirrow effect
-OF.img(1,0,0,1280,1024)
-OF.int("sketch",1)
-//:Many images
+
+OF.img(0,0,0,1280,720);
+
+OF.img(0,0,0,200,200);
+
+
+OF.img(1,0,0,600,600);
+OF.img(0,0,0,600,600);
+	
+OF.int("sketch",1);
+OF.int("pixelate",1);
+OF.int("alphaSketch",3);
+OF.int("edgeDetection",1);
+//:Small fill the screen by grid
 k = {
-	~delayTime = 0.21;
+	~delayTime = 0.1;
 	~countX = 0; 
 	~countY = 0;
 	~screenWidth = 1280;
-	~screenHeight = 1024;
-	~fotoWidth = ~fotoHeight = ~screenWidth/10;
+	~screenHeight = 720;
+	~fotoWidth = ~fotoHeight = ~screenWidth/20;
+	~fotoHeight = ~fotoWidth;
+	inf.do{
+	186.do{ |i|
+		i.postln;		
+		OF.img(i, ~countX, ~countY, ~fotoWidth, ~fotoHeight);
+		
+		~countX = ~countX + ~fotoWidth;
+		if (~countX>~screenWidth, {~countX = 0;~countY = ~countY + ~fotoHeight});
+		if (~countY>~screenHeight, {~countY = 0;});
+		~delayTime.wait;
+	}
+	}
+	
+}.fork 
+//:Small random position
+k = {
+	OF.img(0,0,0,1280,720);
+	~delayTime = 0.02;
+	~countX = 0; 
+	~countY = 0;
+	~screenWidth = 1280;
+	~screenHeight = 720;
+	~fotoWidth = ~fotoHeight = ~screenWidth/20;
+	~fotoHeight = ~fotoWidth;
+	inf.do{
+	186.do{ |i|
+		i.postln;		
+		OF.img(185.rand.asInteger, ~screenWidth.rand,  ~screenHeight.rand, 100, 100*720/1280);
+		~delayTime.wait;
+	}
+	}
+	
+}.fork 
+
+
+//:Small random position  random size
+k = {
+	OF.img(0,0,0,1280,720);
+	~delayTime = 0.02;
+	~countX = 0; 
+	~countY = 0;
+	~screenWidth = 1280;
+	~screenHeight = 720;
+	~fotoWidth = ~fotoHeight = ~screenWidth/20;
+	~fotoHeight = ~fotoWidth;
+	inf.do{
+	186.do{ |i|
+		i.postln;		
+		OF.img(185.rand.asInteger, ~screenWidth.rand,  ~screenHeight.rand, 1000.rand, 600.rand);
+		~delayTime.wait;
+	}
+	}
+	
+}.fork 
+
+//:Center Slide show
+~delayTime = 0.01;
+k = {
+	~delayTime = 0.05;
+	~countX = 0; 
+	~countY = 0;
+	~screenWidth = 1280;
+	~screenHeight = 780;
+	~fotoWidth = ~fotoHeight = ~screenWidth/20;
+	~fotoHeight = ~fotoWidth;
+	inf.do{
+		186.do{ |i|
+			186.postln;		
+			OF.img(i, 0,0, ~screenWidth, ~screenHeight);
+			~delayTime.wait;
+		}
+	}
+	
+}.fork 
+//:Random Slide show
+~delayTime = 0.01;
+k = {
+	~delayTime = 0.1;
+	~countX = 0; 
+	~countY = 0;
+	~screenWidth = 1280;
+	~screenHeight = 780;
+	~fotoWidth = ~fotoHeight = ~screenWidth/20;
+	~fotoHeight = ~fotoWidth;
+	inf.do{
+		186.do{ |i|
+			186.postln;		
+			OF.img(186.rand.asInteger, 0,0, ~screenWidth, ~screenHeight);
+			~delayTime.wait;
+		}
+	}
+	
+}.fork 
+
+//:Many images
+k = {
+	~delayTime = 0.01;
+	~countX = 0; 
+	~countY = 0;
+	~screenWidth = 1280;
+	~screenHeight = 780;
+	~fotoWidth = ~fotoHeight = ~screenWidth/20;
 	~fotoHeight = ~fotoWidth;
 	
 	inf.do{ |i|
 				
-		OF.img((0..60).choose.round, ~countX, ~countY, ~fotoWidth, ~fotoHeight);
+		OF.img((0..200).choose.round, ~countX, ~countY, ~fotoWidth, ~fotoHeight);
 		~countX = ~countX + ~fotoWidth;
 		if (~countX>~screenWidth, {~countX = 0;~countY = ~countY + ~fotoHeight});
 		if (~countY>~screenHeight, {~countY = 0;});
@@ -34,6 +147,23 @@ OF.int("yPosImage", 100)
 OF.int("xPosImage", 100)
 OF.int("wImg", 100 rrand: 500)
 OF.int("mirrorMode",0);
+//:Create Synth from function
+a = SynthDef(\synthFunc, { |delayTime = 0.01, countX = 0, countY = 0, screenWidth = 1280, screenHeight = 1024, fotoWidth, fotoHeight|
+	
+	fotoWidth = screenWidth/20;
+	fotoHeight = screenWidth/20;
+	10.do{ |i|
+				
+//		OF.img((0..60).choose.round, countX, countY, fotoWidth, fotoHeight);
+//		countX = countX + fotoWidth;
+//		if (countX>screenWidth, {countX = 0;countY = countY + fotoHeight});
+//		if (countY>screenHeight, {countY = 0;});
+		//delayTime.wait;
+	}
+
+	
+	
+	}).send(s);
 
 //:Play with width and height
 k = {
@@ -95,11 +225,12 @@ Pdef(\klank).play;
 Pdef(\fullScreen).play;	
 //:Fill the screen with a foto
 Pdef(\fullScreen, Posc(
-		\msg, Pseq([['img', 'af1",]], inf),
+		\msg, Pseq([['img', 0, 0, 0, 600,600]], inf),
 		\dur, Pseq([~duyekDur], inf),
 		\dest,  [NetAddr.localAddr, NetAddr("localhost", 12345)]
 		)
 	);
+	
 //:Duyek
 a = Pdef(\klank, Posc(
 		\msg, Pseq([\af1, \af2, \af3, \af4, \af5, \af6, \af7], inf),

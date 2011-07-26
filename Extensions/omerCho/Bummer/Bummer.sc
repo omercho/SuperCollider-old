@@ -2,13 +2,24 @@
 
 /*
 ~int1 = Bummer.read(s, "sounds/_Evfer/int01.aif");
-
+~int2 = Bummer.read(s, "sounds/_Evfer/int02.aif");
+~int3 = Bummer.read(s, "sounds/_Evfer/int03.aif");
+~int4 = Bummer.read(s, "sounds/_Evfer/int04.aif");
+~int5 = Bummer.read(s, "sounds/_Evfer/int05.aif");
+~int6 = Bummer.read(s, "sounds/_Evfer/int06.aif");
+~gir1 = Bummer.read(s, "sounds/_Evfer/gir01.aif");
+~gir2 = Bummer.read(s, "sounds/_Evfer/gir02.aif");
+~gir3 = Bummer.read(s, "sounds/_Evfer/gir03.aif");
+~brdk1 = Bummer.read(s, "sounds/_Evfer/bardak1.aif");
 ~dlStr = Bummer.read(s, "sounds/_Evfer/dlStr.aif");
 ~dlyStr1 = Bummer.read(s, "sounds/_Evfer/dlyStrA1.aif");
 ~dlyStr2 = Bummer.read(s, "sounds/_Evfer/dlyStrA2.aif");
 ~dlyStr3 = Bummer.read(s, "sounds/_Evfer/dlyStrA3.aif");
 
-~dlStr.brate_(0.8).play0(0.001, 2.5, 2.1, 2.1);
+~gir1.play0;
+
+
+~int1.play0(0.001, 0.5, 2.1, 0.7, loop: 0);
 
 ~dlyStr1.brate_(1).play0(0.1, 0.5, 0.1);
 
@@ -16,7 +27,7 @@
 
 	Bummer : Buffer {
 	
-	var <>bout = 0, <>batt = 0.1, <>bsus = 2.0, <>brls = 2.5, <>bmul = 1.0, <>bloop = true;
+	var <>bout = 0, <>batt = 0.1, <>bsus = 2.0, <>brls = 2.5, <>bmul = 1.0, <>bloop = false;
 	var <>btrig = 0, <>brate = 1.0, <>bstart = 0, <>bend = 1, <>breset = 0, <>bpan = 0;
 
 	play { arg loop = false;
