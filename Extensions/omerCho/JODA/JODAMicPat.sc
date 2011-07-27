@@ -4,7 +4,7 @@ MicPat.load;
 
 */
 
-MicPat {
+JODAMicPat {
 	classvar <action;
 	*load {
 	

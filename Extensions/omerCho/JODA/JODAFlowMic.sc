@@ -1,16 +1,15 @@
 /*
 
-FlowMic.load;
+JODAFlowMic.load;
 
 */
 
-FlowMic {
-	classvar <action;
-	*load {
-	var s;
-	s = Server.default;
+JODAFlowMic {
 	
-	SynthDef("flowerMic",{|out, vol = 0.0, dist = 0.0, does = 6, med = 1|
+	*load {
+
+	
+	SynthDef("flowerMic",{|out, vol = 0.5, dist = 0.0, does = 6, med = 1|
 		var in, amp, freq, hasFreq, snd;
 		var mx, my;
 		mx = MouseX.kr(1,118);
@@ -29,21 +28,21 @@ FlowMic {
 							peakThreshold: 0.5,
 							downSample: 1
 						);
-		snd = CombC.ar(LPF.ar(in, 1000), 0.1, (2 * freq).reciprocal, -6).distort * dist*my;
+		snd = CombC.ar(LPF.ar(in, 1000), 0.1, (2 * freq).reciprocal, -6).distort * dist *2;
 		does.do({
 		snd = AllpassN.ar(snd, 0.040, [0.040.rand,0.040.rand], 2)
 		});
 		Out.ar(out, snd * vol);
-	}).send(s);
+	}).send(Server.default);
 		
 		
-///////flowerMic
+//-----OSC------//
 
 		~togFlowerMic=ÊOSCresponderNode(nil,Ê'/bufP/togMicFlow', {Ê|t,r,m|Ê
 			if (~flowMic.isNil) {
 				~flowMic = Synth.head(~piges,"flowerMic", 
 					[
-					\out, [~revBus, ~dlyBus, ~wahBus, ~rlpBus]
+					\out, 0
 					]
 				);
 			}{
@@ -51,49 +50,37 @@ FlowMic {
 				~flowMic = nil;
 			}
 		}).add;
-		
-		
-		
-		~medianFlowMicSpec = ControlSpec(0.0, 0.5, \lin);
-		~doesFlowMicSpec = ControlSpec(1, 8, \lin);
 
 		~distortFlowMicSpec = ControlSpec(0.0, 1.0, \lin);
 		~distFlowMic =ÊOSCresponderNode(nil,Ê'/bufP/distAmpMic', {Ê|t,r,m|Ê
 			varÊn1;
 			n1Ê= (m[1]);
 			
-			~flowMic.set(\vol, ~distortFlowSpec.map(n1));
+			~flowMic.set(\vol, ~distortFlowMicSpec.map(n1));
 		
-		}).add;		
-
-
-/*(		~distortFlowMicSpec = ControlSpec(0, 1, \lin);
-		~distFlowMic =ÊOSCresponderNode(nil,Ê'/bufP/distAmpMic', {Ê|t,r,m|Ê
-			varÊn1;
-			n1Ê= (m[1]);
-			
-			~flowMic.set(\dist, ~distortFlowSpec.map(n1));
+		}).add;			
 		
-		}).add;)*/
-		
+		~medianFlowMicSpec = ControlSpec(0.0, 0.5, \lin);
 		~medFlowMic =ÊOSCresponderNode(nil,Ê'/bufP/medianMic', {Ê|t,r,m|Ê
 			varÊn1;
 			n1Ê= (m[1]);
 			
-			~flowMic.set(\dist, ~distortFlowSpec.map(n1));
+			~flowMic.set(\dist, ~medianFlowMicSpec.map(n1));
 		
 		}).add;
 
+		~doesFlowMicSpec = ControlSpec(1, 8, \lin);
 		~doesFlowMic =ÊOSCresponderNode(nil,Ê'/bufP/doesMic', {Ê|t,r,m|Ê
 			varÊn1;
 			n1Ê= (m[1]);
 			
-			~flowMic.set(\does, ~doesFlowSpec.map(n1));
+			~flowMic.set(\does, ~doesFlowMicSpec.map(n1));
 		
 		}).add;
 
+
 	
-	
+
 	
 	}
 	

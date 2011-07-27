@@ -4,7 +4,7 @@ JODRecs.load;
 
 */
 
-JODRecs {
+JODARecs {
 	classvar <action;
 	*load {
 

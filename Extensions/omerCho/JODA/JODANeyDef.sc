@@ -1,11 +1,11 @@
 /*
 
-NeyDef.load;
+JODANeyDef.load;
 
 */
 
-NeyDef {
-	classvar <action;
+JODANeyDef {
+	
 	*load {
 	
 	
@@ -13,7 +13,8 @@ NeyDef {
 		if (~neyDef.isNil) {
 			~neyDef = Ndef(\verb, {
 				var input, output, delrd, sig, deltimes;
-				input = Pan4.ar(SoundIn.ar(6,1), FSinOsc.kr(0.3, -0.25, 0.25), FSinOsc.kr(0.4, -0.1, 0.1) ); // buffer playback, panned 
+				input = Pan4.ar(SoundIn.ar(0,1), FSinOsc.kr(0.3, -0.25, 0.25), FSinOsc.kr(0.4, -0.1, 0.1) ); 
+				// buffer playback, panned 
 				
 				// Read 4-channel delayed signals back from the feedback loop
 				delrd = LocalIn.ar(4); 

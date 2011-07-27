@@ -1,14 +1,12 @@
 /*
 
-FlowJer.load;
+JODAFlowJer.load;
 
 */
 
-FlowJer {
-	classvar <action;
+JODAFlowJer {
 	*load {
-	var s;
-	s = Server.default;
+
 	
 	SynthDef("flowerJer",{|out, vol = 0.0, dist = 0.0, does = 6, med = 1|
 		var in, amp, freq, hasFreq, snd;
@@ -31,10 +29,10 @@ FlowJer {
 						);
 		snd = CombC.ar(LPF.ar(in, 1000), 0.1, (2 * freq).reciprocal, -6).distort * dist*my;
 		does.do({
-		snd = AllpassN.ar(snd, 0.040, [0.040.rand,0.040.rand], 2)
+			snd = AllpassN.ar(snd, 0.040, [0.040.rand,0.040.rand], 2)
 		});
 		Out.ar(out, snd * vol);
-	}).send(s);
+	}).send(Server.default);
 		
 		
 ///////flower
