@@ -43,8 +43,7 @@ JODA {
 		
 		~piges = Group.head(Server.default);
 		~effe = Group.tail(Server.default);
-		//~recorders = Group.new(~effe, \addAfter);
-
+		"groups loaded".postln;
 	}
 	
 	*unLoadGroups { 
@@ -62,6 +61,7 @@ JODA {
 		~dlyBus = Bus.new(\audio, 24, 2);
 		~rlpBus = Bus.new(\audio, 26, 2);
 		~wahBus = Bus.new(\audio, 28, 2);
+		"buses loaded".postln;
 
 	}
 	
@@ -131,6 +131,8 @@ JODA {
 			zout = RLPF.ar(zin, LFNoise1.kr(rate, mfreq, cfreq), rq, amp).distort * dist;
 			Out.ar( out , Pan2.ar(zout, pan) ); 
 		}).send(Server.default);
+		
+		"effects SynthDefs loaded".postln;
 
 ////////////////////////////////////////EffectsOSC///////////////////////////////////////////////
 	//REVERB
@@ -276,7 +278,7 @@ JODA {
 			~wah.set(\amp, n1);
 		}).add;
 
-
+		"effects OSC loaded".postln;
 
 	}
 
@@ -284,20 +286,20 @@ JODA {
 	*playEffects {
 
 		~rev = Synth.tail(~effe, "reverb", 
-			[\in,  ~revBus, \out, 0, \amp, 0.5
+			[\in,  ~revBus, \out, ~limBus, \amp, 0.5
 			]
 		);
 		~dly = Synth.tail(~effe,"delay", 
-			[\in,  ~dlyBus, \out, 0, \amp, 0.8
+			[\in,  ~dlyBus, \out, ~limBus, \amp, 0.8
 			]
 		);
 		~rlp = Synth.tail(~effe,"rlpf", 
-			[\in,  ~rlpBus, \out, 0, 
+			[\in,  ~rlpBus, \out, ~limBus, 
 			\ffreq, 220, \rq, 1.5, \amp, 0.1
 			]
 		);
 		~wah = Synth.tail(~effe,"wah", 
-			[\in,  ~wahBus, \out, 0
+			[\in,  ~wahBus, \out, ~limBus
 			]
 		);
 		~lim = Synth.tail(~effe, "limiter",
@@ -305,7 +307,7 @@ JODA {
 			\lvl, 0.6, \durt, 0.01
 			]
 		);
-
+		"effects are playing".postln;
 	
 	}
 	

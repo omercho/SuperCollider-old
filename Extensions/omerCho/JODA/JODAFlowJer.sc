@@ -8,9 +8,13 @@ JODAFlowJer {
 	*load {
 
 	
-	SynthDef("flowerJer",{|out, vol = 0.0, dist = 0.0, does = 6, med = 1|
-		var in, amp, freq, hasFreq, snd;
+	SynthDef("flowerJer",{|out, vol = 0.0, dist = 0.0, does = 6, med = 1,
+						att = 0.4, dec = 0.5, sus = 0.5, rls = 1.5, gate = 1 |
+		var in, env, amp, freq, hasFreq, snd;
 		var mx, my;
+		
+		env = EnvGen.ar(Env.adsr(att, dec, sus, rls, 0.5, 1), gate, doneAction:2);
+		
 		mx = MouseX.kr(1,118);
 		my = MouseY.kr(0,3);
 		in = Mix.new(SoundIn.ar(1));
@@ -27,11 +31,11 @@ JODAFlowJer {
 							peakThreshold: 0.5,
 							downSample: 1
 						);
-		snd = CombC.ar(LPF.ar(in, 1000), 0.1, (2 * freq).reciprocal, -6).distort * dist*my;
+		snd = CombC.ar(LPF.ar(in, 1000), 0.1, (2 * freq).reciprocal, -6).distort * dist* 2;
 		does.do({
 			snd = AllpassN.ar(snd, 0.040, [0.040.rand,0.040.rand], 2)
 		});
-		Out.ar(out, snd * vol);
+		Out.ar(out, snd *env * vol);
 	}).send(Server.default);
 		
 		
@@ -41,11 +45,11 @@ JODAFlowJer {
 			if (~flow.isNil) {
 				~flow = Synth.head(~piges,"flowerJer", 
 					[
-					\out, 0
+					\out, [~revBus]
 					]
 				);
 			}{
-				~flow.free;
+				~flow.release(4);
 				~flow = nil;
 			}
 		}).add;

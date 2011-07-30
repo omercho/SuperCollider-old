@@ -1,4 +1,10 @@
+//A practical buffer player 
+//Omer Chatziserif 
+//Thu, 24 May 2011, 08:30
+//Corfu
 
+// playBuf(att, sus, rls, mul, trig, rate, start, loop, pan, out)
+// bufRd(att, sus, rls, mul, trig, rate, start, end, reset, loop, pan, out)
 
 /*
 ~int1 = Bummer.read(s, "sounds/_Evfer/int01.aif");
@@ -16,12 +22,13 @@
 ~dlyStr2 = Bummer.read(s, "sounds/_Evfer/dlyStrA2.aif");
 ~dlyStr3 = Bummer.read(s, "sounds/_Evfer/dlyStrA3.aif");
 
-~gir1.play0;
+playBuf(att, sus, rls, mul, trig, rate, start, loop, pan, out)
 
+~gir1 = Bummer.read(s, "sounds/_Evfer/gir01.aif");
 
-~int1.play0(0.001, 0.5, 2.1, 0.7, loop: 0);
-
-~dlyStr1.brate_(1).play0(0.1, 0.5, 0.1);
+~gir1.playBuf(rate: 5);
+~gir1.playBuf(rate: 5, loop: 1);
+~gir1.bmul_(0.2).playBuf(rate: 5);
 
 */
 
@@ -43,7 +50,51 @@
 		}.play(Server.default);
 	}
 
-	play0 { arg  att, sus, rls, mul, trig, rate, start, end, reset, loop, pan, out;
+
+
+
+	//with PlayBuf
+	playBuf { arg  att, sus, rls, mul, trig, rate, start, loop, pan, out;
+
+		batt = att ? batt;
+		bsus = sus ? bsus;
+		brls = rls ? brls;
+		bmul = mul ? bmul;
+		btrig = trig ? btrig;
+		brate = rate ? brate;
+		bstart = start ? bstart;
+		bpan = pan ? bpan;
+		bout = out ? bout;
+		bloop = loop ? bloop;
+		
+		^{ var player, panlayer, env;
+			
+			env =  EnvGen.ar(
+				Env.new([0, 1, 0.8,  0], [batt, bsus, brls], 'linear', loop, releaseNode: nil), 
+				1, 
+				doneAction: 2
+			);
+			player = PlayBuf.ar(
+						numChannels,
+						bufnum, 
+						BufRateScale.kr(bufnum) * brate,
+						btrig,
+						BufFrames.kr(bufnum) * bstart,
+						loop: bloop.binaryValue
+					);
+			panlayer = Pan2.ar(player, bpan);
+			Out.ar(bout, panlayer * bmul *env);
+		}.play(Server.default);
+	}
+
+
+
+
+
+
+
+	//with BufRD
+	bufRd { arg  att, sus, rls, mul, trig, rate, start, end, reset, loop, pan, out;
 
 /*		if (att.notNil) { batt = att };
 		if (sus.notNil) { bsus = sus };
@@ -75,7 +126,7 @@
 		^{ var player, panlayer, env;
 			
 			env =  EnvGen.ar(
-				Env.new([0, 1, 0.8,  0], [batt, bsus, brls], 'linear', releaseNode: nil), 
+				Env.new([0, 1, 0.8,  0], [batt, bsus, brls], 'linear', loop, releaseNode: nil), 
 				1, 
 				doneAction: 2
 			);
@@ -290,76 +341,6 @@
 ~zil04 = Bummer.read(s, "sounds/~zkm1/zilA04.aif");
 
 
-~ats1.att_(0.1).sus_(2).rls_(5.0).rate_(0.8 rrand: 1.5).mul_(0.9).pan_(0.0).out_(0).play0;
-~ats1.att_(0.1).sus_(2).rls_(5.0).rate_(0.8 rrand: 1.5).mul_(0.9).pan_(0.0).out_(0).play0;
-~ats1.att_(0.1).sus_(2).rls_(5.0).rate_(0.8 rrand: 1.5).mul_(0.9).pan_(0.0).out_(0).playUp;
-
-~ats2.att_(0.1).sus_(2).rls_(5.0).rate_(0.8 rrand: 1.5).mul_(0.9).pan_(0.0).out_(0).play0;
-~ats2.att_(0.1).sus_(2).rls_(5.0).rate_(0.8 rrand: 1.5).mul_(0.9).pan_(0.0).out_(0).playVib;
-
-~ats3.att_(0.1).sus_(2).rls_(5.0).rate_(0.8 rrand: 1.5).mul_(0.9).pan_(0.0).out_(0).play0;
-~ats3.att_(0.1).sus_(2).rls_(5.0).rate_(0.8 rrand: 1.5).mul_(0.9).pan_(0.0).out_(0).playUp;
-~ats3.att_(0.1).sus_(2).rls_(5.0).rate_(0.8 rrand: 1.5).mul_(0.9).pan_(0.0).out_(0).playDown;
-~ats3.att_(0.1).sus_(2).rls_(5.0).rate_(0.8 rrand: 1.5).mul_(0.9).pan_(0.0).out_(0).playVib;
-
-~ats4.att_(0.1).sus_(2).rls_(5.0).rate_(0.8 rrand: 1.5).mul_(1.2).pan_(0.0).out_(0).play0;
-~ats4.att_(1.1).sus_(2.5).rls_(5.0).rate_(0.8 rrand: 1.5).mul_(1.2).pan_(0.0).out_(0).playUp;
-
-
-~kick1.att_(0.1).sus_(2).rls_(1.0).rate_(0.8 rrand: 1.5).mul_(0.9).pan_(0.0).out_(0).play0;
-~kick1.att_(0.1).sus_(2).rls_(2.0).rate_(0.8 rrand: 1.5).mul_(0.9).pan_(0.0).out_(0).playUp;
-~kick1.att_(0.1).sus_(2).rls_(2.0).rate_(0.8 rrand: 1.5).mul_(0.9).pan_(0.0).out_(0).playDown;
-~kick1.att_(0.1).sus_(2).rls_(2.0).rate_(0.8 rrand: 1.5).mul_(0.9).pan_(0.0).out_(0).playVib;
-
-~bass1.att_(0.1).sus_(1).rls_(2.0).rate_(0.8 rrand: 1.5).mul_(0.9).pan_(0.0).out_(0).play0;
-~bass1.att_(1.1).sus_(1).rls_(2.0).rate_(0.8 rrand: 1.5).mul_(0.9).pan_(0.0).out_(0).playUp;
-
-~bass2.att_(0.1).sus_(2).rls_(5.0).rate_(1.8 rrand: 1.5).mul_(1.9).pan_(0.1).out_(0).play0; 
-~bass3.att_(0.1).sus_(2).rls_(5.0).rate_(0.8 rrand: 1.5).mul_(0.9).pan_(-0.2).out_(0).play0;
-
-~citMin.att_(0.1).sus_(2).rls_(5.0).rate_(0.8 rrand: 1.5).mul_(0.9).pan_(0.0).out_(0).play0;
-~cirMin.att_(0.1).sus_(2).rls_(5.0).rate_(0.8 rrand: 1.5).mul_(0.9).pan_(0.0).out_(0).play0;
-~circir1.att_(0.1).sus_(2).rls_(5.0).rate_(0.8 rrand: 1.5).mul_(0.9).pan_(0.0).out_(0).play0;
-
-~dlStr.att_(0.1).sus_(2).rls_(5.0).rate_(0.8 rrand: 1.5).mul_(0.9).pan_(0.0).out_(0).play0;
-~dlyStr1.att_(0.1).sus_(2).rls_(5.0).rate_(0.8 rrand: 1.5).mul_(0.9).pan_(0.0).out_(0).play0;
-~dlyStr2.att_(0.1).sus_(2).rls_(5.0).rate_(0.8 rrand: 1.5).mul_(0.9).pan_(0.0).out_(0).play0;
-~dlyStr3.att_(0.1).sus_(2).rls_(5.0).rate_(-0.8 rrand: 1.5).mul_(0.9).pan_(0.0).out_(0).play0;
-
-~fub1.att_(0.1).sus_(2).rls_(5.0).rate_(0.8).mul_(0.9).pan_(0.0).out_(0).play0;
-
-~dran1.att_(0.1).sus_(2).rls_(5.0).rate_(0.2).mul_(0.9).pan_(0.0).out_(0).play0;
-~dran2.att_(0.1).sus_(2).rls_(5.0).rate_(0.8).mul_(0.9).pan_(0.0).out_(0).play0;
-
-~brdk1.att_(0.1).sus_(2).rls_(5.0).rate_(-0.8).mul_(0.9).pan_(0.0).out_(0).play0;
-~brdk1.att_(0.1).sus_(2).rls_(5.0).rate_(0.8).mul_(0.9).pan_(0.0).out_(0).playUp;
-~brdk1.att_(0.1).sus_(2).rls_(5.0).rate_(0.8).mul_(0.9).pan_(0.0).out_(0).playDown;
-
-~gtr1.att_(0.1).sus_(2).rls_(5.0).rate_(-0.8).mul_(0.9).pan_(0.0).out_(0).play0;
-~gtr1.att_(0.1).sus_(2).rls_(5.0).rate_(0.8).mul_(0.9).pan_(0.0).out_(0).playUp;
-~gtr1.att_(0.1).sus_(2).rls_(5.0).rate_(0.8).mul_(0.9).pan_(0.0).out_(0).playDown;
-
-~git1.att_(0.1).sus_(2).rls_(5.0).rate_(0.8).mul_(0.9).pan_(0.0).out_(0).play0;
-
-~gir1.att_(1.1).sus_(2).rls_(7.0).rate_(-0.8 rrand: -1.5).mul_(0.9).pan_(0.0).out_(0).play0;
-~gir1.rate_(0.5 rrand: 2).play0;
-~gir2.rate_(0.5).play0;
-~gir2.rate_(0.5 rrand: 2).play0;
-~gir3.rate_(0.5 rrand: 2).play0;
-~gir3.rate_(0.5 rrand: 2).play0;
-
-~int1.att_(0.1).sus_(2).rls_(5.0).rate_(-0.8).mul_(0.9).pan_(0.0).out_(0).playVib;
-~int2.att_(0.1).sus_(2).rls_(5.0).rate_(0.8).mul_(0.9).pan_(0.0).out_(0).play0;
-~int2.att_(0.1).sus_(2).rls_(5.0).rate_(1.08).mul_(0.9).pan_(0.0).out_(0).playVib;
-~int3.att_(0.1).sus_(2).rls_(5.0).rate_(0.8).mul_(0.9).pan_(0.0).out_(0).play0;
-~int4.att_(0.1).sus_(2).rls_(5.0).rate_(0.8).mul_(0.9).pan_(0.0).out_(0).play0;
-~int5.att_(0.1).sus_(2).rls_(5.0).rate_(0.8).mul_(0.9).pan_(0.0).out_(0).play0;
-~int6.att_(0.1).sus_(2).rls_(5.0).rate_(0.8).mul_(0.9).pan_(0.0).out_(0).play0;
-
-~zil01.att_(0.1).sus_(2).rls_(5.0).rate_(0.8).mul_(0.9).pan_(0.0).out_(0).play0;
-~zil02.att_(0.1).sus_(2).rls_(5.0).rate_(0.8).mul_(0.9).pan_(0.0).out_(0).play0;
-~zil03.att_(0.1).sus_(2).rls_(5.0).rate_(0.8).mul_(0.9).pan_(0.0).out_(0).play0;
-~zil04.att_(0.1).sus_(2).rls_(5.0).rate_(0.8).mul_(0.9).pan_(0.0).out_(0).play0;
 
 
 */

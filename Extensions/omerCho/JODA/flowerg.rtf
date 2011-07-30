@@ -1,0 +1,88 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf350
+{\fonttbl\f0\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue191;\red96\green96\blue96;\red0\green115\blue0;
+}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+
+\f0\fs18 \cf0 	\cf2 SynthDef\cf0 (\cf3 "flowerJer"\cf0 ,\{\cf2 |out, vol = 0.5, dist = 0.5, does = 6, med = 1,\
+						att = 0.1, dec = 0.005, sus = 0.5, rls = 1.5, gate = 1 |\cf0 \
+		\cf2 var\cf0  in, env, amp, freq, hasFreq, snd;\
+		\cf2 var\cf0  mx, my;\
+		\
+		env = \cf2 EnvGen\cf0 .ar(\cf2 Env\cf0 .adsr(att, dec, sus, rls, 0.5, 1), gate, doneAction:2);\
+		\
+		mx = \cf2 MouseX\cf0 .kr(1,118);\
+		my = \cf2 MouseY\cf0 .kr(0,3);\
+		in = \cf2 Mix\cf0 .new(\cf2 SoundIn\cf0 .ar(1));\
+		amp = \cf2 Amplitude\cf0 .kr(in, 0.05, 0.05);\
+		# freq, hasFreq = \cf2 Pitch\cf0 .kr(\
+							in,\
+							initFreq: ~c4, \
+							minFreq: ~c1,\
+							maxFreq: 4000.0,\
+							execFreq: 100.0,\
+							maxBinsPerOctave: 16,\
+							median: med,\
+							ampThreshold: 0.02, \
+							peakThreshold: 0.5,\
+							downSample: 1\
+						);\
+		snd = \cf2 CombC\cf0 .ar(\cf2 LPF\cf0 .ar(in, 1000), 0.1, (2 * freq).reciprocal, -6).distort * dist*my;\
+		does.do(\{\
+			snd = \cf2 AllpassN\cf0 .ar(snd, 0.040, [0.040.rand,0.040.rand], 2)\
+		\});\
+		\cf2 Out\cf0 .ar(out, snd *env * vol);\
+	\}).send(\cf2 Server\cf0 .default);\
+	\
+	\
+	~flow = \cf2 Synth\cf0 ( \cf3 "flowerJer"\cf0 , [\cf4 \\out\cf0 , 0]);\
+				\
+				\
+	~flow.release(1);\
+	\
+	\
+(	\
+		~togFlower=\'a0\cf2 OSCresponderNode\cf0 (\cf2 nil\cf0 ,\'a0\cf4 '/bufP/togFlow'\cf0 , \{\'a0|t,r,m|\'a0\
+			if (~flow.isNil) \{\
+				~flow = \cf2 Synth\cf0 (\cf3 "flowerJer"\cf0 , \
+					[\
+					\cf4 \\out\cf0 , [~revBus, ~dlyBus]\
+					]\
+				);\
+			\}\{\
+				~flow.release(4);\
+				~flow = \cf2 nil\cf0 ;\
+			\}\
+		\}).add;\
+		\
+		\
+		\
+		~medianFlowSpec = \cf2 ControlSpec\cf0 (0.0, 0.5, \cf4 \\lin\cf0 );\
+		~doesFlowSpec = \cf2 ControlSpec\cf0 (1, 8, \cf4 \\lin\cf0 );\
+		\
+		\
+		~distortFlowSpec = \cf2 ControlSpec\cf0 (0.0, 1.0, \cf4 \\lin\cf0 );\
+		~distFlow =\'a0\cf2 OSCresponderNode\cf0 (\cf2 nil\cf0 ,\'a0\cf4 '/bufP/distAmpJer'\cf0 , \{\'a0|t,r,m|\'a0\
+			\cf2 var\cf0 \'a0n1;\
+			n1\'a0= (m[1]);\
+			\
+			~flow.set(\cf4 \\vol\cf0 , ~distortFlowSpec.map(n1));\
+		\
+		\}).add;\
+		\
+		~medFlow =\'a0\cf2 OSCresponderNode\cf0 (\cf2 nil\cf0 ,\'a0\cf4 '/bufP/median'\cf0 , \{\'a0|t,r,m|\'a0\
+			\cf2 var\cf0 \'a0n1;\
+			n1\'a0= (m[1]);\
+			\
+			~flow.set(\cf4 \\dist\cf0 , ~distortFlowSpec.map(n1));\
+		\
+		\}).add;\
+\
+		~doesFlow =\'a0\cf2 OSCresponderNode\cf0 (\cf2 nil\cf0 ,\'a0\cf4 '/bufP/doesJer'\cf0 , \{\'a0|t,r,m|\'a0\
+			\cf2 var\cf0 \'a0n1;\
+			n1\'a0= (m[1]);\
+			\
+			~flow.set(\cf4 \\does\cf0 , ~doesFlowSpec.map(n1));\
+		\
+		\}).add;\
+)}

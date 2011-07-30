@@ -5,12 +5,8 @@ JODRecs.load;
 */
 
 JODARecs {
-	classvar <action;
 	*load {
-
-			var s;
-			
-			s = Server.default;	
+	
 	
 ///////////////SynthDefs/////////////
 
@@ -92,10 +88,6 @@ JODARecs {
 		}).add;	
 		
 	}
-	
-	*unLoad{
-	
-	
-	}
+
 	
 }

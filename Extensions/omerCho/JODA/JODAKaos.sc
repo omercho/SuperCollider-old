@@ -9,17 +9,18 @@ JODAKaos {
 
 
 
-		SynthDef("abs",{|i, k, j, out = 0, gate =1, vol = 0.5, 
-			mx1=0.2, mx2=0.5, my1=0.4,my2=1.3|
+		SynthDef("abs",{|i, k, j, out = 0, vol = 0.2, 
+			mx1=0.2, mx2=0.5, my1=0.4,my2=1.3,
+			att = 1.1, sus = 2.0, rls = 3.9, gate = 1|
 			var mul,decay, ses, comb, ses1, pulse, env;
 			
-			env = EnvGen.kr(Env.cutoff(3), gate, doneAction:2);
+			env = EnvGen.ar(Env.new([0, 0.5, 0.4,  0], [att, sus, rls], 'linear', releaseNode: 1), gate, doneAction: 2);
 			
 			pulse = Pulse.ar([
-						300*mx1.exp(10),
-						200*my1.exp(10),
-						200*my2.exp(10),
-						100*mx2.exp(10)
+						300*mx1.exp(8),
+						200*my1.exp(8),
+						200*my2.exp(7),
+						100*mx2.exp(6)
 						],0.5);
 			mul = -2*i absdif: FSinOsc.ar(2.6, 0.1*i, 0.5*i);
 			comb = CombN.ar(
@@ -32,18 +33,27 @@ JODAKaos {
 						0.1.sin/3
 						).tanh/4;
 			ses = comb.sin/4;
-			ses1 = Pan4.ar(ses,Saw.ar(0.5,2,ses),Saw.ar(0.5,2,ses) ,ses.sin**ses.cos**ses.sin.exp.cos);
+			ses1 = Pan4.ar(ses,
+					Saw.ar(0.5,2,ses), 
+					Saw.ar(0.5,2,ses) ,
+					ses.sin**ses.cos
+			);
 		
-			Out.ar(out,DelayN.ar(ses1,0.4, [0.19,0.26]*comb)*vol*4);
+			Out.ar(out,DelayN.ar(ses1,0.4, [0.19,0.26]*comb, mul: vol)*vol*env);
 		}).send(s);
 
 //----------------OSC---------------//
 
 		~mNois= OSCresponderNode(nil, '/bufP/kaos', { |t,r,m| 
 			if (~mNoise.isNil) {
-				~mNoise = Synth(\abs);
+				~mNoise = Synth.head(~piges, \abs, 
+							[
+							\out, [~limBus, ~revBus],
+							\vol, 0.0
+							]
+						);
 			}{
-				~mNoise.release(5);
+				~mNoise.release(1);
 				~mNoise = nil;
 			}
 		}).add;
@@ -73,11 +83,11 @@ JODAKaos {
 			}).add;
 		
 		
-		~kaosVolSpec = ControlSpec(0.0, 1.1, \lin);
-		~kaosVol = OSCresponderNode(nil, '/bufP/kaosvol', { |t,r,m| 
+		~kaosVolSpec = ControlSpec(0.0, 2.1, \lin);
+		~kaosVol = OSCresponderNode(nil, '/bufP/kaoslev', { |t,r,m| 
 			var n1;
 			n1 = (m[1]);
-			~mNoise.set(\vol, ~kaosVolSpec.map(n1));
+			~mNoise.set(\vol, ~kaosVolSpec.map(n1)*2);
 		}).add;
 
 
