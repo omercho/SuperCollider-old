@@ -70,6 +70,12 @@ MySynths.sendToServer;
 //s.boot;
 
 
-(Platform.userAppSupportDir ++ "/startupOC/*").pathMatch do: _.load;
+// (Platform.userAppSupportDir ++ "/startupOC/*").pathMatch do: _.load;
+
+(Platform.userAppSupportDir ++ "/startupOC/*").pathMatch do: { | p |
+	p.postln;
+ 	p.load;
+};
+
 
 s = Server.default.boot;
