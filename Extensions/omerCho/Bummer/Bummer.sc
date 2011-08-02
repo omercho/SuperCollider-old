@@ -22,7 +22,7 @@
 ~dlyStr2 = Bummer.read(s, "sounds/_Evfer/dlyStrA2.aif");
 ~dlyStr3 = Bummer.read(s, "sounds/_Evfer/dlyStrA3.aif");
 
-playBuf(att, sus, rls, mul, trig, rate, start, loop, pan, out)
+
 
 ~gir1 = Bummer.read(s, "sounds/_Evfer/gir01.aif");
 
