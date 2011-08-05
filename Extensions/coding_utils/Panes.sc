@@ -85,10 +85,10 @@ Panes {
 	*arrange1Pane {
 		var width;
 		width = Dock.width;
-		listenerPos = Rect(0, listenerY , this.twoPaneWidth2, 
+		listenerPos = Rect(0, listenerY , this.twoPaneWidth2 - 200, 
 			Window.screenBounds.height - listenerY );
 		//tryoutPos = Rect(0, 0, this.twoPaneWidth2, listenerY - 256);
-		panePos = Rect(this.twoPaneWidth , 0, this.twoPaneWidth, Window.screenBounds.height);
+		panePos = Rect(this.twoPaneWidth - 260 , 0, this.twoPaneWidth+300, Window.screenBounds.height);
 		this changeArrangement: { | doc | this.placeDoc(doc) };
 		Dock.showDocListWindow;
 	}
