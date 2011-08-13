@@ -1,0 +1,280 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf350
+{\fonttbl\f0\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue191;\red0\green115\blue0;\red96\green96\blue96;
+\red191\green0\blue0;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+
+\f0\fs18 \cf0 (\
+\
+\
+\
+		\
+		~bufA = \cf2 Buffer\cf0 .alloc(\cf2 Server\cf0 .default, \cf2 Server\cf0 .default.sampleRate * 8, 1);\
+		~bufB = \cf2 Buffer\cf0 .alloc(\cf2 Server\cf0 .default, \cf2 Server\cf0 .default.sampleRate * 8, 1);\
+		\
+		~bufIn = \cf2 Buffer\cf0 .alloc(\cf2 Server\cf0 .default, \cf2 Server\cf0 .default.sampleRate * 8, 1);\
+		~bufTap = \cf2 Buffer\cf0 .alloc(\cf2 Server\cf0 .default, \cf2 Server\cf0 .default.sampleRate * 8, 1);\
+		\
+		~bufJer1 = \cf2 Buffer\cf0 .alloc(\cf2 Server\cf0 .default, \cf2 Server\cf0 .default.sampleRate * 8, 1);\
+		~bufJer2 = \cf2 Buffer\cf0 .alloc(\cf2 Server\cf0 .default, \cf2 Server\cf0 .default.sampleRate * 8, 1);\
+		\
+		\
+	\
+\
+)\
+\
+(\
+		~piges = \cf2 Group\cf0 .head(\cf2 Server\cf0 .default);\
+		~effe = \cf2 Group\cf0 .tail(\cf2 Server\cf0 .default);\
+)\
+Server.default.queryAllNodes;\
+(\
+\
+		~limBus = \cf2 Bus\cf0 .new(\cf3 \\audio\cf0 , 20, 2);\
+		~revBus = \cf2 Bus\cf0 .new(\cf3 \\audio\cf0 , 22, 2);\
+		~dlyBus = \cf2 Bus\cf0 .new(\cf3 \\audio\cf0 , 24, 2);\
+		~rlpBus = \cf2 Bus\cf0 .new(\cf3 \\audio\cf0 , 26, 2);\
+		~wahBus = \cf2 Bus\cf0 .new(\cf3 \\audio\cf0 , 28, 2);\
+\
+)\
+\
+(\
+\
+	\
+\
+\
+		\cf2 SynthDef\cf0 (\cf4 "limiter"\cf0 ,\{ \cf2 arg\cf0  out=0, in = 0, lvl = 0.9, durt = 0.01;\
+			\cf2 ReplaceOut\cf0 .ar( out, \cf2 Limiter\cf0 .ar( \cf2 In\cf0 .ar(in, 2), lvl, durt) )\
+		\}).send(\cf2 Server\cf0 .default);\
+		\
+		\
+		\cf2 SynthDef\cf0 (\cf4 "reverb"\cf0 , \{ \cf2 | out, in = 0, amp=0.05, pan=0.0, \
+		roomsize = 10, revtime = 1, damping = 0.2, inputbw = 0.19, spread = 15,\
+		drylevel = -3, earlylevel = -9, taillevel = -11 |\cf0 \
+			\cf2 var\cf0  input, ses;\
+			input = \cf2 In\cf0 .ar(in, 2);\
+			ses = \cf2 GVerb\cf0 .ar(\
+				input,\
+				roomsize,\
+				revtime,\
+				damping,\
+				inputbw,\
+				spread,\
+				drylevel.dbamp,\
+				earlylevel.dbamp,\
+				taillevel.dbamp,\
+				roomsize, amp);\
+			\
+			\cf2 Out\cf0 .ar(out, \cf2 Pan2\cf0 .ar(ses, pan) );\
+		\}).send(\cf2 Server\cf0 .default);\
+			\
+		\cf2 SynthDef\cf0 (\cf4 "delay"\cf0 , \{ \cf2 |out = 0, in = 0, maxdelay = 0.25,  delay = 1.0, decay = 0.05, pan = 0, amp =0.5|\cf0 \
+			\cf2 var\cf0  ses, filt;\
+			ses =  \cf2 In\cf0 .ar(in, 2);\
+			filt = \cf2 CombN\cf0 .ar(\
+					ses,\
+					maxdelay,\
+					delay,\
+					decay, \
+					amp\
+				);\
+			\cf2 Out\cf0 .ar(out,  \cf2 Pan2\cf0 .ar(filt, pan));\
+		\}).send(\cf2 Server\cf0 .default);\
+		\
+		\cf2 SynthDef\cf0 (\cf4 "rlpf"\cf0 ,\{ \cf2 |out = 0, amp = 0.8 in = 0, ffreq = 600, rq = 0.1, pan = 0|\cf0 \
+			\cf2 Out\cf0 .ar( out, \cf2 Pan2\cf0 .ar(\cf2 RLPF\cf0 .ar( \cf2 In\cf0 .ar(in), ffreq, rq, amp), pan))\
+		\}).send(\cf2 Server\cf0 .default);\
+		\
+		\
+		\cf2 SynthDef\cf0 (\cf4 "wah"\cf0 , \{ \cf2 arg\cf0  out = 0, in = 0, rate = 0.5, amp = 1, pan = 0, cfreq = 1400, mfreq = 1200, rq=0.1, dist = 0.15;\
+			\cf2 var\cf0  zin, zout;\
+			zin = \cf2 In\cf0 .ar(in, 2);\
+			cfreq = \cf2 Lag3\cf0 .kr(cfreq, 0.1);\
+			mfreq = \cf2 Lag3\cf0 .kr(mfreq, 0.1);\
+			rq   = \cf2 Ramp\cf0 .kr(rq, 0.1);\
+			zout = \cf2 RLPF\cf0 .ar(zin, \cf2 LFNoise1\cf0 .kr(rate, mfreq, cfreq), rq, amp).distort * dist;\
+			\cf2 Out\cf0 .ar( out , \cf2 Pan2\cf0 .ar(zout, pan) ); \
+		\}).send(\cf2 Server\cf0 .default);\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+\cf5 ////////////////////////////////////////EffectsOSC///////////////////////////////////////////////\cf0 \
+	\cf5 //REVERB\cf0 \
+		~roomF =\'a0\cf2 OSCresponderNode\cf0 (\cf2 nil\cf0 ,\'a0\cf3 '/bufP/room'\cf0 , \{\'a0|t,r,m|\'a0\
+			\cf2 var\cf0 \'a0n1;\
+			n1\'a0= (m[1]*300);\
+			~rev.set(\cf3 \\roomsize\cf0 , n1);\
+			\}).add;\
+\
+		~room2 =\'a0\cf2 OSCresponderNode\cf0 (\cf2 nil\cf0 ,\'a0\cf3 '/bufP/room2'\cf0 , \{\'a0|t,r,m|\'a0\
+			\cf2 var\cf0 \'a0n1;\
+			n1\'a0= (m[1]*3);\
+			~rev.set(\cf3 \\roomsize\cf0 , n1);\
+			\}).add;\
+\
+		~revtimeF =\'a0\cf2 OSCresponderNode\cf0 (\cf2 nil\cf0 ,\'a0\cf3 '/bufP/revtime'\cf0 , \{\'a0|t,r,m|\'a0\
+			\cf2 var\cf0 \'a0n1;\
+			n1\'a0= (m[1]*100);\
+			~rev.set(\cf3 \\revtime\cf0 , n1);\
+			\}).add;\
+\
+		~dampF =\'a0\cf2 OSCresponderNode\cf0 (\cf2 nil\cf0 ,\'a0\cf3 '/bufP/damp'\cf0 , \{\'a0|t,r,m|\'a0\
+			\cf2 var\cf0 \'a0n1;\
+			n1\'a0= (m[1]);\
+			~rev.set(\cf3 \\damping\cf0 , n1);\
+			\}).add;			\
+\
+		~revampF =\'a0\cf2 OSCresponderNode\cf0 (\cf2 nil\cf0 ,\'a0\cf3 '/bufP/revamp'\cf0 , \{\'a0|t,r,m|\'a0\
+			\cf2 var\cf0 \'a0n1;\
+			n1\'a0= (m[1]) ;\
+			~rev.set(\cf3 \\amp\cf0 , n1);\
+		\}).add;\
+		\
+		~revmain = \cf2 OSCresponderNode\cf0 (\cf2 nil\cf0 ,\'a0\cf3 '/bufP/revmain'\cf0 , \{\'a0|t,r,m|\
+			~rev.set(\
+				\cf3 \\revtime\cf0 , 20, \cf3 \\roomsize\cf0 , 120, \cf3 \\damping\cf0 , 0.9, \
+				\cf3 \\inputbw\cf0 , 0.3, \cf3 \\drylevel\cf0  -9, \
+				\cf3 \\earlylevel\cf0 , -10, \cf3 \\taillevel\cf0 , -10.1, \cf3 \\amp\cf0 , 0.0005\
+			);\
+		\}).add;\
+		~bath = \cf2 OSCresponderNode\cf0 (\cf2 nil\cf0 ,\'a0\cf3 '/bufP/bath'\cf0 , \{\'a0|t,r,m|\
+			~rev.set(\
+				\cf3 \\roomsize\cf0 , 5, \cf3 \\revtime\cf0 , 0.6, \cf3 \\damping\cf0 , 0.62,\
+				\cf3 \\earlylevel\cf0 , -11, \cf3 \\taillevel\cf0 , -13\
+			);\
+		\}).add;\
+		~church = \cf2 OSCresponderNode\cf0 (\cf2 nil\cf0 ,\'a0\cf3 '/bufP/church'\cf0 , \{\'a0|t,r,m|\
+				~rev.set(\
+					\cf3 \\roomsize\cf0 , 80, \cf3 \\revtime\cf0 , 4.85, \cf3 \\damping\cf0 , 0.41, \
+					\cf3 \\inputbw\cf0 , 0.19, \cf3 \\drylevel\cf0  -3, \
+					\cf3 \\earlylevel\cf0 , -9, \cf3 \\taillevel\cf0 , -11\
+				);\
+		\}).add;\
+		~cathedral = \cf2 OSCresponderNode\cf0 (\cf2 nil\cf0 ,\'a0\cf3 '/bufP/cath'\cf0 , \{\'a0|t,r,m|\
+				~rev.set(\
+					\cf3 \\roomsize\cf0 , 243, \cf3 \\revtime\cf0 , 1, \cf3 \\damping\cf0 , 0.1, \
+					\cf3 \\inputbw\cf0 , 0.34, \cf3 \\drylevel\cf0  -3, \
+					\cf3 \\earlylevel\cf0 , -11, \cf3 \\taillevel\cf0 , -9\
+				);\
+		\}).add;\
+		~canyon = \cf2 OSCresponderNode\cf0 (\cf2 nil\cf0 ,\'a0\cf3 '/bufP/canyon'\cf0 , \{\'a0|t,r,m|\
+				~rev.set(\
+					\cf3 \\roomsize\cf0 , 300, \cf3 \\revtime\cf0 , 103, \cf3 \\damping\cf0 , 0.43, \
+					\cf3 \\inputbw\cf0 , 0.51, \cf3 \\drylevel\cf0  -5, \
+					\cf3 \\earlylevel\cf0 , -26, \cf3 \\taillevel\cf0 , -20\
+				);\
+		\}).add;		\
+		\
+		\
+		\cf5 //DELAY\cf0 \
+		~delayF =\'a0\cf2 OSCresponderNode\cf0 (\cf2 nil\cf0 ,\'a0\cf3 '/bufP/delay'\cf0 , \{\'a0|t,r,m|\'a0\
+			\cf2 var\cf0 \'a0n1;\
+			n1\'a0= (m[1]*5);\
+			~dly.set(\cf3 \\delay\cf0 , n1);\
+			\}).add;\
+		~decayF =\'a0\cf2 OSCresponderNode\cf0 (\cf2 nil\cf0 ,\'a0\cf3 '/bufP/decay'\cf0 , \{\'a0|t,r,m|\'a0\
+			\cf2 var\cf0 \'a0n1;\
+			n1\'a0= (m[1]*15) +0.1;\
+			~dly.set(\cf3 \\decay\cf0 , n1);\
+			\}).add;\
+		~dlyampF =\'a0\cf2 OSCresponderNode\cf0 (\cf2 nil\cf0 ,\'a0\cf3 '/bufP/dlyamp'\cf0 , \{\'a0|t,r,m|\'a0\
+			\cf2 var\cf0 \'a0n1;\
+			n1\'a0= (m[1]*2);\
+			~dly.set(\cf3 \\amp\cf0 , n1);\
+			\}).add;\
+		~dlyMain = \cf2 OSCresponderNode\cf0 (\cf2 nil\cf0 ,\'a0\cf3 '/bufP/dlymain'\cf0 , \{\'a0|t,r,m|\
+			~dly.set(\cf3 \\delay\cf0 , 0, \cf3 \\decay\cf0 , 3);\
+		\}).add;\
+		~dly1Set = \cf2 OSCresponderNode\cf0 (\cf2 nil\cf0 ,\'a0\cf3 '/bufP/dly1'\cf0 , \{\'a0|t,r,m|\
+			~dly.set(\cf3 \\delay\cf0 , 1, \cf3 \\decay\cf0 , 3);\
+		\}).add;		\
+		~dly2Set = \cf2 OSCresponderNode\cf0 (\cf2 nil\cf0 ,\'a0\cf3 '/bufP/dly2'\cf0 , \{\'a0|t,r,m|\
+			~dly.set(\cf3 \\delay\cf0 , 2, \cf3 \\decay\cf0 , 3);\
+		\}).add;		\
+		~dly3Set = \cf2 OSCresponderNode\cf0 (\cf2 nil\cf0 ,\'a0\cf3 '/bufP/dly3'\cf0 , \{\'a0|t,r,m|\
+			~dly.set(\cf3 \\delay\cf0 , 3, \cf3 \\decay\cf0 , 3);\
+		\}).add;		\
+		~dly4Set = \cf2 OSCresponderNode\cf0 (\cf2 nil\cf0 ,\'a0\cf3 '/bufP/dly4'\cf0 , \{\'a0|t,r,m|\
+			~dly.set(\cf3 \\delay\cf0 , 4, \cf3 \\decay\cf0 , 3);\
+		\}).add;		\
+		\
+		\cf5 //RLPF\cf0 \
+		~rlpfreqF =\'a0\cf2 OSCresponderNode\cf0 (\cf2 nil\cf0 ,\'a0\cf3 '/bufP/rlpfreq'\cf0 , \{\'a0|t,r,m|\'a0\
+			\cf2 var\cf0 \'a0n1;\
+			n1\'a0= (m[1]*5400)+ 20 ;\
+			~rlp.set(\cf3 \\ffreq\cf0 , n1);\
+		\}).add;		\
+		~rlprqF =\'a0\cf2 OSCresponderNode\cf0 (\cf2 nil\cf0 ,\'a0\cf3 '/bufP/rlprq'\cf0 , \{\'a0|t,r,m|\'a0\
+			\cf2 var\cf0 \'a0n1;\
+			n1\'a0= (m[1]*10)-2 ;\
+			~rlp.set(\cf3 \\rq\cf0 , n1);\
+		\}).add;		\
+		~rlpampF =\'a0\cf2 OSCresponderNode\cf0 (\cf2 nil\cf0 ,\'a0\cf3 '/bufP/rlpamp'\cf0 , \{\'a0|t,r,m|\'a0\
+			\cf2 var\cf0 \'a0n1;\
+			n1\'a0= (m[1]*4) ;\
+			~rlp.set(\cf3 \\amp\cf0 , n1);\
+		\}).add;		\
+		\
+		~limlevF =\'a0\cf2 OSCresponderNode\cf0 (\cf2 nil\cf0 ,\'a0\cf3 '/bufP/limlev'\cf0 , \{\'a0|t,r,m|\'a0\
+			\cf2 var\cf0 \'a0n1;\
+			n1\'a0= (m[1]) ;\
+			~lim.set(\cf3 \\lvl\cf0 , n1);\
+		\}).add;\
+		~limdurtF =\'a0\cf2 OSCresponderNode\cf0 (\cf2 nil\cf0 ,\'a0\cf3 '/bufP/limdurt'\cf0 , \{\'a0|t,r,m|\'a0\
+			\cf2 var\cf0 \'a0n1;\
+			n1\'a0= (m[1]*2) ;\
+			~lim.set(\cf3 \\durt\cf0 , n1);\
+		\}).add;		\
+		\
+		~distortF =\'a0\cf2 OSCresponderNode\cf0 (\cf2 nil\cf0 ,\'a0\cf3 '/bufP/distort'\cf0 , \{\'a0|t,r,m|\'a0\
+			\cf2 var\cf0 \'a0n1;\
+			n1\'a0= (m[1]*50) ;\
+			~wah.set(\cf3 \\dist\cf0 , n1);\
+		\}).add;		\
+		~wahrqF =\'a0\cf2 OSCresponderNode\cf0 (\cf2 nil\cf0 ,\'a0\cf3 '/bufP/wahrq'\cf0 , \{\'a0|t,r,m|\'a0\
+			\cf2 var\cf0 \'a0n1;\
+			n1\'a0= (m[1]*20)-5 ;\
+			~wah.set(\cf3 \\rq\cf0 , n1);\
+		\}).add;\
+		~wahampF =\'a0\cf2 OSCresponderNode\cf0 (\cf2 nil\cf0 ,\'a0\cf3 '/bufP/wahamp'\cf0 , \{\'a0|t,r,m|\'a0\
+			\cf2 var\cf0 \'a0n1;\
+			n1\'a0= (m[1]*6) ;\
+			~wah.set(\cf3 \\amp\cf0 , n1);\
+		\}).add;\
+\
+\
+\
+	\
+\
+)\
+(\
+\
+\
+\
+		~rev = \cf2 Synth\cf0 .tail(~effe, \cf4 "reverb"\cf0 , \
+			[\cf3 \\in\cf0 ,  ~revBus, \cf3 \\out\cf0 , 0, \cf3 \\amp\cf0 , 0.5\
+			]\
+		);\
+		~dly = \cf2 Synth\cf0 .tail(~effe,\cf4 "delay"\cf0 , \
+			[\cf3 \\in\cf0 ,  ~dlyBus, \cf3 \\out\cf0 , 0, \cf3 \\amp\cf0 , 0.8\
+			]\
+		);\
+		~rlp = \cf2 Synth\cf0 .tail(~effe,\cf4 "rlpf"\cf0 , \
+			[\cf3 \\in\cf0 ,  ~rlpBus, \cf3 \\out\cf0 , 0, \
+			\cf3 \\ffreq\cf0 , 220, \cf3 \\rq\cf0 , 1.5, \cf3 \\amp\cf0 , 0.1\
+			]\
+		);\
+		~wah = \cf2 Synth\cf0 .tail(~effe,\cf4 "wah"\cf0 , \
+			[\cf3 \\in\cf0 ,  ~wahBus, \cf3 \\out\cf0 , 0\
+			]\
+		);\
+		~lim = \cf2 Synth\cf0 .tail(~effe, \cf4 "limiter"\cf0 ,\
+			[ \cf3 \\in\cf0  ,~limBus, \cf3 \\out\cf0 , 0,  \
+			\cf3 \\lvl\cf0 , 0.6, \cf3 \\durt\cf0 , 0.01\
+			]\
+		);\
+\
+	\
+	\
+\
+)\
+\cf5 JODABaxx.load;}

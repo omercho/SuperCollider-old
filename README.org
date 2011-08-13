@@ -6,7 +6,18 @@ Download from: https://github.com/iani/SC
 or:
  : git clone git://github.com/iani/SC.git
 
-*Summary of ideas in this Library*
+* Installation
+
+As of 2011-06-08 The library is being reorganized to a modular plugin-form using quarks (thanks MC).  To open up a GUI that lists local quarks for installing or removing evaluate an appropriately modified version of the following statement: 
+
+#+BEGIN_EXAMPLE -t -w 100
+Quarks(localPath: Platform.userAppSupportDir +/+ "quarks.local").gui;
+#+END_EXAMPLE
+
+Note: In this library =quarks.local= is the top level directory for all modules in quark form. 
+
+
+
 
 * Class ServerPrep
 
@@ -138,13 +149,16 @@ Enable the selection of parts of a SuperCollider document separated by comments 
 
 Also ensure that the code will run after the default server is booted and the Buffers and SynthDefs defined as Udefs in a Session have been loaded. 
 
-Shortcuts provided are: 
+Shortcuts provided are:
 
-- Command-shift-x: Evaluate the code in an AppClock routine, after booting the default server if needed
-- Command-shift-alt-x: Evaluate the code in a SystemClock routine, after booting the default server if needed
+- Command-shift-x: Evaluate the code in an AppClock routine. Booting the default server if needed
+- Command-shift-alt-x: Evaluate the code in a SystemClock routine Boot default server if needed
 - Command-shift-v: Evaluate and post the results of the code, without routine or server booting
 - Command-shift-j: Select the next code part
 - Command-shift-k: Select the previous code part
+- Command-shift-}: open a list of the code segments of the current Document
+- Command-alt-shift-}: open a widow with buttons for running the code segments of the current Document
+- Command-alt-control-shift-}: Create OSCresponders for running the code segments of the current Document
 
 * Class Panes
 

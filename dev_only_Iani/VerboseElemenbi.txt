@@ -1,2 +1,0 @@
-
-ServerActionLoader.verbose = true;

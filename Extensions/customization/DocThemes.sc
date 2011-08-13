@@ -9,7 +9,7 @@ DocThemes {
 	}
 
 	*toggle {
-		if (currentTheme === \default) {  // edit by ari (/default)
+		if (currentTheme === \default) {
 			this setTheme: defaultCustomTheme;
 		}{
 			this.resetToSCdefault;
@@ -58,7 +58,7 @@ DocThemes {
 		Document.themes[\pinkString][\background] = Color(0.1, 0.1, 0.1, 1);
 		Document.themes[\pinkString][\postColor] = Color(0.6, 0.6, 0.6);
 		Document.themes[\default][\background] = Color.white;
-		Document.themes[\default][\postColor] =Color.black;
+		Document.themes[\default][\postColor] = Color.black;
 		defaultCustomTheme = \pinkString;
 	}
 }

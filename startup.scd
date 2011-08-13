@@ -44,29 +44,16 @@ CocoaMenuItem.addToMenu("Utils", "Open log file in orgmode", ["l", true, true], 
 	}.fork
 });
 
-//:rest
 Panes.activate;
+//Panes.arrange2Panes;
 
 { Document.listener.front }.defer(0.5);
 
-//:developer specials - should not be on git because they create files that interfere with pull: 
-
-(Platform.userAppSupportDir ++ "/dev_only/*.scd").pathMatch do: _.load;
 
 
-//:OSC Responders
-SpectroTouchOSC.makeResponders;
-//: My Synths
-MySynths.sendToServer;
-//: My Buffers
-//MyBuffers.osmoFull;
-//MyBuffers.seals;
-//MyBuffers.sketch;
-//BufferResource.postNames;
-//:SendSpectrogramData
-//SendSpectrogramData.new;
-//SendSpectrogramData('fft').free;
-//s.boot;
+(Platform.userAppSupportDir ++ "/startupOC/*").pathMatch do: { | p |
+	p.postln;
+ 	p.load;
+};
 
-
-(Platform.userAppSupportDir ++ "/startupOC/*").pathMatch do: _.load;
+s = Server.default.boot;

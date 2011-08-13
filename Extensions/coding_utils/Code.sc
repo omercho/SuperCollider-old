@@ -40,6 +40,12 @@ Code {
 
 	*menuItems {
 		^[
+			CocoaMenuItem.addToMenu("Code", "Configure core quarks", nil, {
+				GitQuarks(localPath: Platform.userAppSupportDir +/+ "quarks.local.core").gui;
+			}),
+			CocoaMenuItem.addToMenu("Code", "Configure project quarks", nil, {
+				GitQuarks(localPath: Platform.userAppSupportDir +/+ "quarks.local.projects").gui;
+			}),
 			CocoaMenuItem.addToMenu("Code", "snippet list view", [/*{*/ "}", false, false], {
 				this.showCodeListWindow;
 			}),
@@ -50,10 +56,10 @@ Code {
 				this.makeCodeOSC;
 			}),
 			CocoaMenuItem.addToMenu("Code", "previous snippet", ["J", false, false], {
-				this.selectNextSnippet;
+				this.selectPreviousSnippet;
 			}),
 			CocoaMenuItem.addToMenu("Code", "next snippet", ["K", false, false], {
-				this.selectPreviousSnippet;
+				this.selectNextSnippet;
 			}),
 			CocoaMenuItem.addToMenu("Code", "fork current snippet (AppClock)", ["X", false, false],
 				{ this.forkCurrentSnippet(AppClock); }
@@ -166,7 +172,6 @@ Code {
 		this.findSnippets;
 		start = nextsnippetstart;
 		length = nextsnippetend - nextsnippetstart;
-//		string[nextsnippetstart..nextsnippetend].postln;
 		doc.selectRange(start, length);
 	}
 
@@ -175,7 +180,6 @@ Code {
 		this.findSnippets;
 		start = prevsnippetstart;
 		length = prevsnippetend - prevsnippetstart;
-//		string[prevsnippetstart..prevsnippetend].postln;
 		doc.selectRange(start, length);
 	}
 	

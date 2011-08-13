@@ -1,14 +1,28 @@
 /* 
-Arrange Document windows conveniently for a laptop-sized monitor screen. 
+Arrange Document windows conveniently for a laptop-sized monitor screen.
+
+Feature still Testing on 20.7.2011! - Un-Released: Positions of Doc windows are restored from archive when recompiling: Implemented in Session class by MC, May/June 2011.
+
 */
 
 Panes {
-	classvar <>listenerY = 300, <>onePaneListenerWidth = 640, <>twoPaneListenerHeight = 300;
+//classvar <>listenerY = 300, <>onePaneListenerWidth = 640, <>twoPaneListenerHeight = 300;
+	classvar <>listenerY = 300, <>twoPaneListenerHeight = 300;
+	classvar <>listenerXdelta=2;
 	classvar <>panePos;
 	classvar <>listenerPos, <>tryoutPos;
-	classvar <session;		// for saving / restoring doc positions and doc texts to archive
 	classvar <currentPositionAction;
 	classvar <>tryoutName = "tryout.scd";
+
+	*initClass { StartUp.add(this); }
+
+	*doOnStartUp {
+		this.addMenu;
+		Code.addMenu;
+		Dock.addMenu;
+		BufferResource.addMenu;
+//		Session.prepare;
+	}
 
 	*start { this.activate } // synonym
 	*activate {
@@ -16,36 +30,39 @@ Panes {
 		Document.initAction = { | doc |
 			NotificationCenter.notify(this, \docOpened, doc);  
 		};
-		this.addMenu;
-		Code.addMenu;
-		Dock.addMenu;
-		BufferResource.addMenu;
 		Document.allDocuments do: this.setDocActions(_);
-//		this.arrange1Pane;
-		this.arrange2Panes;
+		this.arrange1Pane;
+//		this.arrange2Panes;
 		Dock.showDocListWindow;
 		// confuses post and Untitled windows if not deferred on startup:
-		{ this.openTryoutWindow; }.defer(0.5); 
+		{
+			this.openTryoutWindow;
+//			Session.restoreWindowPositions;
+		}.defer(0.5); 
 	}
 
 	*stop { this.deactivate } // synonym
 	*deactivate {
 		NotificationCenter.unregister(this, \docOpened, this);
 		Document.initAction = { | doc | doc.front; };
-		this.removeMenu;
-		Code.removeMenu;
-		Dock.removeMenu.closeDocListWindow;
-		BufferResource.removeMenu;
+//		this.removeMenu;
+//		Code.removeMenu;
+//		Dock.removeMenu.closeDocListWindow;
+//		BufferResource.removeMenu;
 	}
 
 	*menuItems { ^[
-			CocoaMenuItem.addToMenu("Utils", "single-pane doc arrangement", ["<", false, false], {
+			CocoaMenuItem.addToMenu("Utils", "activate pane placement", nil, {
+				this.activate;
+			}),
+			CocoaMenuItem.addToMenu("Utils", "single-pane doc arrangement", ["<", true, false], {
 				this.doRestoreTop({ this.arrange1Pane; });
 			}),
-			CocoaMenuItem.addToMenu("Utils", "multi-pane doc arrangement", [">", false, false], {
+			CocoaMenuItem.addToMenu("Utils", "multi-pane doc arrangement", [">", true, false], {
 				this.doRestoreTop({ this.arrange2Panes; });
 			}),
-			CocoaMenuItem.addToMenu("Utils", "switch window pos (in 2 panes)", [">", true, false], {
+			CocoaMenuItem.addToMenu("Utils", "switch window pos (in 2 panes)", ["A", false, false],
+			{
 				currentPositionAction.(Document.current);
 			}),
 		]
@@ -67,22 +84,22 @@ Panes {
 				tryout = Document.open(path);
 			};
 		};
-		tryout.front;
+//mc		tryout.front;
 	}
 
 	*arrange1Pane {
 		var width;
 		width = Dock.width;
-		listenerPos = Rect(0, listenerY, this.twoPaneWidth, 
-			Window.screenBounds.height - listenerY);
-		tryoutPos = Rect(0, 0, this.twoPaneWidth, listenerY - 28);
-		panePos = Rect(this.twoPaneWidth, 0, this.twoPaneWidth, Window.screenBounds.height);
+		listenerPos = Rect(0, listenerY, this.twoPaneWidth - listenerXdelta-200, //mc
+			Window.screenBounds.height - 100);
+		tryoutPos = Rect(0, 44, this.twoPaneWidth-200, listenerY - 28);
+		panePos = Rect(this.twoPaneWidth-200, 0, this.twoPaneWidth+320, Window.screenBounds.height);
 		this changeArrangement: { | doc | this.placeDoc(doc) };
 		Dock.showDocListWindow;
 	}
 
 	*arrange2Panes {
-		listenerPos = Rect(0, 0, this.twoPaneWidth, twoPaneListenerHeight - 25);
+		listenerPos = Rect(0, 0, this.twoPaneWidth - listenerXdelta, twoPaneListenerHeight - 25);//mc
 		panePos = Rect(0, twoPaneListenerHeight, this.twoPaneWidth, 
 			Window.screenBounds.height - twoPaneListenerHeight
 		);
@@ -96,7 +113,7 @@ Panes {
 		Document.listener.front;
 	}
 
-	*twoPaneWidth { ^min(640, Window.screenBounds.width / 2) }
+	*twoPaneWidth { ^min(700, Window.screenBounds.width / 2) }
 
 	*changeArrangement { | arrangeFunc |
 		currentPositionAction = arrangeFunc;
