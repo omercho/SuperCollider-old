@@ -27,13 +27,14 @@ NcMainVol {
 			in = 0, pan = 0, amp = 0.0|
 			var ses;
 			ses =  In.ar(in, 2);
-			ses =  PanAz.ar(
-					5, 						// numChans
+			ses = Pan2.ar(ses, pan);
+			/*ses =  PanAz.ar(
+					2, 						// numChans
 					ses, 					// in
 					SinOsc.kr(MouseX.kr(4.0,0.001, 'linear'), -0.1,0.1), // pos
 					0.5,						// level
 					3.0						// width
-				);
+				);*/
 			Out.ar([out1, out2, out3, out4, out5], ses*amp);
 		}).send(s);
 

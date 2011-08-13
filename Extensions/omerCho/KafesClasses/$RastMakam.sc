@@ -20,9 +20,9 @@ var i;
 ~a12=12; 		//ArtikIkili
 ~a13=13; 		//ArtikIkili
 
-i = 2 ** ([~t, ~k, ~s, ~t, ~t, ~k, ~s] / 53); //G Rast
+i = 2 ** ([~t, ~s, ~k, ~t, ~t, ~s, ~k] / 53); //G rast
 
-//	Rast Rate
+//	rast Rate
 
 ~rastRateA1 = 1/4;
 
@@ -62,7 +62,7 @@ i = 2 ** ([~t, ~k, ~s, ~t, ~t, ~k, ~s] / 53); //G Rast
 
 ~rastRateE1 = ~rastRateD7 * i[6];
 
-//	Rast Freq
+//	rast Freq
 
 ~rastA1 = 392.98 / 8;
 

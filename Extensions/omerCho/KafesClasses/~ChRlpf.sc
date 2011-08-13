@@ -5,7 +5,6 @@ ChRlpf.load;
 */
 
 ChRlpf {
-	classvar <action;
 	*load {
 	var s;
 	s = Server.default;

@@ -13,6 +13,8 @@ Globals {
 		s = Server.default;
 		
 		~piges = Group.head(s);
+		~effe = Group.head(s);
+		
 		
 		/*
 		~mainGroup = Group.new; // add a Group at the head of the default Server's default group
@@ -71,7 +73,6 @@ Globals {
 	*tempo{
 		
 		~clock1 = TempoClock.new(1, 8, Main.elapsedTime.ceil); 
-		~scl1 = Scale.huseyni;
 		
 	}
 	*scales{

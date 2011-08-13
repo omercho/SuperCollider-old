@@ -126,7 +126,7 @@
 		^{ var player, panlayer, env;
 			
 			env =  EnvGen.ar(
-				Env.new([0, 1, 0.8,  0], [batt, bsus, brls], 'linear', loop, releaseNode: nil), 
+				Env.new([0, 1, 0.8,  0], [batt, bsus, brls], 'linear', loop, releaseNode: 1), 
 				1, 
 				doneAction: 2
 			);

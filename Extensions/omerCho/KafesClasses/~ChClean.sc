@@ -5,7 +5,6 @@ ChClean.load;
 */
 
 ChClean {
-	classvar <action;
 	*load {
 	var s;
 	s = Server.default;
@@ -42,9 +41,7 @@ ChClean {
 	
 	*play{
 		~lim = Synth.after(~piges, "limiter",
-			[ \in ,~limBus, \out, 0,  
-			\lvl, 0.9, \durt, 0.01
-			]
+			[ \in ,~limBus, \out, 0 ]
 		);
 	
 	}

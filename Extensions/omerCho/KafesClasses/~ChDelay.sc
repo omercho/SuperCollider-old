@@ -5,7 +5,6 @@ ChDelay.load;
 */
 
 ChDelay {
-	classvar <action;
 	*load {
 		var s;
 		s = Server.default;
