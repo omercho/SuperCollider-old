@@ -5,6 +5,8 @@ Kafes.tempo;
 Kafes.buses;
 */
 
+
+
 Kafes {
 	
 	*groups {
@@ -13,8 +15,8 @@ Kafes {
 
 		s = Server.default;
 		
-		~piges = Group.head(s);
-		~effe = Group.head(s);
+		~sources = Group.head(s);
+		~effects = Group.head(s);
 		
 		
 
@@ -47,5 +49,11 @@ Kafes {
 		
 		~scl1 = Scale.rast;
 		
-	}	
+	}
+	
+	*lines {
+		~line1 = PatternProxy( Pn(1, inf) );
+		
+	}
+		
 }

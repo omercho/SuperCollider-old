@@ -1,0 +1,35 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf350
+{\fonttbl\f0\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red0\green0\blue191;\red191\green0\blue0;
+}
+\deftab560
+\pard\pardeftab560\ql\qnatural
+
+\f0\fs18 \cf2 \
+\
+(\
+t = \cf3 Task\cf2 (\{\
+		1.do(\{ \
+			m.noteOn(1, 30, 60); \cf4 // midi number for kick\cf2 \
+			0.25.wait;\
+			m.noteOn(1, 32, 60); \cf4 // midi number for drum1\cf2 \
+			0.25.wait;\
+			m.noteOn(1, 34, 60); \cf4 // midi number for drum2\cf2 \
+			0.25.wait;\
+			m.noteOn(1, 36, 60); \cf4 // midi number for multi\cf2 \
+			0.25.wait;\
+			m.noteOn(1, 38, 60); \cf4 // midi number for snare\cf2 \
+			0.25.wait;\
+			m.noteOn(1, 48, 60); \cf4 // midi number for hi hat1 opened\cf2 \
+			0.25.wait;\
+			m.noteOn(1, 58, 60); \cf4 // midi number for hi hat 2 opened\cf2 \
+			0.25.wait;\
+			m.noteOn(1, 68, 60); \cf4 // midi number for clap\cf2 \
+		\});\
+	\});\
+\
+)\
+\
+t.start;\
+\
+}
