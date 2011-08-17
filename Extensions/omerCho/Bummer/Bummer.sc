@@ -82,8 +82,8 @@
 						BufFrames.kr(bufnum) * bstart,
 						loop: bloop.binaryValue
 					);
-			panlayer = Pan2.ar(player, bpan);
-			Out.ar(bout, panlayer * bmul *env);
+			//player = Pan2.ar(player, bpan);
+			Out.ar(bout, player * bmul *env);
 		}.play(Server.default);
 	}
 
@@ -142,8 +142,8 @@
 						),
 						loop: bloop.binaryValue
 					);
-			panlayer = Pan2.ar(player, bpan);
-			Out.ar(bout, panlayer * bmul *env);
+			//player = Pan2.ar(player, bpan);
+			Out.ar(bout, player * bmul *env);
 		}.play(Server.default);
 	}
 

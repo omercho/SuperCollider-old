@@ -1,8 +1,10 @@
 
 /*
 Kafes.groups;
-Kafes.tempo;
+
 Kafes.buses;
+
+Kafes.tempo;
 */
 
 
@@ -10,13 +12,11 @@ Kafes.buses;
 Kafes {
 	
 	*groups {
-		var s;
 
 
-		s = Server.default;
 		
-		~sources = Group.head(s);
-		~effects = Group.head(s);
+		~sources = Group.head(Server.default);
+		~effects = Group.head(Server.default);
 		
 		
 
@@ -26,15 +26,9 @@ Kafes {
 	*buses {
 		
 		
-		~mainBus = Bus.new(\audio, 22, 2);
+		~ch1Bus = Bus.new(\audio, 22, 1);
 		
-		~limBus = Bus.new(\audio, 24, 2);
-		~revBus = Bus.new(\audio, 26, 2);
-		~dlyBus = Bus.new(\audio, 28, 2);
-		~rlpBus = Bus.new(\audio, 30, 2);
-		~wahBus = Bus.new(\audio, 32, 2);
-		
- 		~flowBus = Bus.new(\audio, 34, 2);
+
 
 
 
