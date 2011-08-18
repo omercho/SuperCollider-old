@@ -13,27 +13,22 @@ Kafes {
 	
 	*groups {
 
-
 		
 		~sources = Group.head(Server.default);
-		~effects = Group.head(Server.default);
+		~effects = Group.tail(Server.default);
 		
-		
-
 
 	}
 	
 	*buses {
 		
+
 		
-		~ch1Bus = Bus.new(\audio, 22, 1);
-		
-
-
-
-
 	}
+	
 
+	
+	
 	*tempo{
 		
 		~clock1 = TempoClock.new(1, 8, Main.elapsedTime.ceil); 
@@ -41,11 +36,12 @@ Kafes {
 	}
 	*scales{
 		
-		~scl1 = Scale.rast;
-		
+		~scl1 = Scale.siphr;
+	
 	}
 	
 	*lines {
+		
 		~line1 = PatternProxy( Pn(1, inf) );
 		
 	}

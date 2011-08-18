@@ -1,19 +1,21 @@
 {
 
 	var g, a;
+	
 	g = SCMenuGroup(nil, "Kafes", 13);
 	
 	k = {
-		"1 of 3 loding".postln;
+		"loding Globals".postln;
 		
 		Kafes.groups;
-		Kafes.buses;
+		
 		Kafes.tempo;
 		
 		1.0.wait;
 		
-		"2 of 3 loading".postln;
-
+		"loading Channels".postln;
+		
+		KafesChannels.ch1;
 		1.0.wait;
 
 		"3 of 3 loading".postln;
@@ -26,12 +28,12 @@
 
 	f = { | server, name, startcolor, donecolor |
 		var w;
-		w = Window(name ++ " server booting!", Rect(0, 0, 300, 400));
+		w = Window(name ++ " server booting!", Rect(0, 990, 4400, 700));
 		w.front.view.background = startcolor;
 		server.doWhenBooted({
 			w.name = name ++ " server booted";
 			w.view.background = donecolor;
-			{ w.close }.defer(1.5);
+			{ w.close }.defer(2.5);
 			k.fork;
 		});
 		if (server.serverRunning.not) { server.boot };
