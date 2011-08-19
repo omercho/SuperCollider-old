@@ -16,6 +16,9 @@ Kafes {
 		
 		~sources = Group.head(Server.default);
 		~effects = Group.tail(Server.default);
+
+		//~sources2 = Group.head(Server.default);
+		//~effects2 = Group.tail(Server.default);
 		
 
 	}

@@ -11,14 +11,20 @@
 		
 		Kafes.tempo;
 		
+		Karcigar.load;
+		Sipihr.load;
 		1.0.wait;
 		
 		"loading Channels".postln;
 		
 		KafesChannels.ch1;
 		1.0.wait;
-
-		"3 of 3 loading".postln;
+		
+		"loading Channels".postln;
+		
+		KafesChannels.ch2;
+		1.0.wait;
+		"--------".postln;
 
 		0.5.wait;
 		
