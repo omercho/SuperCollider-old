@@ -12,7 +12,7 @@ KafesEffects {
 			does.do{ filt = AllpassN.ar( filt, 0.2, {0.2.rand}!2, 9) };
 			filt + filt.mean;
 			Out.ar(out, filt);
-		}).play(~effects);	
+		}).play;	
 		
 	}
 

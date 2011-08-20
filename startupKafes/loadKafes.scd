@@ -24,13 +24,19 @@
 		
 		KafesChannels.ch2;
 		1.0.wait;
-		"--------".postln;
 
-		0.5.wait;
+		KafesChannels.ch3;
+		1.0.wait;
+
+		KafesChannels.ch4;
+
+		2.5.wait;
 		
 		"K A F E S".postln;
 		
 	};	
+
+
 
 	f = { | server, name, startcolor, donecolor |
 		var w;
@@ -39,7 +45,7 @@
 		server.doWhenBooted({
 			w.name = name ++ " server booted";
 			w.view.background = donecolor;
-			{ w.close }.defer(2.5);
+			{ w.close }.defer(2.9);
 			k.fork;
 		});
 		if (server.serverRunning.not) { server.boot };

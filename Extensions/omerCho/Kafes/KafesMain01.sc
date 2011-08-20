@@ -6,6 +6,8 @@ KafesMain01.loadBuffers;
 ~th1A = Bummer.read(Server.default, "sounds/~kafes/~thol/thol1A.aif");
 
 ~th1A.playBuf;
+~th1A.bufRd;
+
 */
 
 
@@ -16,7 +18,9 @@ KafesMain01 {
 		~main1 = Preceive(
 			\1 -> {
 				
-				~th1A.playBuf(att: 0.001);
+				~th1A.bufRd(att:0.001, sus:6, rls:5, rate:rrand(0.9, 0.4), mul:2);
+				
+				
 				
 				},
 			\2 -> {},
