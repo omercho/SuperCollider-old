@@ -5,8 +5,7 @@ KafesChannels {
 	
 		fork {
 			//1
-			~ch1Cln = Bus.new(\audio, 22, 1);
-			~ch1Filt = Bus.new(\audio, 23, 1);
+			~ch1 = Bus.new(\audio, 22, 1);
 			
 			"channel 1 buses loaded".postln;
 			0.1.wait;
@@ -34,13 +33,13 @@ KafesChannels {
 			//3
 			~ch1Cl = Synth.tail(~effects, "ch1Clean",
 				[ 
-				\in ,~ch1Cln, 
-				\out,  ~ch1Filt
+				\in ,~ch1, 
+				\out,  0
 				]
 			);
 			~ch1ND = Synth.tail(~effects, "ch1NDef",
 				[ 
-				\in ,~ch1Filt, 
+				\in ,~ch1, 
 				\out,  0
 				]
 			);
@@ -62,8 +61,7 @@ KafesChannels {
 	
 		fork {
 			//1
-			~ch2Cln = Bus.new(\audio, 24, 1);
-			~ch2Filt = Bus.new(\audio, 25, 1);
+			~ch2 = Bus.new(\audio, 24, 1);
 			
 			"channel 2 buses loaded".postln;
 			0.1.wait;
@@ -108,13 +106,13 @@ KafesChannels {
 			//3
 			~ch2Cl = Synth.tail(~effects, "ch2Clean",
 				[ 
-				\in , ~ch2Cln, 
-				\out,  ~ch2Filt
+				\in , ~ch2, 
+				\out,  0
 				]
 			);
 			~ch2Flow = Synth.tail(~effects, "ch2flowZ",
 				[ 
-				\in ,~ch2Filt, 
+				\in ,~ch2, 
 				\out,  0
 				]
 			);
@@ -134,8 +132,7 @@ KafesChannels {
 	
 		fork {
 			//1
-			~ch3Cln = Bus.new(\audio, 26, 1);
-			~ch3Filt = Bus.new(\audio, 27, 1);
+			~ch3 = Bus.new(\audio, 26, 1);
 			
 			"channel 1 buses loaded".postln;
 			0.1.wait;
@@ -186,13 +183,13 @@ KafesChannels {
 			//3
 			~ch3Cl = Synth.tail(~effects, "ch3Clean",
 				[ 
-				\in ,~ch3Cln, 
-				\out,  ~ch3Filt
+				\in ,~ch3, 
+				\out,  0
 				]
 			);
 			~rev = Synth.tail(~effects, "reverb",
 				[ 
-				\in ,~ch3Filt, 
+				\in ,~ch3, 
 				\out,  0
 				]
 			);
@@ -212,8 +209,7 @@ KafesChannels {
 	
 		fork {
 			//1
-			~ch4Cln = Bus.new(\audio, 28, 1);
-			~ch4Filt = Bus.new(\audio, 29, 1);
+			~ch4 = Bus.new(\audio, 28, 1);
 			
 			"channel 4 buses loaded".postln;
 			0.1.wait;
@@ -262,13 +258,13 @@ KafesChannels {
 			//3
 			~ch4Cl = Synth.tail(~effects, "ch4Clean",
 				[ 
-				\in ,~ch4Cln, 
-				\out,  ~ch4Filt
+				\in ,~ch4, 
+				\out,  
 				]
 			);
 			~dustr = Synth.tail(~effects, "dustr",
 				[ 
-				\in ,~ch4Filt, 
+				\in ,~ch4, 
 				\out,   0
 				]
 			);
