@@ -30,12 +30,26 @@
 ~gir1.playBuf(rate: 5, loop: 1);
 ~gir1.bmul_(1.2).playBuf(rate: 1);
 
+
+
+	var in, chain;
+	in = PlayBuf.ar(1, bufnum, BufRateScale.kr(bufnum)*rate/1.2, loop: 1);
+	chain = FFT({LocalBuf(2048, 2)}.dup(8), in);
+	chain = PV_BrickWall(chain, 
+		SinOsc.kr(
+			rate2 * XLine.kr(1, 15 * [1, 1.6], sustain), 
+			Rand(0, pi)
+		);
+	); 
+	Out.ar(out, IFFT(chain) * XLine.kr(2, 0.001, sustain, doneAction: 2)*3) // inverse FFT
+
+
 */
 
 Kaffer : Buffer {
 	
 	var <>bout = 0, <>batt = 0.1, <>bsus = 2.0, <>brls = 2.5, <>bmul = 1.0, <>bloop = false;
-	var <>btrig = 0, <>brate = 1.0, <>bstart = 0, <>bend = 1, <>breset = 0, <>bpan = 0;
+	var <>btrig = 0, <>brate = 1.0, <>brate2 = 1.0, <>bstart = 0, <>bend = 1, <>breset = 0, <>bpan = 0;
 	
 
 	play { arg loop = false;
@@ -52,7 +66,52 @@ Kaffer : Buffer {
 	}
 
 
-	//with PlayBuf
+	//with PlayBuf SynthDef
+	playPV1 { arg  att, sus, rls, mul, trig, rate, rate2, start, loop, pan, out;
+
+		batt = att ? batt;
+		bsus = sus ? bsus;
+		brls = rls ? brls;
+		bmul = mul ? bmul;
+		btrig = trig ? btrig;
+		brate = rate ? brate;
+		brate2 = rate2 ? brate2;
+		bstart = start ? bstart;
+		bpan = pan ? bpan;
+		bout = out ? bout;
+		bloop = loop ? bloop;
+		
+		^SynthDef("kafferPB", { 
+			var player, chain, panlayer, env;
+			
+			env =  EnvGen.ar(
+				Env.new([0, 1, 0.8,  0], [batt, bsus, brls], 'linear', loop, releaseNode: nil), 
+				1, 
+				doneAction: 2
+			);
+			player = PlayBuf.ar(
+						numChannels,
+						bufnum, 
+						BufRateScale.kr(bufnum) * brate,
+						btrig,
+						BufFrames.kr(bufnum) * bstart,
+						loop: bloop.binaryValue
+					);
+			chain = FFT({LocalBuf(2048, 2)}.dup(4), player);
+			chain = PV_BrickWall(chain, 
+				SinOsc.kr(
+					brate2 * XLine.kr(1, 15 * [1, 1.6], bsus), 
+					Rand(0, pi)
+				);
+			); 
+			Out.ar(bout, IFFT(chain) * bmul *env);
+		}).play(~sources);
+	}
+
+
+
+
+	//with PlayBuf SynthDef
 	playSD { arg  att, sus, rls, mul, trig, rate, start, loop, pan, out;
 
 		batt = att ? batt;
@@ -134,15 +193,9 @@ Kaffer : Buffer {
 
 /*		if (att.notNil) { batt = att };
 		if (sus.notNil) { bsus = sus };
-		if (rls.notNil) { brls = rls };
-		if (mul.notNil) { bmul = mul };
-		if (trig.notNil) { btrig = trig };
-		if (rate.notNil) { brate = rate };
-		if (end.notNil) { bend = end };
-		if (reset.notNil) { breset = reset };
-		if (pan.notNil) { bpan = pan };
-		if (out.notNil) { bout = out };
-		if (loop.notNil) { bloop = loop };
+		.
+		.
+		.
 */		
 		//SHORTCUTS
 

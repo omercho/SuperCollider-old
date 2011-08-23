@@ -9,7 +9,7 @@ Kafes.tempo;
 
 
 
-Kafes {
+KafesGlobals {
 	
 	*groups {
 
