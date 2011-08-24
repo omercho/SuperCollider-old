@@ -1,5 +1,7 @@
 /*
 KafeSin.ar(0.01, 0.1, 5.0, freq:44).play;
+
+
 */
 
 KafeSin : UGen { 
@@ -19,7 +21,7 @@ KafeSin : UGen {
 				1, 
 				doneAction: 2
 			);
-			player = SinOsc.ar([freq]);
+			player = SinOsc.ar([freq], mul:0.6);
 			Out.ar(out, player.sum * mul *env);
 		}).play(~sources);
 	}

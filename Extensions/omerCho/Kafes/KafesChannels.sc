@@ -47,7 +47,7 @@ KafesChannels {
 			//~ch1CLim = Bus.new(\audio, 22, 1);
 			~ch1FLim = Bus.new(\audio, 23, 1);
 			
-			"channel 1 buses loaded".postln;
+			"CHANNEL 1 buses loaded".postln;
 			0.1.wait;
 			
 			//-----------CH1-SynthDefs------------//		
@@ -58,42 +58,48 @@ KafesChannels {
 				ses = Limiter.ar(ses, vol, 0.05);
 				Out.ar(out, ses);
 			}).send(Server.default);
-			
-/*			SynthDef('ch1NDef',{ |out, does = 7, in = 0, vol = 1|
-				var src, filt;
-				src = In.ar(in, 1)+ 0.001;
-				filt = BPF.ar( src, 6 ** Latch.ar(src, Dust.ar(src) ) * 3000,  0.5).sin;
-				does.do{ filt = AllpassN.ar( filt, 0.2, {0.2.rand}!2, 9) };
-				filt + filt.mean;
-				
-				
-				Out.ar(out, filt.sum * vol);
-			}).send(Server.default);	*/
+
 			
 			
-			~buf = Buffer.alloc(Server.default, 4096/2, 1);// create buffer
-			~buf.sine1(19);
-			
-			SynthDef(\oscFol, {|vol=0.8, in, bufnum, balance=2.8, smooth=1.01|
+			SynthDef(\oscFol, {|out,vol=0.8, in, bufnum, balance=2.8, smooth=1.01,
+							resFreq=158,
+							f1=0.5, f2=1.2, f3=2.0, f4=3.99,
+							dia=32, wem=1.1, mixDia=2|
 				var input,freq,hasFreq,amp,mix,wet, harm;	
 				input = In.ar(in); // get first channel of sound input
 				#freq,hasFreq = Pitch.kr(input); // pitch of input signal
 				amp = Amplitude.ar(input); // amplitude of input signal
-				wet = Osc.ar(bufnum,freq, 0, amp);
-				wet = Resonz.ar(wet, 158, 0.5);
-				harm = SinOsc.ar(freq * [0.5, 1.2, 2.0, 3.99].sum/0.238/32, 0, amp * hasFreq);
+				wet = SinOsc.ar(freq, 0, amp);
+				wet = Resonz.ar(wet, resFreq, 0.5);
+				harm = SinOsc.ar(freq * [f1, f2, f3, f4].sum/0.238/dia, 0, amp * hasFreq);
 				
-				mix = (harm * (1-balance)) + (1.1*wet * (harm+balance)/2); 	
+				mix = (harm * (1-balance)) + (wem*wet * (harm+balance)/mixDia); 	
 				mix = CombC.ar(
 					mix+harm, 
 					SinOsc.kr(0.1).range(1.13, 2.69), 
-					SinOsc.kr(0.1).range(2.10, 4.11), 
+					SinOsc.kr(0.1).range(5.10, 6.11), 
 					SinOsc.kr(0.05).range(0.001, 0.005), 
 					0.4, 
 					mix+harm
 				);
-				Out.ar(0, (mix+harm)*vol);
+				Out.ar(out, (mix+harm)*vol);
 			}).send(Server.default);
+
+/*
+(
+~ch1Flt.set(\balance, 2.5, \smooth, 1.1);
+
+~ch1Flt.set(\dia, 200.09);
+
+~ch1Flt.set( \wem, 220.5);
+
+~ch1Flt.set(\mixDia, 100.09);
+
+~ch1Flt.set(\resFreq, 220.09);
+
+~ch1Flt.set(\f1, 0.2, \f2, 1.2, \f3, 2.2, \f4, 3.2);
+)
+*/
 			
 			
 			SynthDef("ch1Limiter", { |out, 
@@ -105,7 +111,7 @@ KafesChannels {
 				Out.ar(out, ses/vol);
 			}).send(Server.default);
 			
-			"channel 1 SynthDefs loaded".postln;
+			"CHANNEL 1 SynthDefs loaded".postln;
 			1.0.wait;
 			
 			//--------------CH1-Synths------------//
@@ -127,8 +133,10 @@ KafesChannels {
 				\out,  0
 				]
 			);
+
+
 			
-			"channel 1 Synths are playing".postln;
+			"CHANNEL 1 Synths are playing".postln;
 			0.5.wait;
 			
 			//----------------CH1-OSC----------------//
@@ -162,13 +170,13 @@ KafesChannels {
 	*ch2 {
 	
 		fork {
-			//1
+			//-----------CH2-Buses------------//
 			~ch2 = Bus.new(\audio, 24, 1);
 			
 			"CHANNEL 2 buses loaded".postln;
 			0.1.wait;
 			
-			//2
+			//-----------CH2-SynthDefs------------//
 			SynthDef("ch2Clean", { |out, 
 				in = 0, pan = 0, vol = 1|
 				var ses;
@@ -199,14 +207,30 @@ KafesChannels {
 				6.do({
 					ses = AllpassN.ar(ses, 0.040, [0.060.rand,0.060.rand], 2)
 				});
-				//ses = Mix.fill(1, ses);
 				Out.ar(out, ses*8*vol);
 			}).send(Server.default);	
+
+/*
+(
+~ch1Flt.set(\balance, 2.5, \smooth, 1.1);
+
+~ch1Flt.set(\dia, 200.09);
+
+~ch1Flt.set( \wem, 220.5);
+
+~ch1Flt.set(\mixDia, 100.09);
+
+~ch1Flt.set(\resFreq, 220.09);
+
+~ch1Flt.set(\f1, 0.2, \f2, 1.2, \f3, 2.2, \f4, 3.2);
+)
+*/
+
 			
 			"CHANNEL 2 SynthDefs loaded".postln;
 			1.0.wait;
 			
-			//3
+			//--------------CH2-Synths------------//
 			~ch2Cln = Synth.tail(~effects, "ch2Clean",
 				[ 
 				\in , ~ch2, 
@@ -225,7 +249,7 @@ KafesChannels {
 			
 			//----------------CH2-OSC----------------//
 			
-			~ch2ClnVolSpec = ControlSpec(0.0, 3.0, \lin);
+			~ch2ClnVolSpec = ControlSpec(0.0, 0.5, \lin);
 			~ch2FltVolSpec = ControlSpec(0.0, 3.0, \lin);
 			
 
@@ -253,13 +277,13 @@ KafesChannels {
 	*ch3 {
 	
 		fork {
-			//1
+			//-----------CH3-Buses------------//
 			~ch3 = Bus.new(\audio, 26, 1);
 			
 			"CHANNEL 3 buses loaded".postln;
 			0.1.wait;
 			
-			//2
+			//-----------CH3-SynthDefs------------//
 			SynthDef("ch3Clean", { |out, 
 				in = 0, pan = 0, vol = 0.5|
 				var ses;
@@ -268,7 +292,7 @@ KafesChannels {
 			}).send(Server.default);
 			
 			SynthDef("reverb", { | out, in = 0, vol=0.8, pan=0.0, 
-				roomsize = 4, revtime = 2, damping = 0.2, inputbw = 0.19, spread = 15,
+				roomsize = 28.7, revtime = 1.01, damping = 0.2, inputbw = 0.19, spread = 15,
 				drylevel = -3, earlylevel = -9, taillevel = -11,
 				lvl = 0.4, durt = 0.01 |
 				
@@ -289,40 +313,54 @@ KafesChannels {
 					vol
 				);
 				ses = Limiter.ar( ses, lvl, durt);
-/*				ses = PanAz.ar(
-						4, 						// numChans
-						ses, 					// in
-						SinOsc.kr(0.01, -0.1,0.1), 	// pos
-						0.5,						// level
-						2.5						// width
-					);*/
+
 				Out.ar(out, ses.sum );
 			}).send(Server.default);	
 			
 			"CHANNEL 3 SynthDefs loaded".postln;
 			1.0.wait;
 			
-			//3
-			~ch3Cl = Synth.tail(~effects, "ch3Clean",
+			//--------------CH3-Synths------------//
+			~ch3Cln = Synth.tail(~effects, "ch3Clean",
 				[ 
 				\in ,~ch3, 
 				\out,  2
 				]
 			);
-			~rev = Synth.tail(~effects, "reverb",
+			~ch3Flt = Synth.tail(~effects, "reverb",
 				[ 
 				\in ,~ch3, 
 				\out,  2
 				]
 			);
-
-
-
+/*
+(
+~ch3Flt.set(
+	\roomsize, 38.7,
+	\revtime, 9.01
+);
+)
+*/
 			"CHANNEL 3 Synths are playing".postln;
-	
 			0.5.wait;
 			
-			"OCS TO DO".postln;
+			//----------------CH3-OSC----------------//
+			
+			~ch3ClnVolSpec = ControlSpec(0.0, 3.0, \lin);
+			~ch3FltVolSpec = ControlSpec(0.0, 3.0, \lin);
+			
+
+			~xy3 = OSCresponderNode(nil, '/1/xy3', { |t,r,m| 
+				var n1, n2;
+				n1 = (m[1]);
+				n2 = (m[2]);
+				
+				~ch3Cln.set(\vol, ~ch3ClnVolSpec.map(n1));
+				~ch3Flt.set(\vol, ~ch3FltVolSpec.map(n2));							 
+			}).add;
+
+			
+			"CHANNEL 3 OSC Responders are loaded".postln;
 			
 		};
 	
@@ -336,13 +374,13 @@ KafesChannels {
 	*ch4 {
 	
 		fork {
-			//1
+			//-----------CH4-Buses------------//
 			~ch4 = Bus.new(\audio, 28, 1);
 			
 			"CHANNEL 4 buses loaded".postln;
 			0.1.wait;
 			
-			//2
+			//-----------CH4-SynthDefs------------//
 			SynthDef("ch4Clean", { |out, 
 				in = 0, pan = 0, vol = 0.8|
 				var ses;
@@ -356,7 +394,6 @@ KafesChannels {
 				var inp, freq, hasFreq, ses;
 				
 				inp = In.ar(in, 6);
-				//inp = SoundIn.ar(0,4);
 				ampl = Amplitude.kr(inp, 0.05, 0.05)<= 2.1;
 				# freq, hasFreq = Pitch.kr(inp, ampThreshold: 0.02, median: 7);
 				freq = Lag.kr(freq, 0.05);
@@ -383,14 +420,14 @@ KafesChannels {
 			"CHANNEL 4 SynthDefs loaded".postln;
 			1.0.wait;
 			
-			//3
-			~ch4Cl = Synth.tail(~effects, "ch4Clean",
+			//--------------CH4-Synths------------//
+			~ch4Cln = Synth.tail(~effects, "ch4Clean",
 				[ 
 				\in ,~ch4, 
 				\out, 3 
 				]
 			);
-			~dustr = Synth.tail(~effects, "dustr",
+			~ch4Flt = Synth.tail(~effects, "dustr",
 				[ 
 				\in ,~ch4, 
 				\out,   3
@@ -400,10 +437,24 @@ KafesChannels {
 
 
 			"CHANNEL 4 Synths are playing".postln;
-	
 			0.5.wait;
 			
-			"OCS TO DO".postln;
+			//----------------CH4-OSC----------------//
+			~ch4ClnVolSpec = ControlSpec(0.0, 3.0, \lin);
+			~ch4FltVolSpec = ControlSpec(0.0, 3.0, \lin);
+			
+
+			~xy4 = OSCresponderNode(nil, '/1/xy4', { |t,r,m| 
+				var n1, n2;
+				n1 = (m[1]);
+				n2 = (m[2]);
+				
+				~ch4Cln.set(\vol, ~ch4ClnVolSpec.map(n1));
+				~ch4Flt.set(\vol, ~ch4FltVolSpec.map(n2));							 
+			}).add;
+
+			
+			"CHANNEL 4 OSC Responders are loaded".postln;
 			
 		};
 	

@@ -20,7 +20,6 @@
 		KafesChannels.ch1;
 		1.0.wait;
 		
-		"loading Channels".postln;
 		
 		KafesChannels.ch2;
 		1.0.wait;
