@@ -2,7 +2,7 @@
 KafeSin.ar(0.01, 0.1, 5.0, freq:44).play;
 */
 
-KafesAtesh : UGen { 
+KafAtesh : UGen { 
 
 
 
@@ -75,5 +75,7 @@ a=SynthDef(\atesh, {|i, k, out, ffreq = 1250.0|
 
 }).play;
 )
+
+a.set(\ffreq, 200);
 
 */

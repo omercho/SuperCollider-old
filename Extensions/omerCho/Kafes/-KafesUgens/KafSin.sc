@@ -1,10 +1,10 @@
 /*
-KafeSin.ar(0.01, 0.1, 5.0, freq:44).play;
+KafSin.ar(0.01, 0.1, 5.0, freq:44).play;
 
 
 */
 
-KafeSin : UGen { 
+KafSin : UGen { 
 
 
 

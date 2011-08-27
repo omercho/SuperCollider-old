@@ -45,7 +45,7 @@ KafesChannels {
 			//-----------CH1-Buses------------//
 			~ch1 = Bus.new(\audio, 21, 1);
 			//~ch1CLim = Bus.new(\audio, 22, 1);
-			~ch1FLim = Bus.new(\audio, 23, 1);
+			~ch1FLim = Bus.new(\audio, 25, 1);
 			
 			"CHANNEL 1 buses loaded".postln;
 			0.1.wait;
@@ -142,7 +142,7 @@ KafesChannels {
 			//----------------CH1-OSC----------------//
 			
 			~ch1ClnVolSpec = ControlSpec(0.0, 0.8, \lin);
-			~ch1FltVolSpec = ControlSpec(0.0, 1.0, \lin);
+			~ch1FltVolSpec = ControlSpec(0.0, 2.0, \lin);
 			
 
 			~xy1 =ÊOSCresponderNode(nil,Ê'/1/xy1', {Ê|t,r,m|Ê
@@ -171,7 +171,7 @@ KafesChannels {
 	
 		fork {
 			//-----------CH2-Buses------------//
-			~ch2 = Bus.new(\audio, 24, 1);
+			~ch2 = Bus.new(\audio, 22, 1);
 			
 			"CHANNEL 2 buses loaded".postln;
 			0.1.wait;
@@ -186,7 +186,7 @@ KafesChannels {
 			}).send(Server.default);
 			
 			SynthDef("ch2flowZ",{ | out, in = 0, vol = 1,
-								ampInc = 0, ampExp = 0.5, ampScale = 0.1, bufnum = 0, 
+								ampInc = 0.5, ampExp = 1.5, ampScale = 0.1, bufnum = 0, 
 								f1 = 0.5, f2 = 1.2, f3 = 1.5, f4 = 1.7, f5 = 2.2|
 				var inp, amp, freq, hasFreq, ses;
 				inp = In.ar(in);
@@ -203,11 +203,11 @@ KafesChannels {
 					)
 				);
 				
-				ses = Formlet.ar(ses/19, ~karcigarD1, 0.01, 0.1, mul:Amplitude.kr(inp, 0.05, 0.5);).sin/4;
+				ses = Formlet.ar(ses/19, ~karcigarD1, 0.01, 0.1, mul:Amplitude.kr(inp, 0.05, 0.5);).sin/2;
 				6.do({
 					ses = AllpassN.ar(ses, 0.040, [0.060.rand,0.060.rand], 2)
 				});
-				Out.ar(out, ses*8*vol);
+				Out.ar(out, (ses.sum)*8*vol);
 			}).send(Server.default);	
 
 /*
@@ -278,7 +278,7 @@ KafesChannels {
 	
 		fork {
 			//-----------CH3-Buses------------//
-			~ch3 = Bus.new(\audio, 26, 1);
+			~ch3 = Bus.new(\audio, 23, 1);
 			
 			"CHANNEL 3 buses loaded".postln;
 			0.1.wait;
@@ -346,8 +346,8 @@ KafesChannels {
 			
 			//----------------CH3-OSC----------------//
 			
-			~ch3ClnVolSpec = ControlSpec(0.0, 3.0, \lin);
-			~ch3FltVolSpec = ControlSpec(0.0, 3.0, \lin);
+			~ch3ClnVolSpec = ControlSpec(0.0, 0.8, \lin);
+			~ch3FltVolSpec = ControlSpec(0.0, 2.0, \lin);
 			
 
 			~xy3 =ÊOSCresponderNode(nil,Ê'/1/xy3', {Ê|t,r,m|Ê
@@ -375,7 +375,7 @@ KafesChannels {
 	
 		fork {
 			//-----------CH4-Buses------------//
-			~ch4 = Bus.new(\audio, 28, 1);
+			~ch4 = Bus.new(\audio, 24, 1);
 			
 			"CHANNEL 4 buses loaded".postln;
 			0.1.wait;
@@ -440,8 +440,8 @@ KafesChannels {
 			0.5.wait;
 			
 			//----------------CH4-OSC----------------//
-			~ch4ClnVolSpec = ControlSpec(0.0, 3.0, \lin);
-			~ch4FltVolSpec = ControlSpec(0.0, 3.0, \lin);
+			~ch4ClnVolSpec = ControlSpec(0.0, 0.8, \lin);
+			~ch4FltVolSpec = ControlSpec(0.0, 2.0, \lin);
 			
 
 			~xy4 =ÊOSCresponderNode(nil,Ê'/1/xy4', {Ê|t,r,m|Ê
