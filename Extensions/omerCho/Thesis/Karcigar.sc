@@ -3,13 +3,15 @@
 
 Makam : Karcigar 
 
-Durak : Dugah = A
-
 Seyir : Inici-Cikici
+
+Durak : Dugah = A
 
 Guclu : Neva = D
 
 Asma Karar : Neva perdesinde yarim karar Hicaz cesnisi
+
+Yedeni : Rast = G
 
 Perdeleri :
 	~dugah = 431.94894227111
@@ -22,8 +24,10 @@ Perdeleri :
 	~muhayyer = 863.89788454222
 
 
-Yedeni :
-	Rast = G
+
+
+
+
 
 Karcigar.aralik;
 Karcigar.kademe;
@@ -166,6 +170,31 @@ Karcigar {
 		~karcigarRD7 = ~karcigarRD6 * i[5];
 		
 		~karcigarRE1 = ~karcigarRD7 * i[6];
+
+		~karcigarRE2 = ~karcigarRE1 * i[0];
+		~karcigarRE3 = ~karcigarRE2 * i[1];
+		~karcigarRE4 = ~karcigarRE3 * i[2];
+		~karcigarRE5 = ~karcigarRE4 * i[3];
+		~karcigarRE6 = ~karcigarRE5 *i[4];
+		~karcigarRE7 = ~karcigarRE6 * i[5];
+
+		~karcigarRF1 = ~karcigarRE7 * i[6];
+
+		~karcigarRF2 = ~karcigarRF1 * i[0];
+		~karcigarRF3 = ~karcigarRF2 * i[1];
+		~karcigarRF4 = ~karcigarRF3 * i[2];
+		~karcigarRF5 = ~karcigarRF4 * i[3];
+		~karcigarRF6 = ~karcigarRF5 *i[4];
+		~karcigarRF7 = ~karcigarRF6 * i[5];
+
+		~karcigarRG1 = ~karcigarRF7 * i[6];
+
+		~karcigarRG2 = ~karcigarRG1 * i[0];
+		~karcigarRG3 = ~karcigarRG2 * i[1];
+		~karcigarRG4 = ~karcigarRG3 * i[2];
+		~karcigarRG5 = ~karcigarRG4 * i[3];
+		~karcigarRG6 = ~karcigarRG5 *i[4];
+		~karcigarRG7 = ~karcigarRG6 * i[5];
 		
 		//	karcigar Freq
 		
@@ -207,8 +236,49 @@ Karcigar {
 		
 		~karcigarE1 = ~karcigarD7 * i[6];
 		
+		~karcigarE2 = ~karcigarE1 * i[0];
+		~karcigarE3 = ~karcigarE2 * i[1];
+		~karcigarE4 = ~karcigarE3 * i[2];
+		~karcigarE5 = ~karcigarE4 * i[3];
+		~karcigarE6 = ~karcigarE5 *i[4];
+		~karcigarE7 = ~karcigarE6 * i[5];
+
+		~karcigarF1 = ~karcigarE7 * i[6];
+		
+		~karcigarF2 = ~karcigarF1 * i[0];
+		~karcigarF3 = ~karcigarF2 * i[1];
+		~karcigarF4 = ~karcigarF3 * i[2];
+		~karcigarF5 = ~karcigarF4 * i[3];
+		~karcigarF6 = ~karcigarF5 *i[4];
+		~karcigarF7 = ~karcigarF6 * i[5];
+		
+		~karcigarG1 = ~karcigarF7 * i[6];
+		
+		~karcigarG2 = ~karcigarG1 * i[0];
+		~karcigarG3 = ~karcigarG2 * i[1];
+		~karcigarG4 = ~karcigarG3 * i[2];
+		~karcigarG5 = ~karcigarG4 * i[3];
+		~karcigarG6 = ~karcigarG5 *i[4];
+		~karcigarG7 = ~karcigarG6 * i[5];
+		
 	}
 
 
 }
+
+/*
+gucluA4 = 71.994326807257
+gucluD4 = 575.95461445806
+
+Yed7 = 47.9981088985
+YedD7 = 767.96974237599
+
+A1 = 53.993617783889
+B1 = 107.98723556778
+C1 = 215.97447113555
+D1 = 431.94894227111
+E1 = 863.89788454222
+
+*/
+
 

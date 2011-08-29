@@ -271,7 +271,7 @@ Pdef(\Ncircle, Posc(
 
 
 ~forGal1 = Kaffer.read(Server.default, "sounds/agacMono01.aif");
-~th1A = Kaffer.read(Server.default, "sounds/~kafes/~thol/thol1A.aif");
+~th1A = Kaffer.read(Server.default, "sounds/~kafes/~nCirc/olok.aif");
 ~forGal1.play;
 ~forGal1.bout_(~ch3).playBuf(0.01, 5, 5, rate: 4.rand);
 ~th1A.bout_(~ch4).playBuf(0.01, 5, 5, rate: 10.0);
@@ -511,7 +511,6 @@ fork {
 
 //////////////////////-------FFTry----//////////////////////
 
-~agN01 = Buffer.read(s, "sounds/~zkm1/agacNor.aif");
 
 ~zil01 = Buffer.read(s, "sounds/~zkm1/zilA01.aif");
 ~zil02 = Buffer.read(s, "sounds/~zkm1/zilA02.aif");
@@ -699,7 +698,7 @@ Pdef(\fft01, Pbind(
 	\rate2, Pseq([1.1], inf), 
 	\legato, Pseq([2.5], inf),
 	\dur, Pseq([0.1, 0.2, 0.1]/2, inf),
-	\out, Pseq([~ch3,~ch2], inf)
+	\out, Pseq([~ch1,~ch2], inf)
 ));
 )
 
@@ -711,7 +710,7 @@ Pdef(\fft01, Pbind(
 	\rate2, Pseq([2.1], inf), 
 	\legato, Pseq([2.8], inf),
 	\dur, Pseq([0.1, 0.2, 0.1]/2, inf),
-	\out, Pseq([~ch1, ~ch4, ~ch3,~ch2], inf)
+	\out, Pseq([~ch1,~ch2], inf)
 ));
 )
 
