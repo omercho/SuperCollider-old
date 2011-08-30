@@ -327,7 +327,7 @@ KafesChannels {
 
 			~ch3FltLim = Synth.tail(~effects, "ch3Limiter",
 				[ 
-				\in1 ,~ch1FLim, 
+				\in1 ,~ch3FLim, 
 				\out,  2
 				]
 			);

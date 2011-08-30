@@ -728,54 +728,80 @@ Pdef(\fft01, Pbind(
 
 ///////////////////////////-------thol----------//////////////////////////////
 
-~thol01 = {
-	10.do{|i, frq = 1.8, dur = 0.05|
-		var rates = frq + (0.1 *( i % 50)); 
+~tht04R = {
+	10.do{|i, frq = 10.0, dur = 0.175|
+		var rates = frq - (0.0001 *( i % 27)); 
 		
-		~th1A.bout_([~ch1, ~ch2, ~ch3, ~ch4].choose).playPV1(0.01, 0.5, 3, rate: rates);
-		( dur + (0.05*(i%6)) ).yield;
+		~tht02.playPV2(0.01, 0.1, 0.5, rate: i *frq, pv2a:0.1, pv2b:0, out:[~ch2]);
+		( dur - (0.001*(i%27)) ).yield;
+		~tht02.playPV2(0.001, 0.01, 0.5, rate: ~karcigarRC1, pv2a:0.00, pv2b:0, out:[~ch1]);
+		( dur - (0.001*(i%27)) ).yield;
+		~tht02.playPV2(0.01, 0.1, 0.5, rate: i *frq, pv2a:0.1, pv2b:0, out:[~ch2]);
+		( dur + (0.001*(i%27)) ).yield;
+	};
+	0.5.yield;
+	10.do{|i, frq = 5.0, dur = 0.25|
+		var rates = frq - (0.0001 *( i % 5)); 
+		
+		~tht02.playPV2(0.01, 0.1, 0.5, rate: i *frq, pv2a:0.1, pv2b:0, out:[~ch2]);
+		( dur - (0.001*(i%27)) ).yield;
+		~tht02.playPV2(0.001, 0.01, 0.5, rate: ~karcigarRC2, pv2a:0.00, pv2b:0, out:[~ch1]);
+		( dur - (0.001*(i%27)) ).yield;
+		~tht02.playPV2(0.01, 0.1, 0.5, rate: i *frq, pv2a:0.1, pv2b:0, out:[~ch2]);
+		( dur + (0.001*(i%27)) ).yield;
 	}
-};
+
+}.fork;
+
+~tht04R = {
+	7.do{|i, frq = 5.0, dur = 0.06|
+		var rates = frq + (0.01 *( i % 16)); 
+		
+		~tht04.playPV2(0.01, 0.1, pv2a:rates, pv2b:rates, rls:0.4, rate: rates, loop:1, out:[~ch4, ~ch3, ~ch2, ~ch1].reverse.mirror2);
+		( dur + (0.01*(i%7)) ).yield;
+	}
+}.fork;
+
 
 ~thol02 = {
-	8.do{|i, frq = 18.8, dur = 0.05|
-		var rates = frq + (0.9 *( i % 50)); 
+	8.do{|i, frq = 2.8, dur = 1.05|
+		var rates = frq - (0.9 *( i % 12)); 
 		
-		~th1A.bout_([~ch1, ~ch2, ~ch3, ~ch4].choose).playPV1(0.01, 0.5, 3, rate: rates);
-		( dur + (0.04*(i%9)) ).yield;
+		~tht04.playPV1( rls:1.5, rate: rates, loop:1, out:[~ch1, ~ch2, ~ch3, ~ch4].choose);
+		( dur - (1.04*(i%9)) ).yield;
 	}
 };
 
 
 ~thol03 = {
-	6.do{|i, frq = 18.8, dur = 0.05|
-		var rates = frq + (1.9 *( i % 50)); 
+	6.do{|i, frq = 8.8, dur = 0.05|
+		var rates = frq + (1.9 *( i % 5)); 
 		
-		~th1A.bout_([~ch1, ~ch2, ~ch3, ~ch4].choose).playPV1(0.01, 0.5, 3, rate: rates);
+		~tht04.playPV5( pv5a:0.09, pv5b:2.0, rls:1.5, rate: rates, loop:1, out:[~ch1, ~ch2, ~ch3, ~ch4].choose);
 		( dur + (0.4*(i%9)) ).yield;
 	}
 };
 
 ~thol04 = {
-	10.do{|i, frq = 0.8, dur = 0.05|
-		var rates = frq + (1.1 *( i % 50)); 
+	10.do{|i, frq = 0.8, dur = 0.09|
+		var rates = frq + (1.1 *( i % 20)); 
 		
-		~th1A.bout_([~ch1, ~ch2, ~ch3, ~ch4].choose).playPV1(0.01, 0.5, 3, rate: rates);
-		( dur + (0.05*(i%6)) ).yield;
+		~tht04.playPV4( pv4a:0.09, rls:1, rate: rates, loop:1, out:[~ch1, ~ch2, ~ch3, ~ch4].choose);
+		( dur - (0.8*(i%6)) ).yield;
 	}
 };
 
 
 ~thol = {
-	inf.do{
+	1.do{
 		~thol01.fork;
-		2.9.yield;
-		~thol02.fork;
 		0.9.yield;
+		~thol02.fork;
+		0.3.yield;
 		~thol03.fork;
-		1.9.yield;
+		0.9.yield;
 		~thol04.fork;
-		3.4.yield;
+		1.4.yield;
 	}
 }.fork;
 
