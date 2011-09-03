@@ -12,7 +12,6 @@
 		KafesGlobals.tempo;
 		
 		Karcigar.load;
-		Sipihr.load;
 		1.0.wait;
 		
 		"loading Channels".postln;
@@ -152,10 +151,14 @@
 
 	a = SCMenuItem(g, "open startupKafes file");
 	a.action = { (Platform.userAppSupportDir ++ "/startupKafes/KafesLoad.scd").openTextFile; };
-	a.setShortCut("9", true, false); // Cmd-ctrl-alt-0
+	a.setShortCut("8", true, false); // Cmd-ctrl-alt-8
+
+	a = SCMenuItem(g, "open startupKafes file");
+	a.action = { (Platform.userAppSupportDir ++ "/Extensions/omerCho/Kafes/Kaffer.sc").openTextFile; };
+	a.setShortCut("9", true, false); // Cmd-ctrl-alt-9
 	
-	a = SCMenuItem(g, "open Kafes.sc file");
-	a.action = { (Platform.userAppSupportDir ++ "/Extensions/omerCho/Kafes/KafesGlobals.scd").openTextFile; };
+	a = SCMenuItem(g, "open Play file");
+	a.action = { (Platform.userAppSupportDir ++ "/Extensions/omerCho/Kafes/~Play/Play.scd").openTextFile; };
 	a.setShortCut("0", true, false); // Cmd-ctrl-alt-0
 
 	
@@ -163,8 +166,8 @@
 	
 	
 
-	a = SCMenuItem(g, "open");
-	a.action = { k.fork; };
+	a = SCMenuItem(g, "loadKafs");
+	a.action = { Kaffer.loadKafs; };
 	a.setShortCut("5", true, false); // Cmd-ctrl-alt-1
 
 

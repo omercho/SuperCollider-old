@@ -59,10 +59,7 @@ KafesChannels {
 			
 /*
 (
-~ch3Flt.set(
-	\roomsize, 38.7,
-	\revtime, 9.01
-);
+~ch1Flt.set(\roomsize, 38.7, \revtime, 9.01, \damping, 0.9);
 )
 */
 			
@@ -170,7 +167,7 @@ KafesChannels {
 					)
 				);
 				
-				ses = Formlet.ar(ses/19, ~karcigarD1, 0.01, 0.1, mul:Amplitude.kr(inp, 0.05, 0.5);).sin/2;
+				ses = Formlet.ar(ses/19, ~kD1, 0.01, 0.1, mul:Amplitude.kr(inp, 0.05, 0.5);).sin/2;
 				6.do({
 					ses = AllpassN.ar(ses, 0.040, [0.060.rand,0.060.rand], 2)
 				});
@@ -246,7 +243,7 @@ KafesChannels {
 		fork {
 			//-----------CH3-Buses------------//
 			~ch3 = Bus.new(\audio, 23, 1);
-			~ch3FLim = Bus.new(\audio, 27, 1);
+			//~ch3FLim = Bus.new(\audio, 27, 1);
 			"CHANNEL 3 buses loaded".postln;
 			0.1.wait;
 			
@@ -258,54 +255,46 @@ KafesChannels {
 				Out.ar(out, ses*vol);
 			}).send(Server.default);
 			
-			SynthDef("oscFol", {|out,vol=0.8, in, bufnum, balance=2.8, smooth=1.01,
-							resFreq=158,
-							f1=0.5, f2=1.2, f3=2.0, f4=3.99,
-							dia=32, wem=1.1, mixDia=2|
-				var input,freq,hasFreq,amp,mix,wet, harm;	
-				input = In.ar(in); // get first channel of sound input
-				#freq,hasFreq = Pitch.kr(input); // pitch of input signal
-				amp = Amplitude.ar(input); // amplitude of input signal
-				wet = SinOsc.ar(freq, 0, amp);
-				wet = Resonz.ar(wet, resFreq, 0.5);
-				harm = SinOsc.ar(freq * [f1, f2, f3, f4].sum/0.238/dia, 0, amp * hasFreq);
+			SynthDef("reverb3", { | out, in = 0, vol=0.8, pan=0.0, 
+				roomsize = 8.7, revtime = 5.01, damping = 0.6, inputbw = 0.19, spread = 15,
+				drylevel = -3, earlylevel = -9, taillevel = -11,
+				lvl = 0.4, durt = 0.01 |
 				
-				mix = (harm * (1-balance)) + (wem*wet * (harm+balance)/mixDia); 	
-				mix = CombC.ar(
-					mix+harm, 
-					SinOsc.kr(0.1).range(1.13, 2.69), 
-					SinOsc.kr(0.1).range(5.10, 6.11), 
-					SinOsc.kr(0.05).range(0.001, 0.005), 
-					0.4, 
-					mix+harm
+				var input, ses;
+				
+				input = In.ar(in, 1);
+				ses = GVerb.ar(
+					input,
+					roomsize* [1.12, 1.28, 1.43, 2].choose,
+					revtime,
+					damping,
+					inputbw,
+					spread,
+					drylevel.dbamp,
+					earlylevel.dbamp,
+					taillevel.dbamp,
+					roomsize, 
+					vol
 				);
-				Out.ar(out, (mix+harm)*vol);
-			}).send(Server.default);
+				ses = Limiter.ar( ses, lvl, durt);
 
+				Out.ar(out, ses.sum );
+			}).send(Server.default);
+			
 /*
 (
-~ch1Flt.set(\balance, 2.5, \smooth, 1.1);
+~ch3Flt.set(
+	\roomsize, 5.1,
+	\revtime, 0.1,
+	\damping, 0.9
+);
 
-~ch1Flt.set(\dia, 200.09);
-
-~ch1Flt.set( \wem, 220.5);
-
-~ch1Flt.set(\mixDia, 100.09);
-
-~ch1Flt.set(\resFreq, 220.09);
-
-~ch1Flt.set(\f1, 0.2, \f2, 1.2, \f3, 2.2, \f4, 3.2);
+~ats01.brt_(1).playPV2(1, 4.1, 5.1, pv2a: 0.09, pv2b:1.00, loop:1, out:[~ch3]);
+~ats01.brt_(1).playPV3(1, 4.1, 5.1, pv3a: 0.1, loop:1, out:[~ch3]);
+~ats01.brt_(1).playPV4(1, 4.1, 5.1, pv4a: 10,  loop:1, out:[~kafCh]);
 )
 */	
 
-			SynthDef("ch3Limiter", { |out, 
-				in1=0, in2=0, pan = -4, vol = 2|
-				var ses;
-				ses =  In.ar(in1, 1);
-				ses = Limiter.ar(ses, 0.8, 0.05);
-				ses = Pan2.ar(ses, pan);
-				Out.ar(out, ses/vol);
-			}).send(Server.default);
 
 			
 			"CHANNEL 3 SynthDefs loaded".postln;
@@ -318,19 +307,14 @@ KafesChannels {
 				\out,  2
 				]
 			);
-			~ch3Flt = Synth.tail(~effects, "oscFol",
+			~ch3Flt = Synth.tail(~effects, "reverb3",
 				[ 
 				\in ,~ch3, 
-				\out,  ~ch3FLim
-				]
-			);
-
-			~ch3FltLim = Synth.tail(~effects, "ch3Limiter",
-				[ 
-				\in1 ,~ch3FLim, 
 				\out,  2
 				]
 			);
+
+
 
 			"CHANNEL 3 Synths are playing".postln;
 			0.5.wait;

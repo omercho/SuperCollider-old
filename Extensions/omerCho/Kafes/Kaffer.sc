@@ -5,262 +5,36 @@
 
 /*
 
-//------------------------~ats-----------------------------------//
-(
-~ats01 = Kaffer.read(Server.default, "sounds/_kafes/atesh/01.aif");
-~ats02 = Kaffer.read(Server.default, "sounds/_kafes/atesh/02.aif");
-~ats03 = Kaffer.read(Server.default, "sounds/_kafes/atesh/03.aif");
-~ats04 = Kaffer.read(Server.default, "sounds/_kafes/atesh/04.aif");
-/*
-~ats01.play;
-~ats01.playBuf(0.01, 1, 1, rate: 1, loop:0, out:[0,1]);
-~ats01.brate_(-5).bufRd(0.01, 3, 4, loop:0, out:[0,1]);
-~ats01.playPV1(0.01, 1, 1, rate: 1, loop:0, out:[0,1]);
-~ats01.playPV2( pv2a:0.09, pv2b:0.00, rls:1, rate: 1, loop:1, out:[~ch2]);
-~ats01.playPV3( pv3a:2.0, rls:4, rate: 1, loop:1, out:[0,1]);
-~ats01.playPV4( pv4a:-10, rls:4, rate: 1, loop:1, out:[0,1]);
-~ats01.playPV5( pv5a:0.102, pv5b:0.90, rls:4, rate: 14, loop:1, out:[0,1]);
-
-~ats02.play;
-~ats02.playBuf(0.01, 1, 1, rate: 1, loop:0, out:[0,1]);
-~ats02.brate_(-5).bufRd(0.01, 3, 4, loop:0, out:[0,1]);
-~ats02.playPV1(0.01, 1, 3, rate: 1, loop:0, out:[0,1]);
-~ats02.playPV2( pv2a:0.09, pv2b:0.00, rls:1, rate: 1, loop:1, out:[0,1]);
-~ats02.playPV3( pv3a:2.0, rls:4, rate: 1, loop:1, out:[0,1]);
-~ats02.playPV4( pv4a:-10, rls:4, rate: 1, loop:1, out:[0,1]);
-~ats02.playPV5( pv5a:0.102, pv5b:0.90, rls:4, rate: 4, loop:1, out:[0,1]);
-
-~ats03.play;
-~ats03.playBuf(0.01, 1, 1, rate: 1, loop:0, out:[0,1]);
-~ats03.brate_(-5).bufRd(0.01, 3, 4, loop:0, out:[0,1]);
-~ats03.playPV1(0.01, 1, 1, rate: 1, loop:0, out:[0,1]);
-~ats03.playPV2( pv2a:0.09, pv2b:0.00, rls:1, rate: 1, loop:1, out:[~ch2]);
-~ats03.playPV3( pv3a:2.0, rls:4, rate: 1, loop:1, out:[0,1]);
-~ats03.playPV4( pv4a:-10, rls:4, rate: 1, loop:1, out:[0,1]);
-~ats03.playPV5( pv5a:0.102, pv5b:0.90, rls:4, rate: 1, loop:1, out:[0,1]);
-
-~ats04.play;
-~ats04.playBuf(0.01, 1, 1, rate: 1, loop:0, out:[0,1]);
-~ats04.brate_(-5).bufRd(0.01, 3, 4, loop:0, out:[0,1]);
-~ats04.playPV1(0.01, 1, 1, rate: 1, loop:0, out:[0,1]);
-~ats04.playPV2( pv2a:0.09, pv2b:0.00, rls:1, rate: 1, loop:1, out:[~ch2]);
-~ats04.playPV3( pv3a:2.0, rls:4, rate: 1, loop:1, out:[0,1]);
-~ats04.playPV4( pv4a:-10, rls:4, rate: 1, loop:1, out:[0,1]);
-~ats04.playPV5( pv5a:0.102, pv5b:0.90, rls:4, rate: 14, loop:1, out:[0,1]);
-*/
 
 
+'exponential'
+'sine'
+'welch'
+'step'
 
 
-~bot01 = Kaffer.read(Server.default, "sounds/_kafes/bot/01.aif");
-~bot02 = Kaffer.read(Server.default, "sounds/_kafes/bot/02.aif");
-~bot03 = Kaffer.read(Server.default, "sounds/_kafes/bot/03.aif");
-~bot04 = Kaffer.read(Server.default, "sounds/_kafes/bot/04.aif");
-~bot05 = Kaffer.read(Server.default, "sounds/_kafes/bot/05.aif");
-~botbas = Kaffer.read(Server.default, "sounds/_kafes/bot/bas.aif");
-/*
-~bot01.play;
-~bot01.playBuf(0.01, 1, 1, rate: 1, loop:0, out:[0,1]);
-~bot01.brate_(-5).bufRd(0.01, 3, 4, loop:0, out:[0,1]);
-~bot01.playPV1(0.01, 1, 1, rate: 1, loop:0, out:[0,1]);
-~bot01.playPV2( pv2a:0.09, pv2b:0.00, rls:1, rate: 1, loop:1, out:[~ch2]);
-~bot01.playPV3( pv3a:2.0, rls:4, rate: 1, loop:1, out:[0,1]);
-~bot01.playPV4( pv4a:-10, rls:4, rate: 1, loop:1, out:[0,1]);
-~bot01.playPV5( pv5a:0.102, pv5b:0.90, rls:4, rate: 11, loop:0, out:[0,1]);
-
-~bot02.play;
-~bot02.playBuf(0.01, 1, 1, rate: 1, loop:0, out:[0,1]);
-~bot02.brate_(-1).bufRd(0.01, 3, 0.1, out:[0,1]);
-~bot02.playPV1(0.01, 1, 3, rate: 1, loop:0, out:[0,1]);
-~bot02.playPV2( pv2a:0.09, pv2b:0.00, rls:1, rate: 1, loop:1, out:[0,1]);
-~bot02.playPV3( pv3a:2.0, rls:4, rate: 1, loop:1, out:[0,1]);
-~bot02.playPV4( pv4a:-10, rls:4, rate: 1, loop:1, out:[0,1]);
-~bot02.playPV5( pv5a:0.102, pv5b:0.90, rls:4, rate: 4, loop:1, out:[0,1]);
-
-~bot03.play;
-~bot03.playBuf(0.01, 1, 1, rate: 1, loop:0, out:[0,1]);
-~bot03.brate_(-5).bufRd(0.01, 3, 4, loop:0, out:[0,1]);
-~bot03.playPV1(0.01, 1, 1, rate: 1, loop:0, out:[0,1]);
-~bot03.playPV2( pv2a:0.09, pv2b:0.00, rls:1, rate: 1, loop:1, out:[~ch2]);
-~bot03.playPV3( pv3a:2.0, rls:4, rate: 1, loop:1, out:[0,1]);
-~bot03.playPV4( pv4a:-10, rls:4, rate: 1, loop:1, out:[0,1]);
-~bot03.playPV5( pv5a:0.102, pv5b:0.90, rls:4, rate: 1, loop:1, out:[0,1]);
-
-~bot04.play;
-~bot04.playBuf(0.01, 1, 1, rate: 1, loop:0, out:[0,1]);
-~bot04.brate_(-5).bufRd(0.01, 3, 4, loop:0, out:[0,1]);
-~bot04.playPV1(0.01, 1, 1, rate: 1, loop:0, out:[0,1]);
-~bot04.playPV2( pv2a:0.09, pv2b:0.00, rls:1, rate: 1, loop:1, out:[~ch2]);
-~bot04.playPV3( pv3a:2.0, rls:4, rate: 1, loop:1, out:[0,1]);
-~bot04.playPV4( pv4a:-10, rls:4, rate: 1, loop:1, out:[0,1]);
-~bot04.playPV5( pv5a:0.102, pv5b:0.90, rls:4, rate: 14, loop:1, out:[0,1]);
-*/
-
-
-
-~bth01 = Kaffer.read(Server.default, "sounds/_kafes/botaht/01.aif");
-~bth02 = Kaffer.read(Server.default, "sounds/_kafes/botaht/02.aif");
-~bth03 = Kaffer.read(Server.default, "sounds/_kafes/botaht/03.aif");
-~bth04 = Kaffer.read(Server.default, "sounds/_kafes/botaht/04.aif");
-~bth05 = Kaffer.read(Server.default, "sounds/_kafes/botaht/05.aif");
-~bth06 = Kaffer.read(Server.default, "sounds/_kafes/botaht/06.aif");
-~bth07 = Kaffer.read(Server.default, "sounds/_kafes/botaht/07.aif");
-/*
-(
-~bth01.playPV2( pv2a:0.09, pv2b:0.00, rls:4, rate: 1, loop:1, out:[0,1]);
-~bth01.playPV3( pv3a:2.0, rls:4, rate: 1, loop:1, out:[0,1]);
-~bth01.playPV4( pv4a:-10, rls:4, rate: 1, loop:1, out:[0,1]);
-~bth01.playPV5( pv5a:0.002, pv5b:0.00, rls:4, rate: 1, loop:1, out:[0,1]);
-)
-
-*/
-
-
-
-
-~gir01 = Kaffer.read(Server.default, "sounds/_kafes/gir/01.aif");
-~gir02 = Kaffer.read(Server.default, "sounds/_kafes/gir/02.aif");
-~gir03 = Kaffer.read(Server.default, "sounds/_kafes/gir/03.aif");
-(
-~gir01.playBuf(0.01, 1, 1, rate: 1, loop:0, out:[0,1]);
-~gir01.brate_(-5).bufRd(0.01, 3, 4, loop:0, out:[0,1]);
-~gir01.playPV1(0.01, 1, 1, rate: 1, loop:0, out:[0,1]);
-~gir01.playPV2( pv2a:0.09, pv2b:0.00, rls:4, rate: 1, loop:1, out:[0,1]);
-~gir01.playPV3( pv3a:2.0, rls:4, rate: 1, loop:1, out:[0,1]);
-~gir01.playPV4( pv4a:-10, rls:4, rate: 1, loop:1, out:[0,1]);
-~gir01.playPV5( pv5a:0.002, pv5b:0.00, rls:4, rate: 1, loop:1, out:[0,1]);
-)
-
-*/
-
-
-
-~gou01 = Kaffer.read(Server.default, "sounds/_kafes/goun/01.aif");
-~gou02 = Kaffer.read(Server.default, "sounds/_kafes/goun/02.aif");
-~gou03 = Kaffer.read(Server.default, "sounds/_kafes/goun/03.aif");
-~gou04 = Kaffer.read(Server.default, "sounds/_kafes/goun/04.aif");
-
-~grn01 = Kaffer.read(Server.default, "sounds/_kafes/grain/01.aif");
-~grn02 = Kaffer.read(Server.default, "sounds/_kafes/grain/02.aif");
-
-~int01 = Kaffer.read(Server.default, "sounds/_kafes/int/01.aif");
-~int02 = Kaffer.read(Server.default, "sounds/_kafes/int/02.aif");
-~int03 = Kaffer.read(Server.default, "sounds/_kafes/int/03.aif");
-~int04 = Kaffer.read(Server.default, "sounds/_kafes/int/04.aif");
-~int05 = Kaffer.read(Server.default, "sounds/_kafes/int/05.aif");
-~int06 = Kaffer.read(Server.default, "sounds/_kafes/int/06.aif");
-
-~met01 = Kaffer.read(Server.default, "sounds/_kafes/metal/01.aif");
-~met02 = Kaffer.read(Server.default, "sounds/_kafes/metal/02.aif");
-~met03 = Kaffer.read(Server.default, "sounds/_kafes/metal/03.aif");
-~met04 = Kaffer.read(Server.default, "sounds/_kafes/metal/04.aif");
-~met05 = Kaffer.read(Server.default, "sounds/_kafes/metal/05.aif");
-~met06 = Kaffer.read(Server.default, "sounds/_kafes/metal/06.aif");
-~met07 = Kaffer.read(Server.default, "sounds/_kafes/metal/07.aif");
-~met08 = Kaffer.read(Server.default, "sounds/_kafes/metal/08.aif");
-~met09 = Kaffer.read(Server.default, "sounds/_kafes/metal/09.aif");
-~met10 = Kaffer.read(Server.default, "sounds/_kafes/metal/10.aif");
-/*
-(
-~met03.playPV2( pv2a:0.09, pv2b:10.00, rls:4, rate: 1, loop:1, out:[0,1]);
-~met03.playPV3( pv3a:2.0, rls:4, rate: 1, loop:1, out:[0,1]);
-~met03.playPV4( pv4a:10, rls:3, rate: 1, loop:1, out:[0,1]);
-~met03.playPV5( pv5a:0.002, pv5b:0.00, rls:4, rate: 1, loop:1, out:[0,1]);
-)
-
-*/
-
-
-
-~psl01 = Kaffer.read(Server.default, "sounds/_kafes/psiles/01.aif");
-
-~sis01 = Kaffer.read(Server.default, "sounds/_kafes/sise/01.aif");
-~sis02 = Kaffer.read(Server.default, "sounds/_kafes/sise/02.aif");
-~sis03 = Kaffer.read(Server.default, "sounds/_kafes/sise/03.aif");
-~sis04 = Kaffer.read(Server.default, "sounds/_kafes/sise/04.aif");
-~sis05 = Kaffer.read(Server.default, "sounds/_kafes/sise/05.aif");
-~sis06 = Kaffer.read(Server.default, "sounds/_kafes/sise/06.aif");
-~sis07 = Kaffer.read(Server.default, "sounds/_kafes/sise/07.aif");
-~sis08 = Kaffer.read(Server.default, "sounds/_kafes/sise/08.aif");
-~sis09 = Kaffer.read(Server.default, "sounds/_kafes/sise/09.aif");
-
-~tht01 = Kaffer.read(Server.default, "sounds/_kafes/tahta/01.aif");
-~tht02 = Kaffer.read(Server.default, "sounds/_kafes/tahta/02.aif");
-~tht03 = Kaffer.read(Server.default, "sounds/_kafes/tahta/03.aif");
-~tht04 = Kaffer.read(Server.default, "sounds/_kafes/tahta/04.aif");
-~tht05 = Kaffer.read(Server.default, "sounds/_kafes/tahta/05.aif");
-~tht06 = Kaffer.read(Server.default, "sounds/_kafes/tahta/06.aif");
-~tht07 = Kaffer.read(Server.default, "sounds/_kafes/tahta/07.aif");
-~tht08 = Kaffer.read(Server.default, "sounds/_kafes/tahta/08.aif");
-~tht09 = Kaffer.read(Server.default, "sounds/_kafes/tahta/09.aif");
-/*
-(
-~tht04.playPV2( pv2a:0.09, pv2b:2.0, rls:4, rate: 1, loop:1, out:[0,1]);
-~tht04.playPV3( pv3a:2.0, rls:4, rate: 1, loop:1, out:[0,1]);
-~tht04.playPV4( pv4a:10, rls:3, rate: 1, loop:1, out:[0,1]);
-~tht01.playPV5( pv5a:0.002, pv5b:0.00, rls:4, rate: 1, loop:1, out:[0,1]);
-)
-
-*/
-
-
-~tol01 = Kaffer.read(Server.default, "sounds/_kafes/thol/01.aif");
-~tol02 = Kaffer.read(Server.default, "sounds/_kafes/thol/02.aif");
-~tol03 = Kaffer.read(Server.default, "sounds/_kafes/thol/03.aif");
-~tol04 = Kaffer.read(Server.default, "sounds/_kafes/thol/04.aif");
-~tol05 = Kaffer.read(Server.default, "sounds/_kafes/thol/05.aif");
-~tol06 = Kaffer.read(Server.default, "sounds/_kafes/thol/06.aif");
-~tol07 = Kaffer.read(Server.default, "sounds/_kafes/thol/07.aif");
-~tol08 = Kaffer.read(Server.default, "sounds/_kafes/thol/08.aif");
-)
-
-~met01.playBuf(rate: 10);
-~met01.bufRd(rate: 10);
-~met01.playPV1(rate: 10);
-~met01.playPV2(rate: 10);
-~met01.playPV3(rate: 10);
-~met01.playPV4(rate: 10);
-~met03.playPV5(rls:4, rate: 10, loop:1);
-
-
-(
-~giris1 = {
-	10.do{|i, frq = 24.8, dur = 1.05|
-		var rates = frq + (0.1 *( i % 50)); 
-		
-		~gir03.bout_([0,1].choose).playPV4(0.01, 0.5, 3, rate: rates);
-		"1".postln;
-		( dur + (0.05*(i%16)) ).yield;
-		~gir02.bout_([0, 1].choose).playPV2(0.01, 0.5, 3, rate: rates);
-		"2".postln;
-		( dur - (0.09*(i%8)) ).yield;
-		~gir02.bout_([0, 1].choose).playPV5(0.01, 0.5, 3, rate: rates);
-		"3".postln;
-		( dur + (0.03*(i%2)) ).yield;
-		~gir01.bout_([0, 1].choose).playPV3(0.01, 0.5, 3, rate: rates);
-		"4".postln;
-		( dur - (0.03*(i%6)) ).yield;
-	}
-}.fork;
-
-)
-
-
+Env.new([0.001, 1.0, 1.7, 0.001], [1.1, 2, 1],'sine').test.plot;
 
 */
 
 Kaffer : Buffer {
 	
 	var <>bout = 0, <>batt = 0.1, <>bsus = 2.0, <>brls = 2.5, <>bmul = 1.0, <>bloop = false;
-	var <>btrig = 0, <>brate = 1.0, <>brate2 = 0.5, <>bstart = 0, <>bend = 1, <>breset = 0, <>bpan = 0;
-	
+	var <>btrig = 0, <>bstart = 0, <>bend = 1, <>breset = 0, <>bpan = 0;
+	var <>brt = 1.0, <>brt1 = 1.0, <>brt2 = 1.0, <>brt3 = 1.0, <>brt1Dur = 1.0, <>brt2Dur = 0.5, <>bvib = 1;
+	var <>broom = 125, <>brev = 1, <>bdamp = 0.5;
 	var <>bpv1a = 0.1, <>bpv1b = 0.1;
 	var <>bpv2a = 0.1, <>bpv2b = 0.5;
 	var <>bpv3a = 0.1, <>bpv3b = 0.1;
 	var <>bpv4a = 0.1, <>bpv4b = 0.1;
 	var <>bpv5a = 0.00001, <>bpv5b = 0.001; 
 	
+	*initClass {
+		StartUp add: {
+			this.loadKafs;
 
+		}
+	}
 
 	// PV1 FFT with PV_BrickWall
 	playPV1 { arg  att, sus, rls, mul, trig, rate, rate2, start, loop, pan, out;
@@ -270,8 +44,9 @@ Kaffer : Buffer {
 		brls = rls ? brls;
 		bmul = mul ? bmul;
 		btrig = trig ? btrig;
-		brate = rate ? brate;
-		brate2 = rate2 ? brate2;
+		brt = rate ? brt;
+		
+		brt2 = rate2 ? brt2;
 		bstart = start ? bstart;
 		bpan = pan ? bpan;
 		bout = out ? bout;
@@ -281,14 +56,14 @@ Kaffer : Buffer {
 			var player, chain, panlayer, env;
 			
 			env =  EnvGen.ar(
-				Env.new([0, 1, 0.8,  0], [batt, bsus, brls], 'linear', loop, releaseNode: nil), 
+				Env.new([0, 1, 0.8,  0], [batt, bsus, brls], 4, loop, releaseNode: nil), 
 				1, 
 				doneAction: 2
 			);
 			player = PlayBuf.ar(
 						numChannels,
 						bufnum, 
-						BufRateScale.kr(bufnum) * brate,
+						BufRateScale.kr(bufnum) * brt,
 						btrig,
 						BufFrames.kr(bufnum) * bstart,
 						loop: bloop.binaryValue
@@ -296,12 +71,55 @@ Kaffer : Buffer {
 			chain = FFT({LocalBuf(2048, 2)}.dup(2), player);
 			chain = PV_BrickWall(chain, 
 				SinOsc.kr(
-					brate2 * XLine.kr(1, 15 * [1, 1.6], bsus), 
+					brt2 * XLine.kr(1, 15 * [1, 1.6], bsus), 
 					Rand(0, pi)
 				);
 			); 
 			Out.ar(bout, IFFT(chain) * bmul *env);
-		}).play(~sources);
+		}).play(Server.default);
+	}
+
+
+	// PV1R FFT with PV_BrickWall reverse
+	playPV1R { arg  att, sus, rls, mul, trig, rate, rate2, start, loop, pan, out;
+
+		batt = att ? batt;
+		bsus = sus ? bsus;
+		brls = rls ? brls;
+		bmul = mul ? bmul;
+		btrig = trig ? btrig;
+		brt = rate ? brt;
+		brt2 = rate2 ? brt2;
+		bstart = start ? bstart;
+		bpan = pan ? bpan;
+		bout = out ? bout;
+		bloop = loop ? bloop;
+		
+		^SynthDef("playPV1", { 
+			var player, chain, panlayer, env;
+			
+			env =  EnvGen.ar(
+				Env.new([0, 1, 0.8,  0], [batt, bsus, brls], 4, loop, releaseNode: nil), 
+				1, 
+				doneAction: 2
+			);
+			player = BufRd.ar(
+						numChannels,
+						bufnum, 
+						Phasor.ar(
+							btrig, 
+							BufRateScale.kr(bufnum) * brt *(-1), 
+							BufFrames.kr(bufnum) * bstart, 
+							BufFrames.kr(bufnum) * bend, 
+							BufFrames.kr(bufnum) * breset
+						),
+						loop: bloop.binaryValue
+					);
+			chain = FFT({LocalBuf(2048, 2)}.dup(2), player);
+			chain = PV_BrickWall(chain, Line.kr(0, -1, bsus));
+ 
+			Out.ar(bout, IFFT(chain) * bmul *env);
+		}).play(Server.default);
 	}
 
 
@@ -314,8 +132,8 @@ Kaffer : Buffer {
 		brls = rls ? brls;
 		bmul = mul ? bmul;
 		btrig = trig ? btrig;
-		brate = rate ? brate;
-		brate2 = rate2 ? brate2;
+		brt = rate ? brt;
+		brt2 = rate2 ? brt2;
 		bstart = start ? bstart;
 		bpan = pan ? bpan;
 		bout = out ? bout;
@@ -335,7 +153,7 @@ Kaffer : Buffer {
 			player = PlayBuf.ar(
 						numChannels,
 						bufnum, 
-						BufRateScale.kr(bufnum) * brate,
+						BufRateScale.kr(bufnum) * brt,
 						btrig,
 						BufFrames.kr(bufnum) * bstart,
 						loop: bloop.binaryValue
@@ -343,7 +161,7 @@ Kaffer : Buffer {
 			chain = FFT(LocalBuf(2048), player);
 			chain = PV_BinScramble(chain, bpv2a , 0.1, bpv2b );
 			Out.ar(bout, IFFT(chain) * bmul *env);
-		}).play(~sources);
+		}).play(Server.default);
 	}
 
 
@@ -355,8 +173,8 @@ Kaffer : Buffer {
 		brls = rls ? brls;
 		bmul = mul ? bmul;
 		btrig = trig ? btrig;
-		brate = rate ? brate;
-		brate2 = rate2 ? brate2;
+		brt = rate ? brt;
+		brt2 = rate2 ? brt2;
 		bstart = start ? bstart;
 		bpan = pan ? bpan;
 		bout = out ? bout;
@@ -376,7 +194,7 @@ Kaffer : Buffer {
 			player = PlayBuf.ar(
 						numChannels,
 						bufnum, 
-						BufRateScale.kr(bufnum) * brate,
+						BufRateScale.kr(bufnum) * brt,
 						btrig,
 						BufFrames.kr(bufnum) * bstart,
 						loop: bloop.binaryValue
@@ -384,7 +202,7 @@ Kaffer : Buffer {
 			chain = FFT(LocalBuf(2048), player);
 			chain = PV_BinShift(chain, 1, bpv3a ); 
 			Out.ar(bout, IFFT(chain) * bmul *env);
-		}).play(~sources);
+		}).play(Server.default);
 	}
 
 
@@ -396,8 +214,8 @@ Kaffer : Buffer {
 		brls = rls ? brls;
 		bmul = mul ? bmul;
 		btrig = trig ? btrig;
-		brate = rate ? brate;
-		brate2 = rate2 ? brate2;
+		brt = rate ? brt;
+		brt2 = rate2 ? brt2;
 		bstart = start ? bstart;
 		bpan = pan ? bpan;
 		bout = out ? bout;
@@ -416,7 +234,7 @@ Kaffer : Buffer {
 			player = PlayBuf.ar(
 						numChannels,
 						bufnum, 
-						BufRateScale.kr(bufnum) * brate,
+						BufRateScale.kr(bufnum) * brt,
 						btrig,
 						BufFrames.kr(bufnum) * bstart,
 						loop: bloop.binaryValue
@@ -424,7 +242,7 @@ Kaffer : Buffer {
 			chain = FFT(LocalBuf(2048), player);
 			chain = PV_MagShift(chain, 1, bpv4a ); 
 			Out.ar(bout, IFFT(chain) * bmul *env);
-		}).play(~sources);
+		}).play(Server.default);
 	}
 
 
@@ -437,8 +255,8 @@ Kaffer : Buffer {
 		brls = rls ? brls;
 		bmul = mul ? bmul;
 		btrig = trig ? btrig;
-		brate = rate ? brate;
-		brate2 = rate2 ? brate2;
+		brt = rate ? brt;
+		brt2 = rate2 ? brt2;
 		bstart = start ? bstart;
 		bpan = pan ? bpan;
 		bout = out ? bout;
@@ -458,7 +276,7 @@ Kaffer : Buffer {
 			player = PlayBuf.ar(
 						numChannels,
 						bufnum, 
-						BufRateScale.kr(bufnum) * brate,
+						BufRateScale.kr(bufnum) * brt,
 						btrig,
 						BufFrames.kr(bufnum) * bstart,
 						loop: bloop.binaryValue
@@ -468,7 +286,7 @@ Kaffer : Buffer {
 			// --- pvc1 -1.0 -> 1.0 ---- pvc1 -1.0 -> 1.0
 			
 			Out.ar(bout, IFFT(chain) * bmul *env);
-		}).play(~sources);
+		}).play(Server.default);
 	}
 
 
@@ -481,7 +299,7 @@ Kaffer : Buffer {
 		brls = rls ? brls;
 		bmul = mul ? bmul;
 		btrig = trig ? btrig;
-		brate = rate ? brate;
+		brt = rate ? brt;
 		bstart = start ? bstart;
 		bpan = pan ? bpan;
 		bout = out ? bout;
@@ -498,17 +316,65 @@ Kaffer : Buffer {
 			player = PlayBuf.ar(
 						numChannels,
 						bufnum, 
-						BufRateScale.kr(bufnum) * brate,
+						BufRateScale.kr(bufnum) * brt,
 						btrig,
 						BufFrames.kr(bufnum) * bstart,
 						loop: bloop.binaryValue
 					);
 			//player = Pan2.ar(player, bpan);
 			Out.ar(bout, player * bmul *env);
-		}).play(~sources);
+		}).play(Server.default);
 	}
 
+	//with PlayBuf
+	transBuf { arg  att, sus, rls, mul, trig, rt, rt1, rt2, rt3, rt1Dur, rt2Dur, vib, start, loop, pan, out;
 
+		batt = att ? batt;
+		bsus = sus ? bsus;
+		brls = rls ? brls;
+		bmul = mul ? bmul;
+		btrig = trig ? btrig;
+		brt = rt ? brt;
+		brt1 = rt1 ? brt1;
+		brt2 = rt2 ? brt2;
+		brt3 = rt3 ? brt3;
+		brt1Dur = rt1Dur ? brt1Dur;
+		brt2Dur = rt2Dur ? brt2Dur;
+		bvib = vib ? bvib;
+		bstart = start ? bstart;
+
+		bpan = pan ? bpan;
+		bout = out ? bout;
+		bloop = loop ? bloop;
+		
+		
+		
+		^{ var player, panlayer, env, env2;
+			
+			env =  EnvGen.ar(
+				Env.new([0, 1, 0.8,  0], [batt, bsus+(brt1Dur/2.5), brls+(brt2Dur/1.5)], -4, loop, releaseNode: nil), 
+				1, 
+				doneAction: 2
+			);
+			
+			env2 =  EnvGen.ar(
+				Env.new([brt1, brt1, brt2, brt2], [brt1Dur, bsus-0.2, brt2Dur+brls], 'sine', loop, releaseNode: nil), 
+				1, 
+				doneAction: 0
+			);
+			
+			player = PlayBuf.ar(
+						numChannels,
+						bufnum, 
+						SinOsc.kr(bvib*MouseX.kr(0.01, 4)).range(0.99, 1.01)*BufRateScale.kr(bufnum)*1 *env2,
+						btrig,
+						BufFrames.kr(bufnum) * bstart,
+						loop: bloop.binaryValue
+					);
+
+			Out.ar(bout, player*2 *bmul *env);
+		}.play(Server.default);
+	}
 
 	//with PlayBuf
 	playBuf { arg  att, sus, rls, mul, trig, rate, start, loop, pan, out;
@@ -518,7 +384,7 @@ Kaffer : Buffer {
 		brls = rls ? brls;
 		bmul = mul ? bmul;
 		btrig = trig ? btrig;
-		brate = rate ? brate;
+		brt = rate ? brt;
 		bstart = start ? bstart;
 		bpan = pan ? bpan;
 		bout = out ? bout;
@@ -527,44 +393,39 @@ Kaffer : Buffer {
 		^{ var player, panlayer, env;
 			
 			env =  EnvGen.ar(
-				Env.new([0, 1, 0.8,  0], [batt, bsus, brls], 'linear', loop, releaseNode: nil), 
+				Env.new([0, 1, 0.8,  0], [batt, bsus, brls], 4, loop, releaseNode: nil), 
 				1, 
 				doneAction: 2
 			);
 			player = PlayBuf.ar(
 						numChannels,
 						bufnum, 
-						BufRateScale.kr(bufnum) * brate,
+						BufRateScale.kr(bufnum) * brt,
 						btrig,
 						BufFrames.kr(bufnum) * bstart,
 						loop: bloop.binaryValue
 					);
 			//player = Pan2.ar(player, bpan);
 			Out.ar(bout, player * bmul *env);
-		}.play(~sources);
+		}.play(Server.default);
 	}
 
-
-
-
-
-
-
-	//with BufRD
-	bufRd { arg  att, sus, rls, mul, trig, rate, start, end, reset, loop, pan, out;
+	//with BufRD to be able to reverse a buffer
+	playBufR { arg  att, sus, rls, mul, trig, rate, start, end, reset, loop, pan, out;
 
 		batt = att ? batt;
 		bsus = sus ? bsus;
 		brls = rls ? brls;
 		bmul = mul ? bmul;
 		btrig = trig ? btrig;
-		brate = rate ? brate;
+		brt = rate ? brt;
 		bstart = start ? bstart;
 		bend = end ? bend;
 		breset = reset ? breset;
 		bpan = pan ? bpan;
 		bout = out ? bout;
 		bloop = loop ? bloop;
+		
 		
 		^{ var player, panlayer, env;
 			
@@ -578,7 +439,7 @@ Kaffer : Buffer {
 						bufnum, 
 						Phasor.ar(
 							btrig, 
-							BufRateScale.kr(bufnum) * brate, 
+							BufRateScale.kr(bufnum) * brt *(-1), 
 							BufFrames.kr(bufnum) * bstart, 
 							BufFrames.kr(bufnum) * bend, 
 							BufFrames.kr(bufnum) * breset
@@ -587,7 +448,7 @@ Kaffer : Buffer {
 					);
 			//player = Pan2.ar(player, bpan);
 			Out.ar(bout, player * bmul *env);
-		}.play(~sources2);
+		}.play(Server.default);
 	}
 
 	play { arg loop = false;
@@ -602,6 +463,317 @@ Kaffer : Buffer {
 			player * bmul;
 		}.play(Server.default);
 	}
+
+	//with PlayBuf Gverb
+	playGverb { arg  att, sus, rls, mul, trig, rate, start, loop, room, rev, damp, pan, out;
+
+		batt = att ? batt;
+		bsus = sus ? bsus;
+		brls = rls ? brls;
+		bmul = mul ? bmul;
+		btrig = trig ? btrig;
+		brt = rate ? brt;
+		bstart = start ? bstart;
+		broom = room ? broom;
+		brev = rev ? brev;
+		bdamp = damp ? bdamp;
+		bpan = pan ? bpan;
+		bout = out ? bout;
+		bloop = loop ? bloop;
+		
+		^{ var player, panlayer, env;
+			
+			env =  EnvGen.ar(
+				Env.new([0, 1, 0.8,  0], [batt, bsus, brls], -4, loop, releaseNode: nil), 
+				1, 
+				doneAction: 2
+			);
+			player = PlayBuf.ar(
+						numChannels,
+						bufnum, 
+						BufRateScale.kr(bufnum) * brt,
+						btrig,
+						BufFrames.kr(bufnum) * bstart,
+						loop: bloop.binaryValue
+					);
+			player = GVerb.ar(
+				player,
+				broom, 
+				brev, 
+				bdamp, 
+				0.45, 
+				15, 
+				-3.dbamp,
+				-11.dbamp, 
+				-9.dbamp,
+				broom, bmul);
+			//player = Pan2.ar(player, bpan);
+			Out.ar(bout, player/2 *env);
+		}.play(Server.default);
+	}
+
+
+	//with GverbR
+	playGverbR { arg  att, sus, rls, mul, trig, rate, start, end, reset, loop, room, rev, damp, pan, out;
+
+		batt = att ? batt;
+		bsus = sus ? bsus;
+		brls = rls ? brls;
+		bmul = mul ? bmul;
+		btrig = trig ? btrig;
+		brt = rate ? brt;
+		bstart = start ? bstart;
+		bend = end ? bend;
+		breset = reset ? breset;
+		broom = room ? broom;
+		brev = rev ? brev;
+		bdamp = damp ? bdamp;
+		bpan = pan ? bpan;
+		bout = out ? bout;
+		bloop = loop ? bloop;
+		
+		^{ var player, panlayer, env;
+			
+			env =  EnvGen.ar(
+				Env.new([0, 1, 0.8,  0], [batt, bsus, brls], -4, loop, releaseNode: nil), 
+				1, 
+				doneAction: 2
+			);
+			player = BufRd.ar(
+						numChannels,
+						bufnum, 
+						Phasor.ar(
+							btrig, 
+							BufRateScale.kr(bufnum) * brt *(-1), 
+							BufFrames.kr(bufnum) * bstart, 
+							BufFrames.kr(bufnum) * bend, 
+							BufFrames.kr(bufnum) * breset
+						),
+						loop: bloop.binaryValue
+					);
+			player = GVerb.ar(
+				player,
+				broom, 
+				brev, 
+				bdamp, 
+				0.45, 
+				15, 
+				-3.dbamp,
+				-11.dbamp, 
+				-9.dbamp,
+				broom, bmul);
+			//player = Pan2.ar(player, bpan);
+			Out.ar(bout, player/2 *env);
+		}.play(Server.default);
+	}
+
+
+	//with transGverb
+	transGverb { arg  att, sus, rls, mul, trig, rt, rt1, rt2, rt3, rt1Dur, rt2Dur, vib, start, loop, room, rev, damp, pan, out;
+
+		batt = att ? batt;
+		bsus = sus ? bsus;
+		brls = rls ? brls;
+		bmul = mul ? bmul;
+		btrig = trig ? btrig;
+		brt = rt ? brt;
+		brt1 = rt1 ? brt1;
+		brt2 = rt2 ? brt2;
+		brt3 = rt3 ? brt3;
+		brt1Dur = rt1Dur ? brt1Dur;
+		brt2Dur = rt2Dur ? brt2Dur;
+		bvib = vib ? bvib;
+		bstart = start ? bstart;
+		broom = room ? broom;
+		brev = rev ? brev;
+		bdamp = damp ? bdamp;
+		bpan = pan ? bpan;
+		bout = out ? bout;
+		bloop = loop ? bloop;
+		
+		
+		
+		^{ var player, panlayer, env, env2;
+			
+			env =  EnvGen.ar(
+				Env.new([0, 1, 0.8,  0], [batt, bsus+(brt1Dur/2.5), brls+(brt2Dur/1.5)], -4, loop, releaseNode: nil), 
+				1, 
+				doneAction: 2
+			);
+			
+			env2 =  EnvGen.ar(
+				Env.new([brt1, brt1, brt2, brt2], [brt1Dur, bsus-0.2, brt2Dur+brls], 'sine', loop, releaseNode: nil), 
+				1, 
+				doneAction: 0
+			);
+			
+			player = PlayBuf.ar(
+						numChannels,
+						bufnum, 
+						SinOsc.kr(bvib*MouseX.kr(0.01, 4)).range(0.99, 1.01)*BufRateScale.kr(bufnum)*1 *env2,
+						btrig,
+						BufFrames.kr(bufnum) * bstart,
+						loop: bloop.binaryValue
+					);
+			
+			
+			
+			player = GVerb.ar(
+				player,
+				broom, 
+				brev, 
+				bdamp, 
+				0.45, 
+				15, 
+				-3.dbamp,
+				-11.dbamp, 
+				-9.dbamp,
+				broom, bmul);
+			//player = Pan2.ar(player, bpan);
+			Out.ar(bout, player.sum *env);
+		}.play(Server.default);
+	}
+
+	playLP { arg  att, sus, rls, mul, trig, rate, start, loop, pan, out;
+
+		batt = att ? batt;
+		bsus = sus ? bsus;
+		brls = rls ? brls;
+		bmul = mul ? bmul;
+		btrig = trig ? btrig;
+		brt = rate ? brt;
+		bstart = start ? bstart;
+		bpan = pan ? bpan;
+		bout = out ? bout;
+		bloop = loop ? bloop;
+		
+		^{ var player, panlayer, env;
+			
+			env =  EnvGen.ar(
+				Env.new([0, 1, 0.8,  0], [batt, bsus, brls], 4, loop, releaseNode: nil), 
+				1, 
+				doneAction: 2
+			);
+			player = PlayBuf.ar(
+						numChannels,
+						bufnum, 
+						BufRateScale.kr(bufnum) * brt,
+						btrig,
+						BufFrames.kr(bufnum) * bstart,
+						loop: bloop.binaryValue
+					);
+			//player = Pan2.ar(player, bpan);
+			Out.ar(bout, player * bmul *env);
+		}.play(Server.default);
+	}
+
+
+	*loadKafs {
+		Server.default.waitForBoot({
+
+		~ats01 = Kaffer.read(Server.default, "sounds/_kafes/atesh/01.aif");
+		~ats02 = Kaffer.read(Server.default, "sounds/_kafes/atesh/02.aif");
+		~ats03 = Kaffer.read(Server.default, "sounds/_kafes/atesh/03.aif");
+		~ats04 = Kaffer.read(Server.default, "sounds/_kafes/atesh/04.aif");
+		
+		
+		
+		
+		//------------------------~bot-----------------------------------//
+		~bot01 = Kaffer.read(Server.default, "sounds/_kafes/bot/01.aif"); //for tune --> 
+		~bot02 = Kaffer.read(Server.default, "sounds/_kafes/bot/02.aif");
+		~bot03 = Kaffer.read(Server.default, "sounds/_kafes/bot/03.aif");
+		~bot04 = Kaffer.read(Server.default, "sounds/_kafes/bot/04.aif");
+		~bot05 = Kaffer.read(Server.default, "sounds/_kafes/bot/05.aif");
+		~botbs = Kaffer.read(Server.default, "sounds/_kafes/bot/bas.aif");
+		
+		
+		
+		//------------------------~bth-----------------------------------//
+		~bth01 = Kaffer.read(Server.default, "sounds/_kafes/botaht/01.aif");
+		~bth02 = Kaffer.read(Server.default, "sounds/_kafes/botaht/02.aif");
+		~bth03 = Kaffer.read(Server.default, "sounds/_kafes/botaht/03.aif");
+		~bth04 = Kaffer.read(Server.default, "sounds/_kafes/botaht/04.aif");
+		~bth05 = Kaffer.read(Server.default, "sounds/_kafes/botaht/05.aif");
+		~bth06 = Kaffer.read(Server.default, "sounds/_kafes/botaht/06.aif");
+		~bth07 = Kaffer.read(Server.default, "sounds/_kafes/botaht/07.aif");
+		
+		
+		~gir01 = Kaffer.read(Server.default, "sounds/_kafes/gir/01.aif");
+		~gir02 = Kaffer.read(Server.default, "sounds/_kafes/gir/02.aif");
+		~gir03 = Kaffer.read(Server.default, "sounds/_kafes/gir/03.aif");
+		
+		
+		~gou01 = Kaffer.read(Server.default, "sounds/_kafes/goun/01.aif");
+		~gou02 = Kaffer.read(Server.default, "sounds/_kafes/goun/02.aif");
+		~gou03 = Kaffer.read(Server.default, "sounds/_kafes/goun/03.aif");
+		~gou04 = Kaffer.read(Server.default, "sounds/_kafes/goun/04.aif");
+		
+		~grn01 = Kaffer.read(Server.default, "sounds/_kafes/grain/01.aif");
+		~grn02 = Kaffer.read(Server.default, "sounds/_kafes/grain/02.aif");
+		
+		
+		~int01 = Kaffer.read(Server.default, "sounds/_kafes/int/01.aif");
+		~int02 = Kaffer.read(Server.default, "sounds/_kafes/int/02.aif");
+		~int03 = Kaffer.read(Server.default, "sounds/_kafes/int/03.aif");
+		~int04 = Kaffer.read(Server.default, "sounds/_kafes/int/04.aif");
+		~int05 = Kaffer.read(Server.default, "sounds/_kafes/int/05.aif");
+		~int06 = Kaffer.read(Server.default, "sounds/_kafes/int/06.aif");
+		
+		
+		~met01 = Kaffer.read(Server.default, "sounds/_kafes/metal/01.aif");
+		~met02 = Kaffer.read(Server.default, "sounds/_kafes/metal/02.aif");
+		~met03 = Kaffer.read(Server.default, "sounds/_kafes/metal/03.aif");
+		~met04 = Kaffer.read(Server.default, "sounds/_kafes/metal/04.aif");
+		~met05 = Kaffer.read(Server.default, "sounds/_kafes/metal/05.aif");
+		~met06 = Kaffer.read(Server.default, "sounds/_kafes/metal/06.aif");
+		~met07 = Kaffer.read(Server.default, "sounds/_kafes/metal/07.aif");
+		~met08 = Kaffer.read(Server.default, "sounds/_kafes/metal/08.aif");
+		~met09 = Kaffer.read(Server.default, "sounds/_kafes/metal/09.aif");
+		~met10 = Kaffer.read(Server.default, "sounds/_kafes/metal/10.aif");
+		
+		
+		~psl01 = Kaffer.read(Server.default, "sounds/_kafes/psiles/01.aif");
+		
+		~sis01 = Kaffer.read(Server.default, "sounds/_kafes/sise/01.aif");
+		~sis02 = Kaffer.read(Server.default, "sounds/_kafes/sise/02.aif");
+		~sis03 = Kaffer.read(Server.default, "sounds/_kafes/sise/03.aif");
+		~sis04 = Kaffer.read(Server.default, "sounds/_kafes/sise/04.aif");
+		~sis05 = Kaffer.read(Server.default, "sounds/_kafes/sise/05.aif");
+		~sis06 = Kaffer.read(Server.default, "sounds/_kafes/sise/06.aif");
+		~sis07 = Kaffer.read(Server.default, "sounds/_kafes/sise/07.aif");
+		~sis08 = Kaffer.read(Server.default, "sounds/_kafes/sise/08.aif");
+		~sis09 = Kaffer.read(Server.default, "sounds/_kafes/sise/09.aif");
+		
+		~sms01 = Kaffer.read(Server.default, "sounds/_kafes/sms/01.aif");   //*0.84800
+		
+		
+		~tht01 = Kaffer.read(Server.default, "sounds/_kafes/tahta/01.aif"); // *1.69001
+		~tht02 = Kaffer.read(Server.default, "sounds/_kafes/tahta/02.aif"); // *1.475
+		~tht03 = Kaffer.read(Server.default, "sounds/_kafes/tahta/03.aif"); // *1.19  (notSure)
+		~tht04 = Kaffer.read(Server.default, "sounds/_kafes/tahta/04.aif"); // *1.68
+		~tht05 = Kaffer.read(Server.default, "sounds/_kafes/tahta/05.aif");
+		~tht06 = Kaffer.read(Server.default, "sounds/_kafes/tahta/06.aif");
+		~tht07 = Kaffer.read(Server.default, "sounds/_kafes/tahta/07.aif");
+		~tht08 = Kaffer.read(Server.default, "sounds/_kafes/tahta/08.aif");
+		~tht09 = Kaffer.read(Server.default, "sounds/_kafes/tahta/09.aif");
+		
+		
+		
+		~tol01 = Kaffer.read(Server.default, "sounds/_kafes/thol/01.aif");
+		~tol02 = Kaffer.read(Server.default, "sounds/_kafes/thol/02.aif");
+		~tol03 = Kaffer.read(Server.default, "sounds/_kafes/thol/03.aif");
+		~tol04 = Kaffer.read(Server.default, "sounds/_kafes/thol/04.aif");
+		~tol05 = Kaffer.read(Server.default, "sounds/_kafes/thol/05.aif");
+		~tol06 = Kaffer.read(Server.default, "sounds/_kafes/thol/06.aif");
+		~tol07 = Kaffer.read(Server.default, "sounds/_kafes/thol/07.aif");
+		~tol08 = Kaffer.read(Server.default, "sounds/_kafes/thol/08.aif");
+		"sounds are loaded".postln;
+		});
+		
+	}
+
+
 
 }
 
