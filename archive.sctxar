@@ -1,16 +1,20 @@
 var o, p;
 o = [
-	Archive.prNew,  IdentityDictionary.prNew,  Array.prNew(32),  Array.prNew(7),  
+	Archive.prNew,  IdentityDictionary.prNew,  Array.prNew(32),  Array.prNew(10),  
 	Event.prNew,  Array.prNew(12),  " post ",  Rect.prNew,  
-	Event.prNew,  Array.prNew(12),  "110205trigWithSoundIn.rtf",  "/Users/omerchatziserif/Dropbox/SC/+06FEB2011/110205trigWithSoundIn.rtf",  
-	Rect.prNew,  Event.prNew,  Array.prNew(12),  "110705_harms_01.rtf",  
-	"/Users/omerchatziserif/Dropbox/SC/+11JUL2011/110705_harms_01.rtf",  Rect.prNew,  Event.prNew,  Array.prNew(12),  
-	"110705_PitchSoundIn_01.rtf",  "/Users/omerchatziserif/Dropbox/SC/+11JUL2011/110705_PitchSoundIn_01.rtf",  Rect.prNew,  Event.prNew,  
-	Array.prNew(12),  "Harmonics.html",  "/Users/omerchatziserif/Applications/SuperCollider/Help/Collections/Harmonics.html",  Rect.prNew,  
-	Event.prNew,  Array.prNew(12),  "SendTrig.html",  "/Users/omerchatziserif/Applications/SuperCollider/Help/UGens/Triggers/SendTrig.html",  
-	Rect.prNew,  Event.prNew,  Array.prNew(12),  "`AutS.sc",  
-	"/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/NcircleClasses/`AutS.sc",  Rect.prNew,  " post ",  Array.prNew(4),  
-	Rect.prNew,  Rect.prNew,  Rect.prNew,  Rect.prNew
+	Event.prNew,  Array.prNew(12),  "KafesLAYER_A22.rtf",  "/Users/omerchatziserif/Dropbox/SC/-Projects/9_Kafes@ZKM/~KafesMAIN/KafesLAYER_A22.rtf",  
+	Rect.prNew,  Event.prNew,  Array.prNew(12),  "KafesLAYER_B22.rtf",  
+	"/Users/omerchatziserif/Dropbox/SC/-Projects/9_Kafes@ZKM/~KafesMAIN/KafesLAYER_B22.rtf",  Rect.prNew,  Event.prNew,  Array.prNew(12),  
+	"KafesOSCRutines.rtf",  "/Users/omerchatziserif/Dropbox/SC/-Projects/9_Kafes@ZKM/~OSC/KafesOSCRutines.rtf",  Rect.prNew,  Event.prNew,  
+	Array.prNew(12),  "kafesOSC_02.rtf",  "/Users/omerchatziserif/Dropbox/SC/-Projects/9_Kafes@ZKM/~OSC/kafesOSC_02.rtf",  Rect.prNew,  
+	Event.prNew,  Array.prNew(12),  "KafesReceives.sc",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/Kafes/KafesReceives.sc",  
+	Rect.prNew,  Event.prNew,  Array.prNew(12),  "Kaffer.sc",  
+	"/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/Kafes/Kaffer.sc",  Rect.prNew,  Event.prNew,  Array.prNew(12),  
+	"tryout.scd",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/tryout.scd",  Rect.prNew,  Event.prNew,  
+	Array.prNew(12),  "zencirAtesh01.rtf",  "/Users/omerchatziserif/Dropbox/SC/-Projects/9_Kafes@ZKM/~Ergastirio/zencirAtesh01.rtf",  Rect.prNew,  
+	Event.prNew,  Array.prNew(12),  "~ats0406Forks.rtf",  "/Users/omerchatziserif/Dropbox/SC/-Projects/9_Kafes@ZKM/~SampleForks/~ats0406Forks.rtf",  
+	Rect.prNew,  " post ",  Array.prNew(4),  Rect.prNew,  
+	Rect.prNew,  Rect.prNew,  Rect.prNew
 ];
 p = [
 	// Archive
@@ -27,10 +31,11 @@ p = [
 		nil,  nil,  nil,  nil,  
 		nil,  nil,  nil,  nil,  
 		nil,  nil,  nil,  nil,  
-		'currentDoc',  o[38],  'documentBrowserRects',  o[39] ],  
+		'currentDoc',  o[53],  'documentBrowserRects',  o[54] ],  
 	// Array
 	3, [ o[4],  o[8],  o[13],  o[18],  
-		o[23],  o[28],  o[33] ],  
+		o[23],  o[28],  o[33],  o[38],  
+		o[43],  o[48] ],  
 	// Event
 	4, [ array: o[5],  size: 2,  
 		proto: nil,  parent: nil,  
@@ -40,8 +45,8 @@ p = [
 		nil,  nil,  nil,  nil,  
 		'bounds',  o[7],  nil,  nil ],  
 	// Rect
-	7, [ left: 0.000000,  top: 42.000000,  
-		width: 620.000000,  height: 986.000000 ],  
+	7, [ left: 0.000000,  top: 44.000000,  
+		width: 498.000000,  height: 950.000000 ],  
 	// Event
 	8, [ array: o[9],  size: 3,  
 		proto: nil,  parent: nil,  
@@ -51,8 +56,8 @@ p = [
 		nil,  nil,  'path',  o[11],  
 		'bounds',  o[12],  nil,  nil ],  
 	// Rect
-	12, [ left: 720.000000,  top: 4.000000,  
-		width: 720.000000,  height: 1024.000000 ],  
+	12, [ left: 500.000000,  top: 4.000000,  
+		width: 1020.000000,  height: 1024.000000 ],  
 	// Event
 	13, [ array: o[14],  size: 3,  
 		proto: nil,  parent: nil,  
@@ -62,8 +67,8 @@ p = [
 		nil,  nil,  'path',  o[16],  
 		'bounds',  o[17],  nil,  nil ],  
 	// Rect
-	17, [ left: 720.000000,  top: 4.000000,  
-		width: 720.000000,  height: 1024.000000 ],  
+	17, [ left: 500.000000,  top: 4.000000,  
+		width: 1020.000000,  height: 1024.000000 ],  
 	// Event
 	18, [ array: o[19],  size: 3,  
 		proto: nil,  parent: nil,  
@@ -73,8 +78,8 @@ p = [
 		nil,  nil,  'path',  o[21],  
 		'bounds',  o[22],  nil,  nil ],  
 	// Rect
-	22, [ left: 720.000000,  top: 4.000000,  
-		width: 720.000000,  height: 1024.000000 ],  
+	22, [ left: 500.000000,  top: 4.000000,  
+		width: 1020.000000,  height: 1024.000000 ],  
 	// Event
 	23, [ array: o[24],  size: 3,  
 		proto: nil,  parent: nil,  
@@ -84,8 +89,8 @@ p = [
 		nil,  nil,  'path',  o[26],  
 		'bounds',  o[27],  nil,  nil ],  
 	// Rect
-	27, [ left: 720.000000,  top: 4.000000,  
-		width: 720.000000,  height: 1024.000000 ],  
+	27, [ left: 500.000000,  top: 4.000000,  
+		width: 1020.000000,  height: 1024.000000 ],  
 	// Event
 	28, [ array: o[29],  size: 3,  
 		proto: nil,  parent: nil,  
@@ -95,8 +100,8 @@ p = [
 		nil,  nil,  'path',  o[31],  
 		'bounds',  o[32],  nil,  nil ],  
 	// Rect
-	32, [ left: 720.000000,  top: 4.000000,  
-		width: 720.000000,  height: 1024.000000 ],  
+	32, [ left: 500.000000,  top: 4.000000,  
+		width: 1020.000000,  height: 1024.000000 ],  
 	// Event
 	33, [ array: o[34],  size: 3,  
 		proto: nil,  parent: nil,  
@@ -106,21 +111,54 @@ p = [
 		nil,  nil,  'path',  o[36],  
 		'bounds',  o[37],  nil,  nil ],  
 	// Rect
-	37, [ left: 720.000000,  top: 4.000000,  
-		width: 720.000000,  height: 1024.000000 ],  
+	37, [ left: 500.000000,  top: 4.000000,  
+		width: 1020.000000,  height: 1024.000000 ],  
+	// Event
+	38, [ array: o[39],  size: 3,  
+		proto: nil,  parent: nil,  
+		know: true ],  
 	// Array
-	39, [ o[40],  o[41],  o[42],  o[43] ],  
+	39, [ 'name',  o[40],  nil,  nil,  
+		nil,  nil,  'path',  o[41],  
+		'bounds',  o[42],  nil,  nil ],  
 	// Rect
-	40, [ left: 0.000000,  top: 4.000000,  
+	42, [ left: 0.000000,  top: 428.000000,  
+		width: 500.000000,  height: 600.000000 ],  
+	// Event
+	43, [ array: o[44],  size: 3,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	44, [ 'name',  o[45],  nil,  nil,  
+		nil,  nil,  'path',  o[46],  
+		'bounds',  o[47],  nil,  nil ],  
+	// Rect
+	47, [ left: 500.000000,  top: 4.000000,  
+		width: 1020.000000,  height: 1024.000000 ],  
+	// Event
+	48, [ array: o[49],  size: 3,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	49, [ 'name',  o[50],  nil,  nil,  
+		nil,  nil,  'path',  o[51],  
+		'bounds',  o[52],  nil,  nil ],  
+	// Rect
+	52, [ left: 500.000000,  top: 4.000000,  
+		width: 1020.000000,  height: 1024.000000 ],  
+	// Array
+	54, [ o[55],  o[56],  o[57],  o[58] ],  
+	// Rect
+	55, [ left: 0.000000,  top: 4.000000,  
 		width: 130.000000,  height: 1002.000000 ],  
 	// Rect
-	41, [ left: 135.000000,  top: 4.000000,  
+	56, [ left: 135.000000,  top: 4.000000,  
 		width: 800.000000,  height: 1022.000000 ],  
 	// Rect
-	42, [ left: 940.000000,  top: 4.000000,  
+	57, [ left: 940.000000,  top: 4.000000,  
 		width: 735.000000,  height: 1022.000000 ],  
 	// Rect
-	43, [ left: 940.000000,  top: 4.000000,  
+	58, [ left: 940.000000,  top: 4.000000,  
 		width: 735.000000,  height: 1022.000000 ]
 ];
 prUnarchive(o,p);

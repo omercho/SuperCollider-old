@@ -1,3 +1,28 @@
+
+
+~zencirPlay.fork;
+~fahtePlay.fork;
+~cemberPlay.fork;
+~devriKebirPlay.fork;
+~berefsanPlay.fork;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 (////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Pdef(\zencAts01).play;
 Pdef(\zencBot01).play;
@@ -1553,11 +1578,11 @@ Pdef(\fft01, Pbind(
 
 
 fork{
-	20.do{|i, frq = 2240, dur = 0.1|
-		var freqs = frq + (12 *( i % 20)); 
+	20.do{|i, frq = 3240, dur = 0.25|
+		var freqs = (1220 + (1 *( i % 20))); 
 		
-		KafBell.ar(freq: freqs, out: [~ch1, ~ch2, ~ch3, ~ch4].choose).play;
-		( dur + (0.1*(i%10)) ).yield;
+		KafBell.ar(freq: freqs, out: [0, 1].choose).play;
+		( dur - (0.015*(i%20)) ).yield;
 	}
 }
 
