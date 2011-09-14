@@ -1,11 +1,10 @@
-
-
 ~zencirPlay.fork;
+~toFahtePlay.fork;
 ~fahtePlay.fork;
 ~cemberPlay.fork;
+~toDevriKebirPlay.fork;
 ~devriKebirPlay.fork;
 ~berefsanPlay.fork;
-
 
 
 
@@ -804,147 +803,6 @@ Pdef(\zencBot01).stop;
 				}, 
 			\bt36 -> {//	|te
 				~bth04.brt_(~kRB2 *1.05190).playGverb(0.001, 2.1, 4, mul:0.07, damp:0.99, out: [0, 1, [0,1]].choose); 
-				}, 
-			\bt37 -> {//	ke
-				
-				},
-
-// DEVR-i KEBIR -----------------------------
-		//6/4
-			\bt38 -> {//	+dum2
-				~bth02.brt_(~kRC1 *1.00011).playBuf(0.001, 0.1, 0.3, mul:0.2, out: [0, 1, [0,1]].choose);
-				~bth02.brt_(~kRC1 *1.00011).playBufR(0.001, 1.1, 0.3, mul:0.2, out: [0, 1, [0,1]].choose);
-				}, 
-			\bt39 -> {//	|dum2
-				~bth02.brt_(~kRC1 *1.00011).playBuf(0.001, 0.1, 0.3, mul:0.2, out: [0, 1, [0,1]].choose);
-				~bth02.brt_(~kRC3 *1.00011).playBufR(0.001, 1.3, 0.3, mul:0.5, out: [0, 1, [0,1]].choose);
-				}, 
-			\bt40 -> {//	|tek2
-				~bth04.brt_(~kRD1 *1.05190).playBuf(0.001, 0.1, 1, mul:0.3, out: [0, 1, [0,1]].choose);
-
-				},
-			
-		//4/4
-			\bt41 -> {//	+dum
-				~bth02.brt_(~kRC1 *1.00011).playBuf(0.001, 0.3, 0.3, mul:0.2, out: [0, 1, [0,1]].choose);
-
-				}, 
-			\bt42 -> {//	|tek
-				
-				}, 
-			\bt43 -> {//	te'
-				
-				}, 
-			\bt44 -> {//	ke'
-				
-				},
-			\bt45 -> {//	|dum
-
-				}, 
-			
-		//	4/4
-			\bt46 -> {//	+tek2
-				
-				}, 
-			\bt47 -> {//	|tek2
-				
-				},
-			
-			
-		// 	6/4
-			\bt48 -> {//	+tek2
-
-				}, 
-			\bt49 -> {//	+dum2
-				
-				}, 
-			\bt50 -> {//	|dum
-				
-				}, 
-			
-			\bt51 -> {//	+ta2
-
-				}, 
-			\bt52 -> {//	|hek
-				
-				}, 
-			
-		//	 4/4
-			\bt53 -> {//	|te
-				~bth06.brt_(~kRC7 *1.10100).playBuf(0.001, 1.1, 1, mul:0.3, out: [0, 1, [0,1]].choose);
-				}, 
-			\bt54 -> {//	ke
-				~bth04.brt_(~kRC5 *1.05190).playBuf(0.001, 0.1, 1, mul:0.2, out: [0, 1, [0,1]].choose);
-				}, 
-			\bt55 -> {//	|te
-				~bth04.brt_(~kRB2 *1.05190).playGverb(0.001, 2.1, 4, mul:0.07, damp:0.99, out: [0, 1, [0,1]].choose); 
-				}, 
-			\bt56 -> {//	ke
-				
-				},
-			
-//BEREFSAN
-		// 6/4
-			\bt57 -> {//	+dum2-3-4
-				~bth02.brt_(~kRC1 *1.00011).playBuf(0.001, 0.1, 0.3, mul:0.2, out: [0, 1, [0,1]].choose);
-				~bth04.brt_(~kRB1 *1.05190).playGverb(
-					0.001, 6.1, 8.5, mul:0.2, rev:7, damp:0.01, out: [0, 1, [0,1]].choose
-				);
-				}, 
-			\bt58 -> {//	|tek2
-				
-				}, 
-			
-		// 6/4
-			\bt59 -> {//	+dum2-3-4
-				~bth02.brt_(~kRC1 *1.00011).playBuf(0.001, 0.1, 0.3, mul:0.2, out: [0, 1, [0,1]].choose);
-				~bth04.brt_(~kRB1 *1.05190).playGverb(
-					0.001, 6.1, 8.5, mul:0.2, rev:7, damp:0.01, out: [0, 1, [0,1]].choose
-				);
-				}, 
-			\bt60 -> {//	|tek2
-				
-				}, 
-			
-		//4/4
-			\bt61 -> {//	+dum2-3-4
-				
-				}, 
-			
-		//4/4
-			\bt62 -> {//	|dum2
-				
-				}, 
-			\bt63 -> {//	tek2
-				
-				}, 
-		//4/4
-			\bt64 -> {//	+dum2
-				
-				}, 
-			\bt65 -> {//	|dum2
-				
-				}, 
-		//4/4	
-			\bt66 -> {//	+ta2
-
-				}, 
-			\bt67 -> {//	|hek
-				
-				}, 
-			
-		//	 4/4
-			\bt68 -> {//	|te
-				~bth06.brt_(~kRC7 *1.10100).playBuf(0.001, 1.1, 1, mul:0.3, out: [0, 1, [0,1]].choose);
-				}, 
-			\bt69 -> {//	ke
-				~bth04.brt_(~kRC5 *1.05190).playBuf(0.001, 0.1, 1, mul:0.2, out: [0, 1, [0,1]].choose);
-				}, 
-			\bt70 -> {//	|te
-				~bth04.brt_(~kRB2 *1.05190).playGverb(0.001, 2.1, 4, mul:0.07, damp:0.99, out: [0, 1, [0,1]].choose); 
-				}, 
-			\bt71 -> {//	ke
-				
 				}
 		).play;
 		

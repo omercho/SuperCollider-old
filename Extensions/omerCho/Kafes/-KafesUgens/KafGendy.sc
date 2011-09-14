@@ -50,6 +50,14 @@ KafGendy : UGen {
 			ses = Limiter.ar(ses, 0.3);
 		
 			ses = ses.sin;
+			ses = PanAz.ar(2,
+				ses, 
+				SinOsc.kr(SinOsc.kr(0.01).range(0.05, 0.09)).range(-1, 1),
+				0.8,
+				2
+			);
+			
+			
 			ses = ses*env;
 			Out.ar(out, ses* mul);
 		}).play(Server.default);

@@ -253,6 +253,46 @@ Kaffer : Buffer {
 	}
 
 
+	// PV4B FFT with PV_MagShift
+	playPV4B { arg  att, sus, rls, mul, trig, rate, rate2, start, loop, pv4a, pan, out;
+
+		batt = att ? batt;
+		bsus = sus ? bsus;
+		brls = rls ? brls;
+		bmul = mul ? bmul;
+		btrig = trig ? btrig;
+		brt = rate ? brt;
+		brt2 = rate2 ? brt2;
+		bstart = start ? bstart;
+		bpan = pan ? bpan;
+		bout = out ? bout;
+		bloop = loop ? bloop;
+		
+		bpv4a = pv4a ? bpv4a;
+		
+		^SynthDef("playPV4", { 
+			var player, chain, panlayer, env;
+			
+			env =  EnvGen.ar(
+				Env.new([0, 1, 0.8,  0], [batt, bsus, brls], 'linear', loop, releaseNode: nil), 
+				1, 
+				doneAction: 2
+			);
+			player = PlayBuf.ar(
+						numChannels,
+						bufnum, 
+						BufRateScale.kr(bufnum) * brt,
+						btrig,
+						BufFrames.kr(bufnum) * bstart,
+						loop: bloop.binaryValue
+					);
+			chain = FFT(LocalBuf(2048), player);
+			chain = PV_MagShift(chain,  XLine.kr(0.25 * [1, 1.6], 4, bsus), bpv4a ); 
+			Out.ar(bout, IFFT(chain) * bmul *env);
+		}).play(Server.default);
+	}
+
+
 
 	// PV5 FFT with PV_ConformalMap
 	playPV5 { arg  att, sus, rls, mul, trig, rate, rate2, start, loop, pv5a, pv5b, pan, out;
@@ -605,7 +645,7 @@ Kaffer : Buffer {
 		^{ var player, panlayer, env, env2;
 			
 			env =  EnvGen.ar(
-				Env.new([0, 1, 0.8,  0], [batt, bsus, brls], -4, loop, releaseNode: nil), 
+				Env.new([0, 0.5, 0.8,  0], [batt, bsus, brls], -4, loop, releaseNode: nil), 
 				1, 
 				doneAction: 2
 			);
@@ -738,7 +778,8 @@ Kaffer : Buffer {
 		~int05 = Kaffer.read(Server.default, "sounds/_kafes/int/05.aif");
 		~int06 = Kaffer.read(Server.default, "sounds/_kafes/int/06.aif");
 		
-		~kik01 = Kaffer.read(Server.default, "sounds/_Evfer/kick1.aif");
+		~kik01 = Kaffer.read(Server.default, "sounds/_kafes/kick/01.aif");
+		~kik02 = Kaffer.read(Server.default, "sounds/_kafes/kick/02.aif");
 		
 		
 		~met01 = Kaffer.read(Server.default, "sounds/_kafes/metal/01.aif");
@@ -754,7 +795,7 @@ Kaffer : Buffer {
 		
 		
 		~psl01 = Kaffer.read(Server.default, "sounds/_kafes/psiles/01.aif");
-		~psl02 = Kaffer.read(Server.default, "sounds/_kafes/psiles/01.aif");
+		~psl02 = Kaffer.read(Server.default, "sounds/_kafes/psiles/02.aif");
 		
 		~rit01 = Kaffer.read(Server.default, "sounds/_kafes/ritm/01.aif");
 		~rit02 = Kaffer.read(Server.default, "sounds/_kafes/ritm/02.aif");

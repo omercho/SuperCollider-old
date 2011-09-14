@@ -44,8 +44,8 @@ JODAKaos {
 
 //----------------OSC---------------//
 
-		~mNois=ÊOSCresponderNode(nil,Ê'/bufP/kaos', {Ê|t,r,m|Ê
-			if (~mNoise.isNil) {
+		~mNois.remove; ~mNois=ÊOSCresponderNode(nil,Ê'/bufP/kaos', {Ê|t,r,m|Ê
+			if (m[1] == 1) {
 				~mNoise = Synth.head(~piges, \abs, 
 							[
 							\out, [~limBus, ~revBus],

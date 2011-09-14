@@ -42,7 +42,7 @@ JODAFlowJer {
 ///////flower
 
 		~togFlower=ÊOSCresponderNode(nil,Ê'/bufP/togFlow', {Ê|t,r,m|Ê
-			if (~flow.isNil) {
+			if (m[1] == 1) {
 				~flow = Synth.head(~piges,"flowerJer", 
 					[
 					\out, [~revBus]

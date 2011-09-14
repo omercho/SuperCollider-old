@@ -42,8 +42,8 @@ JODAFlowMic {
 		
 //-----OSC------//
 
-		~togFlowerMic=ÊOSCresponderNode(nil,Ê'/bufP/togMicFlow', {Ê|t,r,m|Ê
-			if (~flowMic.isNil) {
+		~togFlowerMic.remove; ~togFlowerMic=ÊOSCresponderNode(nil,Ê'/bufP/togMicFlow', {Ê|t,r,m|Ê
+			if (m[1] == 1) {
 				~flowMic = Synth.head(~piges,"flowerMic", 
 					[
 					\out, [~revBus]
