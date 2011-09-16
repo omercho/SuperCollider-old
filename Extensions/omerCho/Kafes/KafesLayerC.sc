@@ -835,6 +835,36 @@ fork{
 				
 				}, 
 			\layer_C_71 -> {//	ke
+
+~layC34.stop;
+~layC34 = Posc(
+	\msg, Pshuf([ Pseq([\bt12], 1),	Pseq([\kP63, \kP51, \kP14], 7), Pseq([\kk34], 1) ], inf),
+	\dur, Pseq([	Pseq([0.25], 8), Pseq([1], 1) ], 1)
+).play;
+
+~cemb01.stop;
+~cemb01 = Posc(
+	\msg, Pseq(
+		[
+		//cember
+		\kP11, \bt11, \kk24, 
+		\kk4, \kP13, \kp22, 
+		\bt18, \kP49, \kP14,
+		\kP31, \kP8, \kP10, 
+		\kk22, \kP35, \kk46, \kk2
+		], inf
+	),
+	\dur, Pseq(
+		[
+		//cember
+		Pseq([2, 1, 1], 1),
+		Pseq([2, 1, 1], 1),
+		Pseq([2/4, 1, 2/4], 1),
+		Pseq([1, 1, 1], 1),
+		Pseq([1, 1, 1, 1], 1)
+		]/2, 1
+	)
+).play;
 				
 				}
 		).play;

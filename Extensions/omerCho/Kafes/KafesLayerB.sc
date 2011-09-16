@@ -553,7 +553,7 @@ fork{
 			~dur.next.wait;
 			
 			~tol06.brt_(~kPseq01*2 *1.23700).playPV2(0.001, 1.1, 16.1, mul:0.1, out: ~strHep);
-			~ats02.brt_(~kPseq01 *1.82101).playPV1(0.01, 1.0, 1.1, mul:0.9, start:0.5, out: ~strCok.choose);
+			~ats02.brt_(~kPseq01 *1.82101).playPV1(0.01, 1.0, 1.1, mul:0.6, start:0.5, out: ~strCok.choose);
 			~dur.next.wait;
 	
 		};
@@ -610,14 +610,14 @@ fork{
 "LayerB DEVR-i KEBIR".postln;
 
 
-~gou02.brt_(~kRC1 *0.89000).playBufR(0.001, 1.1, 2.1, mul:0.9, out: ~strTek.choose);				
+~gou02.brt_(~kRC1 *0.89000).playBufR(0.001, 2.1, 2.1, mul:0.9, out: ~strTek.choose);				
 
 
 				
 				}, 
 			\layer_B_39 -> {//	|dum2
 				
-~gou02.brt_(~kRC1 *0.89000).playBufR(0.001, 1.1, 2.1, mul:0.9, out: ~strTek.choose);				
+~gou02.brt_(~kRC1 *0.89000).playBufR(0.001, 3.1, 3.1, mul:0.9, out: ~strTek.choose);				
 				
 				}, 
 			\layer_B_40 -> {//	|tek2
@@ -819,7 +819,8 @@ fork{
 			
 			
 		};
-		~gou01.brt_(~kRD1 *0.89000).playPV2(0.001, 1.1, 5.1, mul: 0.9, out: ~strTek.choose);
+		~gou01.brt_(~kRD5 *0.89000).playPV2(0.001, 1.1, 5.1, mul: 0.9, out: ~strTek.choose);
+		~kik03.brt_(1.5).playPV5(0.001, 1.1, 1, mul:0.4, out: ~strTek.choose); // dum
 		
 		
 	};
@@ -908,7 +909,7 @@ fork{
 				}, 
 		//-------------------------------------------lev5-4/4--24s-----------------------------------------------
 			\layer_B_64 -> {//	+dum2
-~met02.brt_(~kRC1 *1.01000).playGverb(0.001, 0.1, 8.1, mul:0.6, room:55, rev:3.5, damp:0.71, out:~strTek.choose);
+~met02.brt_(~kRC3 *1.01000).playGverb(0.001, 0.1, 8.1, mul:0.6, room:55, rev:3.5, damp:0.71, out:~strTek.choose);
 				
 				}, 
 			\layer_B_65 -> {//	|dum2
