@@ -31,6 +31,7 @@ Kaffer : Buffer {
 	
 	*initClass {
 		StartUp add: {
+			
 			this.loadKafs;
 
 		}
@@ -720,8 +721,16 @@ Kaffer : Buffer {
 	*loadKafs {
 		Server.default.options.numOutputBusChannels=24;
 		Server.default.options.numInputBusChannels=24;
-		Server.default.waitForBoot({
+		Server.default.doWhenBooted({
 
+		KafesLayerA.load;
+		KafesLayerB.load;
+		KafesLayerC.load;
+		KafesPLayers.load;
+		KafesSpat.ch2;
+
+		
+		
 		~ats01 = Kaffer.read(Server.default, "sounds/_kafes/atesh/01.aif");
 		~ats02 = Kaffer.read(Server.default, "sounds/_kafes/atesh/02.aif");
 		~ats03 = Kaffer.read(Server.default, "sounds/_kafes/atesh/03.aif");
@@ -760,12 +769,15 @@ Kaffer : Buffer {
 		~gir01 = Kaffer.read(Server.default, "sounds/_kafes/gir/01.aif");
 		~gir02 = Kaffer.read(Server.default, "sounds/_kafes/gir/02.aif");
 		~gir03 = Kaffer.read(Server.default, "sounds/_kafes/gir/03.aif");
+		~gir04 = Kaffer.read(Server.default, "sounds/_kafes/gir/04.aif");
 		
 		
 		~gou01 = Kaffer.read(Server.default, "sounds/_kafes/goun/01.aif");
 		~gou02 = Kaffer.read(Server.default, "sounds/_kafes/goun/02.aif");
 		~gou03 = Kaffer.read(Server.default, "sounds/_kafes/goun/03.aif");
 		~gou04 = Kaffer.read(Server.default, "sounds/_kafes/goun/04.aif");
+		~gou05 = Kaffer.read(Server.default, "sounds/_kafes/goun/05.aif");
+		
 		
 		~grn01 = Kaffer.read(Server.default, "sounds/_kafes/grain/01.aif");
 		~grn02 = Kaffer.read(Server.default, "sounds/_kafes/grain/02.aif");
@@ -780,6 +792,7 @@ Kaffer : Buffer {
 		
 		~kik01 = Kaffer.read(Server.default, "sounds/_kafes/kick/01.aif");
 		~kik02 = Kaffer.read(Server.default, "sounds/_kafes/kick/02.aif");
+		~kik03 = Kaffer.read(Server.default, "sounds/_kafes/kick/03.aif");
 		
 		
 		~met01 = Kaffer.read(Server.default, "sounds/_kafes/metal/01.aif");

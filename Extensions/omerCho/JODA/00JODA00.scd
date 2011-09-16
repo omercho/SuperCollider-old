@@ -17,10 +17,13 @@ f = {
 	JODAFlowMic.load;
 	JODAFlowJer.load;
 	
+	
+	
 	JODAKaos.load;
 	JODANeyDef.load;
 	0.5.wait;
 	
+	JODAIndust.load;
 	"JODA is ready".postln;
 	
 };
@@ -68,8 +71,7 @@ SynthDef(\indust, {|out = 0, vol = 0.2, att = 0.01, sus = 1.1, rls = 5.1, gate=1
 		
 		rek = LFNoise0.kr(rrand(0.4,1.0), 1,1).squared * MouseX.kr(0, 1);
 		mix = Klank.ar(
-			`[freqs,nil,rings],
-			Blip.ar(rek, [rrand(2,5),rrand(2,5)], vol) * Amplitude.kr(SoundIn.ar(sIn, 0.8));
+			`[freqs,nil,rings], Blip.ar(rek, [rrand(2,5),rrand(2,5)], vol) * Amplitude.kr(SoundIn.ar(sIn, 0.8));
 		).fold2(0.12).cubed * 12;
 		mix = Mix.arFill(3, { CombL.ar(mix, 0.1, 0.03.linrand, 4.0.linrand) });
 		ses = mix.distort * dist;

@@ -24,14 +24,14 @@ KafesReceives {
 	
 		Preceive(
 			\dum01 -> { 
-				~bth04.brt_(~kRD1 *1.05190).playPV2(0.001, 0.1, 1, mul:0.5, out: [0, 1, [0,1]].choose);
-				~bth04.brt_(~kRB1 *1.05190).playGverb(0.001, 2.1, 4, mul:0.8, damp:0.99, out: [0, 1, [0,1]].choose);
+				~bth04.brt_(~kRD1 *1.05190).playPV2(0.001, 0.1, 1, mul:0.5, out: ~strCok.choose);
+				~bth04.brt_(~kRB1 *1.05190).playGverb(0.001, 2.1, 4, mul:0.8, damp:0.99, out: ~strCok.choose);
 					},
 			\dumG -> { 
-				~kik01.brt_(2.5).playGverb(0.001, 1.1, 2, mul:0.8, room:8, rev:6, damp:0.95, out: ~strTek.choose);
+				~kik02.brt_(2.5).playGverb(0.001, 1.1, 2, mul:0.8, room:8, rev:6, damp:0.95, out: ~strTek.choose);
 					},
 			\dumO -> { 
-				~kik01.brt_(2.0).playGverb(0.001, 1.1, 2, mul:0.6, room:8, rev:5, damp:0.95, out: ~strTek.choose);
+				~kik02.brt_(2.0).playGverb(0.001, 1.1, 2, mul:0.6, room:8, rev:5, damp:0.95, out: ~strTek.choose);
 					}				
 		).play;
 	}
@@ -41,22 +41,33 @@ KafesReceives {
 	
 		Preceive(
 			\lC4_1 -> { 
-				~ats02.brt_(9.5).playPV1(0.01, 0.4, 0.6, mul:0.3, start:0.2, out:  ~strTek.choose); 
+				~ats02.brt_(9.5).playPV1(0.01, 0.4, 0.6, mul:0.3, start:[0.105, 0.132, 0.208, 0.05].choose, out:  ~strTek.choose); 
 					},
 			\lC4_2 -> { 
-				~ats02.brt_(3.5).playBuf(0.01, 0.2, 0.8, mul:0.35, start:0.705, out:  ~strTek.choose); 
+				~ats02.brt_(3.5).playBuf(0.01, 0.2, 0.8, mul:0.35, start:[0.705, 0.632, 0.728, 0.605].choose, out:  ~strTek.choose); 
 					},
 			\lC4_3 -> { 
 
 				~ats02.brt_(3.0).playBuf(0.01, 0.2, 2.1, mul:0.4, start:[0.3, 0.632, 0.28, 0.605].choose, out:  ~strTek.choose);
 					},
+
+			\lC4_1b -> { 
+				~ats02.brt_(0.5).playPV1(0.01, 0.4, 0.6, mul:0.63, start:[0.105, 0.132, 0.208, 0.05].choose, out:  ~strTek.choose); 
+					},
+			\lC4_2b -> { 
+				~ats01.brt_(0.5).playBuf(0.01, 1.2, 2.8, mul:0.5, start:[0.705, 0.632, 0.728, 0.605].choose, out:  ~strTek.choose); 
+					},
+			\lC4_3b -> { 
+
+				~ats06.brt_(1.0).playBuf(0.01, 0.2, 2.1, mul:0.9, start:[0.3, 0.632, 0.28, 0.605].choose, out:  ~strTek.choose);
+					},
 			
 			
 			\lC22_1 -> { 
-				~ats02.brt_(9.5).playPV1(0.01, 0.4, 0.1, mul:0.5, start:0.2, out:  ~strTek.choose); 
+				~ats02.brt_(2.5).playPV1(0.01, 0.4, 0.1, mul:0.6, start:[0.105, 0.132, 0.208, 0.05].choose, out:  ~strTek.choose); 
 					},
 			\lC22_2 -> { 
-				~kik01.brt_(9.5).playPV5(0.001, 1.1, 1, mul:0.5, pv5a:3.2, out: ~strTek.choose);
+				~kik01.brt_(9.5).playPV5(0.001, 1.1, 1, mul:0.5, pv5a:[3.3, 2.632, 4.28, 8.605].choose, out: ~strTek.choose);
 					},
 			\lC22_3 -> { 
 				~ats02.brt_(1.5).playBuf(0.01, 0.2, 0.6, mul:0.6, start:[0.73, 0.32, 0.28, 0.57].choose, out:  ~strTek.choose);
@@ -68,7 +79,7 @@ KafesReceives {
 				~ats02.brt_(3.5).playBuf(0.01, 0.2, 0.2, mul:0.7, start:0.705, out:  ~strTek.choose); // dum
 					},
 			\lC22_6 -> { 
-				~kik01.brt_(4.5).playPV5(0.001, 1.1, 1, mul:0.5, pv5a:1.2, out: ~strTek.choose);
+				~kik02.brt_([1.3, 2.632, 3.28, 4.605].choose).playPV5(0.001, 1.1, 1, mul:0.5, pv5a:[0.3, 0.632, 0.28, 0.605].choose, out: ~strTek.choose);
 					},
 			\lC22_7 -> { 
 				~ats02.brt_(17.5).playPV1(0.01, 0.2, 0.1, mul:0.27, start:[0.73, 0.32, 0.28, 0.57].choose, out: ~strTek.choose); // tek
@@ -77,9 +88,9 @@ KafesReceives {
 			
 			\lC31_1a -> { 
 				fork{
-					~bth02.brt_(~kRC1 *1.00011).playPV4(0.001, 0.1, 0.5, mul:0.8, out: [0, 1, [0,1]].choose);
+					~bth02.brt_(~kRC1 *1.00011).playPV4(0.001, 0.1, 0.5, mul:0.8, out: ~strCok.choose);
 					0.005.wait;
-					~kik01.brt_(1.0).playPV2(0.001, 1.1, 2, mul:0.5, out: ~strTek.choose);
+					~kik02.brt_(1.0).playPV2(0.001, 1.1, 2, mul:0.5, out: ~strTek.choose);
 					0.005.wait;
 					~ff = ~kA1;
 					KafGendy.ar(1.1, 0.1, 0.3, 0.8,
@@ -90,14 +101,14 @@ KafesReceives {
 						out: ~strTek.choose
 					).play;
 					0.005.wait;
-					~tht08.brt_(~kRB1 *1.10000).playPV4(1, 0.1, 1.1, pv4a:0.02, loop:0, out: ~strTek.choose); //ok
+					~tht08.brt_(~kRB1 *1.10000).playPV4(1, 0.1, 1.1, pv4a:0.92, loop:0, out: ~strTek.choose); //ok
 				};
 					},
 			\lC31_1b -> { 
 				fork{
-					~bth02.brt_(~kRB4 *1.00011).playPV4(0.001, 0.1, 0.5, mul:0.8, out: [0, 1, [0,1]].choose);
+					~bth02.brt_(~kRB4 *1.00011).playPV4(0.001, 0.1, 0.5, mul:0.8, out: ~strCok.choose);
 					0.005.wait;
-					~kik01.brt_(1.0).playPV2(0.001, 1.1, 2, mul:0.5, out: ~strTek.choose);
+					~kik02.brt_(1.0).playPV2(0.001, 1.1, 2, mul:0.5, out: ~strTek.choose);
 					0.005.wait;
 					~ff = ~kA4;
 					KafGendy.ar(1.1, 0.1, 0.3, 0.8,
@@ -108,14 +119,14 @@ KafesReceives {
 						out: ~strTek.choose
 					).play;
 					0.005.wait;
-					~tht08.brt_(~kRB2 *1.10000).playPV4(1, 0.1, 1.1, pv4a:0.12, loop:0, out: ~strTek.choose); //ok
+					~tht08.brt_(~kRB2 *1.10000).playPV4(1, 0.1, 1.1, pv4a:1.12, loop:0, out: ~strTek.choose); //ok
 				};
 					},
 			\lC31_1c -> { 
 				fork{
-					~bth02.brt_(~kRB7 *1.00011).playPV4(0.001, 0.1, 0.5, mul:0.8, out: [0, 1, [0,1]].choose);
+					~bth02.brt_(~kRB7 *1.00011).playPV4(0.001, 0.1, 0.5, mul:0.8, out: ~strCok.choose);
 					0.005.wait;
-					~kik01.brt_(1.0).playPV2(0.001, 1.1, 2, mul:0.5, out: ~strTek.choose);
+					~kik02.brt_(1.0).playPV2(0.001, 1.1, 2, mul:0.5, out: ~strTek.choose);
 					0.005.wait;
 					~ff = ~kA7/2;
 					KafGendy.ar(1.1, 0.1, 0.3, 0.8,
@@ -131,9 +142,9 @@ KafesReceives {
 					},
 			\lC31_1d -> { 
 				fork{
-					~bth02.brt_(~kRC2 *1.00011).playPV4(0.001, 0.1, 0.5, mul:0.8, out: [0, 1, [0,1]].choose);
+					~bth02.brt_(~kRC2 *1.00011).playPV4(0.001, 0.1, 0.5, mul:0.8, out: ~strCok.choose);
 					0.005.wait;
-					~kik01.brt_(1.0).playPV2(0.001, 1.1, 2, mul:0.5, out: ~strTek.choose);
+					~kik02.brt_(1.0).playPV2(0.001, 1.1, 2, mul:0.5, out: ~strTek.choose);
 					0.005.wait;
 					~ff = ~kA2;
 					KafGendy.ar(1.1, 0.1, 0.3, 0.8,
@@ -154,12 +165,12 @@ KafesReceives {
 				
 					},
 			\lC31_3 -> { 
-				~kik01.brt_(19.5).playPV5(0.001, 1.1, 1, mul:[0.73, 0.8, 0.28, 0.57].choose, out: ~strTek.choose);
+				~kik02.brt_(19.5).playPV5(0.001, 1.1, 1, mul:[0.73, 0.8, 0.28, 0.57].choose, out: ~strTek.choose);
 					},
 					
 					
 			\lC34_1 -> { 
-				~kik01.brt_(2.5).playPV5(0.001, 1.1, 1, mul:0.6, out: ~strTek.choose);
+				~kik02.brt_(2.5).playPV5(0.001, 1.1, 1, mul:0.6, out: ~strTek.choose);
 					}
 					
 				
@@ -196,94 +207,6 @@ KafesReceives {
 		Preceive(
 
 
-//CIFTE DUYEK --------------------------------------
-		//8/4
-			\aP1 -> {//	|dum2
-				~ats02.brt_(3.5).playBuf(0.01, 0.2, 0.1, mul:0.2, start:0.705, out:  ~strTek.choose); // dum
-
-				}, 
-			\aP2 -> {//	+tek2-3-4
-				~ats02.brt_(17.5).playPV1(0.01, 0.2, 0.1, mul:0.27, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // tek
-				
-				}, 
-			\aP3 -> {//	|tek2
-				~ats02.brt_(9.5).playPV1(0.01, 0.4, 0.1, mul:0.2, start:0.2, out:  ~strTek.choose); // tek
-				},
-		//8/4
-			\aP4 -> {//	+dum2
-				~ats02.brt_(3.5).playPV1(0.01, 0.4, 0.1, mul:0.2, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // dum
-				}, 
-			\aP5 -> {//	|dum2
-				~ats02.brt_(3.5).playBuf(0.01, 0.2, 0.1, mul:0.2, start:0.705, out:  ~strTek.choose); // dum
-				}, 
-			\aP6 -> {//	|tek2
-				~ats02.brt_(9.5).playPV1(0.01, 0.4, 0.1, mul:0.2, start:0.2, out:  ~strTek.choose); // tek
-				}, 
-			\aP7 -> {//	|te
-				~ats02.brt_(1.0).playPV1(0.01, 0.4, 0.1, mul:0.2, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // te
-				}, 
-			\aP8 -> {//	ke
-				~ats02.brt_(11.5).playPV1(0.01, 0.4, 0.1, mul:0.2, start:0.2, out:  ~strTek.choose); // ke
-				}, 			
-			
-//FAHTE --------------------------------------------
-		//4/4
-			\aP9 -> {//	+dum2
-				~ats02.brt_(3.5).playPV1(0.01, 0.4, 0.1, mul:0.2, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // dum
-				}, 
-			\aP10 -> {//	|dum2
-				~ats02.brt_(3.5).playBuf(0.01, 0.2, 0.1, mul:0.2, start:0.705, out:  ~strTek.choose); // dum
-
-				}, 
-			\aP11 -> {//	|dum
-				~ats02.brt_(3.5).playBuf(0.01, 0.2, 0.1, mul:0.2, start:0.705, out:  ~strTek.choose); // dum
-
-				}, 
-			
-		//6/4
-			\aP12 -> {//	+tek2
-				~ats02.brt_(17.5).playPV1(0.01, 0.2, 0.1, mul:0.27, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // tek
-				
-				}, 
-			\aP13 -> {//	|tek2
-				~ats02.brt_(9.5).playPV1(0.01, 0.4, 0.1, mul:0.2, start:0.2, out:  ~strTek.choose); // tek
-				}, 
-			\aP14 -> {//	tek2
-				~ats02.brt_(9.5).playPV1(0.01, 0.4, 0.1, mul:0.27, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // tek
-				}, 
-			
-		//6/4
-			\aP15 -> {//	+dum2
-				~ats02.brt_(3.5).playPV1(0.01, 0.4, 0.1, mul:0.2, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // dum
-				}, 
-			\aP16 -> {//	|ta2
-				
-				}, 
-			\aP17 -> {//	hek2
-				
-				~ats02.brt_(3.5).playBuf(0.01, 0.2, 0.1, mul:0.2, start:0.705, out:  ~strTek.choose); // dum
-				~ats02.brt_(11.5).playPV1(0.01, 0.4, 0.1, mul:0.2, start:0.2, out:  ~strTek.choose); // ke
-				}, 
-			
-		//4/4
-			\aP18 -> {//	|te
-				~ats02.brt_(1.0).playPV1(0.01, 0.4, 0.1, mul:0.2, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // te
-				}, 
-			\aP19 -> {//	ke
-				~ats02.brt_(11.5).playPV1(0.01, 0.4, 0.1, mul:0.2, start:0.2, out:  ~strTek.choose); // ke
-				}, 
-			\aP20 -> {//	|te
-				~ats02.brt_(1.0).playPV1(0.01, 0.4, 0.1, mul:0.2, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // te
-				}, 
-			\aP21 -> {//	ke
-				~ats02.brt_(11.5).playPV1(0.01, 0.4, 0.1, mul:0.2, start:0.2, out:  ~strTek.choose); // ke
-				}, 
-	
-//CEMBER -------------------------------------------
-		//4/4
-			\aP22 -> {//	+dum2
-				~ats02.brt_(3.5).playPV1(0.01, 0.4, 0.1, mul:0.2, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // dum
-				}, 
 			\aP23 -> {//	|te
 				~ats02.brt_(1.0).playPV1(0.01, 0.4, 0.1, mul:0.2, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // te
 				}, 
@@ -340,145 +263,6 @@ KafesReceives {
 				}, 
 			\aP37 -> {//	ke
 				~ats02.brt_(11.5).playPV1(0.01, 0.4, 0.1, mul:0.2, start:0.2, out:  ~strTek.choose); // ke
-				},
-
-// DEVR-i KEBIR -----------------------------
-		//6/4
-			\aP38 -> {//	+dum2
-				~ats02.brt_(3.5).playPV1(0.01, 0.4, 0.1, mul:0.2, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // dum
-				}, 
-			\aP39 -> {//	|dum2
-				~ats02.brt_(3.5).playBuf(0.01, 0.2, 0.1, mul:0.2, start:0.705, out:  ~strTek.choose); // dum
-
-				}, 
-			\aP40 -> {//	|tek2
-				~ats02.brt_(9.5).playPV1(0.01, 0.4, 0.1, mul:0.2, start:0.2, out:  ~strTek.choose); // tek
-				},
-			
-		//4/4
-			\aP41 -> {//	+dum2
-				~ats02.brt_(3.5).playPV1(0.01, 0.4, 0.1, mul:0.2, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // dum
-				}, 
-			\aP42 -> {//	|tek
-				~ats02.brt_(9.5).playPV1(0.01, 0.4, 0.1, mul:0.2, start:0.2, out:  ~strTek.choose); // tek
-				}, 
-			\aP43 -> {//	te'
-				~ats02.brt_(1.0).playPV1(0.01, 0.4, 0.1, mul:0.2, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // te
-				}, 
-			\aP44 -> {//	ke'
-				~ats02.brt_(11.5).playPV1(0.01, 0.4, 0.1, mul:0.2, start:0.2, out:  ~strTek.choose); // ke
-				},
-			\aP45 -> {//	dum
-				~ats02.brt_(3.5).playPV1(0.01, 0.4, 0.1, mul:0.2, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // dum
-				}, 
-			
-		//	4/4
-			\aP46 -> {//	+tek2
-				~ats02.brt_(17.5).playPV1(0.01, 0.2, 0.1, mul:0.27, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // tek
-				
-				}, 
-			\aP47 -> {//	|tek2
-				~ats02.brt_(9.5).playPV1(0.01, 0.4, 0.1, mul:0.2, start:0.2, out:  ~strTek.choose); // tek
-				},
-			
-			
-		// 	6/4
-			\aP48 -> {//	+tek2
-				~ats02.brt_(17.5).playPV1(0.01, 0.2, 0.1, mul:0.27, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // tek
-				}, 
-			\aP49 -> {//	+dum2
-				~ats02.brt_(3.5).playPV1(0.01, 0.4, 0.1, mul:0.2, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // dum
-				}, 
-			\aP50 -> {//	|dum2
-				~ats02.brt_(3.5).playBuf(0.01, 0.2, 0.1, mul:0.2, start:0.705, out:  ~strTek.choose); // dum
-
-				}, 
-			
-			\aP51 -> {//	+ta2
-				
-				}, 
-			\aP52 -> {//	|hek
-				
-				~ats02.brt_(3.5).playBuf(0.01, 0.2, 0.1, mul:0.2, start:0.705, out:  ~strTek.choose); // dum
-				~ats02.brt_(11.5).playPV1(0.01, 0.4, 0.1, mul:0.2, start:0.2, out:  ~strTek.choose); // ke
-				}, 
-			
-		//	 4/4
-			\aP53 -> {//	|te
-				~ats02.brt_(1.0).playPV1(0.01, 0.4, 0.1, mul:0.2, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // te
-				}, 
-			\aP54 -> {//	ke
-				~ats02.brt_(11.5).playPV1(0.01, 0.4, 0.1, mul:0.2, start:0.2, out:  ~strTek.choose); // ke
-				}, 
-			\aP55 -> {//	|te
-				~ats02.brt_(1.0).playPV1(0.01, 0.4, 0.1, mul:0.2, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // te
-				}, 
-			\aP56 -> {//	ke
-				~ats02.brt_(11.5).playPV1(0.01, 0.4, 0.1, mul:0.2, start:0.2, out:  ~strTek.choose); // ke
-				},
-			
-//BEREFSAN
-		// 6/4
-			\aP57 -> {//	+dum2-3-4
-				~ats02.brt_(3.5).playPV1(0.01, 1.4, 0.1, mul:0.2, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // dum
-				}, 
-			\aP58 -> {//	|tek2
-				
-				}, 
-			
-		// 6/4
-			\aP59 -> {//	+dum2-3-4
-				~ats02.brt_(3.5).playPV1(0.01, 1.4, 0.1, mul:0.2, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // dum
-				}, 
-			\aP60 -> {//	|tek2
-				~ats02.brt_(9.5).playPV1(0.01, 0.4, 0.1, mul:0.2, start:0.2, out:  ~strTek.choose); // tek
-				}, 
-			
-		//4/4
-			\aP61 -> {//	+dum2-3-4
-				~ats02.brt_(3.5).playPV1(0.01, 1.4, 0.1, mul:0.2, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // dum
-				}, 
-			
-		//4/4
-			\aP62 -> {//	|dum2
-				~ats02.brt_(3.5).playPV1(0.01, 1.4, 0.1, mul:0.2, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // dum
-
-				}, 
-			\aP63 -> {//	tek2
-				~ats02.brt_(9.5).playPV1(0.01, 0.4, 0.1, mul:0.27, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // tek
-				}, 
-		//4/4
-			\aP64 -> {//	+dum2
-				~ats02.brt_(3.5).playPV1(0.01, 1.4, 0.1, mul:0.2, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // dum
-				}, 
-			\aP65 -> {//	|dum2
-				~ats02.brt_(3.5).playPV1(0.01, 1.4, 0.1, mul:0.2, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // dum
-
-				}, 
-		//4/4	
-			\aP66 -> {//	+ta2
-				
-				~ats03.brt_(~kRD1 *1.82101).playPV3(0.01, 1.0, 0.1, mul:0.5, pv3a:6.0, start:[0.73, 0.1, 0.28, 0.57, 0.9].choose, out:[0,1]);
-				
-				}, 
-			\aP67 -> {//	|hek
-				
-				~ats02.brt_(3.5).playBuf(0.01, 0.2, 0.1, mul:0.2, start:0.705, out:  ~strTek.choose); // dum
-				~ats02.brt_(11.5).playPV1(0.01, 0.4, 0.1, mul:0.2, start:0.2, out:  ~strTek.choose); // ke
-				}, 
-			
-		//	 4/4
-			\aP68 -> {//	|te
-				~ats02.brt_(1.0).playPV1(0.01, 0.4, 0.1, mul:0.2, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // te
-				}, 
-			\aP69 -> {//	ke
-				~ats02.brt_(11.5).playPV1(0.01, 0.4, 0.1, mul:0.2, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // ke
-				}, 
-			\aP70 -> {//	|te
-				~ats02.brt_(1.0).playPV1(0.01, 0.4, 0.1, mul:0.2, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // te
-				}, 
-			\aP71 -> {//	ke
-				~ats02.brt_(11.5).playPV1(0.01, 0.4, 0.1, mul:0.2, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // ke
 				}
 		).play;
 
@@ -498,155 +282,155 @@ KafesReceives {
 //CIFTE DUYEK --------------------------------------
 		//8/4
 			\bt1 -> {//	|dum2
-				~bth02.brt_(~kRC1 *1.00011).playBuf(0.001, 0.3, 0.1, mul:0.6, out: [0, 1, [0,1]].choose);
+				~bth02.brt_(~kRC1 *1.00011).playBuf(0.001, 0.3, 0.1, mul:0.6, out: ~strCok.choose);
 
 				}, 
 			\bt2 -> {//	+tek2-3-4
 
-		~bth04.brt_(~kRB1 *1.05190).playGverb(0.001, 1.1, 0.1, mul:0.4, room:2, rev:1, damp:0.99, out: [0, 1, [0,1]].choose);
+		~bth04.brt_(~kRB1 *1.05190).playGverb(0.001, 1.1, 0.1, mul:0.4, room:2, rev:1, damp:0.99, out: ~strCok.choose);
 
 				}, 
 			\bt3 -> {//	|tek2
-				~bth01.brt_(~kRD1 *0.99100).playPV5(0.001, 0.4, 0.1, mul:0.5, out: [0, 1, [0,1]].choose);
-		~bth04.brt_(~kRB1 *1.05190).playGverb(0.001, 2.1, 4, mul:0.2, damp:0.89, out: [0, 1, [0,1]].choose);
+				~bth01.brt_(~kRD1 *0.99100).playPV5(0.001, 0.4, 0.1, mul:0.5, out: ~strCok.choose);
+		~bth04.brt_(~kRB1 *1.05190).playGverb(0.001, 2.1, 4, mul:0.2, damp:0.89, out: ~strCok.choose);
 				},
 		//8/4
 			\bt4 -> {//	+dum2
-				~bth02.brt_(~kRC1 *1.00011).playPV4(0.001, 0.1, 0.5, mul:0.8, out: [0, 1, [0,1]].choose);
-				~bth02.brt_(~kRC1 *1.00011).playBufR(0.001, 0.7, 1.4, mul:0.8, out: [0, 1, [0,1]].choose);
+				~bth02.brt_(~kRC1 *1.00011).playPV4(0.001, 0.1, 0.5, mul:0.8, out: ~strCok.choose);
+				~bth02.brt_(~kRC1 *1.00011).playBufR(0.001, 0.7, 1.4, mul:0.8, out: ~strCok.choose);
 				}, 
 			\bt5 -> {//	|dum2
-				~bth02.brt_(~kRC1 *1.00011).playPV2(0.001, 0.1, 0.3, mul:0.6, out: [0, 1, [0,1]].choose);
-				~bth02.brt_(~kRC3 *1.00011).playBufR(0.001, 1.3, 0.3, mul:1.5, out: [0, 1, [0,1]].choose);
+				~bth02.brt_(~kRC1 *1.00011).playPV2(0.001, 0.1, 0.3, mul:0.6, out: ~strCok.choose);
+				~bth02.brt_(~kRC3 *1.00011).playBufR(0.001, 1.3, 0.3, mul:1.5, out: ~strCok.choose);
 				}, 
 			\bt6 -> {//	|tek2
-				~bth04.brt_(~kRD1 *1.05190).playPV2(0.001, 0.1, 1, mul:0.5, out: [0, 1, [0,1]].choose);
-				~bth04.brt_(~kRB1 *1.05190).playGverb(0.001, 2.1, 4, mul:0.8, damp:0.99, out: [0, 1, [0,1]].choose);
+				~bth04.brt_(~kRD1 *1.05190).playPV2(0.001, 0.1, 1, mul:0.5, out: ~strCok.choose);
+				~bth04.brt_(~kRB1 *1.05190).playGverb(0.001, 2.1, 4, mul:0.8, damp:0.99, out: ~strCok.choose);
 				
 				}, 
 			\bt7 -> {//	|te
-				~bth02.brt_(~kRB6 *1.00011).playPV5(0.001, 0.3, 0.3, mul:0.4, out: [0, 1, [0,1]].choose);
+				~bth02.brt_(~kRB6 *1.00011).playPV5(0.001, 0.3, 0.3, mul:0.4, out: ~strCok.choose);
 				}, 
 			\bt8 -> {//	ke
-				~bth04.brt_(~kRD1 *1.05190).playPV1(0.001, 0.1, 1.2, mul:0.2, out: [0, 1, [0,1]].choose);
+				~bth04.brt_(~kRD1 *1.05190).playPV1(0.001, 0.1, 1.2, mul:0.2, out: ~strCok.choose);
 				}, 			
 			
 //FAHTE --------------------------------------------
 		//4/4
 			\bt9 -> {//	+dum2
-				~bth02.brt_(~kRC1 *1.00011).playPV5(0.001, 0.1, 0.3, mul:0.8, out: [0, 1, [0,1]].choose);
+				~bth02.brt_(~kRC1 *1.00011).playPV5(0.001, 0.1, 0.3, mul:0.8, out: ~strCok.choose);
 				
 				}, 
 			\bt10 -> {//	|dum
-				~bth02.brt_(~kRB7 *1.00011).playPV5(0.001, 0.3, 0.3, mul:0.4, out: [0, 1, [0,1]].choose);
-				~bth02.brt_(~kRB7 *1.00011).playPV1(0.001, 0.3, 0.3, mul:0.4, out: [0, 1, [0,1]].choose);
+				~bth02.brt_(~kRB7 *1.00011).playPV5(0.001, 0.3, 0.3, mul:0.4, out: ~strCok.choose);
+				~bth02.brt_(~kRB7 *1.00011).playPV1(0.001, 0.3, 0.3, mul:0.4, out: ~strCok.choose);
 				}, 
 			\bt11 -> {//	|dum
-				~bth02.brt_(~kRB5 *1.00011).playBuf(0.001, 0.3, 0.3, mul:0.4, out: [0, 1, [0,1]].choose);
+				~bth02.brt_(~kRB5 *1.00011).playBuf(0.001, 0.3, 0.3, mul:0.4, out: ~strCok.choose);
 				}, 
 			
 		//6/4
 			\bt12 -> {//	+tek2
-				~bth06.brt_(~kRA4 *1.10100).playGverb(0.001, 0.5, 4.01, mul:0.8, room:18, rev:3.5, damp:0.81, out: [0, 1, [0,1]].choose);
+				~bth06.brt_(~kRA4 *1.10100).playGverb(0.001, 0.5, 4.01, mul:0.8, room:18, rev:3.5, damp:0.81, out: ~strCok.choose);
 				}, 
 			\bt13 -> {//	|tek2
-				~bth06.brt_(~kRD4 *1.10100).playGverb(0.001, 0.5, 4.01, mul:0.5, room:18, rev:3.5, damp:0.81, out: [0, 1, [0,1]].choose);
+				~bth06.brt_(~kRD4 *1.10100).playGverb(0.001, 0.5, 4.01, mul:0.5, room:18, rev:3.5, damp:0.81, out: ~strCok.choose);
 				}, 
 			\bt14 -> {//	tek2
-				~bth06.brt_(~kRC4 *1.10100).playGverb(0.001, 0.5, 4.01, mul:0.2, room:18, rev:3.5, damp:0.81, out: [0, 1, [0,1]].choose);
+				~bth06.brt_(~kRC4 *1.10100).playGverb(0.001, 0.5, 4.01, mul:0.2, room:18, rev:3.5, damp:0.81, out: ~strCok.choose);
 				}, 
 			
 		//6/4
 			\bt15 -> {//	+dum2
-	~bth04.brt_(~kRA2 *1.05190).playGverb(0.001, 2.1, 6.1, mul:0.7, room:55, rev:13.5, damp:0.81, out: [0, 1, [0,1]].choose);
+	~bth04.brt_(~kRA2 *1.05190).playGverb(0.001, 2.1, 6.1, mul:0.7, room:55, rev:13.5, damp:0.81, out: ~strCok.choose);
 				}, 
 			\bt16 -> {//	|ta2
-				~bth04.brt_(~kRC4 *1.05190).playPV1(0.001, 3.1, 1.2, mul:0.5, out: [0, 1, [0,1]].choose);
+				~bth04.brt_(~kRC4 *1.05190).playPV1(0.001, 3.1, 1.2, mul:0.5, out: ~strCok.choose);
 				}, 
 			\bt17 -> {//	hek2
-				~bth02.brt_(~kRC1 *1.00011).playPV5(0.001, 0.1, 0.3, mul:0.5, out: [0, 1, [0,1]].choose);
-				~bth02.brt_(~kRC1 *1.00011).playPV2(0.001, 1.3, 0.3, mul:0.5, out: [0, 1, [0,1]].choose);
-				~bth04.brt_(~kRB6 *1.05190).playPV1(0.001, 3.1, 1.2, mul:0.5, out: [0, 1, [0,1]].choose);
+				~bth02.brt_(~kRC1 *1.00011).playPV5(0.001, 0.1, 0.3, mul:0.5, out: ~strCok.choose);
+				~bth02.brt_(~kRC1 *1.00011).playPV2(0.001, 1.3, 0.3, mul:0.5, out: ~strCok.choose);
+				~bth04.brt_(~kRB6 *1.05190).playPV1(0.001, 3.1, 1.2, mul:0.5, out: ~strCok.choose);
 				}, 
 			
 		//4/4
 			\bt18 -> {//	|te
-				~bth06.brt_(~kRD7 *1.10100).playPV1(0.001, 1.1, 1, mul:0.6, out: [0, 1, [0,1]].choose);
+				~bth06.brt_(~kRD7 *1.10100).playPV1(0.001, 1.1, 1, mul:0.6, out: ~strCok.choose);
 				}, 
 			\bt19 -> {//	ke
-				~bth04.brt_(~kRC5 *1.05190).playPV2(0.001, 0.1, 1, mul:0.2, out: [0, 1, [0,1]].choose);
+				~bth04.brt_(~kRC5 *1.05190).playPV2(0.001, 0.1, 1, mul:0.2, out: ~strCok.choose);
 				}, 
 			\bt20 -> {//	|te
-				~bth04.brt_(~kRB2 *1.05190).playGverb(0.001, 2.1, 4, mul:0.7, damp:0.99, out: [0, 1, [0,1]].choose); 
+				~bth04.brt_(~kRB2 *1.05190).playGverb(0.001, 2.1, 4, mul:0.7, damp:0.99, out: ~strCok.choose); 
 				}, 
 			\bt21 -> {//	ke
-				~bth05.brt_(~kRC3 *1.12993).playPV1(0.001, 1.1, 1, mul:0.4, out: [0, 1, [0,1]].choose);
+				~bth05.brt_(~kRC3 *1.12993).playPV1(0.001, 1.1, 1, mul:0.4, out: ~strCok.choose);
 				}, 
 	
 //CEMBER -------------------------------------------
 		//4/4
 			\bt22 -> {//	+dum2
-				~bth02.brt_(~kRC3 *1.00011).playBuf(0.001, 0.3, 0.3, mul:0.5, out: [0, 1, [0,1]].choose);
-				~bth05.brt_(~kRC3 *1.12993).playPV5(0.001, 1.1, 1, mul:0.4, out: [0, 1, [0,1]].choose);
-				~bth04.brt_(~kRB3 *1.05190).playPV1(0.001, 0.1, 1, mul:0.2, out: [0, 1, [0,1]].choose);
+				~bth02.brt_(~kRC3 *1.00011).playBuf(0.001, 0.3, 0.3, mul:0.5, out: ~strCok.choose);
+				~bth05.brt_(~kRC3 *1.12993).playPV5(0.001, 1.1, 1, mul:0.4, out: ~strCok.choose);
+				~bth04.brt_(~kRB3 *1.05190).playPV1(0.001, 0.1, 1, mul:0.2, out: ~strCok.choose);
 				}, 
 			\bt23 -> {//	|te
-				~bth01.brt_(~kRC4 *0.99100).playBuf(0.001, 0.4, 0.1, mul:0.5, out: [0, 1, [0,1]].choose);
-				~bth04.brt_(~kRB4 *1.05190).playBuf(0.001, 0.1, 1, mul:0.2, out: [0, 1, [0,1]].choose);
+				~bth01.brt_(~kRC4 *0.99100).playBuf(0.001, 0.4, 0.1, mul:0.5, out: ~strCok.choose);
+				~bth04.brt_(~kRB4 *1.05190).playBuf(0.001, 0.1, 1, mul:0.2, out: ~strCok.choose);
 				}, 
 			\bt24 -> {//	ke
-				~bth01.brt_(~kRC4 *0.99100).playBuf(0.001, 0.4, 0.1, mul:0.5, out: [0, 1, [0,1]].choose);
-				~bth04.brt_(~kRC4 *1.05190).playPV1(0.001, 0.1, 1, mul:0.2, out: [0, 1, [0,1]].choose);
-				~bth04.brt_(~kRB4 *1.05190).playBuf(0.001, 0.1, 1, mul:0.2, out: [0, 1, [0,1]].choose);
+				~bth01.brt_(~kRC4 *0.99100).playBuf(0.001, 0.4, 0.1, mul:0.5, out: ~strCok.choose);
+				~bth04.brt_(~kRC4 *1.05190).playPV1(0.001, 0.1, 1, mul:0.2, out: ~strCok.choose);
+				~bth04.brt_(~kRB4 *1.05190).playBuf(0.001, 0.1, 1, mul:0.2, out: ~strCok.choose);
 				},
 			
 		//4/4	
 			\bt25 -> {//	+dum2
-				~bth02.brt_(~kRC4 *1.00011).playPV3(0.001, 0.3, 0.3, mul:0.2, out: [0, 1, [0,1]].choose);
-				~bth04.brt_(~kRB4 *1.05190).playBuf(0.001, 0.1, 1, mul:0.2, out: [0, 1, [0,1]].choose);
+				~bth02.brt_(~kRC4 *1.00011).playPV3(0.001, 0.3, 0.3, mul:0.2, out: ~strCok.choose);
+				~bth04.brt_([~kRB4, ~kRB5, ~kRB6].choose *1.05190).playBuf(0.001, 0.1, 1, mul:0.2, out: ~strCok.choose);
 				}, 
 			\bt26 -> {//	|dum
-	~bth04.brt_(~kRB3 *1.05190).playGverb(0.001, 1.1, 6.1, mul:0.4, room:200, rev:1, damp:0.66, out: [0, 1, [0,1]].choose);
+	~bth04.brt_(~kRB3 *1.05190).playGverb(0.001, 1.1, 6.1, mul:0.4, room:200, rev:1, damp:0.66, out: ~strCok.choose);
 				}, 
 			\bt27 -> {//	_dum
-	~bth04.brt_(~kRB2 *1.05190).playGverb(0.001, 1.1, 6.1, mul:0.4, room:200, rev:1, damp:0.66, out: [0, 1, [0,1]].choose);			
+	~bth04.brt_(~kRB2 *1.05190).playGverb(0.001, 1.1, 6.1, mul:0.4, room:200, rev:1, damp:0.66, out: ~strCok.choose);			
 				},
 			
 		//6/4
 			\bt28 -> {//	+tek2
-				~bth02.brt_(~kRC4 *1.00011).playPV2(0.001, 0.1, 0.3, mul:0.5, out: [0, 1, [0,1]].choose);
-				~bth02.brt_(~kRC4 *1.00011).playBufR(0.001, 1.3, 0.3, mul:0.5, out: [0, 1, [0,1]].choose);
+				~bth02.brt_(~kRC4 *1.00011).playPV2(0.001, 0.1, 0.3, mul:0.5, out: ~strCok.choose);
+				~bth02.brt_(~kRC4 *1.00011).playBufR(0.001, 1.3, 0.3, mul:0.5, out: ~strCok.choose);
 				}, 
 			\bt29 -> {//	|tek2
-				~bth06.brt_(~kRC5 *1.10100).playPV4(0.001, 1.1, 1, mul:0.3, out: [0, 1, [0,1]].choose);
-				~bth06.brt_(~kRC5 *1.10100).playPV1(0.001, 1.1, 1, mul:0.3, out: [0, 1, [0,1]].choose);
+				~bth06.brt_(~kRC5 *1.10100).playPV4(0.001, 1.1, 1, mul:0.3, out: ~strCok.choose);
+				~bth06.brt_(~kRC5 *1.10100).playPV1(0.001, 1.1, 1, mul:0.3, out: ~strCok.choose);
 				}, 
 			\bt30 -> {//	tek2
-				~bth04.brt_(~kRC4 *1.05190).playPV5(0.001, 0.1, 1, mul:0.2, out: [0, 1, [0,1]].choose);
+				~bth04.brt_(~kRC4 *1.05190).playPV5(0.001, 0.1, 1, mul:0.2, out: ~strCok.choose);
 				}, 
 			
 		//6/4
 			\bt31 -> {//	+dum2
-				~bth04.brt_(~kRB4 *1.05190).playGverb(0.001, 2.1, 4, mul:0.2, damp:0.99, out: [0, 1, [0,1]].choose);
+				~bth04.brt_(~kRB4 *1.05190).playGverb(0.001, 2.1, 4, mul:0.2, damp:0.99, out: ~strCok.choose);
 				}, 
 			\bt32 -> {//	|ta2
-				~bth04.brt_(~kRC4 *1.05190).playPV2(0.001, 0.1, 1.2, mul:0.1, out: [0, 1, [0,1]].choose);
-				~bth04.brt_(~kRC4 *1.05190).playPV1(0.001, 0.1, 1.2, mul:0.1, out: [0, 1, [0,1]].choose);
+				~bth04.brt_(~kRC4 *1.05190).playPV2(0.001, 0.1, 1.2, mul:0.1, out: ~strCok.choose);
+				~bth04.brt_(~kRC4 *1.05190).playPV1(0.001, 0.1, 1.2, mul:0.1, out: ~strCok.choose);
 				}, 
 			\bt33 -> {//	hek2
-				~bth02.brt_(~kRC4 *1.00011).playPV5(0.001, 0.1, 0.3, mul:0.5, out: [0, 1, [0,1]].choose);
-				~bth02.brt_(~kRC4 *1.00011).playGverb(0.001, 1.3, 5.3, mul:0.5, out: [0, 1, [0,1]].choose);
+				~bth02.brt_(~kRC4 *1.00011).playPV5(0.001, 0.1, 0.3, mul:0.5, out: ~strCok.choose);
+				~bth02.brt_(~kRC4 *1.00011).playGverb(0.001, 1.3, 5.3, mul:0.5, out: ~strCok.choose);
 				}, 
 			
 		//4/4
 			\bt34 -> {//	|te
-				~bth06.brt_(~kRC7 *1.10100).playPV3(0.001, 1.1, 1, mul:0.3, out: [0, 1, [0,1]].choose);
+				~bth06.brt_(~kRC7 *1.10100).playPV3(0.001, 1.1, 1, mul:0.3, out: ~strCok.choose);
 				}, 
 			\bt35 -> {//	ke
-				~bth04.brt_(~kRC5 *1.05190).playPV2(0.001, 0.1, 1, mul:0.2, out: [0, 1, [0,1]].choose);
+				~bth04.brt_(~kRC5 *1.05190).playPV2(0.001, 0.1, 1, mul:0.2, out: ~strCok.choose);
 				}, 
 			\bt36 -> {//	|te
-				~bth04.brt_(~kRB2 *1.05190).playGverb(0.001, 2.1, 4, mul:0.07, damp:0.99, out: [0, 1, [0,1]].choose); 
+				~bth04.brt_(~kRB2 *1.05190).playGverb(0.001, 2.1, 4, mul:0.07, damp:0.99, out: ~strCok.choose); 
 				}, 
 			\bt37 -> {//	ke
 				
@@ -670,7 +454,7 @@ Preceive(
 //CIFTE DUYEK --------------------------------------
 		//8/4
 			\kP1 -> {//	|dum2
-				~bth02.brt_(~kRC1 *1.00011).playPV4B(0.001, 0.1, 0.5, mul:0.8, out: [0, 1, [0,1]].choose);
+				~bth02.brt_(~kRC1 *1.00011).playPV4B(0.001, 0.1, 0.5, mul:0.8, out: ~strCok.choose);
 				~kik02.brt_(2.5).playGverb(0.001, 1.1, 2, mul:0.5, room:8, rev:6, damp:0.95, out: ~strTek.choose);
 				
 				~ff = ~kA4;
@@ -681,7 +465,7 @@ Preceive(
 					mul: 0.4,
 					out: ~strTek.choose
 				).play;
-				~tht08.brt_(~kRB4 *1.10000).playPV4B(1, 0.1, 2.1, PV4Ba:[1.2, 2.3, 3.8].choose, loop:0, out: ~strTek.choose); //ok
+				~tht08.brt_(~kRA4 *1.10000).playPV4B(1, 0.1, 2.1, pv4a:[1.2, 2.3, 3.8].choose, loop:0, out: ~strTek.choose); //ok
 				}, 
 			\kP2 -> {//	+tek2-3-4
 				~kik02.brt_(9.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);
@@ -710,7 +494,7 @@ Preceive(
 //FAHTE --------------------------------------------
 		//4/4
 			\kP9 -> {//	+dum2
-				~bth02.brt_(~kRB4 *1.00011).playPV4B(0.001, 0.1, 0.5, mul:0.8, out: [0, 1, [0,1]].choose);
+				~bth02.brt_(~kRB4 *1.00011).playPV4B(0.001, 0.1, 0.5, mul:0.8, out: ~strCok.choose);
 				~kik02.brt_(1.0).playGverb(0.001, 1.1, 2, mul:0.5, room:8, rev:6, damp:0.95, out: ~strTek.choose);
 				
 				~ff = ~kA7/2;
@@ -721,7 +505,7 @@ Preceive(
 					mul: 0.4,
 					out: ~strTek.choose
 				).play;
-				~tht08.brt_(~kRB1 *1.10000).playPV4B(1, 1.1, 5.1, PV4Ba:1.0, loop:0, out: ~strTek.choose); //ok
+				~tht08.brt_(~kRB1 *1.10000).playPV4B(1, 1.1, 5.1, pv4a:1.0, loop:0, out: ~strTek.choose); //ok
 				}, 
 			\kP10 -> {//	|dum2
 				~kik02.brt_(3.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);
@@ -776,7 +560,7 @@ Preceive(
 			\kP22 -> {//	+dum2
 			
 				fork{
-					~bth02.brt_(~kRC1 *1.00011).playPV4B(0.001, 0.1, 0.5, mul:0.8, out: [0, 1, [0,1]].choose);
+					~bth02.brt_(~kRC1 *1.00011).playPV4B(0.001, 0.1, 0.5, mul:0.8, out: ~strCok.choose);
 					0.005.wait;
 					~kik02.brt_(1.0).playPV2(0.001, 1.1, 2, mul:0.5, out: ~strTek.choose);
 					0.005.wait;
@@ -789,7 +573,7 @@ Preceive(
 						out: ~strTek.choose
 					).play;
 					0.005.wait;
-					~tht08.brt_(~kRB1 *1.10000).playPV4B(1, 0.1, 1.1, PV4Ba:0.02, loop:0, out: ~strTek.choose); //ok
+					~tht08.brt_(~kRB1 *1.10000).playPV4B(1, 0.1, 1.1, pv4a:0.02, loop:0, out: ~strTek.choose); //ok
 				};
 			}, 
 			\kP23 -> {//	|te
@@ -853,7 +637,7 @@ Preceive(
 // DEVR-i KEBIR -----------------------------
 		//6/4
 			\kP38 -> {//	+dum2
-				~bth02.brt_(~kRC1 *1.00011).playPV4B(0.001, 0.1, 0.5, mul:0.8, out: [0, 1, [0,1]].choose);
+				~bth02.brt_(~kRC1 *1.00011).playPV4B(0.001, 0.1, 0.5, mul:0.8, out: ~strCok.choose);
 				~kik02.brt_(3.5).playGverb(0.001, 1.1, 2, mul:0.5, room:8, rev:6, damp:0.95, out: ~strTek.choose);
 				
 				~ff = ~kA1;
@@ -864,7 +648,7 @@ Preceive(
 					mul: 0.4,
 					out: ~strTek.choose
 				).play;
-				~tht08.brt_(~kRB1 *1.10000).playPV4B(1, 4.1, 5.1, PV4Ba:1.2, loop:0, out: ~strTek.choose); //ok
+				~tht08.brt_(~kRB1 *1.10000).playPV4B(1, 4.1, 5.1, pv4a:1.2, loop:0, out: ~strTek.choose); //ok
 				}, 
 			\kP39 -> {//	|dum2
 				~kik02.brt_(3.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);
@@ -939,7 +723,7 @@ Preceive(
 //BEREFSAN
 		// 6/4
 			\kP57 -> {//	+dum2-3-4
-				~bth02.brt_(~kRC1 *1.00011).playPV4B(0.001, 0.1, 0.5, mul:0.8, out: [0, 1, [0,1]].choose);
+				~bth02.brt_(~kRC1 *1.00011).playPV4B(0.001, 0.1, 0.5, mul:0.8, out: ~strCok.choose);
 				~kik02.brt_(3.5).playGverb(0.001, 1.1, 2, mul:0.5, room:8, rev:6, damp:0.95, out: ~strTek.choose);
 				
 				~ff = ~kA4;
@@ -950,7 +734,7 @@ Preceive(
 					mul: 0.4,
 					out: ~strTek.choose
 				).play;
-				~tht08.brt_(~kRB4 *1.10000).playPV4B(1, 4.1, 5.1, PV4Ba:1.2, loop:0, out: ~strTek.choose); //ok
+				~tht08.brt_(~kRB4 *1.10000).playPV4B(1, 4.1, 5.1, pv4a:1.2, loop:0, out: ~strTek.choose); //ok
 				}, 
 			\kP58 -> {//	|tek2
 				

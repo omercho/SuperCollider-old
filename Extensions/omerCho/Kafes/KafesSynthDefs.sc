@@ -36,7 +36,29 @@ KafesSynthDefs {
 			Out.ar(out, src* vol*env);
 		
 		}).send(Server.default);
+	
+	
+		SynthDef(\buf, { | out=0, bufnum = 0, 
+						rate = 0.1, startPos = 0, amp = 1.0, 
+						gate = 1, att = 0.1, dec = 1.1, sus = 1, rls = 0.2, 
+						pan = 0, wid = 2, loop = 0|
+			var env, audio;
+			//rate = rate * BufRateScale.kr(bufnum);
+			startPos = startPos * BufFrames.kr(bufnum);
+			
+			env = EnvGen.ar(Env.adsr(att, dec, sus, rls, 1, -1), gate, doneAction: 2);
+			
+			audio = PlayBuf.ar(1, bufnum, BufRateScale.kr(bufnum)*rate, startPos: startPos, loop:1);
+			
+			//audio = Pan2.ar(audio, pan, amp*6);
+			audio = PanAz.ar( 2, audio, pan, amp*6, width: wid);
+			Out.ar(out, audio* env);
+		}).add;
+	
 	});
+	
+	
+	
 	
 	}
 	
