@@ -1680,25 +1680,7 @@ Pdef(\fahteLayerA, Posc(
 		\layer_A_9, \layer_A_10,\layer_A_11, 
 		\layer_A_12, \layer_A_13, \layer_A_14, 
 		\layer_A_15, \layer_A_16, \layer_A_17, 
-		\layer_A_18, \layer_A_19, \layer_A_20, \layer_A_21, 
-		//cember
-		\layer_A_22, \layer_A_23, \layer_A_24, 
-		\layer_A_25, \layer_A_26, \layer_A_27, 
-		\layer_A_28, \layer_A_29, \layer_A_30,
-		\layer_A_31, \layer_A_32, \layer_A_33, 
-		\layer_A_34, \layer_A_35, \layer_A_36, \layer_A_37, 
-		//devriKebir
-		\layer_A_38, \layer_A_39, \layer_A_40, 
-		\layer_A_41, \layer_A_42, \layer_A_43, \layer_A_44, \layer_A_45, 
-		\layer_A_46, \layer_A_47, 
-		\layer_A_48, \layer_A_49, \layer_A_50, \layer_A_51, \layer_A_52, 
-		\layer_A_53, \layer_A_54, \layer_A_55, \layer_A_56, 
-		//berefsan
-		\layer_A_57, \layer_A_58, 
-		\layer_A_59, \layer_A_60, 
-		\layer_A_61, 
-		\layer_A_62, \layer_A_63, \layer_A_64, \layer_A_65, \layer_A_66, \layer_A_67, 
-		\layer_A_68, \layer_A_69, \layer_A_70, \layer_A_71
+		\layer_A_18, \layer_A_19, \layer_A_20, \layer_A_21
 		
 		
 		], inf
@@ -1710,27 +1692,6 @@ Pdef(\fahteLayerA, Posc(
 		Pseq([2, 1, 1], 1),
 		Pseq([2, 2, 2], 1),
 		Pseq([2, 2, 2], 1),
-		Pseq([1, 1, 1,1], 1),
-		//cember
-		Pseq([2, 1, 1], 1),
-		Pseq([2, 1, 1], 1),
-		Pseq([2, 2, 2], 1),
-		Pseq([2, 2, 2], 1),
-		Pseq([1, 1, 1, 1], 1),
-		//devriKebir
-		Pseq([2, 2, 2], 1),
-		Pseq([1, 1, 1/2, 1/2, 1], 1),
-		Pseq([2, 2], 1),
-		Pseq([2, 2, 2], 1),
-		Pseq([2, 2], 1),
-		Pseq([1, 1, 1, 1], 1),
-		//berefsan
-		Pseq([4, 2], 1),
-		Pseq([4, 2], 1),
-		Pseq([4], 1),
-		Pseq([2, 2], 1),
-		Pseq([2, 2], 1),
-		Pseq([2, 2], 1),
 		Pseq([1, 1, 1,1], 1)
 		
 		]*6, 1
@@ -1804,19 +1765,7 @@ Pdef(\cemberLayerA, Posc(
 		\layer_A_25, \layer_A_26, \layer_A_27, 
 		\layer_A_28, \layer_A_29, \layer_A_30,
 		\layer_A_31, \layer_A_32, \layer_A_33, 
-		\layer_A_34, \layer_A_35, \layer_A_36, \layer_A_37, 
-		//devriKebir
-		\layer_A_38, \layer_A_39, \layer_A_40, 
-		\layer_A_41, \layer_A_42, \layer_A_43, \layer_A_44, \layer_A_45, 
-		\layer_A_46, \layer_A_47, 
-		\layer_A_48, \layer_A_49, \layer_A_50, \layer_A_51, \layer_A_52, 
-		\layer_A_53, \layer_A_54, \layer_A_55, \layer_A_56, 
-		//berefsan
-		\layer_A_57, \layer_A_58, 
-		\layer_A_59, \layer_A_60, 
-		\layer_A_61, 
-		\layer_A_62, \layer_A_63, \layer_A_64, \layer_A_65, \layer_A_66, \layer_A_67, 
-		\layer_A_68, \layer_A_69, \layer_A_70, \layer_A_71
+		\layer_A_34, \layer_A_35, \layer_A_36, \layer_A_37
 		
 		], inf
 	),
@@ -1824,23 +1773,11 @@ Pdef(\cemberLayerA, Posc(
 		[
 
 		//cember
-		\layer_A_22, \layer_A_23, \layer_A_24, 
-		\layer_A_25, \layer_A_26, \layer_A_27, 
-		\layer_A_28, \layer_A_29, \layer_A_30,
-		\layer_A_31, \layer_A_32, \layer_A_33, 
-		\layer_A_34, \layer_A_35, \layer_A_36, \layer_A_37, 
-		//devriKebir
-		\layer_A_38, \layer_A_39, \layer_A_40, 
-		\layer_A_41, \layer_A_42, \layer_A_43, \layer_A_44, \layer_A_45, 
-		\layer_A_46, \layer_A_47, 
-		\layer_A_48, \layer_A_49, \layer_A_50, \layer_A_51, \layer_A_52, 
-		\layer_A_53, \layer_A_54, \layer_A_55, \layer_A_56, 
-		//berefsan
-		\layer_A_57, \layer_A_58, 
-		\layer_A_59, \layer_A_60, 
-		\layer_A_61, 
-		\layer_A_62, \layer_A_63, \layer_A_64, \layer_A_65, \layer_A_66, \layer_A_67, 
-		\layer_A_68, \layer_A_69, \layer_A_70, \layer_A_71
+		Pseq([2, 1, 1], 1),
+		Pseq([2, 1, 1], 1),
+		Pseq([2, 2, 2], 1),
+		Pseq([2, 2, 2], 1),
+		Pseq([1, 1, 1, 1], 1)
 		
 		]*6, 1
 	)
@@ -1901,13 +1838,7 @@ Pdef(\devriKebirLayerA, Posc(
 		\layer_A_41, \layer_A_42, \layer_A_43, \layer_A_44, \layer_A_45, 
 		\layer_A_46, \layer_A_47, 
 		\layer_A_48, \layer_A_49, \layer_A_50, \layer_A_51, \layer_A_52, 
-		\layer_A_53, \layer_A_54, \layer_A_55, \layer_A_56, 
-		//berefsan
-		\layer_A_57, \layer_A_58, 
-		\layer_A_59, \layer_A_60, 
-		\layer_A_61, 
-		\layer_A_62, \layer_A_63, \layer_A_64, \layer_A_65, \layer_A_66, \layer_A_67, 
-		\layer_A_68, \layer_A_69, \layer_A_70, \layer_A_71
+		\layer_A_53, \layer_A_54, \layer_A_55, \layer_A_56
 		
 		], inf
 	),
@@ -1920,15 +1851,7 @@ Pdef(\devriKebirLayerA, Posc(
 		Pseq([2, 2], 1),
 		Pseq([2, 2, 2], 1),
 		Pseq([2, 2], 1),
-		Pseq([1, 1, 1, 1], 1),
-		//berefsan
-		Pseq([4, 2], 1),
-		Pseq([4, 2], 1),
-		Pseq([4], 1),
-		Pseq([2, 2], 1),
-		Pseq([2, 2], 1),
-		Pseq([2, 2], 1),
-		Pseq([1, 1, 1,1], 1)
+		Pseq([1, 1, 1, 1], 1)
 		
 		]*6, 1
 	)

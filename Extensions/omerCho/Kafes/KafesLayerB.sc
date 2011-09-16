@@ -537,7 +537,7 @@ fork{
 		//-------------------------------------------lev5-4/4--24s-----------------------------------------------
 
 			\layer_B_34 -> {//	|te
-
+"--------------------KOUNATA----------------------".postln;
 
 fork{
 	1.2.wait;
@@ -1144,25 +1144,7 @@ Pdef(\fahteLayerB, Posc(
 		\layer_B_9, \layer_B_10,\layer_B_11, 
 		\layer_B_12, \layer_B_13, \layer_B_14, 
 		\layer_B_15, \layer_B_16, \layer_B_17, 
-		\layer_B_18, \layer_B_19, \layer_B_20, \layer_B_21, 
-		//cember
-		\layer_B_22, \layer_B_23, \layer_B_24, 
-		\layer_B_25, \layer_B_26, \layer_B_27, 
-		\layer_B_28, \layer_B_29, \layer_B_30,
-		\layer_B_31, \layer_B_32, \layer_B_33, 
-		\layer_B_34, \layer_B_35, \layer_B_36, \layer_B_37, 
-		//devriKebir
-		\layer_B_38, \layer_B_39, \layer_B_40, 
-		\layer_B_41, \layer_B_42, \layer_B_43, \layer_B_44, \layer_B_45, 
-		\layer_B_46, \layer_B_47, 
-		\layer_B_48, \layer_B_49, \layer_B_50, \layer_B_51, \layer_B_52, 
-		\layer_B_53, \layer_B_54, \layer_B_55, \layer_B_56, 
-		//berefsan
-		\layer_B_57, \layer_B_58, 
-		\layer_B_59, \layer_B_60, 
-		\layer_B_61, 
-		\layer_B_62, \layer_B_63, \layer_B_64, \layer_B_65, \layer_B_66, \layer_B_67, 
-		\layer_B_68, \layer_B_69, \layer_B_70, \layer_B_71
+		\layer_B_18, \layer_B_19, \layer_B_20, \layer_B_21
 		
 		
 		], inf
@@ -1174,27 +1156,6 @@ Pdef(\fahteLayerB, Posc(
 		Pseq([2, 1, 1], 1),
 		Pseq([2, 2, 2], 1),
 		Pseq([2, 2, 2], 1),
-		Pseq([1, 1, 1,1], 1),
-		//cember
-		Pseq([2, 1, 1], 1),
-		Pseq([2, 1, 1], 1),
-		Pseq([2, 2, 2], 1),
-		Pseq([2, 2, 2], 1),
-		Pseq([1, 1, 1, 1], 1),
-		//devriKebir
-		Pseq([2, 2, 2], 1),
-		Pseq([1, 1, 1/2, 1/2, 1], 1),
-		Pseq([2, 2], 1),
-		Pseq([2, 2, 2], 1),
-		Pseq([2, 2], 1),
-		Pseq([1, 1, 1, 1], 1),
-		//berefsan
-		Pseq([4, 2], 1),
-		Pseq([4, 2], 1),
-		Pseq([4], 1),
-		Pseq([2, 2], 1),
-		Pseq([2, 2], 1),
-		Pseq([2, 2], 1),
 		Pseq([1, 1, 1,1], 1)
 		
 		]*6, 1
@@ -1268,19 +1229,7 @@ Pdef(\cemberLayerB, Posc(
 		\layer_B_25, \layer_B_26, \layer_B_27, 
 		\layer_B_28, \layer_B_29, \layer_B_30,
 		\layer_B_31, \layer_B_32, \layer_B_33, 
-		\layer_B_34, \layer_B_35, \layer_B_36, \layer_B_37, 
-		//devriKebir
-		\layer_B_38, \layer_B_39, \layer_B_40, 
-		\layer_B_41, \layer_B_42, \layer_B_43, \layer_B_44, \layer_B_45, 
-		\layer_B_46, \layer_B_47, 
-		\layer_B_48, \layer_B_49, \layer_B_50, \layer_B_51, \layer_B_52, 
-		\layer_B_53, \layer_B_54, \layer_B_55, \layer_B_56, 
-		//berefsan
-		\layer_B_57, \layer_B_58, 
-		\layer_B_59, \layer_B_60, 
-		\layer_B_61, 
-		\layer_B_62, \layer_B_63, \layer_B_64, \layer_B_65, \layer_B_66, \layer_B_67, 
-		\layer_B_68, \layer_B_69, \layer_B_70, \layer_B_71
+		\layer_B_34, \layer_B_35, \layer_B_36, \layer_B_37
 		
 		], inf
 	),
@@ -1288,23 +1237,11 @@ Pdef(\cemberLayerB, Posc(
 		[
 
 		//cember
-		\layer_B_22, \layer_B_23, \layer_B_24, 
-		\layer_B_25, \layer_B_26, \layer_B_27, 
-		\layer_B_28, \layer_B_29, \layer_B_30,
-		\layer_B_31, \layer_B_32, \layer_B_33, 
-		\layer_B_34, \layer_B_35, \layer_B_36, \layer_B_37, 
-		//devriKebir
-		\layer_B_38, \layer_B_39, \layer_B_40, 
-		\layer_B_41, \layer_B_42, \layer_B_43, \layer_B_44, \layer_B_45, 
-		\layer_B_46, \layer_B_47, 
-		\layer_B_48, \layer_B_49, \layer_B_50, \layer_B_51, \layer_B_52, 
-		\layer_B_53, \layer_B_54, \layer_B_55, \layer_B_56, 
-		//berefsan
-		\layer_B_57, \layer_B_58, 
-		\layer_B_59, \layer_B_60, 
-		\layer_B_61, 
-		\layer_B_62, \layer_B_63, \layer_B_64, \layer_B_65, \layer_B_66, \layer_B_67, 
-		\layer_B_68, \layer_B_69, \layer_B_70, \layer_B_71
+		Pseq([2, 1, 1], 1),
+		Pseq([2, 1, 1], 1),
+		Pseq([2, 2, 2], 1),
+		Pseq([2, 2, 2], 1),
+		Pseq([1, 1, 1, 1], 1)
 		
 		]*6, 1
 	)
@@ -1365,13 +1302,7 @@ Pdef(\devriKebirLayerB, Posc(
 		\layer_B_41, \layer_B_42, \layer_B_43, \layer_B_44, \layer_B_45, 
 		\layer_B_46, \layer_B_47, 
 		\layer_B_48, \layer_B_49, \layer_B_50, \layer_B_51, \layer_B_52, 
-		\layer_B_53, \layer_B_54, \layer_B_55, \layer_B_56, 
-		//berefsan
-		\layer_B_57, \layer_B_58, 
-		\layer_B_59, \layer_B_60, 
-		\layer_B_61, 
-		\layer_B_62, \layer_B_63, \layer_B_64, \layer_B_65, \layer_B_66, \layer_B_67, 
-		\layer_B_68, \layer_B_69, \layer_B_70, \layer_B_71
+		\layer_B_53, \layer_B_54, \layer_B_55, \layer_B_56
 		
 		], inf
 	),
@@ -1384,15 +1315,7 @@ Pdef(\devriKebirLayerB, Posc(
 		Pseq([2, 2], 1),
 		Pseq([2, 2, 2], 1),
 		Pseq([2, 2], 1),
-		Pseq([1, 1, 1, 1], 1),
-		//berefsan
-		Pseq([4, 2], 1),
-		Pseq([4, 2], 1),
-		Pseq([4], 1),
-		Pseq([2, 2], 1),
-		Pseq([2, 2], 1),
-		Pseq([2, 2], 1),
-		Pseq([1, 1, 1,1], 1)
+		Pseq([1, 1, 1, 1], 1)
 		
 		]*6, 1
 	)
