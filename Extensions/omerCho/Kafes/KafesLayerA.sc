@@ -18,13 +18,13 @@ KafesLayerA {
 "LayerA CIFTE DUYEK".postln;				
 				
 fork{
-	~tol08.brt_(~kRC1 *1.07500).playBuf(0.001, 0.3, 0.1, mul:1.9, out: ~strHep);
+	~tol08.brt_(~kRC1 *1.07500).playBuf(0.001, 0.3, 0.1, mul:1.1, out: ~strHep);
 	
 	0.265.wait;
 	
 	KafSinVib.ar(0.1, 0.1, 18.0, mul:0.3, freq1: ~kA1, freq2: ~kA1+3, vib1: 2.1, vib2: 4, out: ~strCok.choose).play;
 	
-	~tol06.brt_(~kRB1 *1.23700).playGverb(0.001, 1.1, 16.1, mul:0.5, room:165, rev:23.5, damp:0.71, out: ~strHep);
+	~tol06.brt_(~kRB1 *1.23700).playGverb(0.001, 1.1, 16.1, mul:0.1, room:165, rev:23.5, damp:0.71, out: ~strHep);
 	
 	//~tol06.brt_(~kRC1 *1.23700).playBuf(0.001, 1.1, 16.1, mul:0.4, out: ~strHep);
 	
@@ -67,7 +67,7 @@ fork{
 fork{
 
 	~gou02.brt_(~kRC7 *0.89000).playGverbR(0.001, 1.1, 10.1, mul:0.2, room:55, rev:13.5, damp:0.71, out: ~strCok.choose);
-	~gou02.brt_(~kRC1 *0.89000).playGverb(0.001, 1.1, 10.1, mul:0.2, room:55, rev:13.5, damp:0.71, out: ~strHep.choose);
+	~gou02.brt_(~kRC1 *0.89000).playGverb(0.001, 1.1, 10.1, mul:0.1, room:55, rev:13.5, damp:0.71, out: ~strHep.choose);
 
 	0.31.wait;
 	~gou02.brt_(~kRB4 *0.89000).playGverb(0.001, 1.1, 10.1, mul:0.25, room:55, rev:13.5, damp:0.71, out: ~strCok.choose);
@@ -88,33 +88,36 @@ fork{
 	
 	0.8.wait;
 	fork{
+		~circ = Pseq((0..13), inf).asStream;
 		15.do {
-			~bth02.brt_(~kRA1 *1.00011).playPV2(0.001, 10.3, 0.3, mul:0.2, out: ~strTek.choose);
+			~bth02.brt_(~kRA1 *1.00011).playPV2(0.001, 10.3, 0.3, mul:0.2, out: ~circ);
 			0.4.wait	
 			
 		};
 	};
 	8.0.wait;
 	fork{
+		~circ = Pseq((0..13), inf).asStream;
 		15.do {
-			~bth02.brt_(~kRA4 *1.00011).playPV2(0.001, 10.3, 0.3, mul:0.09, out: ~strTek.choose);
+			~bth02.brt_(~kRA4 *1.00011).playPV2(0.001, 10.3, 0.3, mul:0.09, out: ~circ);
 			0.4.wait	
 			
 		};
 	};
 	0.001.wait;
 	~ff = ~kC1;
-	KafGendy.ar(0.001, 0.01, 0.03, 29.8,
+	KafGendy.ar(0.001, 0.01, 4.03, 29.8,
 		freq: [~ff*2, ~ff*3, ~ff*4, ~ff*5], 
 		freqrlp1: ~kA1/2, 
 		freqrlp2: ~ff*2,
 		mul: 0.4,
-		out: ~strTek.choose
+		out: 0
 	).play;	
 	0.5.wait;
 	fork{
+		~circ = Pseq((0..13), inf).asStream;
 		15.do {
-			~bth02.brt_(~kRB1 *1.00011).playPV2(0.001, 10.3, 0.3, mul:0.09, out: ~strTek.choose);
+			~bth02.brt_(~kRB1 *1.00011).playPV2(0.001, 10.3, 0.3, mul:0.09, out: ~circ);
 			0.4.wait	
 			
 		};
@@ -194,10 +197,10 @@ KafGendy.ar(1.1, 0.1, 4.3, 26.8,
 	freqrlp1: ~kA1/2, 
 	freqrlp2: ~ff*2,
 	mul: 0.4,
-	out: ~strTek.choose
+	out: 0
 ).play;				
 
-~bth05.brt_(~kRD1 *1.00011).playPV1(0.001, 12.3, 0.3, mul:0.1, out: ~strTek.choose);			
+~bth05.brt_(~kRA4 *1.00011).playPV1(0.001, 12.3, 0.3, mul:0.1, out: ~strTek.choose);			
 				}, 
 			\layer_A_6 -> {//	|tek2
 ~ff = ~kA5;
@@ -206,7 +209,7 @@ KafGendy.ar(3.2, 0.2, 4.3, 16.8,
 	freqrlp1: ~kA1/2, 
 	freqrlp2: ~ff*2,
 	mul: 0.5,
-	out: ~strTek.choose
+	out: 13
 ).play;					
 
 fork{
@@ -229,7 +232,7 @@ KafGendy.ar(1.1, 0.1, 4.3, 26.8,
 	freqrlp1: ~kA1/2, 
 	freqrlp2: ~ff*2,
 	mul: 0.4,
-	out: ~strTek.choose
+	out: 0
 ).play;	
 
 ~gou02.brt_(~kRB4 *0.89000).playPV2(0.1, 3.1, 5.1, mul:0.1, out: ~strCok.choose);
@@ -345,24 +348,24 @@ fork{
 	};
 	0.5.wait;
 	
-	~tol06.brt_(~kRD1 *1.23700).playPV5(0.001, 1.1, 16.1, mul:0.5, out: ~strTek.choose);
+	~tol06.brt_(~kRD1 *1.23700).playPV1(0.001, 1.1, 16.1, mul:0.5, out: ~strTek.choose);
 	0.8.wait;
 	
 	~tol06.brt_(~kRD4 *1.23700).playPV5(0.001, 1.1, 16.1, mul:0.5,  out: ~strTek.choose);
 	1.0.wait;
 	
-	~tol06.brt_(~kRD7 *1.23700).playGverb(0.001, 1.1, 16.1, mul:0.5, room:55, rev:23.5, damp:0.71, out: ~strTek.choose);
+	~tol06.brt_(~kRD7 *1.23700).playBuf(0.001, 1.1, 16.1, mul:0.5, out: ~strTek.choose);
 	0.25.wait;
 	
 	~tol06.brt_(~kRD4 *1.23700).playBuf(0.001, 1.1, 16.1, mul:0.5,  out: ~strTek.choose);
 	
-	~tol04.brt_(~kRB7 *1.23700).playGverbR(0.001, 1.1, 15.1, mul:0.5, room:55, rev:13.5, damp:0.71, out: ~strTek.choose);
+	~tol04.brt_(~kRB7 *1.23700).playBufR(0.001, 1.1, 15.1, mul:0.5, out: ~strTek.choose);
 	0.25.wait;
 	
-	~tol06.brt_(~kRC7 *1.23700).playGverb(0.001, 1.1, 16.1, mul:0.5, room:55, rev:23.5, damp:0.71, out: ~strTek.choose);
+	~tol06.brt_(~kRC7 *1.23700).playGverb(0.001, 1.1, 10.1, mul:0.5, room:55, rev:13.5, damp:0.71, out: ~strTek.choose);
 	0.35.wait;
 	
-	~tol06.brt_(~kRD1 *1.23700).playPV5(0.001, 1.1, 16.1, mul:0.5, out: ~strTek.choose);
+	~tol06.brt_(~kRD1 *1.23700).playPV1(0.001, 1.1, 16.1, mul:0.5, out: ~strTek.choose);
 	1.5.wait;
 	fork{
 		~kPseq01 = Pseq([~kRB2, ~kRD6, ~kRB2, ~kRC4, ~kRD4, ~kRC1, ~kRB6, ~kRB1], inf).asStream;
@@ -377,53 +380,49 @@ fork{
 };				
 				}, 
 			\layer_A_11 -> {//	dum
-/*fork{
-	fork{//OK
-		~kPseq01 = Pseq([~kRC4, ~kRC6, ~kRC5, ~kRD1, ~kRC4, ~kRD2, ~kRC7, ~kRD1].rotate(1), inf).asStream;
-		~amp = Pseq([0.15, 0.25, 0.35, 0.45, 0.49].rotate/1.5, inf).asStream;
-		24.do{|i, frq = 2240, dur = 0.29|
-			var freqs = frq + (12 *( i % 20)); 
-			
-			~tol06.brt_(~kPseq01 *1.07500).playPV2(0.001, 0.9, 0.01, mul:~amp, out: ~strTek.choose);
-			( dur - (0.011*(i%24)) ).yield;
-		};
-		0.2.wait;
-		~tol06.brt_(~kRC4 *1.07500).playGverb(0.001, 1.9, 1.01, mul:~amp, out: ~strCok.choose);
-	};
-	
-	3.4.wait;	
-	~tol06.brt_(~kRE1 *1.23700).playGverb(0.001, 1.1, 16.1, mul:0.4, room:55, rev:13.5, damp:0.71, out: ~strHep);
-	0.001.wait;
-
-
-	0.5.wait;
-	~kik01.brt_(9.5).playPV1(0.001, 1.1, 1, mul:0.1, out: ~strTek.choose); // tek
-
-};*/				
-
 fork{
 	
+	0.5.wait;
 	fork{//OK
-		~kPseq01 = Pseq([~kRC4, ~kRC6, ~kRC5, ~kRD1, ~kRC4, ~kRD2, ~kRC7, ~kRD1].rotate(1), inf).asStream;
-		~amp = Pseq([0.15, 0.25, 0.35, 0.45, 0.49].rotate/1.5, inf).asStream;
-		~out = Pseq((0..1), inf).asStream;
-		24.do{|i, frq = 2240, dur = 0.3|
+		~tim = 21;
+		~kPseq01 = Pseq([~kRC4, ~kRB3, ~kRB1, ~kRC5, ~kRB1, ~kRC6, ~kRB5, ~kRB1]*2, inf).asStream;
+		~amp = Pseq((0.001..0.5)+0.1, inf).asStream;
+		~tim.do{|i, frq = 2240, dur = 0.2|
 			var freqs = frq + (12 *( i % 20)); 
 			
-			~tol06.brt_(~kPseq01 *1.07500).playPV2(0.001, 0.9, 0.01, mul:~amp, out: ~strTek.choose);
-			( dur - (0.011*(i%24)) ).yield;
+			~tol06.brt_([~kRC1,~kPseq01].choose *1.07500).playPV2(0.001, 0.9, 2.01, mul:~amp, out: [0,1, 3, 2].choose);
+			( dur - (0.005*(i%7)) ).yield;
 		};
-		0.02.wait;
-		~tol06.brt_(~kRB4 *1.07500).playPV5(0.001, 1.9, 3.01, mul:~amp, pv5a: 0.1, out: ~strCok.choose);
+		~tol06.brt_(~kRD4 *1.23700).playPV1(0.001, 1.1, 10.1, out: ~strHep);
+		fork{//OK
+			~tim = 11;
+			~kPseq01 = Pseq([~kRB1, ~kRB3, ~kRB1, ~kRB4, ~kRB1, ~kRB6, ~kRB5, ~kRB1]*6, inf).asStream;
+			~amp = Pseq((0.001..0.5)+0.2, inf).asStream;
+			~tim.do{|i, frq = 2240, dur = 0.15|
+				var freqs = frq + (12 *( i % 20)); 
+				
+				~tol06.brt_([~kRC5,~kPseq01].choose *1.07500).playPV1(0.001, 0.9, 2.01, mul:~amp, out: [0,1, 3, 2].choose);
+				( dur - (0.005*(i%7)) ).yield;
+			};
+			~tol06.brt_(~kRB4 *1.07500).playPV1(0.001, 1.9, 3.01, mul:~amp, out: ~strCok.choose);
+				fork{
+					2.do{
+						var dur = Pseq([0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]/6, inf).asStream;
+						var amp = Pseq([0.25, 0.36, 0.47, 0.58, 0.69, 0.80, 0.91, 0.94]/2.1, inf).asStream;
+						~gou02.brt_([~kRD5, ~kRD3, ~kRD6].choose *0.89000).playBuf(0.001, 1.1, 5.1, mul:amp, out: ~strTek.choose);
+						dur.next.wait;
+						
+						
+					};
+					~tol06.brt_(~kRE1 *1.23700).playGverb(0.001, 1.1, 16.1, mul:0.1, room:55, rev:13.5, damp:0.71, out: ~strHep);
+				};
+		};
+	
 	};
 	
-	4.5.wait;	
-	~tol06.brt_(~kRE1 *1.23700).playGverb(0.001, 1.1, 16.1, mul:0.4, room:55, rev:13.5, damp:0.71, out: ~strHep);
-
-
-	0.02.wait;
-	
-	KafSinVib.ar(0.1, 0.1, 8.0, mul:0.3, freq1: ~kA1, freq2: ~kA1, vib1: 2.1, vib2: 4, out: ~strCok.choose).play;
+	4.7.wait;	
+		
+	KafSinVib.ar(0.1, 0.1, 8.0, mul:0.2, freq1: ~kA1, freq2: ~kA1, vib1: 12.1, vib2: 4, out: ~strCok.choose).play;
 };
 				
 				}, 
@@ -456,6 +455,16 @@ fork{
 
 ~kik01.brt_(2.5).playPV4(0.001, 1.1, 1, mul:0.9, out: ~strCok.choose); // tek
 
+	~ff = ~kB4;
+	KafGendy.ar(1.1, 0.1, 4.3, 26.8,
+		freq: [~ff*2, ~ff*3, ~ff*4, ~ff*5], 
+		freqrlp1: ~kA1/2, 
+		freqrlp2: ~ff,
+		mul: 0.4,
+		out: 0
+	).play;	
+
+
 fork{
 
 	
@@ -475,7 +484,16 @@ fork{
 				}, 
 			\layer_A_13 -> {//	|tek2
 
-~kik01.brt_(1.5).playPV1(0.001, 1.1, 1, mul:0.8, out: ~strTek.choose); // tek
+~kik01.brt_(1.5).playPV1(0.001, 1.1, 1, mul:0.2, out: ~strTek.choose); // tek
+
+	~ff = ~kB7;
+	KafGendy.ar(1.1, 0.1, 4.3, 26.8,
+		freq: [~ff*2, ~ff*3, ~ff*4, ~ff*5], 
+		freqrlp1: ~kA1/2, 
+		freqrlp2: ~ff,
+		mul: 0.4,
+		out: 0
+	).play;	
 fork{
 
 	
@@ -499,7 +517,18 @@ fork{
 				
 				}, 
 			\layer_A_14 -> {//	_tek2
-~kik01.brt_(1.5).playPV1(0.001, 1.1, 1, mul:0.5, out: ~strTek.choose); // tek				
+~kik01.brt_(1.5).playPV1(0.001, 1.1, 1, mul:0.1, out: ~strTek.choose); // tek
+
+	~ff = ~kB4;
+	KafGendy.ar(1.1, 0.1, 4.3, 26.8,
+		freq: [~ff*2, ~ff*3, ~ff*4, ~ff*5], 
+		freqrlp1: ~kA1, 
+		freqrlp2: ~ff,
+		mul: 0.4,
+		out: 0
+	).play;
+
+				
 fork{
 
 	
@@ -519,6 +548,16 @@ fork{
 		//-------------------------------------------lev3-6/4--36s-----------------------------------------------
 			\layer_A_15 -> {//	+dum2
 ~kik01.brt_(1.5).playPV1(0.001, 1.1, 1, mul:0.1, out: ~strTek.choose); // tek
+
+	~ff = ~kB4;
+	KafGendy.ar(1.1, 0.1, 4.3, 26.8,
+		freq: [~ff*2, ~ff*3, ~ff*4, ~ff*5], 
+		freqrlp1: ~kA1, 
+		freqrlp2: ~ff/2,
+		mul: 0.4,
+		out: 0
+	).play;
+
 fork{
 
 	
@@ -538,7 +577,16 @@ fork{
 				}, 
 			\layer_A_16 -> {//	|ta2
 
-~kik01.brt_(1.5).playPV1(0.001, 1.1, 1, mul:0.4, out: ~strTek.choose); // tek
+~kik01.brt_(1.5).playPV1(0.001, 1.1, 1, mul:0.2, out: ~strTek.choose); // tek
+
+	~ff = ~kB4;
+	KafGendy.ar(1.1, 0.1, 4.3, 26.8,
+		freq: [~ff*2, ~ff*3, ~ff*4, ~ff*5], 
+		freqrlp1: ~kA1+10, 
+		freqrlp2: ~ff/2.1,
+		mul: 0.4,
+		out: 0
+	).play;
 
 fork{
 
@@ -932,13 +980,14 @@ fork{
 	.brt2_(~kRA4 *1.02006).brt2Dur_(16)
 .transGverb(4.0, 5.9, 28.0, mul:0.05, start:0.0, out:~strCok.choose);
 
-		
+~gou02.brt_(~kRE1 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.009, out: ~strTek.choose);	
 				
 				}, 
 			\layer_A_39 -> {//	|dum2
 				
 ~ats06.brt_(~kRA1 *1.82101).playGverbR(0.01, 4.0, 9.1, mul:1.7, start:[0.0].choose, out: ~strCok.choose);
 
+~gou02.brt_(~kRD5 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.009, out: ~strTek.choose);	
 
 				
 				}, 
@@ -952,7 +1001,8 @@ fork{
 	.brt2_(~kRA1 *1.02006).brt2Dur_(16)
 .transGverb(4.0, 5.9, 28.0, mul:0.09, start:0.0, out:~strCok.choose);
 
-
+~gou02.brt_(~kRC4 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);	
+~gou02.brt_(~kRC1 *0.89000).playBufR(0.001, 1.1, 2.1, mul:0.9, out: ~strTek.choose);
 
 				},
 			
@@ -967,7 +1017,38 @@ fork{
 	.brt1_(~kRA1 *1.02006).brt1Dur_(15)
 	.btrDur_(0.25)
 	.brt2_(~kRA2 *1.02006).brt2Dur_(16)
-.transGverb(4.0, 5.9, 28.0, mul:0.8, start:0.0, out:~strCok.choose);
+.transGverb(4.0, 5.9, 28.0, mul:0.6, start:0.0, out:~strCok.choose);
+
+fork{
+	~gou02.brt_(~kRF1 *0.89000).playGverbR(0.001, 1.1, 1.1, mul:0.09, room:55, rev:13.5, damp:0.71, out: ~strTek.choose);	
+	0.5.wait;
+	~gou02.brt_(~kRC1 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);	
+	~gou02.brt_(~kRC3 *0.89000).playBufR(0.001, 6.1, 2.1, mul:0.9, out: ~strTek.choose);
+	2.5.wait;
+	
+	fork{
+		71.do{|i|
+			var dur = Pseq([0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]/4, inf).asStream;
+			~gou02.brt_([~kRE1, ~kRC3].choose *0.89000).playBuf(0.001, 1.1, 5.1, mul:0.000001+0.0002*(i%71), out: ~strTek.choose);
+			dur.next.wait;
+			
+			
+		};
+		0.5.wait;
+		~gou02.brt_(~kRC4 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);
+		71.do{|i|
+			var dur = Pseq([0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]/4, inf).asStream;
+			~gou02.brt_([~kRC4, ~kRC1].choose *0.89000).playBuf(0.001, 1.1, 5.1, mul:0.000001+0.0002*(i%71), out: ~strTek.choose);
+			dur.next.wait;
+			
+			
+		};
+		2.8.wait;
+		~gou02.brt_(~kRC2 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);
+	};
+	
+}
+
 
 
 				}, 
@@ -979,22 +1060,20 @@ fork{
 	.brt1_(~kRA4 *1.02006).brt1Dur_(10)
 	.btrDur_(0.25)
 	.brt2_(~kRA1 *1.02006).brt2Dur_(16)
-.transGverb(1.0, 1.9, 28.0, mul:0.8, start:0.0, out:~strCok.choose);
+.transGverb(1.0, 1.9, 28.0, mul:0.3, start:0.0, out:~strCok.choose);
 
-~gouA1 = {
+	
+
+
+~gouBass1 = {
 	 ~kP01 = Pxrand([
-				~kRA1, ~kRA2, ~kRA3, ~kRA4, ~kRA5, ~kRA6, ~kRA7, 
-				~kRB1, ~kRB2, ~kRB3, ~kRB4, ~kRB5, ~kRB6, ~kRB7,
-				~kRC1, ~kRC2, ~kRC3, ~kRC4, ~kRC5, ~kRC6, ~kRC7,
-				~kRD1, ~kRD2, ~kRD3, ~kRD4, ~kRD5, ~kRD6, ~kRD7,
-				~kRE1, ~kRE2, ~kRE3, ~kRE4, ~kRE5, ~kRE6, ~kRE7,
-				~kRF1, ~kRF2, ~kRF3, ~kRF4, ~kRF5, ~kRF6, ~kRF7
+				~kRA1,~kRA3, ~kRA4 
+			
 	], inf).asStream;
-	~amp = Pseq((0.1..0.05), 128).asStream;
-	inf.do{
+	30.do{|i|
 		var dur = Pwhite(0.2, 0.5, inf).asStream;
 
-		~gou02.brt_(~kP01.next *0.89000).playBuf(0.001, 1.1, 5.1, mul:~amp.next, out: ~strTek.choose);
+		~gou02.brt_(~kP01.next *0.89000).playBuf(0.001, 1.1, 5.1, mul:0.0001+0.01*(i%13), out: ~strTek.choose);
 		dur.next.wait;
 		
 		
@@ -1007,14 +1086,52 @@ fork{
 				}, 
 			\layer_A_43 -> {//	te'
 
+fork{
 
-~ats06.brt_(~kRA1 *1.82101).playGverbR(0.01, 4.0, 9.1, mul:3.7, start:[0.0].choose, out: ~strCok.choose);
-~gou05
-	.brt1_(~kRA5 *1.02006).brt1Dur_(10)
-	.btrDur_(0.25)
-	.brt2_(~kRA4 *1.02006).brt2Dur_(16)
-.transGverb(1.0, 6.9, 28.0, mul:0.4, start:0.0, out:~strCok.choose);
+	~ats06.brt_(~kRA1 *1.82101).playGverbR(0.01, 4.0, 9.1, mul:3.7, start:[0.0].choose, out: ~strCok.choose);
+	~gou05
+		.brt1_(~kRA5 *1.02006).brt1Dur_(10)
+		.btrDur_(0.25)
+		.brt2_(~kRA4 *1.02006).brt2Dur_(16)
+	.transGverb(1.0, 6.9, 28.0, mul:0.3, start:0.0, out:~strCok.choose);
+	
+	
+	fork{
+		
+		fork{
+			44.do{|i|
+				var dur = Pseq([0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]/4, inf).asStream;
+				~gou02.brt_([~kRE2, ~kRC6].choose *0.89000).playBuf(0.001, 1.1, 5.1, mul:0.00001+0.0001*(i%70), out: ~strTek.choose);
+				dur.next.wait;
+				
+				
+			};
+		};
+		
+		2.0.wait;
+		~gouA1 = {
+			 ~kP01 = Pxrand([
+						~kRA1, ~kRA2, ~kRA3, ~kRA4, ~kRA5, ~kRA6, ~kRA7, 
+						~kRB1, ~kRB2, ~kRB3, ~kRB4, ~kRB5, ~kRB6, ~kRB7,
+						~kRC1, ~kRC2, ~kRC3, ~kRC4, ~kRC5, ~kRC6, ~kRC7,
+						~kRD1, ~kRD2, ~kRD3, ~kRD4, ~kRD5, ~kRD6, ~kRD7,
+						~kRE1, ~kRE2, ~kRE3, ~kRE4, ~kRE5, ~kRE6, ~kRE7,
+						~kRF1, ~kRF2, ~kRF3, ~kRF4, ~kRF5, ~kRF6, ~kRF7
+			], inf).asStream;
+			~amp = Pseq((0.1..0.05), 128).asStream;
+			inf.do{
+				var dur = Pwhite(0.2, 0.5, inf).asStream;
+		
+				~gou02.brt_(~kP01.next *0.89000).playBuf(0.001, 1.1, 5.1, mul:~amp.next, out: ~strTek.choose);
+				dur.next.wait;
+				
+				
+			};
+			
+		}.fork;
+	}
 
+}
 				
 				}, 
 			\layer_A_44 -> {//	ke'
@@ -1031,6 +1148,8 @@ fork{
 		//-------------------------------------------lev3-4/4--24s-----------------------------------------------
 			\layer_A_46 -> {//	+tek2
 "LayerA DEVR-i KEBIR level 3  4/4".postln;
+~ats06.brt_(~kRA4/2 *1.82101).playGverbR(0.01, 4.0, 9.1, mul:3.7, start:[0.0].choose, out: ~strCok.choose);
+
 
 ~gouA2 = {
 	 ~kP01 = Pxrand([
@@ -1083,6 +1202,14 @@ fork{
 			
 			\layer_A_51 -> {//	+ta2
 
+fork{
+	~gir04.brt_(~kRC2).playBufR(0.001, 1.1, 10.1, mul:0.9, out: ~strTek.choose);
+	2.5.wait;
+	~gir04.brt_(~kRB4).playBufR(0.001, 1.1, 10.1, mul:0.9, out: ~strTek.choose);
+
+
+};
+
 				}, 
 			\layer_A_52 -> {//	|hek
 
@@ -1090,7 +1217,7 @@ fork{
 ~gouA2.stop;
 
 fork{
-	~kPseq01 = Pseq([~kRC2, ~kRE2, ~kRD1, ~kRC1, ~kRC2, ~kRC4, ~kRB3, ~kRC1], inf).asStream;
+	~kPseq01 = Pseq([~kRC2, ~kRC1, ~kRC5, ~kRC1, ~kRC2, ~kRC4, ~kRB3, ~kRB1].mirror, inf).asStream;
 	~dur = Pseq([0.25, 0.36, 0.47, 0.58, 0.69, 0.80, 0.91, 0.94]/3, inf).asStream;
 	8.do{
 		
@@ -1100,7 +1227,7 @@ fork{
 		~gou02.brt_(~kPseq01 *0.89000).playPV5(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);
 		~dur.next.wait;
 		
-		~tol06.brt_(~kPseq01 *1.23700).playPV5(0.001, 1.1, 16.1, mul:0.1, out: ~strHep);
+		~gou02.brt_(~kPseq01 *1.23700).playPV5(0.001, 1.1, 16.1, mul:0.01, out: ~strHep);
 		~ats06.brt_(~kPseq01 *1.82101).playPV1(0.01, 1.0, 1.1, mul:0.9, start:0.5, out: ~strCok.choose);
 		~dur.next.wait;
 
@@ -1108,7 +1235,7 @@ fork{
 	
 	0.001.wait;
 	
-	~met02.brt_(~kRD4 *1.01000).playGverb(0.001, 3.1, 16.1, mul:0.5, room:55, rev:3.5, damp:0.71, out:~strCok.choose);
+	~met02.brt_(~kRD4 *1.01000).playGverb(0.001, 3.1, 16.1, mul:0.5, room:55, rev:13.5, damp:0.71, out:~strCok.choose);
 	~ats02.brt_(~kRB4 *1.82101).playPV1(0.01, 1.0, 1.1, mul:0.9, start:0.5, out: ~strCok.choose);
 	
 };
@@ -1131,18 +1258,18 @@ fork{
 	0.8.wait;
 	fork{
 		~mul01 = Pseq([0.5, 0.4, 0.3, 0.2, 0.1, 0.09, 0.07, 0.04]*0.9, inf).asStream;
-		~dur01 = Pseq([0.25, 0.36, 0.47, 0.58, 0.69, 0.80, 0.91, 0.94]/2, inf).asStream;
-		8.do {|i|
+		~dur01 = Pseq([0.25, 0.36, 0.47, 0.58, 0.69, 0.80, 0.91, 0.94, 0.99, 1.1].reverse/2, inf).asStream;
+		10.do {|i|
 			
-			~kik01.brt_(9.5).playGverb(0.001, 1.1, 1, mul: ~mul01.next, room:8.4, rev:1, damp:0.91, out: ~strCok.choose);
+			~kik01.brt_([9.5, 7.3, 4.5, 8.9].choose).playGverb(0.001, 1.1, 1, mul: ~mul01.next, room:8.4, rev:1, damp:0.91, out: ~strCok.choose);
 			~dur01.next.wait;
 		
 		};
 	};
-	2.5.wait;
+	2.9.wait;
 	~kik01.brt_(5.5).playGverb(0.001, 1.1, 1, mul: ~mul01.next, room:8.4, rev:1, damp:0.91, out: ~strTek.choose);
 
-	~gir04.brt_(2.8).playGverbR(0.001, 1.1, 10.1, mul:0.9, room:55, rev:13.5, damp:0.71, out: ~strTek.choose);
+	~gir04.brt_(~kRC1).playGverbR(0.001, 1.1, 10.1, mul:0.9, room:55, rev:13.5, damp:0.71, out: ~strTek.choose);
 
 };
 
@@ -1150,15 +1277,36 @@ fork{
 				
 				}, 
 			\layer_A_54 -> {//	ke
+fork{
+	~gir04.brt_(~kRC2).playBufR(0.001, 1.1, 10.1, mul:0.9, out: ~strTek.choose);
+	2.5.wait;
+	~gir04.brt_(~kRB4).playBufR(0.001, 1.1, 10.1, mul:0.9, out: ~strTek.choose);
+
+
+};
 				
 				}, 
 			\layer_A_55 -> {//	|te
+
+fork{
+	~gir04.brt_(~kRC3).playBufR(0.001, 1.1, 10.1, mul:0.9, out: ~strTek.choose);
+	2.5.wait;
+	~gir04.brt_(~kRB5).playBufR(0.001, 1.1, 10.1, mul:0.9, out: ~strTek.choose);
+
+
+};
 				
 				}, 
 			\layer_A_56 -> {//	ke
 				
 
+fork{
+	~gir04.brt_(~kRB7).playBufR(0.001, 1.1, 8.1, mul:0.9, out: ~strTek.choose);
+	2.5.wait;
+	~gir04.brt_(~kRC1).playBufR(0.001, 1.1, 10.1, mul:0.9, out: ~strTek.choose);
 
+
+};
 
 				
 				

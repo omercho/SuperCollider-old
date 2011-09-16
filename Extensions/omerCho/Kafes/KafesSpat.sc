@@ -7,12 +7,7 @@ KafesSpat {
 		~strCok = [ [0,1] ];
 		~strHep = ~strCok;
 		~strTek = [ 0,1 ];
-				
-		/*
-		~strTek = (0..23);
-		~strCok = [[(0..23).choose, (0..23).choose],  [ (0..23).choose, (0..23).choose, (0..23).choose], [ (0..23).choose, (0..23).choose, (0..23).choose, (0..23).choose]];
-		~strHep = [(0..23)];
-		*/	
+
 		
 	}
 
@@ -20,11 +15,11 @@ KafesSpat {
 	*ch24{
 
 				
-		/*
+		
 		~strTek = (0..23);
 		~strCok = [[(0..23).choose, (0..23).choose],  [ (0..23).choose, (0..23).choose, (0..23).choose], [ (0..23).choose, (0..23).choose, (0..23).choose, (0..23).choose]];
 		~strHep = [(0..23)];
-		*/	
+		
 		
 	}
 

@@ -10,8 +10,6 @@ KafesReceives {
 			this.lC1;
 			this.devriKebir;
 			this.aP;
-			//this.aT;
-			//this.kPV1;
 			this.kP;
 			this.kk;
 			this.bit;
@@ -158,7 +156,24 @@ KafesReceives {
 					~tht08.brt_(~kRB2 *1.10000).playPV4(1, 0.1, 1.1, pv4a:0.42, loop:0, out: ~strTek.choose); //ok
 				};
 					},
-			
+			\lC31_1d2 -> { 
+				fork{
+					~bth02.brt_(~kRC2 *1.00011).playPV4(0.001, 0.1, 0.5, mul:0.8, out: ~strCok.choose);
+					0.005.wait;
+					~kik02.brt_(1.0).playPV2(0.001, 1.1, 2, mul:0.5, out: ~strTek.choose);
+					0.005.wait;
+					~ff = ~kA2;
+					KafGendy.ar(1.1, 0.1, 0.3, 0.8,
+						freq: [~ff*2, ~ff*3, ~ff*4, ~ff*5], 
+						freqrlp1: ~kA1/2, 
+						freqrlp2: ~ff*2,
+						mul: 0.4,
+						out: 0
+					).play;
+					0.005.wait;
+					~tht08.brt_(~kRB2 *1.10000).playPV4(1, 0.1, 1.1, pv4a:0.42, loop:0, out: ~strTek.choose); //ok
+				};
+					},
 			\lC31_2 -> { 
 				~ats02.brt_(3.5).playPV1(0.01, 0.4, 5.1, mul:0.8, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // dum
 				
@@ -183,6 +198,9 @@ KafesReceives {
 		Preceive(
 			\bitA1 -> { 
 				~tht08.brt_(~kRA1 *1.10000).playPV4(1, 2.1, 3.1, mul:0.9, pv4a: 4.2, start:0, out: [~strTek.choose, ~strCok.choose].choose); 
+					},
+			\bitA5 -> { 
+				~tht08.brt_(~kRC1 *1.10000).playPV4(1, 2.1, 3.1, mul:0.9, pv4a: 4.2, start:0, out: [~strTek.choose, ~strCok.choose].choose); 
 					},
 			\bitB1 -> { 
 				~tht08.brt_(~kRB1 *1.10000).playPV4(0.1, 4.1, 1.1, mul:0.9, pv4a: 4.2, start:0, out: [~strTek.choose, ~strCok.choose].choose); 

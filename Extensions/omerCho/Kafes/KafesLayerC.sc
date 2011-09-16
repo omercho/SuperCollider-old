@@ -412,7 +412,7 @@ fork{
 
 ~layC34 = Posc(
 	\msg, Pseq([ Pseq([\lC31_1a], 1),	Pseq([\lC4_2, \lC31_3, \bitA1], 7), Pseq([\lC4_2], 1) ], inf),
-	\dur, Pseq([	Pseq([0.25], 8), Pseq([1], 1) ], 9)
+	\dur, Pseq([	Pseq([0.25], 8), Pseq([1], 1) ], 11)
 ).play;
 
 
@@ -435,7 +435,7 @@ fork{
 		Pseq([2, 2, 2], 1),
 		Pseq([2, 2, 2], 1),
 		Pseq([1, 1, 1, 1], 1)
-		]/4, 4
+		]/4, 6
 	)
 ).play;
 
@@ -520,7 +520,7 @@ fork{
 
 ~layC34.stop;
 ~layC34 = Posc(
-	\msg, Pseq([ Pseq([\lC31_1b], 1),	Pseq([\lC4_2, \lC31_3, \bitA1], 7), Pseq([\lC4_2], 1) ], inf),
+	\msg, Pseq([ Pseq([\bitA1], 1),	Pseq([\lC4_2, \lC31_3, \bitA1], 7), Pseq([\lC4_2], 1) ], inf),
 	\dur, Pseq([	Pseq([0.25], 8), Pseq([1], 1) ], 9)
 ).play;
 
@@ -556,8 +556,8 @@ fork{
 
 ~layC34.stop;
 ~layC34 = Posc(
-	\msg, Pseq([ Pseq([\lC31_1a], 1),	Pseq([\lC4_2b, \lC31_3, \bitA4], 7), Pseq([\lC4_3b], 1) ], inf),
-	\dur, Pseq([	Pseq([0.25], 8), Pseq([1], 1) ], 9)
+	\msg, Pseq([ Pseq([\lC31_1a], 1),	Pseq([\lC4_2b, \lC31_3, \bitA1], 7), Pseq([\lC4_3b], 1) ], inf),
+	\dur, Pseq([	Pseq([0.25], 8), Pseq([1], 1) ], 12)
 ).play;
 
 ~cemb01.stop;
@@ -580,7 +580,7 @@ fork{
 		Pseq([2, 2, 2], 1),
 		Pseq([2, 2, 2], 1),
 		Pseq([1, 1, 1, 1], 1)
-		]/4, 4
+		]/4, 8
 	)
 ).play;
 
@@ -589,6 +589,38 @@ fork{
 			
 		//-------------------------------------------lev4-4/4--24s-----------------------------------------------
 			\layer_C_62 -> {//	|dum2
+
+
+~layC34.stop;
+~layC34 = Posc(
+	\msg, Pseq([  Pseq([\lC31_1a], 1),Pseq([\bt1, \lC31_3, \bitB2], 7),  Pseq([\bitA1], 1) ], inf),
+	\dur, Pseq([	Pseq([0.25], 4), Pseq([0.5], 4), Pseq([1], 1) ], 12)
+).play;
+
+~cemb01.stop;
+~cemb01 = Posc(
+	\msg, Pxrand(
+		[
+		//cember
+		\kk1, \kk2, \kP24, 
+		\kk4, \kP26, \bt27, 
+		\kP28, \kk29, \kP30,
+		\kP31, \kP32, \bt33, 
+		\kk34, \kP35, \kk46, \bt17
+		], inf
+	),
+	\dur, Pseq(
+		[
+		//cember
+		Pseq([2, 1, 1], 1),
+		Pseq([2, 1, 1], 1),
+		Pseq([2, 2, 2], 1),
+		Pseq([2, 2, 2], 1),
+		Pseq([1, 1, 1, 1], 1)
+		]/4, 8
+	)
+).play;
+
 				
 				}, 
 			\layer_C_63 -> {//	tek2
@@ -596,7 +628,41 @@ fork{
 
 ~layC34.stop;
 ~layC34 = Posc(
-	\msg, Pseq([ Pseq([\bitA6], 1),	Pseq([\es, \es, \bt9], 7), Pseq([\bit04], 1) ], inf),
+	\msg, Pseq([ Pseq([\bitB3], 1),	Pseq([\bt22, \kk22, \bt9], 7), Pseq([\bitA1], 1) ], inf),
+	\dur, Pseq([	Pseq([0.25], 8), Pseq([1], 1) ], 11)
+).play;
+
+~cemb01.stop;
+~cemb01 = Posc(
+	\msg, Pxrand(
+		[
+		//cember
+		\kP9, \bt13, \bt28, 
+		\kk4, \kP26, \bitA5, 
+		\bt28, \kk29, \bt3,
+		\kP31, \bt10, \kp13, 
+		\kk24, \kP35, \kk46, \bt17
+		], inf
+	),
+	\dur, Pseq(
+		[
+		//cember
+		Pseq([2, 1, 1], 1),
+		Pseq([2, 1, 1], 1),
+		Pseq([2, 2, 2], 1),
+		Pseq([2, 2, 2], 1),
+		Pseq([1, 1, 1, 1], 1)
+		]/4, 6
+	)
+).play;
+			
+				}, 
+		//-------------------------------------------lev5-4/4--24s-----------------------------------------------
+			\layer_C_64 -> {//	+dum2
+
+~layC34.stop;
+~layC34 = Posc(
+	\msg, Pseq([ Pseq([\bitA1], 1),	Pseq([\es, \es, \bt9], 7), Pseq([\bit04], 1) ], inf),
 	\dur, Pseq([	Pseq([0.25], 8), Pseq([1], 1) ], 11)
 ).play;
 
@@ -623,10 +689,7 @@ fork{
 		]/4, 6
 	)
 ).play;
-			
-				}, 
-		//-------------------------------------------lev5-4/4--24s-----------------------------------------------
-			\layer_C_64 -> {//	+dum2
+
 				
 				}, 
 			\layer_C_65 -> {//	|dum2
