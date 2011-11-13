@@ -9,21 +9,26 @@ testApp::testApp(){
 //--------------------------------------------------------------
 void testApp::setup(){
 	{
-	
+		//traditional loading
+		//image[0].loadImage("/Users/ari/Media/images/bibliOdyssey/Australian-Places/Cape-Otway-Ranges.jpg");
 		//ofSetFullscreen(true);
+		ofSetCircleResolution(200);
+		ofSetVerticalSync(false);
+
+		
 		
 		ofSetBackgroundAuto(false);
 		ofEnableSmoothing();
 		ofEnableAlphaBlending();
 		ofBackground(0,0,0);
-		ofSetFrameRate(60);
-		ofSetWindowTitle("cutMotion");
+		ofSetFrameRate(30);
+		ofSetWindowTitle("cutMotion - real time interactive stop motion engine");
 		
 		texScreen.allocate(ofGetWidth(), ofGetHeight(),GL_RGB);// GL_RGBA); 
 	}	//Screen
 	{
 		texScreen.allocate(ofGetWidth(), ofGetHeight(),GL_RGB);// GL_RGBA); 
-		screen.allocate(ofGetWidth(), ofGetHeight(),GL_RGB);
+		//screen.allocate(ofGetWidth(), ofGetHeight(),GL_RGB);
 		
 	}	//Texture
 	{
@@ -31,11 +36,6 @@ void testApp::setup(){
 		receiver.setup( PORT );
 		current_msg_string = 0;
 	}	//OSC
-	{		
-		for (int i = 0; i < MAX_SKETCHES; i++){
-			sketch[i].init(ofRandom(0.01, 0.29), ofRandom(0.01, 0.29));
-		}
-	}	//sketch
 	{
 		iv["textureRed"] = iv["textureGreen"] = iv["textureBlue"] = iv["textureAlpha"] = 255;
 		iv["reverseEllipse"] = ofGetWidth();	iv["reverseTexture"] = -1;
@@ -48,20 +48,11 @@ void testApp::setup(){
 		iv["sketch"] = 0;
 		iv["alphaSketch"] = 10;
 	}	//Initial value
-
-	frameByframe = false;
-    
-	fingerMovie.loadMovie("/Users/omerchatziserif/Desktop/testVid01.mov");
-	fingerMovie.play();
-
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
-    fingerMovie.update();
-    
-    
-    {
+	{
 	for ( int i=0; i<NUM_MSG_STRINGS; i++ )
 	{
 		if ( timers[i] < ofGetElapsedTimef() )
@@ -113,7 +104,7 @@ void testApp::update(){
 				
 				break;
 				case 5:
-					ofFill();
+					//ofFill();
 					ofSetColor(0xFFFFFF);				
 					image[m.getArgAsInt32(0)].draw(m.getArgAsInt32(1), m.getArgAsInt32(2),m.getArgAsInt32(3),m.getArgAsInt32(4));
 				break;
@@ -169,17 +160,6 @@ void testApp::update(){
 }
 //--------------------------------------------------------------
 void testApp::draw(){
-// video
-    ofSetColor(0xFFFFFF);
-    
-    
-    //printf("%i",fingerMovie.getTotalNumFrames());
-
-    fingerMovie.draw(20,20);
-    
-    
-    
-    
 //	image[0].draw(fv["xPosImg"],fv["yPosImg"], fv["wImg"], fv["hImg"]);
 	switch ( iv["mirrorMode"] )	{
 		case 0:
@@ -224,21 +204,9 @@ void testApp::draw(){
 			
 			break;
 		 default:
-			printf("%d", fv["mirrorMode"]);
+			//printf("%d", fv["mirrorMode"])
+			;
 		}	// mirrowMode
-	if (iv["sketch"] == 1)	{	
-		if(mouseX > 0 and mouseX < imgWidth and mouseY > 0 and mouseY < imgHeight)	{
-			unsigned char * pixels = image[0].getPixels();
-			int index = mouseY*imgWidth*3 + mouseX*3;
-			iv["redSketch"] = pixels[index];
-			iv["greenSketch"] = pixels[index+1];
-			iv["blueSketch"] = pixels[index+2];
-			for( int i=0; i<MAX_SKETCHES; i++ ) {
-
-				sketch[i].draw(mouseX, mouseY, 0, iv["redSketch"], iv["greenSketch"], iv["blueSketch"], iv["alphaSketch"], 0);	
-			}		
-		}
-	}
 	if (iv["pixelate"] == 1)	{
 		
 		unsigned char * pixels = image[0].getPixels();
@@ -375,15 +343,7 @@ void testApp::mouseDragged(int x, int y, int button){
 //pixel (100,20):
 }
 void testApp::mouseMoved(int x, int y ){
-
-    if(!frameByframe){
-        int width = ofGetWidth();
-        float pct = (float)x / (float)width;
-        float speed = (2 * pct - 1) * 5.0f;
-        fingerMovie.setSpeed(speed);
-	}
-    
-    /*
+		/*
 		unsigned char * pixels = grayImage.getPixels();
 		int widthOfLine = grayImage.width * 1024;  // how long is a line of pixels
 		iv["redSketch"] 	= pixels[(mouseY * widthOfLine) + mouseX * 3    ];
@@ -401,7 +361,6 @@ void testApp::mouseMoved(int x, int y ){
 
 }
 void testApp::mousePressed(int x, int y, int button)	{
-    fingerMovie.setFrame(int(ofRandom(0,27140)));
 
 }
 void testApp::mouseReleased(int x, int y, int button){}
