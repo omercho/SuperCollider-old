@@ -8,7 +8,17 @@ testApp::testApp(){
 
 //--------------------------------------------------------------
 void testApp::setup(){
-	{
+
+    {
+        myVideo = new ofVideoPlayer();
+        myVideo->loadMovie("/Users/omerchatziserif/Desktop/testVid01.mov");
+        myVideo->play();
+        vidVol = 0;
+        playVideo = 1;
+        rVideo = gVideo = bVideo = aVideo =255;
+    }   //VIdeo
+	
+    {
 		//traditional loading
 		//image[0].loadImage("/Users/ari/Media/images/bibliOdyssey/Australian-Places/Cape-Otway-Ranges.jpg");
 		//ofSetFullscreen(true);
@@ -27,16 +37,7 @@ void testApp::setup(){
 		
 		texScreen.allocate(ofGetWidth(), ofGetHeight(),GL_RGB);// GL_RGBA); 
 	}	//Screen
-	
-    {
-        myVideo = new ofVideoPlayer();
-        myVideo->loadMovie("/Users/omerchatziserif/Desktop/testVid01.mov");
-        myVideo->play();
-        playVideo = 1;
-        rVideo = gVideo = bVideo = aVideo =255;
-    }   //VIdeo
-    
-    {
+	{
 		texScreen.allocate(ofGetWidth(), ofGetHeight(),GL_RGB);// GL_RGBA); 
 		//screen.allocate(ofGetWidth(), ofGetHeight(),GL_RGB);
 		
@@ -61,17 +62,14 @@ void testApp::setup(){
 }
 
 //--------------------------------------------------------------
-void testApp::update(){
-	{
-	for ( int i=0; i<NUM_MSG_STRINGS; i++ )
-	{
+void testApp::update(){{
+	for ( int i=0; i<NUM_MSG_STRINGS; i++ ){
 		if ( timers[i] < ofGetElapsedTimef() )
 			msg_strings[i] = "";
 	}
 
 	// check for waiting messages
-	while( receiver.hasWaitingMessages() )
-	{
+	while( receiver.hasWaitingMessages() ){
 		ofxOscMessage m;
 		receiver.getNextMessage( &m );
 
@@ -81,11 +79,13 @@ void testApp::update(){
 			
             else if (m.getArgAsString(0) == "vidX") vidX = m.getArgAsFloat(1);
             else if (m.getArgAsString(0) == "vidY") vidY = m.getArgAsFloat(1);
-            else if (m.getArgAsString(0) == "vidWidth") vidWidth = m.getArgAsFloat(1);
-            else if (m.getArgAsString(0) == "vidHeight") vidHeight = m.getArgAsFloat(1);
+            else if (m.getArgAsString(0) == "vidW") vidW = m.getArgAsFloat(1);
+            else if (m.getArgAsString(0) == "vidH") vidH = m.getArgAsFloat(1);
             
+            else if (m.getArgAsString(0) == "vidVol") myVideo->setVolume(m.getArgAsFloat(1));
             else if (m.getArgAsString(0) == "setSpeed") myVideo->setSpeed(m.getArgAsFloat(1));
-			else if (m.getArgAsString(0) == "rVideo") rVideo = m.getArgAsInt32(1);			
+			
+            else if (m.getArgAsString(0) == "rVideo") rVideo = m.getArgAsInt32(1);			
 			else if (m.getArgAsString(0) == "gVideo") gVideo = m.getArgAsInt32(1);			
 			else if (m.getArgAsString(0) == "bVideo") bVideo = m.getArgAsInt32(1);			
 			else if (m.getArgAsString(0) == "aVideo") aVideo = m.getArgAsInt32(1);						
@@ -111,6 +111,72 @@ void testApp::update(){
 			}
 		}	//	video
         
+        if ( m.getAddress() == "img" )                  {
+			
+			//cout << m.getNumArgs() << endl;
+			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); // GL_SRC_ALPHA_SATURATE,GL_ONE     GL_SRC_ALPHA, GL_ONE			
+			switch (m.getNumArgs())	{
+				case 1:
+					ofFill();
+					ofSetColor(0xFFFFFF);				
+					//image[m.getArgAsInt32(0)].draw(m.getArgAsInt32(1), 0, 0, ofGetWidth(), ofGetHeight());
+                    break;
+				case 4:
+					if (image[m.getArgAsInt32(0)].width/image[m.getArgAsInt32(0)].height > 1.25)	{
+						
+						//image[id].draw(x,y,width,height);	
+						
+					}	else	{
+                        
+						
+                        
+					}
+                    
+                    break;
+				case 5:
+					//ofFill();
+					ofSetColor(0xFFFFFF);				
+					image[m.getArgAsInt32(0)].draw(m.getArgAsInt32(1), m.getArgAsInt32(2),m.getArgAsInt32(3),m.getArgAsInt32(4));
+                    break;
+				case 8:
+					ofNoFill();
+					ofSetColor(0xFFFFFF);		
+					ofBeginShape();		
+					ofRotateX(m.getArgAsInt32(5));
+					ofRotateY(m.getArgAsInt32(6));
+					ofRotateZ(m.getArgAsInt32(7));										
+					image[m.getArgAsInt32(0)].draw(m.getArgAsInt32(1), m.getArgAsInt32(2),m.getArgAsInt32(3),m.getArgAsInt32(4));
+					ofEndShape();
+                    break;
+				case 11:
+					//cout << m.getNumArgs() << endl;
+					ofNoFill();
+					ofSetColor(0xFFFFFF);		
+					ofBeginShape();		
+					ofTranslate(m.getArgAsInt32(5),m.getArgAsInt32(6),m.getArgAsInt32(7));
+					ofRotateX(m.getArgAsInt32(8));
+					ofRotateY(m.getArgAsInt32(9));
+					ofRotateZ(m.getArgAsInt32(10));										
+					image[m.getArgAsInt32(0)].draw(m.getArgAsInt32(1), m.getArgAsInt32(2),m.getArgAsInt32(3),m.getArgAsInt32(4));
+					ofEndShape();
+                    break;
+				case 14:
+					cout << m.getNumArgs() << endl;
+					ofNoFill();
+					ofSetColor(0xFFFFFF);		
+					ofBeginShape();		
+					ofTranslate(m.getArgAsInt32(5),m.getArgAsInt32(6),m.getArgAsInt32(7));
+					ofScale(m.getArgAsInt32(8),m.getArgAsInt32(9),m.getArgAsInt32(10));										
+					ofRotateX(m.getArgAsInt32(11));
+					ofRotateY(m.getArgAsInt32(12));
+					ofRotateZ(m.getArgAsInt32(13));										
+					image[m.getArgAsInt32(0)].draw(m.getArgAsInt32(1), m.getArgAsInt32(2),m.getArgAsInt32(3),m.getArgAsInt32(4));
+					ofEndShape();
+                    break;
+                    
+			}
+		}
+        
         if ( m.getAddress() == "feedback" )				{
 			if (m.getArgAsString( 0 ) == "activate")	feedbackView = m.getArgAsInt32( 1 );
 			else if (m.getArgAsString( 0 ) == "speedXY")		{
@@ -125,71 +191,7 @@ void testApp::update(){
 		if ( m.getAddress() == "float" )                {
 			fv[m.getArgAsString(0)] = m.getArgAsFloat(1);			
 		}
-		if ( m.getAddress() == "img" )                  {
-			
-			//cout << m.getNumArgs() << endl;
-			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); // GL_SRC_ALPHA_SATURATE,GL_ONE     GL_SRC_ALPHA, GL_ONE			
-			switch (m.getNumArgs())	{
-				case 1:
-					ofFill();
-					ofSetColor(0xFFFFFF);				
-					//image[m.getArgAsInt32(0)].draw(m.getArgAsInt32(1), 0, 0, ofGetWidth(), ofGetHeight());
-				break;
-				case 4:
-					if (image[m.getArgAsInt32(0)].width/image[m.getArgAsInt32(0)].height > 1.25)	{
-						
-						//image[id].draw(x,y,width,height);	
-						
-					}	else	{
-					
-						
-					
-					}
-				
-				break;
-				case 5:
-					//ofFill();
-					ofSetColor(0xFFFFFF);				
-					image[m.getArgAsInt32(0)].draw(m.getArgAsInt32(1), m.getArgAsInt32(2),m.getArgAsInt32(3),m.getArgAsInt32(4));
-				break;
-				case 8:
-					ofNoFill();
-					ofSetColor(0xFFFFFF);		
-					ofBeginShape();		
-					ofRotateX(m.getArgAsInt32(5));
-					ofRotateY(m.getArgAsInt32(6));
-					ofRotateZ(m.getArgAsInt32(7));										
-					image[m.getArgAsInt32(0)].draw(m.getArgAsInt32(1), m.getArgAsInt32(2),m.getArgAsInt32(3),m.getArgAsInt32(4));
-					ofEndShape();
-				break;
-				case 11:
-					//cout << m.getNumArgs() << endl;
-					ofNoFill();
-					ofSetColor(0xFFFFFF);		
-					ofBeginShape();		
-					ofTranslate(m.getArgAsInt32(5),m.getArgAsInt32(6),m.getArgAsInt32(7));
-					ofRotateX(m.getArgAsInt32(8));
-					ofRotateY(m.getArgAsInt32(9));
-					ofRotateZ(m.getArgAsInt32(10));										
-					image[m.getArgAsInt32(0)].draw(m.getArgAsInt32(1), m.getArgAsInt32(2),m.getArgAsInt32(3),m.getArgAsInt32(4));
-					ofEndShape();
-				break;
-				case 14:
-					cout << m.getNumArgs() << endl;
-					ofNoFill();
-					ofSetColor(0xFFFFFF);		
-					ofBeginShape();		
-					ofTranslate(m.getArgAsInt32(5),m.getArgAsInt32(6),m.getArgAsInt32(7));
-					ofScale(m.getArgAsInt32(8),m.getArgAsInt32(9),m.getArgAsInt32(10));										
-					ofRotateX(m.getArgAsInt32(11));
-					ofRotateY(m.getArgAsInt32(12));
-					ofRotateZ(m.getArgAsInt32(13));										
-					image[m.getArgAsInt32(0)].draw(m.getArgAsInt32(1), m.getArgAsInt32(2),m.getArgAsInt32(3),m.getArgAsInt32(4));
-					ofEndShape();
-				break;
-				
-			}
-		}				
+		
                 
         if ( m.getAddress() == "rect")                  {
 			ofFill();
@@ -201,17 +203,19 @@ void testApp::update(){
 			printf("Load Image: %i \n", m.getArgAsInt32(0));
 		}		
 	}
-	}	//OSC
+    }	//OSC
 }
 //--------------------------------------------------------------
 void testApp::draw(){
-    if	(playVideo)				{
+    if	(playVideo){
+        
 		myVideo->idleMovie();
 		ofSetColor(rVideo,gVideo,bVideo,aVideo);		
-		myVideo->draw(vidX, vidY, vidWidth, vidHeight);
-	}	//  Play Video
+		myVideo->draw(vidX, vidY, vidW, vidH);
+        myVideo->setVolume(vidVol);
+    }	//  Play Video
     
-    //	image[0].draw(fv["xPosImg"],fv["yPosImg"], fv["wImg"], fv["hImg"]);
+    
 	switch ( iv["mirrorMode"] )	{
 		case 0:
 		break;

@@ -33,9 +33,9 @@ class testApp : public ofBaseApp{
 		int				feedbackView, timeLine, viewRotate, view_fillBackground;
 
         
-        //VIDEO
+        //-------------------VIDEO----------------------//
         int playVideo, rVideo, gVideo, bVideo, aVideo;
-        float vidX,vidY, vidWidth, vidHeight; 
+        float vidX,vidY, vidW, vidH, vidVol; 
         
         ofVideoPlayer*  myVideo;
 		
