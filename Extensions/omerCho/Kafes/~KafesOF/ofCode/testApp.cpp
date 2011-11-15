@@ -14,6 +14,7 @@ void testApp::setup(){
 		//ofSetFullscreen(true);
 		ofSetCircleResolution(200);
 		ofSetVerticalSync(false);
+        
 
 		
 		
@@ -26,7 +27,16 @@ void testApp::setup(){
 		
 		texScreen.allocate(ofGetWidth(), ofGetHeight(),GL_RGB);// GL_RGBA); 
 	}	//Screen
-	{
+	
+    {
+        myVideo = new ofVideoPlayer();
+        myVideo->loadMovie("/Users/omerchatziserif/Desktop/testVid01.mov");
+        myVideo->play();
+        playVideo = 1;
+        rVideo = gVideo = bVideo = aVideo =255;
+    }   //VIdeo
+    
+    {
 		texScreen.allocate(ofGetWidth(), ofGetHeight(),GL_RGB);// GL_RGBA); 
 		//screen.allocate(ofGetWidth(), ofGetHeight(),GL_RGB);
 		
@@ -66,22 +76,56 @@ void testApp::update(){
 		receiver.getNextMessage( &m );
 
 		// map implementation
-		if ( m.getAddress() == "feedback" )				{
+		if ( m.getAddress() == "video")					{
+			if (m.getArgAsString(0) == "playVideo") playVideo = m.getArgAsInt32(1);
+			
+            else if (m.getArgAsString(0) == "vidX") vidX = m.getArgAsFloat(1);
+            else if (m.getArgAsString(0) == "vidY") vidY = m.getArgAsFloat(1);
+            else if (m.getArgAsString(0) == "vidWidth") vidWidth = m.getArgAsFloat(1);
+            else if (m.getArgAsString(0) == "vidHeight") vidHeight = m.getArgAsFloat(1);
+            
+            else if (m.getArgAsString(0) == "setSpeed") myVideo->setSpeed(m.getArgAsFloat(1));
+			else if (m.getArgAsString(0) == "rVideo") rVideo = m.getArgAsInt32(1);			
+			else if (m.getArgAsString(0) == "gVideo") gVideo = m.getArgAsInt32(1);			
+			else if (m.getArgAsString(0) == "bVideo") bVideo = m.getArgAsInt32(1);			
+			else if (m.getArgAsString(0) == "aVideo") aVideo = m.getArgAsInt32(1);						
+			else if (m.getArgAsString(0) == "colorVideo") {
+				rVideo = m.getArgAsInt32(1);
+				gVideo = m.getArgAsInt32(2);
+				bVideo = m.getArgAsInt32(3);
+				aVideo = m.getArgAsInt32(4);
+			}
+			else if (m.getArgAsString(0) == "deleteVideo")		{
+				myVideo->stop();
+				myVideo->close();
+				delete myVideo;
+				myVideo = 0;
+				//myVideo.closeMovie();//();myVideo.loadMovie("/Users/ari/Media/videos/maps/smallVideo.mov");
+			}
+			else if (m.getArgAsString(0) == "reloadVideo")		{
+				myVideo = new ofVideoPlayer();
+				myVideo->loadMovie("/Users/omerchatziserif/Desktop/testVid01.mov");
+				myVideo->play();
+				//myVideo.loadMovie("/Users/ari/Media/videos/maps/grenobleY.mov");
+                
+			}
+		}	//	video
+        
+        if ( m.getAddress() == "feedback" )				{
 			if (m.getArgAsString( 0 ) == "activate")	feedbackView = m.getArgAsInt32( 1 );
 			else if (m.getArgAsString( 0 ) == "speedXY")		{
 				feedbackSpeedY = m.getArgAsFloat( 1 );
 				feedbackSpeedX = m.getArgAsFloat( 2 );
 			}
 		}	//	Feedback		
-
-		if ( m.getAddress() == "int" )	{
+		if ( m.getAddress() == "int" )                  {
 			iv[m.getArgAsString(0)] = m.getArgAsInt32(1);	
 			printf("value = %d\n", m.getArgAsInt32(1));		
 		}
-		if ( m.getAddress() == "float" )	{
+		if ( m.getAddress() == "float" )                {
 			fv[m.getArgAsString(0)] = m.getArgAsFloat(1);			
 		}
-		if ( m.getAddress() == "img" )	{
+		if ( m.getAddress() == "img" )                  {
 			
 			//cout << m.getNumArgs() << endl;
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); // GL_SRC_ALPHA_SATURATE,GL_ONE     GL_SRC_ALPHA, GL_ONE			
@@ -145,13 +189,14 @@ void testApp::update(){
 				break;
 				
 			}
-		}		
-		if ( m.getAddress() == "rect")	{
+		}				
+                
+        if ( m.getAddress() == "rect")                  {
 			ofFill();
 			ofSetColor(0,0,0);
 			ofRect(m.getArgAsInt32(0), m.getArgAsInt32(1), m.getArgAsInt32(2), m.getArgAsInt32(3));
 		}
-		if ( m.getAddress() == "loadImage" )	{
+		if ( m.getAddress() == "loadImage" )            {
 			image[m.getArgAsInt32(0)].loadImage(m.getArgAsString(1));
 			printf("Load Image: %i \n", m.getArgAsInt32(0));
 		}		
@@ -160,7 +205,13 @@ void testApp::update(){
 }
 //--------------------------------------------------------------
 void testApp::draw(){
-//	image[0].draw(fv["xPosImg"],fv["yPosImg"], fv["wImg"], fv["hImg"]);
+    if	(playVideo)				{
+		myVideo->idleMovie();
+		ofSetColor(rVideo,gVideo,bVideo,aVideo);		
+		myVideo->draw(vidX, vidY, vidWidth, vidHeight);
+	}	//  Play Video
+    
+    //	image[0].draw(fv["xPosImg"],fv["yPosImg"], fv["wImg"], fv["hImg"]);
 	switch ( iv["mirrorMode"] )	{
 		case 0:
 		break;

@@ -3,7 +3,7 @@
 
 //:Create the hashTable
 ~imageLib = MultiLevelIdentityDictionary.new;
-~loadImages2oF = { | path = "/Users/ari/Media/images/bibliOdyssey/*" |
+~loadImages2oF = { | path = "/Users/omerchatziserif/Library/Application\ Support/SuperCollider/Extensions/omerCho/Kafes/\~KafesImages/*" |
 	var folders, files, imageDict;
 	imageDict = IdentityDictionary.new;
 	folders = path.pathMatch;
@@ -41,9 +41,9 @@
 ~imageLib = MultiLevelIdentityDictionary.new;
 
 ~imageLib.put('Sanborn-Typography', 10, 532);
-~imageLib.put('eleni1', 50, 4432);
+~imageLib.put('xeria', 50, 4432);
 
-~imageLib.at('eleni1', 50);
+~imageLib.at('xeria', 2);
 
 
 //----------------------------------------------------------
@@ -81,7 +81,7 @@
 ~imageLib.put('eleni1', 10, 532);
 ~imageLib.put('eleni1', 50, 4432);
 
-~imageLib.at('eleni1', 50);
+~imageLib.at('xeria', 1);
 
 //:---------------------------------------------------------
 //----------------------------------------------------------

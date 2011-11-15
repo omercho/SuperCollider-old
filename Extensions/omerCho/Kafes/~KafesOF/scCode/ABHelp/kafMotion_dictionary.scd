@@ -46,7 +46,8 @@ OF.img(0, 0, 0, 1280, 1024, 0, 0, 0, rrand(), 0, 0, 0);
 OF.int("mirrorMode",1)
 
 
-OF.img(~imageLib.choose('Sanborn-Typography'),0,0,1280, 1024);
+OF.img(~imageLib.choose('ntalika'), 0, 0, 1280, 1024);
+OF.img(~imageLib.at('xeria', 1), 0, 0, 1280, 1024);
 OF.img(1,0,0,1280, 1024);
 
 //:play images from a specific group

@@ -32,7 +32,12 @@ class testApp : public ofBaseApp{
 		float 			feedbackSpeedX,	feedbackSpeedY;
 		int				feedbackView, timeLine, viewRotate, view_fillBackground;
 
-		
+        
+        //VIDEO
+        int playVideo, rVideo, gVideo, bVideo, aVideo;
+        float vidX,vidY, vidWidth, vidHeight; 
+        
+        ofVideoPlayer*  myVideo;
 		
 		ofImage			image[200];
 		
