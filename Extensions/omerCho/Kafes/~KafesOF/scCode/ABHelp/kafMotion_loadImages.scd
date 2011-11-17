@@ -3,7 +3,8 @@
 
 //:Create the hashTable
 ~imageLib = MultiLevelIdentityDictionary.new;
-~loadImages2oF = { | path = "/Users/omerchatziserif/Library/Application\ Support/SuperCollider/Extensions/omerCho/Kafes/\~KafesImages/*" |
+~loadImages2oF = { | path = "/Users/omerchatziserif/Media/Pics/\~KafesImages/*" |
+	
 	var folders, files, imageDict;
 	imageDict = IdentityDictionary.new;
 	folders = path.pathMatch;
@@ -26,6 +27,8 @@
 	
 	}.fork;
 };
+OF.video("playVideo",0);
+OF.video("deleteVideo");
 
 //:evaluate the function
 ~loadImages2oF.value;

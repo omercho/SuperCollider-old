@@ -47,7 +47,7 @@ OF.int("mirrorMode",1)
 
 
 OF.img(~imageLib.choose('ntalika'), 0, 0, 1280, 1024);
-OF.img(~imageLib.at('xeria', 1), 0, 0, 1280, 1024);
+
 OF.img(1,0,0,1280, 1024);
 
 //:play images from a specific group
@@ -59,7 +59,7 @@ OF.img(1,0,0,1280, 1024);
 	}
 }.fork
 //:=====vid
-VIDEO
+//VIDEO
 -----
 
 
@@ -68,8 +68,8 @@ OF.video("playVideo",1)
 OF.video("setSpeed",-1.2)
 OF.video("vidVol",1)
 
-OF.video("playVideo",0)
-OF.video("deleteVideo")
+OF.video("playVideo",0);
+OF.video("deleteVideo");
 OF.video("reloadVideo")
 OF.video("playVideo",1)
 
@@ -78,3 +78,11 @@ OF.video("gVideo", 115)
 OF.video("bVideo", 5)
 OF.video("aVideo", 255)
 OF.video("colorVideo", 255,255,255,255)
+/:=====
+OF.video("playVideo",1);
+OF.video("vidX", 300);
+OF.video("vidY", 300);
+
+/:=====
+
+

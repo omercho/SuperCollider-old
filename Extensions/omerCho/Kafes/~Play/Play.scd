@@ -14,8 +14,73 @@
 //=================================================VISUALS===================================================//
 
 
+//:Load images to oF
+//:=================
+
+//:Create the hashTable
+~imageLib = MultiLevelIdentityDictionary.new;
+~loadImages2oF = { | path = "/Users/omerchatziserif/Media/Pics/\~KafesImages/*" |
+	
+	var folders, files, imageDict;
+	imageDict = IdentityDictionary.new;
+	folders = path.pathMatch;
+	folders do: { | f |
+		f.basename.postln;
+		imageDict[f.basename.asSymbol] = format("%*", f).pathMatch;
+		postf("FOLDER LOADED: \n%\n", f);
+	};
+	{
+		var index = 0;
+		imageDict keysValuesDo: { | folder, files |
+ 			files do: { | path, i |
+	 			postf("LOADING: %, %, %\n", index, folder, path.basename);
+	 			OF.loadImage(index, path);
+				~imageLib.put(folder, i, index);
+	 			index = index + 1;
+				0.01.wait;
+ 			}
+		}
+	
+	}.fork;
+};
+OF.video("playVideo",0);
+OF.video("deleteVideo");
+
+//:evaluate the function
+~loadImages2oF.value;
+
+//:
 
 
+
+//:-
+
+
+fork{
+	144.do{|i|
+		var dur = Pseq([0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]/4, inf).asStream;
+		~gou02.brt_([~kRE2, ~kRC6].choose *0.89000).playBuf(0.001, 1.1, 5.1, mul:0.0001+0.001*(i%70), out: ~strTek.choose);
+		OF.img(~imageLib.at('kafSleepA', (0..15).choose), 0, 0, 600, 600, (10.0..90.9).choose);
+		dur.next.wait;
+		
+		
+	};
+};
+
+//:-
+
+fork{
+	144.do{|i|
+		var dur = Pseq([0.5, 0.25, 0.25, 0.5, 0.25, 0.25, 0.25, 0.25]/4, inf).asStream;
+		~gou02.brt_([~kRE2, ~kRC6].choose *0.89000).playBuf(0.001, 1.1, 5.1, mul:0.0001+0.001*(i%70), out: ~strTek.choose);
+		OF.img(~imageLib.at('kafSleepA', (15..35).choose), 0, 0, 600, 600);
+		dur.next.wait;
+		
+		
+	};
+};
+
+//:-
 
 
 
