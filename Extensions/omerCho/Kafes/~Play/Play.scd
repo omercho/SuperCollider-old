@@ -49,7 +49,54 @@ OF.video("deleteVideo");
 //:evaluate the function
 ~loadImages2oF.value;
 
-//:
+//:---
+
+
+
+
+fork{
+	~tol08.brt_(~kRC1 *1.07500).playBuf(0.001, 0.3, 0.1, mul:1.1, out: ~strHep);
+	
+	0.265.wait;
+	
+	//KafSinVib.ar(0.1, 0.1, 18.0, mul:0.3, freq1: ~kA1, freq2: ~kA1+3, vib1: 2.1, vib2: 4, out: ~strCok.choose).play;
+	
+	~tol06.brt_(~kRB1 *1.23700).playGverb(0.001, 1.1, 16.1, mul:0.1, room:165, rev:23.5, damp:0.71, out: ~strHep);
+	
+	//~tol06.brt_(~kRC1 *1.23700).playBuf(0.001, 1.1, 16.1, mul:0.4, out: ~strHep);
+	
+	5.6.wait;
+	
+	~tol06.brt_(~kRB1 *1.23700).playGverbR(0.001, 1.1, 10.1, mul:0.5, room:55, rev:13.5, damp:0.71, out: ~strTek.choose);
+	
+	2.9.wait;
+	
+	~tol06.brt_(~kRB4 *1.23700).playBufR(0.01, 3.5, 0.1, mul:0.5, out: ~strTek.choose);
+	
+	0.01.wait;
+	
+	~tol06.brt_(~kRB1 *1.23700).playBufR(0.01, 4.5, 0.1, mul:0.5, out: ~strTek.choose);
+	
+	2.5.wait;
+	
+	fork{
+		
+		~botbs.brt_(~kRD1 *1.36619).playBuf(0.001, 1.1, 3, mul:0.7, out: ~strTek.choose);
+		0.25.wait;
+		~botbs.brt_(~kRD4 *1.36619).playBuf(0.001, 1.1, 3, mul:0.5, out: ~strTek.choose);
+		
+	};
+	
+	0.25.wait;
+	
+	~tol03.brt_(~kRD1 *1.07600).playBufR(0.001, 0.8, 1,4, mul:0.5, out: ~strTek.choose);
+	
+	1.5.wait;
+	
+	~gir01.brt_(2.8).playGverbR(0.001, 1.1, 10.1, mul:0.5, room:55, rev:13.5, damp:0.71, out: ~strTek.choose);
+
+};
+
 
 
 
@@ -60,7 +107,7 @@ fork{
 	144.do{|i|
 		var dur = Pseq([0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]/4, inf).asStream;
 		~gou02.brt_([~kRE2, ~kRC6].choose *0.89000).playBuf(0.001, 1.1, 5.1, mul:0.0001+0.001*(i%70), out: ~strTek.choose);
-		OF.img(~imageLib.at('kafSleepA', (0..15).choose), 0, 0, 600, 600, (10.0..90.9).choose);
+		OF.img(~imageLib.at('kafSleepA', (0..15).choose), 0, 0, 600, 600, 4.0+1.001*(i%70));
 		dur.next.wait;
 		
 		
@@ -73,7 +120,7 @@ fork{
 	144.do{|i|
 		var dur = Pseq([0.5, 0.25, 0.25, 0.5, 0.25, 0.25, 0.25, 0.25]/4, inf).asStream;
 		~gou02.brt_([~kRE2, ~kRC6].choose *0.89000).playBuf(0.001, 1.1, 5.1, mul:0.0001+0.001*(i%70), out: ~strTek.choose);
-		OF.img(~imageLib.at('kafSleepA', (15..35).choose), 0, 0, 600, 600);
+		OF.img(~imageLib.at('kafSleepA', (15..35).choose), 0, 0, 600, 600, 4.0+1.001*(i%70));
 		dur.next.wait;
 		
 		
