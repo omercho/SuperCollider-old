@@ -8,20 +8,21 @@ testApp::testApp(){
 
 //--------------------------------------------------------------
 void testApp::setup(){
-
+    
     {
         myVideo = new ofVideoPlayer();
-        myVideo->loadMovie("/Users/omerchatziserif/Desktop/testVid01.mov");
-        myVideo->play();
         vidVol = 0;
-        playVideo = 1;
+        playVideo = 0;
         rVideo = gVideo = bVideo = aVideo =255;
+        
+        myVideo = 0;
     }   //Video
     {
 		//traditional loading
 		//image[0].loadImage("/Users/ari/Media/images/bibliOdyssey/Australian-Places/Cape-Otway-Ranges.jpg");
 		//ofSetFullscreen(true);
-		ofSetCircleResolution(200);
+		
+        //ofSetCircleResolution(200);
 		ofSetVerticalSync(false);
         
 
@@ -31,7 +32,7 @@ void testApp::setup(){
 		ofEnableSmoothing();
 		ofEnableAlphaBlending();
 		ofBackground(0,0,0);
-		ofSetFrameRate(30);
+		ofSetFrameRate(25);
 		ofSetWindowTitle("cutMotion - real time interactive stop motion engine");
 		
 		texScreen.allocate(ofGetWidth(), ofGetHeight(),GL_RGB);// GL_RGBA); 
@@ -122,73 +123,170 @@ void testApp::update(){
                 switch (m.getNumArgs())	{
                     case 1:
                         ofFill();
-                        ofSetColor(0xFFFFFF);				
-                        //image[m.getArgAsInt32(0)].draw(m.getArgAsInt32(1), 0, 0, ofGetWidth(), ofGetHeight());
-                        break;
-                    case 4:
-                        if (image[m.getArgAsInt32(0)].width/image[m.getArgAsInt32(0)].height > 1.25)	{
+                        ofSetHexColor(0xFFFFFF);				
+                        
+                    break;
+                    
+                        
+                    
+                    case 3:
+                        
+                        ofSetColor(255, 255, 255, m.getArgAsInt32(1) );
+                        ofPushMatrix();	
+                        
+                        if (m.getArgAsInt32(2) == 90) {
+                            ofTranslate(1152, -128, 0);
+                            ofRotateZ(m.getArgAsInt32(2));
                             
-                            //image[id].draw(x,y,width,height);	
+                        }
+                        if (m.getArgAsInt32(2) == 180) {
                             
-                        }	else	{
+                            ofTranslate(1280, 1024, 0);
+                            ofRotateZ(m.getArgAsInt32(2));
                             
-                            
+                        }
+                        if (m.getArgAsInt32(2) == 270) {
+                            ofTranslate(128, 1152, 0);
+                            ofRotateZ(m.getArgAsInt32(2));
                             
                         }
                         
-                        break;
-                    case 5:
-                        //ofFill();
-                        ofSetColor(0xFFFFFF);				
-                        image[m.getArgAsInt32(0)].draw(m.getArgAsInt32(1), m.getArgAsInt32(2),m.getArgAsInt32(3),m.getArgAsInt32(4));
-                        //image[m.getArgAsInt32(0)].draw(m.getArgAsInt32(1), m.getArgAsInt32(2),m.getArgAsInt32(3),m.getArgAsInt32(4));
-                        break;
+                        image[m.getArgAsInt32(0)].draw(1280/2-800/2, 1024/2-800/2, 800, 800);
+                        ofPopMatrix();
+                    break;
                     
-                    case 6:
-                        //ofFill();
-                        ofSetColor(m.getArgAsInt32(5));				
-                        image[m.getArgAsInt32(0)].draw(m.getArgAsInt32(1), m.getArgAsInt32(2),m.getArgAsInt32(3),m.getArgAsInt32(4));
-                        //image[m.getArgAsInt32(0)].draw(m.getArgAsInt32(1), m.getArgAsInt32(2),m.getArgAsInt32(3),m.getArgAsInt32(4));
-                        break;
-                    case 8:
-                        ofNoFill();
-                        ofSetColor(0xFFFFFF);		
-                        ofBeginShape();		
-                        ofRotateX(m.getArgAsInt32(5));
-                        ofRotateY(m.getArgAsInt32(6));
-                        ofRotateZ(m.getArgAsInt32(7));										
-                        image[m.getArgAsInt32(0)].draw(m.getArgAsInt32(1), m.getArgAsInt32(2),m.getArgAsInt32(3),m.getArgAsInt32(4));
-                        ofEndShape();
-                        break;
-                    case 11:
-                        //cout << m.getNumArgs() << endl;
-                        ofNoFill();
-                        ofSetColor(0xFFFFFF);		
-                        ofBeginShape();		
-                        ofTranslate(m.getArgAsInt32(5),m.getArgAsInt32(6),m.getArgAsInt32(7));
-                        ofRotateX(m.getArgAsInt32(8));
-                        ofRotateY(m.getArgAsInt32(9));
-                        ofRotateZ(m.getArgAsInt32(10));										
-                        image[m.getArgAsInt32(0)].draw(m.getArgAsInt32(1), m.getArgAsInt32(2),m.getArgAsInt32(3),m.getArgAsInt32(4));
-                        ofEndShape();
-                        break;
-                    case 14:
-                        cout << m.getNumArgs() << endl;
-                        ofNoFill();
-                        ofSetColor(0xFFFFFF);		
-                        ofBeginShape();		
-                        ofTranslate(m.getArgAsInt32(5),m.getArgAsInt32(6),m.getArgAsInt32(7));
-                        ofScale(m.getArgAsInt32(8),m.getArgAsInt32(9),m.getArgAsInt32(10));										
-                        ofRotateX(m.getArgAsInt32(11));
-                        ofRotateY(m.getArgAsInt32(12));
-                        ofRotateZ(m.getArgAsInt32(13));										
-                        image[m.getArgAsInt32(0)].draw(m.getArgAsInt32(1), m.getArgAsInt32(2),m.getArgAsInt32(3),m.getArgAsInt32(4));
-                        ofEndShape();
+                    case 4:
+                        
+                        ofSetColor(255, 255, 255, m.getArgAsInt32(1) );
+                        ofPushMatrix();
+                        
+//                        if (m.getArgAsInt32(2) == 0) {
+//                            ofTranslate(0, 0, m.getArgAsInt32(3));
+//                        }
+//                        if (m.getArgAsInt32(2) == 90) {
+//                            ofTranslate(800, 0, m.getArgAsInt32(3));
+//                        }
+//                        if (m.getArgAsInt32(2) == 180) {
+//                            
+//                            ofTranslate(800, 800, m.getArgAsInt32(3));
+//                        }
+//                        if (m.getArgAsInt32(2) == 270) {
+//                            ofTranslate(0, 800, m.getArgAsInt32(3));
+//                        }
+                        
+                        if (m.getArgAsInt32(3) == 90) {
+                            ofTranslate(1152, -128, m.getArgAsInt32(4));
+                            ofRotateZ(90);
+                            
+                        }
+                        if (m.getArgAsInt32(3) == 180) {
+                            
+                            ofTranslate(1280, 1024, m.getArgAsInt32(4));
+                            ofRotateZ(180);
+                            
+                        }
+                        if (m.getArgAsInt32(3) == 270) {
+                            ofTranslate(128, 1152, m.getArgAsInt32(4));
+                            ofRotateZ(270);
+                            
+                        }
+                        
+                        image[m.getArgAsInt32(0)].draw(1280/2-800/2, 1024/2-800/2, 800, 800);
+                        ofPopMatrix();
+                        break;    
+
+                    case 5:
+                        
+                        ofSetColor(m.getArgAsInt32(1), m.getArgAsInt32(1), m.getArgAsInt32(1), m.getArgAsInt32(2) );
+                        ofPushMatrix();
+                        
+                        if (m.getArgAsInt32(3) == 90) {
+                            ofTranslate(1152, -128, m.getArgAsInt32(4));
+                            ofRotateZ(90);
+                            
+                        }
+                        if (m.getArgAsInt32(3) == 180) {
+                            
+                            ofTranslate(1280, 1024, m.getArgAsInt32(4));
+                            ofRotateZ(180);
+                            
+                        }
+                        if (m.getArgAsInt32(3) == 270) {
+                            ofTranslate(128, 1152, m.getArgAsInt32(4));
+                            ofRotateZ(270);
+                            
+                        }
+                        
+                        image[m.getArgAsInt32(0)].draw(1280/2-800/2, 1024/2-800/2, 800, 800);
+                        ofPopMatrix();
                         break;
                         
+
                 }
             }   //image
-            
+ 
+            if(m.getAddress() == "destruct"){
+                
+                switch (m.getNumArgs())	{
+                    case 0:
+                        for (int i = 0; i < 10; i++)	{
+                            
+                            ofPushMatrix();
+                            ofSetColor(255,255,255,255);
+                            
+                            
+                            texScreen.loadScreenData(int(ofRandom(0,1200)),int(ofRandom(0,1020)),int(ofRandom(100,500)),int(ofRandom(100,500)));
+                            
+                            texScreen.draw(int(ofRandom(0,1280)),int(ofRandom(0,1024)),100,100);
+                            
+                            ofPopMatrix();
+                            
+                        }
+                    break;
+                    case 1:
+                        for (int i = 0; i < 10; i++)	{
+                            
+                            ofPushMatrix();
+                            ofSetColor(255,255,255, m.getArgAsInt32(0));
+                            
+                            
+                            texScreen.loadScreenData(int(ofRandom(0,1200)),int(ofRandom(0,1200)),int(ofRandom(100,500)),int(ofRandom(100,500)));
+                            
+                            texScreen.draw(int(ofRandom(0,1280)),int(ofRandom(0,1024)),100,100);
+                            
+                            ofPopMatrix();
+                        }
+                        break;
+                }
+                
+		
+            }            
+
+
+            if(m.getAddress() == "destructBig"){
+                
+                switch (m.getNumArgs())	{
+                    case 0:
+                        for (int i = 0; i < 10; i++)	{
+                            
+                            ofPushMatrix();
+                            ofSetColor(255,255,255,m.getArgAsInt32(0));
+                            
+                            
+                            texScreen.loadScreenData(1280/2-800/2, 1024/2-800/2,int(ofRandom(750,800)),int(ofRandom(750,800)));
+                            
+                            texScreen.draw(int(ofRandom(-10,1280)),int(ofRandom(-10,1024)),int(ofRandom(40,1400)),int(ofRandom(40,1400)));
+                            
+                            ofPopMatrix();
+                            
+                        }
+                        break;
+
+                }
+                
+                
+            } 
+
             if ( m.getAddress() == "feedback" )	{
                 if (m.getArgAsString( 0 ) == "activate")	feedbackView = m.getArgAsInt32( 1 );
                 else if (m.getArgAsString( 0 ) == "speedXY")		{
@@ -196,6 +294,39 @@ void testApp::update(){
                     feedbackSpeedX = m.getArgAsFloat( 2 );
                 }
             }	//Feedback		
+
+            if ( m.getAddress() == "mirror0" )	{
+                ofPushMatrix();
+                ofSetColor(255,255,255,255);
+                texScreen.loadScreenData(0,0,ofGetWidth()/4, ofGetHeight());
+                texScreen.draw(-1,0);					
+                texScreen.loadScreenData(ofGetWidth()/4, 0,ofGetWidth()/4, ofGetHeight());
+                texScreen.draw(ofGetWidth()/4 + 1,0);					
+                
+                texScreen.loadScreenData(ofGetWidth()/4, 0,ofGetWidth()/4, ofGetHeight());
+                texScreen.draw(3*ofGetWidth()/4 + 1,0);					
+                //
+                texScreen.loadScreenData(ofGetWidth()/2, 0, ofGetWidth()/4, ofGetHeight());
+                texScreen.draw(ofGetWidth()/2 - 1,0);
+                
+            }            
+
+            if (m.getAddress() == "pix")	{
+                
+                unsigned char * pixels = image[m.getArgAsInt32(0)].getPixels();
+                for (int y=0; y<imgHeight; y += 1){	
+                    for(int x=0; x<imgWidth; x += 1){
+                        // the index of the pixel:
+                        int index = y*imgWidth*3 + x*3;
+                        int red = pixels[index];
+                        int green = pixels[index+1];
+                        int blue = pixels[index+2];
+                        ofSetColor(red,green,blue);
+                        image[m.getArgAsInt32(0)].draw(1280/2-800/2, 1024/2-800/2, 800, 800);
+                    }
+                }
+            }
+            
             if ( m.getAddress() == "int" ){
                 iv[m.getArgAsString(0)] = m.getArgAsInt32(1);	
                 printf("value = %d\n", m.getArgAsInt32(1));		
@@ -204,7 +335,17 @@ void testApp::update(){
                 fv[m.getArgAsString(0)] = m.getArgAsFloat(1);			
             }
             
-                    
+
+            if ( m.getAddress() == "black"){
+                ofFill();
+                ofSetColor(0,0,0, m.getArgAsInt32(0));
+                ofRect(0, 0, ofGetWidth(), ofGetHeight());
+            }            
+            if ( m.getAddress() == "white"){
+                ofFill();
+                ofSetColor(255,255,255, m.getArgAsInt32(0));
+                ofRect(0, 0, ofGetWidth(), ofGetHeight());
+            }                     
             if ( m.getAddress() == "rect"){
                 ofFill();
                 ofSetColor(0,0,0);
@@ -267,15 +408,31 @@ void testApp::draw(){
 								
 			texScreen.loadScreenData(ofGetWidth()/4, 0,ofGetWidth()/4, ofGetHeight());
 			texScreen.draw(3*ofGetWidth()/4 + 1,0);					
-//
+
 			texScreen.loadScreenData(ofGetWidth()/2, 0, ofGetWidth()/4, ofGetHeight());
 			texScreen.draw(ofGetWidth()/2 - 1,0);
 			
 			break;
-		 default:
+
+        case 6:
+			ofSetColor(255,255,255,255);
+			texScreen.loadScreenData(0,0,ofGetWidth()/4, ofGetHeight()/2);
+			texScreen.draw(-2,-1);					
+			texScreen.loadScreenData(ofGetWidth()/4, 0,ofGetWidth()/4, ofGetHeight()/3);
+			texScreen.draw(ofGetWidth()/4 + 1,ofGetHeight()/3+2);					
+            
+			texScreen.loadScreenData(ofGetWidth()/4, 0,ofGetWidth()/4, ofGetHeight()/6);
+			texScreen.draw(ofGetWidth()/4 , ofGetHeight()/3);					
+            
+			texScreen.loadScreenData(ofGetWidth()/2, 0, ofGetWidth()/4, ofGetHeight());
+			texScreen.draw(ofGetWidth()/2 - 1,-5);
+			
+			break;
+        
+        default:
 			//printf("%d", fv["mirrorMode"])
 			;
-		}	// mirrowMode
+		}	// mirrorMode
 	if (iv["pixelate"] == 1)	{
 		
 		unsigned char * pixels = image[0].getPixels();
@@ -341,7 +498,7 @@ void testApp::draw(){
 		//texScreen.loadScreenData(0,0,ofGetScreenWidth(), ofGetScreenHeight());							
 		//texScreen.loadScreenData(0,0,1280,1024);							
 		glPushMatrix();
-		ofSetColor(0xffffff);
+		ofSetHexColor(0xffffff);
 		glTranslatef(feedbackSpeedX,feedbackSpeedY,0);
 		texScreen.draw(0,0,ofGetWidth(), ofGetHeight());
 		//texScreen.draw(0,0,ofGetScreenWidth(), ofGetScreenHeight());
@@ -352,7 +509,7 @@ void testApp::draw(){
 }
 
 void testApp::keyPressed  (int key){
-	if(key == 'v' or key == 'V'){
+	if(key == 'f' or key == 'F'){
 		full = !full;
 		if(full){
 			ofSetFullscreen(true);
@@ -384,6 +541,8 @@ void testApp::keyPressed  (int key){
 //		}
 //	}	//Working
 //	}
+
+        
 //	if(key == 'k' or key == 'K')	{
 //	{
 //

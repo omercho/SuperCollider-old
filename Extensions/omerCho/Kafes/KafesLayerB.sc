@@ -17,25 +17,9 @@ KafesLayerB {
 		
 		//-------------------------------------------lev1-8/4--48s-----------------------------------------------KafesGlobals
 			\layer_B_1 -> {//	|dum2 ---------------- 12
-"LayerB CIFTE DUYEK".postln;				
-/*				
-fork{
-	"es".postln;
-	
-	1.8.wait;
-	
-	~tol08.brt_(~kRC4 *1.07500).playGverb(0.001, 2.1, 16.1, mul:1.9, room:55, rev:13.5, damp:0.71, out: ~strCok.choose);
-	0.265.wait;
-	~tol06.brt_(~kRA4 *1.23700).playGverbR(0.001, 2.1, 10.1, mul:0.5, room:55, rev:13.5, damp:0.71, out: ~strTek.choose);
-	
-	~ats05.brt_(2.5).playPV1(0.01, 1.4, 5.1, mul:0.8, start:[0.8].choose, out:  ~str);
-	0.1.wait;
-	~gou04.brt_(~kRD4 *0.89000).playPV5(0.1, 0.1, 0.2, mul: 0.3, pv5a:30.102, pv5b:0.90,  loop:0, out: ~strCok.choose);
-	0.5.wait;
-	KafBell.ar(freq: 2920, out: [0, 1].choose).play;
-};
+
 			
-*/				}, 
+				}, 
 			\layer_B_2 -> {//	+tek2-3-4------------- 24
 
 				}, 
@@ -904,19 +888,19 @@ fork{
 				}, 
 			\layer_B_63 -> {//	tek2
 
-~met02.brt_(~kRC1 *1.01000).playGverb(0.001, 0.1, 8.1, mul:0.6, room:55, rev:3.5, damp:0.71, out:~strTek.choose);
+~met02.brt_(~kRC1 *1.01000).playGverb(0.001, 0.1, 8.1, mul:0.5, room:55, rev:3.5, damp:0.71, out:~strTek.choose);
 				
 				}, 
 		//-------------------------------------------lev5-4/4--24s-----------------------------------------------
 			\layer_B_64 -> {//	+dum2
-~met02.brt_(~kRC3 *1.01000).playGverb(0.001, 0.1, 8.1, mul:0.6, room:55, rev:3.5, damp:0.71, out:~strTek.choose);
+~met02.brt_(~kRC3 *1.01000).playGverb(0.001, 0.1, 8.1, mul:0.8, room:55, rev:13.5, damp:0.71, out:~strTek.choose);
 				
 				}, 
 			\layer_B_65 -> {//	|dum2
 
 fork{		
 	
-	~kik01.brt_(1.5).playPV2(0.001, 1.1, 1, mul:0.1, out: ~strTek.choose); // dum				
+	~kik03.brt_(1.5).playPV2(0.001, 1.1, 1, mul:0.1, out: ~strTek.choose); // dum				
 	~kf = KafSinVib.ar(0.1, 0.1, 8.0, mul:0.3, freq1: ~kA1, freq2: ~kA1+3, vib1: 2.1, vib2: 4, out: ~strTek.choose).play;
 	0.8.wait;
 	fork{
@@ -925,18 +909,15 @@ fork{
 		~dur01 = Pseq([0.25, 0.36, 0.47, 0.58, 0.69, 0.80, 0.91, 0.94]/2, inf).asStream;
 		8.do {|i|
 			
-			~kik01.brt_(9.5).playGverb(0.001, 1.1, 1, mul: ~mul01.next, room:8.4, rev:1, damp:0.91, out: ~strTek.choose);
+			~kik03.brt_(9.5).playGverb(0.001, 1.1, 1, mul: ~mul01.next, room:8.4, rev:1, damp:0.91, out: ~strTek.choose);
 			~dur01.next.wait;
 		
 		};
-		16.do{
-			~tht08.brt_([~kRB1, ~kRB1, ~kRB1].choose *1.10000).playPV5(1, 0.1, 0.4, mul: ~mul02.next, pv5a:0.92, loop:0, out: ~strTek.choose); //ok
-			0.8.wait;
-		};
+
 		
 	};
 	2.5.wait;
-	~kik01.brt_(5.5).playGverb(0.001, 1.1, 1, mul: ~mul01.next, room:8.4, rev:1, damp:0.91, out: ~strTek.choose);
+	~kik02.brt_(5.5).playGverb(0.001, 1.1, 1, mul: ~mul01.next, room:8.4, rev:1, damp:0.91, out: ~strTek.choose);
 
 
 };
@@ -955,7 +936,7 @@ fork{
 		
 	};
 	~tht01.brt_(~kRA1 *1.05000).playBuf(0.01, 15, 1.1, mul:0.4, out: ~strTek.choose);
-	~met02.brt_(~kRA7 *1.01000).playGverb(0.001, 0.1, 8.1, mul:0.6, room:55, rev:3.5, damp:0.71, out:~strTek.choose);	
+	~met02.brt_(~kRA7 *1.01000).playGverb(0.001, 0.1, 8.1, mul:0.8, room:55, rev:3.5, damp:0.71, out:~strTek.choose);	
 };
 
 				}, 

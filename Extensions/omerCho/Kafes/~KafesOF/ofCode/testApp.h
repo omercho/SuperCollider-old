@@ -39,7 +39,7 @@ class testApp : public ofBaseApp{
         
         ofVideoPlayer*  myVideo;
 		
-		ofImage			image[200];
+		ofImage			image[800];
 		
 		ofImage			screen;		
 		

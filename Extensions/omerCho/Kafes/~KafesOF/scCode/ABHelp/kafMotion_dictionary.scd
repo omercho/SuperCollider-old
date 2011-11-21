@@ -3,6 +3,7 @@
 //:--------------------
 //:Display images dictionary
 OF.image(imageID, xPos, yPos, width, height);
+OF.image(imageID, xPos, yPos, width, height, alpha);
 OF.image(imageID, xPos, yPos, width, height, rotX,rotY,rotZ);
 OF.image(imageID, xPos, yPos, width, height, translateX, translateY, translateZ, rotX,rotY,rotZ);
 OF.image(image
@@ -43,12 +44,12 @@ OF.img(0, 0, 0, 1280, 1024, 0, 0, 0, rrand(), 0, 0, 0);
 }.fork
 
 //:Mirror mode
-OF.int("mirrorMode",1)
+OF.int("mirrorMode",0)
 
 
 OF.img(~imageLib.choose('ntalika'), 0, 0, 1280, 1024);
 
-OF.img(1,0,0,1280, 1024);
+OF.img(1,255,180);
 
 //:play images from a specific group
 {

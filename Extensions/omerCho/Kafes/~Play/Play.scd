@@ -43,27 +43,25 @@
 	
 	}.fork;
 };
-OF.video("playVideo",0);
-OF.video("deleteVideo");
+//OF.video("playVideo",0);
+//OF.video("deleteVideo");
 
 //:evaluate the function
 ~loadImages2oF.value;
-
 //:---
 
 
-
-
+//audio
 fork{
 	~tol08.brt_(~kRC1 *1.07500).playBuf(0.001, 0.3, 0.1, mul:1.1, out: ~strHep);
 	
 	0.265.wait;
 	
-	//KafSinVib.ar(0.1, 0.1, 18.0, mul:0.3, freq1: ~kA1, freq2: ~kA1+3, vib1: 2.1, vib2: 4, out: ~strCok.choose).play;
+	
 	
 	~tol06.brt_(~kRB1 *1.23700).playGverb(0.001, 1.1, 16.1, mul:0.1, room:165, rev:23.5, damp:0.71, out: ~strHep);
 	
-	//~tol06.brt_(~kRC1 *1.23700).playBuf(0.001, 1.1, 16.1, mul:0.4, out: ~strHep);
+	
 	
 	5.6.wait;
 	
@@ -81,9 +79,9 @@ fork{
 	
 	fork{
 		
-		~botbs.brt_(~kRD1 *1.36619).playBuf(0.001, 1.1, 3, mul:0.7, out: ~strTek.choose);
-		0.25.wait;
-		~botbs.brt_(~kRD4 *1.36619).playBuf(0.001, 1.1, 3, mul:0.5, out: ~strTek.choose);
+		~botbs.brt_(~kRC1 *1.36619).playBuf(0.001, 1.1, 3, mul:0.7, out: ~strTek.choose);
+		0.5.wait;
+		~botbs.brt_(~kRC4 *1.36619).playBuf(0.001, 1.1, 3, mul:0.5, out: ~strTek.choose);
 		
 	};
 	
@@ -97,6 +95,214 @@ fork{
 
 };
 
+//visual
+OF.rect(0,0,1280, 1024);
+fork{
+	~dur1 = Pseq([0.1]/4, inf).asStream;
+	24.do{|i|
+		
+		OF.img(~imageLib.at('box', 0), (4.0+20.001*(i%100)).asInteger, (4.0+30.001*(i%100)).asInteger , 0, 0 );
+		~dur1.next.wait;
+		
+		
+	};
+	
+	0.65.wait;
+	OF.img(~imageLib.at('box', 0), 255, 255, 0, 0);
+	
+	0.3.wait;
+	
+	~fadeOut = Pseq((255..0), 24).asStream;
+	~fadeIn = Pseq((0..255), 24).asStream;
+	~dur2 = Pseq([0.1]/4, inf).asStream;
+	255.do{
+		
+		OF.img(~imageLib.at('box', 0), ~fadeOut.next, 255, 0, 0);
+		~dur2.next.wait;
+		
+	};
+	OF.feedback("activate", 1);
+	0.3.wait;
+	125.do{
+		
+		OF.img(~imageLib.at('box', 0), ~fadeIn.next, 255, 0, 0);
+		~dur2.next.wait;
+		
+	};
+	
+	
+};
+
+
+//:-
+
+
+fork{
+	
+	
+	110.do{|i|
+		var dur = Pseq([0.1], inf).asStream;
+		OF.img(~imageLib.at('box', 0), 255, 255, [0, 90, 180, 270].choose, 2 );
+		dur.next.wait;
+		OF.destruct;
+		dur.next.wait;
+		
+		
+	};
+};
+
+
+//:-
+
+
+fork{
+	
+	
+	110.do{|i|
+		var dur = Pseq([0.25]/4, inf).asStream;
+		var randOp = Pbrown(0, 255, 2, inf).asStream;
+		var randX = Pbrown(0, 255, 2, inf).asStream;
+		OF.destruct( rand01);
+		dur.next.wait;
+		
+		
+	};
+};
+
+//:Mirror mode
+OF.int("mirrorMode", 0)
+OF.int("mirrorMode", 3)
+
+//:-
+OF.feedback("activate", 1);
+OF.feedback("speedXY", -1, 0)
+OF.feedback("activate", 0);
+
+
+//:-Ceket
+
+
+fork{
+	
+	OF.feedback("activate", 1);
+		
+	110.do{|i|
+		var dur = Pseq([0.25/4, 0.25/8, 0.25/8], inf).asStream;
+		var dur2 = Pseq([0.25/4], inf).asStream;
+		OF.img(~imageLib.at('box', 0), 255, 255, [0, 90, 180, 270].choose, 0 );
+		dur2.next.wait;
+		
+		OF.feedback("speedXY", [0, 1, -1, 2].choose, [0, -1, 2, -2].choose);
+		OF.img(~imageLib.at('ceket', (0..16).choose), 255, 255, [0, 90, 180, 270].choose, 0 );
+		
+		dur.next.wait;
+		
+		OF.destruct(rrand(0, 255));
+		
+		dur.next.wait;
+		
+		OF.img(~imageLib.at('ceket', (0..16).choose), 255, 255, [0, 90, 180, 270].choose, 0 );
+		
+		dur2.next.wait;
+		
+		OF.destruct;
+		
+		dur.next.wait;
+		
+	};
+	
+	OF.feedback("activate", 0);
+};
+
+//:-destructBig
+
+
+fork{
+	
+	OF.feedback("activate", 1);
+		
+	110.do{|i|
+		var dur = Pseq((0.2..0.3), inf).asStream;
+		var dur2 = Pseq([0.25/4], inf).asStream;
+		OF.img(~imageLib.at('box', 0), 255, 255, [0, 90, 180, 270].choose, 2 );
+		dur2.next.wait;
+		
+		OF.feedback("speedXY", [0, 1, -1, 2].choose, [0, -1, 2, -2].choose);
+		
+		dur.next.wait;
+		
+		OF.destructBig;
+		
+		dur.next.wait;
+		
+		OF.img(~imageLib.at('ceket', Pseq((0..3), inf).asStream.next), 255, 255, [0, 90, 180, 270].choose, 2 );
+		
+		dur2.next.wait;
+		
+		OF.destructBig;
+		
+		dur.next.wait;
+		
+	};
+	
+	OF.feedback("activate", 0);
+};
+
+
+//:-Ceket2
+
+
+fork{
+	
+	OF.feedback("activate", 1);
+		
+	110.do{|i|
+		var dur = Pseq((0.2..0.3), inf).asStream;
+		var dur2 = Pseq([0.25/4], inf).asStream;
+		OF.img(~imageLib.at('box', 0), 255, 255, [0, 90, 180, 270].choose, 2 );
+		dur2.next.wait;
+		
+		OF.feedback("speedXY", [0, 1, -1, 2].choose, [0, -1, 2, -2].choose);
+		
+		dur.next.wait;
+		
+		OF.destruct;
+		
+		dur.next.wait;
+		
+		OF.img(~imageLib.at('yumruk', (0..10).choose), 255, 255, [0, 90, 180, 270].choose, 2 );
+		
+		dur2.next.wait;
+		
+		OF.destruct;
+		
+		dur.next.wait;
+		
+	};
+	
+	OF.feedback("activate", 0);
+};
+
+
+//:-
+
+
+OF.img(~imageLib.at('box', 0), 255, 0, -100);
+
+
+//:-
+
+fork{
+	~dur = Pseq([0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]/4, inf).asStream;
+	
+	144.do{|i|
+		~gou02.brt_([~kRE2, ~kRC6].choose *0.89000).playBuf(0.001, 1.1, 5.1, mul:0.0001+0.001*(i%70), out: ~strTek.choose);
+		OF.img(~imageLib.at('ceket', (0..10).choose), 4.0+1.001*(i%70), [0, 90, 180, 270].choose );
+		~dur.next.wait;
+		
+		
+	};
+};
 
 
 

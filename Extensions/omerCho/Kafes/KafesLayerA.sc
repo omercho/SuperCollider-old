@@ -22,11 +22,11 @@ fork{
 	
 	0.265.wait;
 	
-	KafSinVib.ar(0.1, 0.1, 18.0, mul:0.3, freq1: ~kA1, freq2: ~kA1+3, vib1: 2.1, vib2: 4, out: ~strCok.choose).play;
+	
 	
 	~tol06.brt_(~kRB1 *1.23700).playGverb(0.001, 1.1, 16.1, mul:0.1, room:165, rev:23.5, damp:0.71, out: ~strHep);
 	
-	//~tol06.brt_(~kRC1 *1.23700).playBuf(0.001, 1.1, 16.1, mul:0.4, out: ~strHep);
+	
 	
 	5.6.wait;
 	
@@ -67,37 +67,51 @@ fork{
 fork{
 
 	~gou02.brt_(~kRC7 *0.89000).playGverbR(0.001, 1.1, 10.1, mul:0.2, room:55, rev:13.5, damp:0.71, out: ~strCok.choose);
-	~gou02.brt_(~kRC1 *0.89000).playGverb(0.001, 1.1, 10.1, mul:0.1, room:55, rev:13.5, damp:0.71, out: ~strHep.choose);
+	~gou02.brt_(~kRC1 *0.89000).playGverb(0.001, 1.1, 10.1, mul:0.1, room:55, rev:3.5, damp:0.81, out: ~strHep.choose);
 
 	0.31.wait;
-	~gou02.brt_(~kRB4 *0.89000).playGverb(0.001, 1.1, 10.1, mul:0.25, room:55, rev:13.5, damp:0.71, out: ~strCok.choose);
+	~gou02.brt_(~kRB4 *0.89000).playGverb(0.001, 1.1, 10.1, mul:0.25, room:55, rev:3.5, damp:0.91, out: ~strCok.choose);
 	~bth02.brt_(~kRC1 *1.00011).playPV2(0.001, 10.3, 0.3, mul:0.5, out: ~strTek.choose);
 	0.25.wait;
 	fork{
 		~kPseq01 = Pseq([~kRC1, ~kRC3, ~kRC5, ~kRD1, ~kRC4, ~kRD1, ~kRC1, ~kRD1]/2, inf).asStream;
-		~spira = Pseq((0..23).reverse, inf).asStream;
+		//~spira = Pseq((0..23).reverse, inf).asStream;
+		~spira = Pseq((0..1).reverse, inf).asStream;
 		23.do {|i|
 		~tht02.brt_(~kPseq01.next *1.47500).playPV2(0.001, 10.3, 0.3, mul:0.09+(0.04*(i%9)), out: ~spira);
 		0.1- (0.04*(i%15)).wait;	
 			
 		};
-		
-		
 	};
 	
 	
 	0.8.wait;
+	//aud
 	fork{
-		~circ = Pseq((0..13), inf).asStream;
+		~circ = Pseq((0..1), inf).asStream;
+		//~circ = Pseq((0..13), inf).asStream;
 		15.do {
 			~bth02.brt_(~kRA1 *1.00011).playPV2(0.001, 10.3, 0.3, mul:0.2, out: ~circ);
 			0.4.wait	
 			
 		};
 	};
+	//vis
+	fork{
+		~cek01 = Pseq((0..16), inf).asStream;
+		
+		15.do {
+			OF.img(~imageLib.at('ceket', ~cek01.next), 255, 255, 0, 0);
+			0.4.wait	
+			
+		};
+	};	
+	
+	
 	8.0.wait;
 	fork{
-		~circ = Pseq((0..13), inf).asStream;
+		~circ = Pseq((0..1), inf).asStream;
+		//~circ = Pseq((0..13), inf).asStream;
 		15.do {
 			~bth02.brt_(~kRA4 *1.00011).playPV2(0.001, 10.3, 0.3, mul:0.09, out: ~circ);
 			0.4.wait	
@@ -141,9 +155,10 @@ fork {
 	
 	0.25.wait;
 	
-	~gou02.brt_(~kRB4 *0.89000).playGverb(0.001, 1.1, 10.1, mul:0.3, room:55, rev:13.5, damp:0.71, out: ~strTek.choose);				
+	//~gou02.brt_(~kRB4 *0.89000).playGverb(0.001, 1.1, 10.1, mul:0.3, room:55, rev:13.5, damp:0.71, out: ~strTek.choose);				
 	fork{
-		~spirOut = Pseq((23..00), inf).asStream;
+		~spirOut = Pseq((1..0), inf).asStream;
+		//~spirOut = Pseq((23..00), inf).asStream;
 		~kPseq01 = Pseq([~kRC1, ~kRC3, ~kRC5, ~kRD1, ~kRC4, ~kRD1, ~kRC1, ~kRD1]/2, inf).asStream;
 		23.do {|i|
 		~bth02.brt_(~kPseq01.next *1.00011).playPV2(0.001, 10.3, 0.3, mul:0.09+(0.04*(i%9)), out: ~spirOut);
@@ -1360,7 +1375,7 @@ fork{
 		//-------------------------------------------lev3-4/4--24s-----------------------------------------------
 			\layer_A_61 -> {//	+dum2-3-4
 
-~ks42 = KafSinVib.ar(0.1, 0.1, 8.0, mul:0.8, freq1: ~kA1, freq2: ~kA4+3, vib1: 2.1, vib2: 4).play;
+~ks42 = KafSinVib.ar(0.1, 0.1, 8.0, mul:0.8, freq1: ~kA4, freq2: ~kA4+3, vib1: 2.1, vib2: 4).play;
 
 ~ats01.brt_(~kRA1/2 *1.82101).playPV3(0.01, 2.5, 5.1, mul:0.5, pv3a:4.0, start:0.2, out: ~strCok.choose);
 				
@@ -1373,7 +1388,7 @@ fork{
 
 ~kik01.brt_(1.5).playPV2(0.001, 1.1, 1, mul:0.1, out: ~strTek.choose); // dum
 
-~ks43 = KafSinVib.ar(0.1, 0.1, 8.0, mul:0.3, freq1: ~kA2, freq2: ~kA2+3, vib1: 2.1, vib2: 4).play;
+~ks43 = KafSinVib.ar(0.1, 0.1, 8.0, mul:0.3, freq1: ~kA6, freq2: ~kA2+3, vib1: 2.1, vib2: 4).play;
 
 ~ats01.brt_(~kRA1/2 *1.82101).playPV3(0.01, 2.5, 5.1, mul:0.5, pv3a:8.0, start:0.5, out: ~strCok.choose);
 
@@ -1381,11 +1396,11 @@ fork{
 				}, 
 			\layer_A_63 -> {//	tek2
 
-~met02.brt_(~kRA3 *1.01000).playGverb(0.001, 0.1, 8.1, mul:0.6, room:55, rev:3.5, damp:0.71, out:~strTek.choose);
+~met02.brt_(~kRA3 *1.01000).playGverb(0.001, 0.1, 8.1, mul:0.9, room:55, rev:3.5, damp:0.71, out:~strTek.choose);
 
 ~kik01.brt_(1.5).playPV2(0.001, 1.1, 1, mul:0.1, out: ~strTek.choose); // dum
 
-~ks44 = KafSinVib.ar(0.1, 0.1, 8.0, mul:0.3, freq1: ~kA2, freq2: ~kA2+3, vib1: 2.1, vib2: 4).play;
+~ks44 = KafSinVib.ar(0.1, 0.1, 8.0, mul:0.3, freq1: ~kA3, freq2: ~kA2+3, vib1: 2.1, vib2: 4).play;
 
 ~ats01.brt_(~kRA1/2 *1.82101).playPV3(0.01, 2.5, 5.1, mul:0.5, pv3a:8.0, start:0.5, out: ~strCok.choose);
 				
@@ -1410,7 +1425,7 @@ fork{
 	
 	~gir04
 		.brt1_(~kRA1 *1.02006).brt1Dur_(0.1)
-		.btrDur_(180.5)
+		.btrDur_(170.5)
 		.brt2_(~kRC3 *1.02006).brt2Dur_(80)
 	.transGverb(0.001, 1.09, 4.0, mul:0.3, start:0.0, out: ~strCok.choose);
 
