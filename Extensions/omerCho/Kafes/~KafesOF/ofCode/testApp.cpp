@@ -270,6 +270,21 @@ void testApp::update(){
                         for (int i = 0; i < 10; i++)	{
                             
                             ofPushMatrix();
+                            ofSetColor(255,255,255,255);
+                            
+                            
+                            texScreen.loadScreenData(1280/2-800/2, 1024/2-800/2,int(ofRandom(750,800)),int(ofRandom(750,800)));
+                            
+                            texScreen.draw(int(ofRandom(-10,1280)),int(ofRandom(-10,1024)),int(ofRandom(40,1400)),int(ofRandom(40,1400)));
+                            
+                            ofPopMatrix();
+                            
+                        }
+                    break;
+                    case 1:
+                        for (int i = 0; i < 10; i++)	{
+                            
+                            ofPushMatrix();
                             ofSetColor(255,255,255,m.getArgAsInt32(0));
                             
                             

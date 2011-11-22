@@ -86,6 +86,8 @@ KafesReceives {
 			
 			\lC31_1a -> { 
 				fork{
+					OF.img(~imageLib.at('exit', rrand(0,8)), 255, 255, 0, 0);
+					
 					~bth02.brt_(~kRC1 *1.00011).playPV4(0.001, 0.1, 0.5, mul:0.8, out: ~strCok.choose);
 					0.005.wait;
 					~kik02.brt_(1.0).playPV2(0.001, 1.1, 2, mul:0.5, out: ~strTek.choose);
@@ -104,6 +106,8 @@ KafesReceives {
 					},
 			\lC31_1b -> { 
 				fork{
+					OF.img(~imageLib.at('exit', rrand(0,8)), 255, 255, 0, 0);
+					
 					~bth02.brt_(~kRB4 *1.00011).playPV4(0.001, 0.1, 0.5, mul:0.8, out: ~strCok.choose);
 					0.005.wait;
 					~kik02.brt_(1.0).playPV2(0.001, 1.1, 2, mul:0.5, out: ~strTek.choose);
@@ -121,6 +125,8 @@ KafesReceives {
 				};
 					},
 			\lC31_1c -> { 
+				OF.img(~imageLib.at('exit', rrand(0,8)), 255, 255, 0, 0);
+				
 				fork{
 					~bth02.brt_(~kRB7 *1.00011).playPV4(0.001, 0.1, 0.5, mul:0.8, out: ~strCok.choose);
 					0.005.wait;
@@ -139,6 +145,8 @@ KafesReceives {
 				};
 					},
 			\lC31_1d -> { 
+				OF.img(~imageLib.at('exit', rrand(0,8)), 255, 255, 0, 0);
+				
 				fork{
 					~bth02.brt_(~kRC2 *1.00011).playPV4(0.001, 0.1, 0.5, mul:0.8, out: ~strCok.choose);
 					0.005.wait;
@@ -157,6 +165,8 @@ KafesReceives {
 				};
 					},
 			\lC31_1d2 -> { 
+				OF.img(~imageLib.at('exit', rrand(0,8)), 255, 255, 0, 0);
+				
 				fork{
 					~bth02.brt_(~kRC2 *1.00011).playPV4(0.001, 0.1, 0.5, mul:0.8, out: ~strCok.choose);
 					0.005.wait;

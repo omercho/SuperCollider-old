@@ -31,9 +31,7 @@
 		2.5.wait;
 		
 		"K A F E S".postln;
-		 //Document.open("/Users/omerchatziserif/Dropbox/SC/-Projects/9_Kafes@ZKM/\~Play/Play.scd").load;
-		 //(Platform.pathSeparator ++ "/Users/omerchatziserif/Dropbox/SC/-Projects/9_Kafes@ZKM/\~Play/Play.scd").openTextFile;
-		 //(Platform.userAppSupportDir ++ "/startupLilt.scd").load; 
+
 	};	
 
 

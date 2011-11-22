@@ -175,7 +175,7 @@ OF.int("mirrorMode", 3)
 
 //:-
 OF.feedback("activate", 1);
-OF.feedback("speedXY", -1, 0);
+OF.feedback("speedXY", -1, 0)
 OF.feedback("activate", 0);
 
 
@@ -245,40 +245,6 @@ fork{
 		
 	};
 	
-	OF.feedback("activate", 0);
-};
-
-//:-exit
-
-
-fork{
-	
-	OF.feedback("activate", 1);
-		
-	~exit01 = Pseq((0..49), inf).asStream;
-	~dur = Pseq([0.25/4], inf).asStream;
-	110.do{|i|
-		
-		
-		
-		OF.feedback("speedXY", [0, 1, -1, 2].choose, [0, -1, 2, -2].choose);
-		
-		~dur.next.wait;
-		
-		OF.destruct;
-		
-		~dur.next.wait;
-		
-		OF.img(~imageLib.at('exit', ~exit01.next), 255, 255, [0, 90, 180, 270].choose, 2 );
-		
-		~dur.next.wait;
-		
-		OF.destructBig(255);
-		
-		~dur.next.wait;
-		
-	};
-	OF.black(255);
 	OF.feedback("activate", 0);
 };
 
