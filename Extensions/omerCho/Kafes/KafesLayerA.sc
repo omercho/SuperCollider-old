@@ -549,8 +549,8 @@ fork{
 };
 
 ~kik01.brt_(2.5).playPV4(0.001, 1.1, 1, mul:0.9, out: ~strCok.choose); // tek
-OF.img(~imageLib.at('sleep', 0), 255, 255, 90, 0);
-	
+OF.img(~imageLib.at('sleep', 0), 205, 255, 0, 0);
+OF.feedback("speedXY", 0.2, 0);	
 ~ff = ~kB4;
 KafGendy.ar(1.1, 0.1, 4.3, 26.8,
 	freq: [~ff*2, ~ff*3, ~ff*4, ~ff*5], 
@@ -732,7 +732,16 @@ fork{
 	5.0.wait;
 	~ats02.brt_(1.5).playPV1(0.01, 0.4, 0.9, mul:0.4, start:[0.73, 0.2, 0.28, 0.37].choose, out: ~strTek.choose); // dum
 	
-};				
+};
+//vis
+~destMini01 = {
+	inf.do{
+		OF.destructMini(rrand(150,255)); 
+		0.04.wait;
+	};
+}.fork;
+
+				
 				}, 
 			\layer_A_19 -> {//	ke
 
@@ -1421,21 +1430,22 @@ fork{
 ~ks38 = KafSinVib.ar(0.1, 0.1, 8.0, mul:0.3, freq1: ~kA4, freq2: ~kA4+3, vib1: 2.1, vib2: 4).play;
 
 //vis
-~berVis01 = {
+~visRout.stop;
+~visRout = {
 	
 	
 		
-	~exit01 = Pseq((0..49), inf).asStream;
+	~exit01 = Pseq((0..48), inf).asStream;
 	~dur = Pseq([0.25/2], inf).asStream;
 	inf.do{|i|
 		
 		
 		OF.feedback("activate", 1);
-		OF.feedback("speedXY", [0, 1, -1, 2].choose, [0, -1, 2, -2].choose);
+		OF.feedback("speedXY", [0, 1, -1, 2, -2].choose, [0, -1, 1, 2, -2].choose);
 		
 		~dur.next.wait;
 		
-		OF.destruct;
+		OF.destruct(225);
 		
 		~dur.next.wait;
 		
@@ -1443,17 +1453,20 @@ fork{
 		
 		~dur.next.wait;
 		
-		OF.destruct; OF.feedback("speedXY", [0, 2, -1, 2].choose, [0, -1, 1, -2].choose);
+		OF.destruct; OF.feedback("speedXY", [0, 2, -1, 1, 2].choose, [0, -1, 1, -2, 2].choose);
 		
 		~dur.next.wait;
 		
-		OF.black(255); OF.img(~imageLib.at('exit', ~exit01.next), 255, 255, [0, 90, 180, 270].choose, 2 );
+		OF.black(255); 
+		OF.img(~imageLib.at('exit', ~exit01.next), 255, 255, [0, 90, 180, 270].choose, 2 );
 		
 		~dur.next.wait;
 		
+		//OF.feedback("speedXY", -1, 0);
 		OF.feedback("activate", 0);
-		
+				
 		~dur.next.wait;
+		
 		
 	};
 	

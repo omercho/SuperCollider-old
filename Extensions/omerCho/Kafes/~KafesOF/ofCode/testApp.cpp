@@ -302,6 +302,46 @@ void testApp::update(){
                 
             } 
 
+            if(m.getAddress() == "destructMini"){
+                
+                switch (m.getNumArgs())	{
+                    case 0:
+                        for (int i = 0; i < 10; i++)	{
+                            
+                            ofPushMatrix();
+                            ofSetColor(255,255,255,255);
+                            
+                            
+                            texScreen.loadScreenData(1280/2-800/2, 1024/2-800/2,int(ofRandom(750,800)),int(ofRandom(750,800)));
+                            
+                            texScreen.draw(int(ofRandom(-10,1280)),int(ofRandom(-10,1024)),int(ofRandom(1,5)),int(ofRandom(1,5)));
+                            
+                            ofPopMatrix();
+                            
+                        }
+                        break;
+                    case 1:
+                        for (int i = 0; i < 10; i++)	{
+                            
+                            ofPushMatrix();
+                            ofSetColor(255,255,255,m.getArgAsInt32(0));
+                            
+                            
+                            texScreen.loadScreenData(1280/2-800/2, 1024/2-800/2,int(ofRandom(750,800)),int(ofRandom(750,800)));
+                            
+                            texScreen.draw(int(ofRandom(-10,1280)),int(ofRandom(-10,1024)),int(ofRandom(1,5)),int(ofRandom(1,5)));
+                            
+                            ofPopMatrix();
+                            
+                        }
+                        break;
+                        
+                }
+                
+                
+            }
+            
+            
             if ( m.getAddress() == "feedback" )	{
                 if (m.getArgAsString( 0 ) == "activate")	feedbackView = m.getArgAsInt32( 1 );
                 else if (m.getArgAsString( 0 ) == "speedXY")		{
