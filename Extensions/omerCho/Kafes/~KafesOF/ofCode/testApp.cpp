@@ -354,12 +354,12 @@ void testApp::update(){
             if ( m.getAddress() == "black"){
                 ofFill();
                 ofSetColor(0,0,0, m.getArgAsInt32(0));
-                ofRect(0, 0, ofGetWidth(), ofGetHeight());
+                ofRect(1280/2-800/2, 1024/2-800/2, 800, 800);
             }            
             if ( m.getAddress() == "white"){
                 ofFill();
                 ofSetColor(255,255,255, m.getArgAsInt32(0));
-                ofRect(0, 0, ofGetWidth(), ofGetHeight());
+                ofRect(1280/2-800/2, 1024/2-800/2, 800, 800);
             }                     
             if ( m.getAddress() == "rect"){
                 ofFill();
