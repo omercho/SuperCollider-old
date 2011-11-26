@@ -170,7 +170,7 @@ fork{
 };
 
 //:Mirror mode
-OF.int("mirrorMode", 0)
+OF.int("mirrorMode", 0);
 OF.int("mirrorMode", 3)
 
 //:-
@@ -347,7 +347,7 @@ fork{
 	144.do{|i|
 		var dur = Pseq([0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]/4, inf).asStream;
 		~gou02.brt_([~kRE2, ~kRC6].choose *0.89000).playBuf(0.001, 1.1, 5.1, mul:0.0001+0.001*(i%70), out: ~strTek.choose);
-		OF.img(~imageLib.at('kafSleepA', (0..15).choose), 0, 0, 600, 600, 4.0+1.001*(i%70));
+		OF.img(~imageLib.at('sleep', (0..15).choose), 255,(4.0+1.001*(i%70)).asInteger,0,0);
 		dur.next.wait;
 		
 		

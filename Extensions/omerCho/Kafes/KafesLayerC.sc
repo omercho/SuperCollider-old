@@ -15,7 +15,7 @@ KafesLayerC {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		//-------------------------------------------lev1-8/4--48s-----------------------------------------------KafesChannels
-			\layer_C_1 -> {//	|dum2 ---------------- 12
+			\layer_C_1 -> {//	|dum2 ---------------- 12 
 				
 			
 			
@@ -37,7 +37,7 @@ KafesLayerC {
 ~fot01 = Pdef(\zencAtsh01, Posc(
 	\msg, Pseq(
 		[
-		 \lC4_1, \es, \lC4_2, \es, \es, \es, \lC4_3, \es, \es
+		 \lC4_A, \es, \lC4_B, \es, \es, \es, \lC4_C, \es, \es
 		], inf
 	),
 	\dur, Pseq(
@@ -204,7 +204,7 @@ fork{
 	
 ~layC22.stop;
 ~layC31 = Posc(
-	\msg, Pseq([	Pseq([\lC31_1a, \lC31_2], 8), Pseq([\lC31_3], 1) ], inf),
+	\msg, Pseq([	Pseq([\lC31_A, \lC31_D], 8), Pseq([\lC31_E], 1) ], inf),
 	\dur, Pseq([	Pseq([0.5], 8), Pseq([2], 1) ]*2, 9)
 ).play;
 
@@ -215,7 +215,7 @@ fork{
 
 ~layC31.stop;
 ~layC32 = Posc(
-	\msg, Pseq([	Pseq([\lC31_1b, \lC31_2], 8), Pseq([\lC31_3], 1) ], inf),
+	\msg, Pseq([	Pseq([\lC31_B, \lC31_D], 8), Pseq([\lC31_E], 1) ], inf),
 	\dur, Pseq([	Pseq([0.5], 8), Pseq([2.5], 1) ]*2, 9)
 ).play;
 
@@ -228,7 +228,7 @@ fork{
 
 ~layC32.stop;
 ~layC33 = Posc(
-	\msg, Pseq([	Pseq([\lC31_1c, \lC31_2], 8), Pseq([\lC31_3], 1) ], inf),
+	\msg, Pseq([	Pseq([\lC31_C, \lC31_D], 8), Pseq([\lC31_E], 1) ], inf),
 	\dur, Pseq([	Pseq([0.5], 8), Pseq([2.5], 1) ]*2, 1)
 ).play;		
 		
@@ -789,13 +789,13 @@ fork{
 		//-------------------------------------------lev7-4/4--24s-----------------------------------------------
 			\layer_C_68 -> {//	|te
 ~layC34.stop;
-~layC34 = Posc(
+/*~layC34 = Posc(
 	\msg, Pseq([ Pseq([\lC31_1a], 1),	Pseq([\lC4_2b, \lC31_4, \bitA1], 7), Pseq([\lC4_2], 1) ], inf),
 	\dur, Pseq([	Pseq([0.25], 8), Pseq([1], 1) ], 9)
-).play;
+).play;*/
 
 ~cemb01.stop;
-~cemb01 = Posc(
+/*~cemb01 = Posc(
 	\msg, Pseq(
 		[
 		//cember
@@ -816,7 +816,7 @@ fork{
 		Pseq([1, 1, 1, 1], 1)
 		]/4, 4
 	)
-).play;
+).play;*/
 				
 				}, 
 			\layer_C_69 -> {//	ke
@@ -827,7 +827,7 @@ fork{
 				}, 
 			\layer_C_71 -> {//	ke
 
-~layC34.stop;
+/*~layC34.stop;
 ~layC34 = Posc(
 	\msg, Pseq([ Pseq([\kP22], 1),	Pseq([\kP63, \kP51, \kP14], 7), Pseq([\kk34], 1) ], inf),
 	\dur, Pseq([	Pseq([0.25], 8), Pseq([1], 1) ], 1)
@@ -853,7 +853,7 @@ fork{
 		Pseq([1, 1, 1], 1)
 		]/2, 1
 	)
-).play;
+).play;*/
 				
 				}
 		).play;
