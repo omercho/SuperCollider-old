@@ -926,10 +926,10 @@ fork{
 ~met02.brt_(~kRB1 *1.01000).playGverbR(0.001, 5.1, 2.1, mul:0.9, room:55, rev:3.5, damp:0.71, out:~strCok.choose);
 //:--blackFade
 ~blackFade={
-	~fade = Pseq((0..255).reverse, 256).asStream;
+	~fade = Pseq((0..0).reverse, 256).asStream;
 	256.do{
-		OF.bMask( ~fade.next); 
-		0.1.wait;
+		OF.bMask(255); 
+		0.08.wait;
 	};
 }.fork;				
 				

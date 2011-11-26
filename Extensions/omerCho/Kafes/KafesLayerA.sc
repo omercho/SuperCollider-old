@@ -546,7 +546,7 @@ fork{
 ~kik01.brt_(2.5).playPV4(0.001, 1.1, 1, mul:0.6, out: ~strCok.choose); // tek
 OF.rectOp(-800, -800, 1380+900, 1124+900, 255); 
 
-OF.img(~imageLib.at('sleep', 0), 205, 255, 0, 0);
+OF.img(~imageLib.at('ceket', 0), 205, 255, 0, 0);
 OF.feedback("speedXY", (0.2).asFloat, (0.0).asFloat);	
 ~ff = ~kB4;
 KafGendy.ar(1.1, 0.1, 4.3, 26.8,
@@ -884,6 +884,20 @@ fork{
 		~tol01.brt_(~kRD7 *1.23700).playGverbR(0.001, 1.1, 16.1, mul:0.4, room:55, rev:23.5, damp:0.71, out: ~strCok);
 };
 				
+//:-bash1
+~visRout.stop;
+~visRout = {
+	~seq = Pseq((0..10).mirror,inf).asStream;
+	~op = Pseq((255..0),inf).asStream;
+	120.do{
+		
+		OF.img(~imageLib.at('bash', ~seq.next), ~op.next, ~op.next, 0, 0);
+		0.1.wait;
+		//OF.black(255); 0.1.wait;
+		
+	}
+}.fork;
+
 				}, 
 
 
@@ -1074,7 +1088,7 @@ OF.feedback("speedXY", 0, 0);
 	~seq = Pseq((0..28).mirror,inf).asStream;
 	~op = Pseq((80..100), inf).asStream;
 	~bright = Pseq((0..255), inf).asStream;
-	120.do{
+	250.do{
 		
 		OF.img(
 			~imageLib.at('sleep', ~seq.next), 
@@ -1098,6 +1112,13 @@ OF.feedback("speedXY", 0, 0);
 	.brt2_(~kRA4 *1.02006).brt2Dur_(16)
 .transGverb(4.0, 5.9, 28.0, mul:0.03, start:0.0, out:~strCok.choose);
 
+
+
+				}, 
+			\layer_A_37 -> {//	ke
+
+~ats06.brt_(~kRA1 *1.82101).playGverbR(0.01, 4.0, 9.1, mul:1.7, start:[0.0].choose, out: ~strCok.choose);
+
 //---vis---vis---vis---vis---vis---vis---vis---vis---vis---vis---//
 ~visRout.stop;
 ~visRout = {
@@ -1115,12 +1136,7 @@ OF.feedback("speedXY", 0, 0);
 		
 	}
 }.fork;
-
-				}, 
-			\layer_A_37 -> {//	ke
-
-~ats06.brt_(~kRA1 *1.82101).playGverbR(0.01, 4.0, 9.1, mul:1.7, start:[0.0].choose, out: ~strCok.choose);
-				
+			
 
 				},
 
@@ -1139,7 +1155,8 @@ OF.feedback("speedXY", 0, 0);
 	.brt2_(~kRA4 *1.02006).brt2Dur_(16)
 .transGverb(4.0, 5.9, 28.0, mul:0.05, start:0.0, out:~strCok.choose);
 
-~gou02.brt_(~kRE1 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.009, out: ~strTek.choose);	
+~gou02.brt_(~kRE1 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.009, out: ~strTek.choose);
+OF.img(~imageLib.at('sleep', rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);	
 
 //---vis---vis---vis---vis---vis---vis---vis---vis---vis---vis---//
 				
@@ -1148,7 +1165,8 @@ OF.feedback("speedXY", 0, 0);
 				
 ~ats06.brt_(~kRA1 *1.82101).playGverbR(0.01, 4.0, 9.1, mul:1.7, start:[0.0].choose, out: ~strCok.choose);
 
-~gou02.brt_(~kRD5 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.009, out: ~strTek.choose);	
+~gou02.brt_(~kRD5 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.009, out: ~strTek.choose);
+OF.img(~imageLib.at('sleep', rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);	
 
 				
 				}, 
@@ -1162,7 +1180,9 @@ OF.feedback("speedXY", 0, 0);
 	.brt2_(~kRA1 *1.02006).brt2Dur_(16)
 .transGverb(4.0, 5.9, 28.0, mul:0.09, start:0.0, out:~strCok.choose);
 
-~gou02.brt_(~kRC4 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);	
+~gou02.brt_(~kRC4 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);
+OF.img(~imageLib.at('sleep', rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);
+	
 ~gou02.brt_(~kRC1 *0.89000).playBufR(0.001, 1.1, 2.1, mul:0.9, out: ~strTek.choose);
 
 				},
@@ -1183,7 +1203,7 @@ OF.feedback("speedXY", 0, 0);
 fork{
 	~gou02.brt_(~kRF1 *0.89000).playGverbR(0.001, 1.1, 1.1, mul:0.09, room:55, rev:13.5, damp:0.71, out: ~strTek.choose);	
 	0.5.wait;
-	~gou02.brt_(~kRC1 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);	
+	~gou02.brt_(~kRC1 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);	OF.img(~imageLib.at('sleep', rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);	
 	~gou02.brt_(~kRC3 *0.89000).playBufR(0.001, 6.1, 2.1, mul:0.9, out: ~strTek.choose);
 	2.5.wait;
 	
@@ -1191,21 +1211,26 @@ fork{
 		71.do{|i|
 			var dur = Pseq([0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]/4, inf).asStream;
 			~gou02.brt_([~kRE1, ~kRC3].choose *0.89000).playBuf(0.001, 1.1, 5.1, mul:0.000001+0.0002*(i%71), out: ~strTek.choose);
+			
 			dur.next.wait;
 			
 			
 		};
 		0.5.wait;
 		~gou02.brt_(~kRC4 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);
+		OF.img(~imageLib.at('sleep', rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);
+		
 		71.do{|i|
 			var dur = Pseq([0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]/4, inf).asStream;
 			~gou02.brt_([~kRC4, ~kRC1].choose *0.89000).playBuf(0.001, 1.1, 5.1, mul:0.000001+0.0002*(i%71), out: ~strTek.choose);
+			
 			dur.next.wait;
 			
 			
 		};
 		2.8.wait;
 		~gou02.brt_(~kRC2 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);
+		OF.img(~imageLib.at('sleep', rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);
 	};
 	
 }
@@ -1235,6 +1260,7 @@ fork{
 		var dur = Pwhite(0.2, 0.5, inf).asStream;
 
 		~gou02.brt_(~kP01.next *0.89000).playBuf(0.001, 1.1, 5.1, mul:0.0001+0.01*(i%13), out: ~strTek.choose);
+		OF.img(~imageLib.at('sleep', rrand(0,28)), 255, 87, [90, 180, 270].choose, 0);
 		dur.next.wait;
 		
 		
@@ -1284,6 +1310,7 @@ fork{
 				var dur = Pwhite(0.2, 0.5, inf).asStream;
 		
 				~gou02.brt_(~kP01.next *0.89000).playBuf(0.001, 1.1, 5.1, mul:~amp.next, out: ~strTek.choose);
+				OF.img(~imageLib.at('sleep', rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);
 				dur.next.wait;
 				
 				
@@ -1326,6 +1353,7 @@ fork{
 		var dur = Pwhite(0.2, 0.5, inf).asStream;
 
 		~gou02.brt_(~kP01.next *0.89000).playPV2(0.001, 1.1, 5.1, mul:~amp.next, out: ~strTek.choose);
+		OF.img(~imageLib.at('sleep', rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);
 		dur.next.wait;
 		
 		
@@ -1377,6 +1405,8 @@ fork{
 ~gouA1.stop;
 ~gouA2.stop;
 
+~kik02.brt_(2.5).playPV4(0.001, 1.1, 1, mul:0.9, out: ~strCok.choose); // tek
+
 fork{
 	~kPseq01 = Pseq([~kRC2, ~kRC1, ~kRC5, ~kRC1, ~kRC2, ~kRC4, ~kRB3, ~kRB1].mirror, inf).asStream;
 	~dur = Pseq([0.25, 0.36, 0.47, 0.58, 0.69, 0.80, 0.91, 0.94]/3, inf).asStream;
@@ -1398,7 +1428,7 @@ fork{
 	
 };
 
-~kik02.brt_(2.5).playPV4(0.001, 1.1, 1, mul:0.9, out: ~strCok.choose); // tek	
+	
 			
 				}, 
 			
@@ -1498,7 +1528,7 @@ fork{
 		
 		~dur.next.wait;
 		
-		OF.destruct(225);
+		//OF.destruct(225);
 		
 		~dur.next.wait;
 		
@@ -1626,7 +1656,7 @@ OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 
 				
 				}, 
 			\layer_A_65 -> {//	|dum2
-
+OF.int("mirrorMode", 7);  //OK
 fork{
 	
 	0.5.wait;
@@ -1708,7 +1738,7 @@ fork{
 		OF.feedback("activate", 0);
 				
 		~dur.next.wait;
-		
+		OF.int("mirrorMode", 7);  //OK
 		
 	};
 	
@@ -1922,7 +1952,8 @@ fork {
 		out: ~strTek.choose
 	).play;
 	~tht08.brt_(~kRB3 *1.10000).playPV4(1, 4.1, 5.1, pv4a:1.2, loop:0, out: ~strTek.choose); //ok
-	
+
+OF.int("mirrorMode", 0);	
 };
 				
 				}
