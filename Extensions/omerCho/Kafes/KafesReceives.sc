@@ -600,6 +600,7 @@ KafesReceives {
 				~bth06.brt_(~kRC5 *1.10100).playPV4(0.001, 1.1, 1, mul:0.3, out: ~strCok.choose);
 				~bth06.brt_(~kRC5 *1.10100).playPV1(0.001, 1.1, 1, mul:0.3, out: ~strCok.choose);
 				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
+				
 				}, 
 			\bt30 -> {//	tek2
 				~bth04.brt_(~kRC4 *1.05190).playPV5(0.001, 0.1, 1, mul:0.2, out: ~strCok.choose);
@@ -630,7 +631,9 @@ KafesReceives {
 				}, 
 			\bt37 -> {//	ke
 				~bth04.brt_(~kRB2 *1.05190).playGverb(0.001, 2.1, 4, mul:0.07, damp:0.99, out: ~strCok.choose); 
+				
 				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
+				
 				}
 		).play;
 	
@@ -679,7 +682,7 @@ Preceive(
 				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kP5 -> {//	|dum2
-				~kik02.brt_(3.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);\
+				~kik02.brt_(3.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);
 				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kP6 -> {//	|tek2

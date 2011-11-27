@@ -1,0 +1,1158 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fnil\fcharset0 Monaco;\f1\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red191\green0\blue0;\red0\green0\blue191;\red96\green96\blue96;
+\red0\green115\blue0;}
+\deftab560
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+
+\f0\fs18 \cf0 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf2 // Some Sounds Samples Created with GENESIS\cf0 \
+\
+\
+(\
+\cf2 //:- Loading buffers..\cf0 \
+~zil01 = \cf3 Buffer\cf0 .read(s, \cf4 "sounds/zil_01_01.aif"\cf0 );\
+~zil02 = \cf3 Buffer\cf0 .read(s, \cf4 "sounds/zil_01_02.aiff"\cf0 );\
+~zil03 = \cf3 Buffer\cf0 .read(s, \cf4 "sounds/zil_01_03.aiff"\cf0 );\
+~zil04 = \cf3 Buffer\cf0 .read(s, \cf4 "sounds/zil_01_04.aiff"\cf0 );\
+~zil05 = \cf3 Buffer\cf0 .read(s, \cf4 "sounds/zil_01_05.aiff"\cf0 );\
+~zil07 = \cf3 Buffer\cf0 .read(s, \cf4 "sounds/zil_01_07.aiff"\cf0 );\
+~zil09 = \cf3 Buffer\cf0 .read(s, \cf4 "sounds/zil_01_09.aiff"\cf0 );\
+~zil10 = \cf3 Buffer\cf0 .read(s, \cf4 "sounds/zil_01_10.aiff"\cf0 );\
+~zil11 = \cf3 Buffer\cf0 .read(s, \cf4 "sounds/zil_01_11.aiff"\cf0 );\
+)\
+\
+\cf2 //:- playing them\cf0 \
+\
+~zil01.play;\
+~zil02.play;\
+~zil03.play;\
+~zil04.play;\
+~zil05.play;\
+~zil07.play;\
+~zil09.play;\
+~zil10.play;\
+~zil11.play;\
+\
+\
+\cf2 // putting them in tags with the Preceive by IZ\cf0 \
+\
+(\
+\cf3 Preceive\cf0 (\
+	\cf5 'tag1'\cf0  -> \{\
+		~zil01.play;\
+		\},\
+	\cf5 'tag2'\cf0  -> \{\
+		~zil02.play;\
+	\
+		\},\
+	\cf5 '3'\cf0  -> \{\
+		~zil03.play;\
+		\},\
+	\cf5 'chord'\cf0  -> \{\
+		~zil04.play;\
+		~zil05.play;\
+		~zil07.play;\
+		~zil11.play;\
+		\},\
+	\cf5 'chord1'\cf0  -> \{\
+		~zil03.play;\
+		~zil09.play;\
+		~zil10.play;\
+		\},\
+	\cf5 'b'\cf0  -> \{\
+		~zil03.play;\
+\
+		\},\
+	\cf5 '7'\cf0  -> \{\
+		~zil03.play;\
+\
+		\},\
+	\cf5 'chord2'\cf0  -> \{\
+		~zil03.play;\
+		~zil01.play;\
+		~zil11.play;\
+\
+		\},\
+	\cf5 '9'\cf0  -> \{\
+		~zil09.play;\
+		\},\
+	\cf5 '10'\cf0  -> \{\
+		~zil10.play;\
+		\}\
+).play;\
+)\
+\
+\cf3 Posc\cf0 .play(\
+	[\\tag1, \\tag2, \\3, \cf5 \\nil\cf0 , \cf5 \\b\cf0 , \cf5 \\chord1\cf0 , \\7, \cf5 \\chord2\cf0 ],\
+	\cf5 \\dur\cf0 , 1\
+	\
+);\
+\
+\
+\cf3 Posc\cf0 .play(\
+	[\\1, \cf5 \\b\cf0 , \cf5 \\nil\cf0 , \cf5 \\chord1\cf0 , \cf5 \\b\cf0 , \\7, \cf5 \\chord2\cf0 ],\
+	\cf5 \\dur\cf0 , 0.5\
+	\
+);\
+\
+\cf3 Posc\cf0 .play(\
+	[\\10, \cf5 \\b\cf0 , \\2, \cf5 \\chord1\cf0 , \cf5 \\nil\cf0 , \\7, \cf5 \\chord2\cf0 ],\
+	\cf5 \\dur\cf0 , 0.25\
+	\
+);\
+\
+\cf3 Posc\cf0 .play(\
+	[\\11, \cf5 \\b\cf0 , \\2, \cf5 \\chord1\cf0 , \cf5 \\nil\cf0 , \\7, \cf5 \\chord2\cf0 , \cf5 \\b\cf0 ],\
+	\cf5 \\dur\cf0 , 0.25\
+	\
+);\
+\
+\
+\
+\
+\
+\
+\pard\pardeftab560\ql\qnatural
+\cf0 (\
+\cf3 SynthDef\cf0 (\cf5 \\buf\cf0 , \{ \cf3 | out=0, bufnum = 0, rate = 0.1, startPos = 5, amp = 1.0, sustain = 1, pan = 0, wid = 2, loop = 1|\cf0 \
+	\cf3 var\cf0  audio;\
+	rate = rate * \cf3 BufRateScale\cf0 .kr(bufnum);\
+	startPos = startPos * \cf3 BufFrames\cf0 .kr(bufnum);\
+	\
+	audio = \cf3 BufRd\cf0 .ar(1, bufnum, \cf3 Phasor\cf0 .ar(0, rate, startPos, \cf3 BufFrames\cf0 .ir(bufnum)), 2, 4);\
+	audio = \cf3 EnvGen\cf0 .ar(\cf3 Env\cf0 .sine, 1, timeScale: sustain, doneAction: 2) * audio;\
+	audio = \cf3 Pan2\cf0 .ar(audio, pan, amp*4);\
+	\cf2 //audio = PanAz.ar( 8, audio, pan, amp*4, width: wid);\cf0 \
+	\cf3 OffsetOut\cf0 .ar(out, audio);\
+\}).add;\
+)\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 \
+\
+\pard\pardeftab560\ql\qnatural
+\cf0 (	\
+	~ea = \cf3 Pbind\cf0 (*[\
+		\cf5 \\instrument\cf0 ,	\cf5 \\buf\cf0 ,\
+		\cf5 \\dur\cf0 ,		\cf3 Pseq\cf0 ([0.5], \cf3 inf\cf0 ),\
+		\cf5 \\legato\cf0 ,		\cf3 Pseq\cf0 ([ (1..8) ], \cf3 inf\cf0 ),\
+		\cf5 \\startPos\cf0 ,	0,\
+		\cf5 \\rate\cf0 ,		1,\
+		\cf5 \\sustain\cf0 ,		\cf3 Pseq\cf0 ([ (1..1.5), 0.5 ], \cf3 inf\cf0 ),\
+		\cf5 \\pan\cf0 ,  		\cf3 Prand\cf0 ([ (-4..4),2, -1 ], \cf3 inf\cf0 ),\
+		\cf5 \\bufnum\cf0 ,		\cf3 Pseq\cf0 ([~zil01, ~zil03, ~zil05, ~zil07], \cf3 inf\cf0 )\
+	\
+	]);\
+\
+	~ea1 = \cf3 Pbind\cf0 (*[\
+		\cf5 \\instrument\cf0 ,	\cf5 \\buf\cf0 ,\
+		\cf5 \\dur\cf0 ,		\cf3 Pseq\cf0 ([0.5,0.1,0.001,2, 0.002, 1, 0.008, 0.4], \cf3 inf\cf0 ),\
+		\cf5 \\legato\cf0 ,		\cf3 Pseq\cf0 ([ (1..8) ], \cf3 inf\cf0 ),\
+		\cf5 \\startPos\cf0 ,	0,\
+		\cf5 \\rate\cf0 ,		1,\
+		\cf5 \\sustain\cf0 ,		\cf3 Pseq\cf0 ([ (6..1.5), 5 ], \cf3 inf\cf0 ),\
+		\cf5 \\pan\cf0 ,  		\cf3 Prand\cf0 ([ (-4..4),2, -1 ], \cf3 inf\cf0 ),\
+		\cf5 \\bufnum\cf0 ,		\cf3 Pseq\cf0 ([~zil01, ~zil03, ~zil05, ~zil07], \cf3 inf\cf0 )\
+	\
+	]);\
+\
+\
+	~ea2 = \cf3 Pbind\cf0 (*[\
+		\cf5 \\instrument\cf0 ,	\cf5 \\buf\cf0 ,\
+		\cf5 \\dur\cf0 ,		\cf3 Pseq\cf0 ([1,0.1,0.001,2, 0.002, 3, 0.008, 0.4], \cf3 inf\cf0 ),\
+		\cf5 \\legato\cf0 ,		\cf3 Pseq\cf0 ([ (18..8),2 ], \cf3 inf\cf0 ),\
+		\cf5 \\startPos\cf0 ,	\cf3 Pseq\cf0 ([ (0..8)], \cf3 inf\cf0 ),\
+		\cf5 \\rate\cf0 ,		\cf3 Pwhite\cf0 (0.1, 4).abs*2,\
+		\cf5 \\sustain\cf0 ,		\cf3 Pseq\cf0 ([ (6..0.5),2 ], \cf3 inf\cf0 ).linrand.cos*4,\
+		\cf5 \\pan\cf0 ,  		\cf3 Pseq\cf0 ([ (-4..4),2, -1 ], \cf3 inf\cf0 ),\
+		\cf5 \\bufnum\cf0 ,		\cf3 Pseq\cf0 ([~zil01, ~zil02, ~zil03, ~zil04], \cf3 inf\cf0 )\
+	\
+	]);\
+\
+\
+	~ea3 = \cf3 Pbind\cf0 (*[\
+		\cf5 \\instrument\cf0 ,	\cf5 \\buf\cf0 ,\
+		\cf5 \\dur\cf0 ,		\cf3 Pseq\cf0 ([1,0.1,0.001,2, 0.002, 3, 0.008, 0.4], \cf3 inf\cf0 ),\
+		\cf5 \\legato\cf0 ,		\cf3 Pseq\cf0 ([ (18..8),2 ], \cf3 inf\cf0 ),\
+		\cf5 \\startPos\cf0 ,	\cf3 Pseq\cf0 ([ (0..8)], \cf3 inf\cf0 ),\
+		\cf5 \\rate\cf0 ,		\cf3 Pwhite\cf0 (0.1, 4).abs*2,\
+		\cf5 \\sustain\cf0 ,		\cf3 Pseq\cf0 ([ (6..0.5),2 ], \cf3 inf\cf0 ).linrand.cos*4,\
+		\cf5 \\pan\cf0 ,  		\cf3 Pseq\cf0 ([ (-4..4),2, -1 ], \cf3 inf\cf0 ),\
+		\cf5 \\bufnum\cf0 ,		\cf3 Pseq\cf0 ([~zil01,~zil09, ~zil02, ~zil03, ~zil04], \cf3 inf\cf0 )\
+	\
+	]);\
+\
+	~ea4 = \cf3 Pbind\cf0 (*[\
+		\cf5 \\instrument\cf0 ,	\cf5 \\buf\cf0 ,\
+		\cf5 \\dur\cf0 ,		\cf3 Pseq\cf0 ([1,0.1,0.001,2, 0.002, 3, 0.008, 0.4], \cf3 inf\cf0 )/2,\
+		\cf5 \\legato\cf0 ,		\cf3 Pseq\cf0 ([ (18..8),2 ], \cf3 inf\cf0 ),\
+		\cf5 \\startPos\cf0 ,	\cf3 Pseq\cf0 ([ (0..8)], \cf3 inf\cf0 ),\
+		\cf5 \\rate\cf0 ,		\cf3 Pwhite\cf0 (0.1, 4).abs*2,\
+		\cf5 \\sustain\cf0 ,		\cf3 Pseq\cf0 ([ (6..2.5),2 ], \cf3 inf\cf0 ).linrand.cos*4,\
+		\cf5 \\pan\cf0 ,  		\cf3 Pseq\cf0 ([ (-4..4),2, -1 ], \cf3 inf\cf0 ),\
+		\cf5 \\bufnum\cf0 ,		\cf3 Pseq\cf0 ([~zil01,~zil07, ~zil02, ~zil03, ~zil04, ~zil10, ~zil03], \cf3 inf\cf0 )\
+	\
+	]);\
+\
+)\
+\
+\
+\
+\
+\cf3 Pdef\cf0 (\cf5 \\bufRand\cf0 ).play;\
+\cf3 Pdef\cf0 (\cf5 \\bufRand\cf0 , ~ea);\
+\cf3 Pdef\cf0 (\cf5 \\bufRand\cf0 , ~ea1);\
+\cf3 Pdef\cf0 (\cf5 \\bufRand\cf0 , ~ea2);\
+\cf3 Pdef\cf0 (\cf5 \\bufRand\cf0 , ~ea3);\
+\cf3 Pdef\cf0 (\cf5 \\bufRand\cf0 , ~ea4);\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 \
+\
+\pard\pardeftab560\ql\qnatural
+\cf3 Pdef\cf0 (\cf5 \\bufRand\cf0 ).stop;\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 \
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+
+\fs28 \cf2 //--------------------Bummer--------------//
+\fs18 \cf0 \
+\
+\
+~int1 = \cf3 Bummer\cf0 .read(s, \cf4 "sounds/_Evfer/int01.aif"\cf0 );\
+~int2 = \cf3 Bummer\cf0 .read(s, \cf4 "sounds/_Evfer/int02.aif"\cf0 );\
+~int3 = \cf3 Bummer\cf0 .read(s, \cf4 "sounds/_Evfer/int03.aif"\cf0 );\
+~int4 = \cf3 Bummer\cf0 .read(s, \cf4 "sounds/_Evfer/int04.aif"\cf0 );\
+~int5 = \cf3 Bummer\cf0 .read(s, \cf4 "sounds/_Evfer/int05.aif"\cf0 );\
+~int6 = \cf3 Bummer\cf0 .read(s, \cf4 "sounds/_Evfer/int06.aif"\cf0 );\
+~gir1 = \cf3 Bummer\cf0 .read(s, \cf4 "sounds/_Evfer/gir01.aif"\cf0 );\
+~gir2 = \cf3 Bummer\cf0 .read(s, \cf4 "sounds/_Evfer/gir02.aif"\cf0 );\
+~gir3 = \cf3 Bummer\cf0 .read(s, \cf4 "sounds/_Evfer/gir03.aif"\cf0 );\
+~brdk1 = \cf3 Bummer\cf0 .read(s, \cf4 "sounds/_Evfer/bardak1.aif"\cf0 );\
+~dlStr = \cf3 Bummer\cf0 .read(s, \cf4 "sounds/_Evfer/dlStr.aif"\cf0 );\
+~dlyStr1 = \cf3 Bummer\cf0 .read(s, \cf4 "sounds/_Evfer/dlyStrA1.aif"\cf0 );\
+~dlyStr2 = \cf3 Bummer\cf0 .read(s, \cf4 "sounds/_Evfer/dlyStrA2.aif"\cf0 );\
+~dlyStr3 = \cf3 Bummer\cf0 .read(s, \cf4 "sounds/_Evfer/dlyStrA3.aif"\cf0 );\
+\
+\
+~thol01 = \cf3 Bummer\cf0 .read(s, \cf4 "sounds/-genesis/~thol/thol15.aiff"\cf0 );\
+~thol02 = \cf3 Bummer\cf0 .read(s, \cf4 "sounds/-genesis/~thol/thol16.aiff"\cf0 );\
+~thol03 = \cf3 Bummer\cf0 .read(s, \cf4 "sounds/-genesis/~thol/thol22.aiff"\cf0 );\
+~thol04 = \cf3 Bummer\cf0 .read(s, \cf4 "sounds/-genesis/~thol/thol32.aiff"\cf0 );\
+~thol05 = \cf3 Bummer\cf0 .read(s, \cf4 "sounds/-genesis/~thol/thol52.aiff"\cf0 );\
+~thol06 = \cf3 Bummer\cf0 .read(s, \cf4 "sounds/-genesis/~thol/thol67.aiff"\cf0 );\
+~thol07 = \cf3 Bummer\cf0 .read(s, \cf4 "sounds/-genesis/~thol/thol69.aiff"\cf0 );\
+~thol08 = \cf3 Bummer\cf0 .read(s, \cf4 "sounds/-genesis/~thol/thol89.aiff"\cf0 );\
+~thol09 = \cf3 Bummer\cf0 .read(s, \cf4 "sounds/-genesis/~thol/thol93.aiff"\cf0 );\
+~thol10 = \cf3 Bummer\cf0 .read(s, \cf4 "sounds/-genesis/~thol/thol98.aiff"\cf0 );\
+~thol11 = \cf3 Bummer\cf0 .read(s, \cf4 "sounds/-genesis/~thol/thol128.aiff"\cf0 );\
+\
+\
+~thol01.play;\
+~thol02.play;\
+~thol03.play;\
+~thol04.play;\
+~thol05.play;\
+~thol06.play;\
+~thol07.play;\
+~thol08.play;\
+~thol09.play;\
+~thol10.play;\
+~thol11.play;\
+\
+~gir1.play0;\
+\
+\
+~int1.play0(0.001, 0.5, 2.1, 0.7, loop: 0);\
+\
+~dlyStr1.brate_(1).play0(0.1, 0.5, 0.1);\
+\
+\
+(\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf3 Preceive\cf0 (\
+	\cf5 '1'\cf0  -> \{\
+		~zil01.play;\
+		\},\
+	\cf5 '2'\cf0  -> \{\
+		~zil02.play;\
+	\
+		\},\
+	\cf5 '3'\cf0  -> \{\
+		~zil03.play;\
+		\},\
+	\cf5 'chord'\cf0  -> \{\
+		~zil04.play;\
+		~zil05.play;\
+		~zil07.play;\
+		~zil11.play;\
+		\},\
+	\cf5 'chord1'\cf0  -> \{\
+		~zil03.play;\
+		~zil09.play;\
+		~zil10.play;\
+		\},\
+	\cf5 'b'\cf0  -> \{\
+		~zil03.play;\
+\
+		\},\
+	\cf5 '7'\cf0  -> \{\
+		~zil03.play;\
+\
+		\},\
+	\cf5 'chord2'\cf0  -> \{\
+		~zil03.play;\
+		~zil01.play;\
+		~zil11.play;\
+\
+		\},\
+	\cf5 '9'\cf0  -> \{\
+		~zil09.play;\
+		\},\
+	\cf5 '10'\cf0  -> \{\
+		~zil10.play;\
+		\}\
+).play;\
+)\
+\
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+
+\fs28 \cf2 //--------------------SCALES--------------//
+\fs18 \cf0 \
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf4 "Pure intervals"\cf0  (not tempered)\
+\
+Examples: \
+\cf3 Octave\cf0 \
+400 * 2\
+\cf3 Fifth\cf0 \
+400 * 3 / 2\
+\cf3 Whole\cf0  tone: \
+400 * 9 / 8\
+\cf3 Semitone\cf0  \
+400 * 16 / 15\
+\
+\
+\cf4 "Subdivisions of the octave"\cf0 \
+\
+Examples: \
+\
+\cf3 Octave\cf0  / 2:  2 ** (1/2) \
+\cf3 Octave\cf0  / 3:  2 ** (1/3) \
+...\
+\cf3 Octave\cf0  / 12: 2 ** (1/12)\
+\cf3 Octave\cf0  / 53: 2 ** (1/53) \
+\
+\
+3 semitones in 12 equal tempered system: \
+\
+400 * (2 ** (3/12))\
+general reference: frequency * (subdivided interval ** (number of steps / number of subdivisions))\
+\
+\cf3 Which\cf0  means that interval is: \
+(subdivided interval ** (number of steps / number of subdivisions))\
+\cf3 Subdivided\cf0  interval: octave => 2\
+\cf3 Number\cf0  of steps: \cf3 The\cf0  number of semitones or commas or ...\
+number of subdivisions: 12 semitones, 53 commas ...\
+\
+\
+\
+i = 2 ** ([2, 1, 2, 2, 2, 1, 2 ] / 12);\
+\
+ \
+~la = 440;\
+~si = ~la * i[0];\
+~do = ~si * i[2];\
+~do = ~si * i[2];\
+\
+\cf2 //MAKAM\cf0 \
+\
+\pard\pardeftab720\ql\qnatural
+\cf3 Do\cf0  \'a0 \'a0 \'a0\cf3 Kaba\cf0  \cf3 Cargah\cf0  \'a0 \'a0 \'a0 \'a0 \'a0 = \'a0 \'a0 \'a0256\
+\'a0\'a0 \'a0 \'a0 \'a0 \'a0\cf3 Kaba\cf0  \cf3 Nim\cf0  \cf3 Hicaz\cf0  \'a0 \'a0 \'a0= \'a0 \'a0 \'a0269,695\
+\'a0\'a0 \'a0 \'a0 \'a0 \'a0\cf3 Kaba\cf0  \cf3 Hicaz\cf0  \'a0 \'a0 \'a0 \'a0 \'a0= \'a0 \'a0 \'a0273,375\
+\'a0\'a0 \'a0 \'a0 \'a0 \'a0\cf3 Kaba\cf0  \cf3 Dik\cf0  \cf3 Hicaz\cf0  \'a0 \'a0 \'a0= \'a0 \'a0 \'a0284,123\
+\cf3 Re\cf0  \'a0 \'a0 \'a0\cf3 Yegah\cf0  \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0 \'a0= \'a0 \'a0 \'a0288\
+\'a0\'a0 \'a0 \'a0 \'a0 \'a0\cf3 Kaba\cf0  \cf3 Nim\cf0  \cf3 Hisar\cf0  \'a0 \'a0\'a0 = \'a0 \'a0 \'a0303,157\
+\'a0\'a0 \'a0 \'a0 \'a0 \'a0\cf3 Kaba\cf0  \cf3 Hisar\cf0  \'a0 \'a0 \'a0 \'a0 \'a0= \'a0 \'a0 \'a0307,546\
+\'a0\'a0 \'a0 \'a0 \'a0 \'a0\cf3 Kaba\cf0  \cf3 Dik\cf0  \cf3 Hisar\cf0  \'a0 \'a0 \'a0= \'a0 \'a0 \'a0319,639\
+\cf3 Mi\cf0  \'a0 \'a0 \'a0\cf3 Huseyni\cf0  \cf3 Asiran\cf0  \'a0 \'a0 \'a0 \'a0= \'a0 \'a0 \'a0324\
+\cf3 Fa\cf0  \'a0 \'a0 \'a0\cf3 Acem\cf0  \cf3 Asiran\cf0  \'a0 \'a0 \'a0 \'a0 \'a0 = \'a0 \'a0 \'a0341,333\
+\'a0\'a0 \'a0 \'a0 \'a0 \'a0\cf3 Dik\cf0  \cf3 Acem\cf0  \cf3 Asiran\cf0  \'a0 \'a0 = \'a0 \'a0 \'a0345,5\
+\'a0\'a0 \'a0 \'a0 \'a0 \'a0\cf3 Irak\cf0  \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0= \'a0 \'a0 \'a0359,593\
+\'a0\'a0 \'a0 \'a0 \'a0 \'a0\cf3 Gevest\cf0  \'a0 \'a0 \'a0 \'a0\'a0 \'a0 \'a0 = \'a0 \'a0 \'a0364,5\
+\'a0\'a0 \'a0 \'a0 \'a0 \'a0\cf3 Dik\cf0  \cf3 Gevest\cf0  \'a0 \'a0  \'a0 \'a0 = \'a0 \'a0 \'a0378,831\
+\cf3 Sol\cf0  \'a0 \'a0 \cf3 Rast\cf0  \'a0 \'a0 \'a0 \'a0 \'a0\'a0 \'a0 \'a0 \'a0 = \'a0 \'a0 \'a0384\
+\'a0\'a0 \'a0 \'a0 \'a0 \'a0\cf3 Nim\cf0  \cf3 Zirgule\cf0  \'a0 \'a0 \'a0 \'a0 = \'a0 \'a0 \'a0404,548\
+\'a0\'a0 \'a0 \'a0 \'a0 \'a0\cf3 Zirgule\cf0  \'a0 \'a0 \'a0 \'a0\'a0 \'a0 \'a0= \'a0 \'a0 \'a0410,062\
+\'a0\'a0 \'a0 \'a0 \'a0 \'a0\cf3 Dik\cf0  \cf3 Zirgule\cf0  \'a0 \'a0  \'a0 \'a0= \'a0 \'a0 \'a0426,185\
+\cf3 La\cf0  \'a0 \'a0 \'a0\cf3 Dugah\cf0  \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 = \'a0 \'a0 \'a0440 \
+\'a0\'a0 \'a0 \'a0 \'a0 \'a0\cf3 Kurdi\cf0  \'a0 \'a0 \'a0\'a0 \'a0 \'a0 \'a0 \'a0= \'a0 \'a0 \'a0455,111\
+\'a0\'a0 \'a0 \'a0 \'a0 \'a0\cf3 Dik\cf0  \cf3 Kurdi\cf0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0= \'a0 \'a0 \'a0461,320\
+\'a0\'a0 \'a0 \'a0 \'a0 \'a0\cf3 Segah\cf0  \'a0 \'a0 \'a0 \'a0 \'a0  \'a0 \'a0= \'a0 \'a0 \'a0479,478\
+\cf3 Si\cf0  \'a0 \'a0 \'a0 \cf3 Buselik\cf0  \'a0 \'a0 \'a0 \'a0\'a0 \'a0 \'a0 = \'a0 \'a0 \'a0486\
+\'a0\'a0 \'a0 \'a0 \'a0 \'a0\cf3 Dik\cf0  \cf3 Buselik\cf0  \'a0 \'a0 \'a0 \'a0 = \'a0 \'a0 \'a0505,108\
+\cf3 Do\cf0  \'a0 \'a0 \'a0\cf3 Cargah\cf0  \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0= \'a0 \'a0 \'a0512\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0  \
+ \
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf3 Cargah\cf0  \cf3 Makami\cf0 \
+a- Duragi:	\cf3 Cargah\cf0  veya kabaCargah perdesidir.\
+b- Seyri:		\cf3 Cikici\cf0  veya cikici-inici.\
+c- Dizisi:	\cf3 Cargah\cf0  veya kabaCargah perdesi uzerindeki bir \cf3 Cargah\cf0  beslisine 5. derece uzerinden bir \cf3 Cargah\cf0  dortlusunun eklenmesinden meydana gelmistir.\
+d- Guclusu:	\cf3 Rast\cf0  veya \cf3 Gerdaniye\cf0  prdesidir.\
+\
+\
+~f=1; 		\cf2 //Koma \cf0 \
+~e=3; 		\cf2 //Koma3 \cf0 \
+~b=4; 		\cf2 //Bakiye \cf0 \
+~s=5; 		\cf2 //KucukMucenneb \cf0 \
+~k=8; 		\cf2 //BuyukMucenneb \cf0 \
+~t=9; 		\cf2 //Tanini \cf0 \
+~a12=12; 	\cf2 //ArtikIkili\cf0 \
+~a13=13; 	\cf2 //ArtikIkili\cf0 \
+\
+i = 2 ** ([~t, ~t, ~b, ~t, ~t, ~t, ~b] / 53); \cf2 //Cmajor\cf0 \
+\
+~kabaCargah = 256;\
+~yegah = ~kabaCargah * i[0];\
+~huseyniAsiran = ~yegah * i[1];\
+~acemAsiran = ~huseyniAsiran * i[2];\
+~rast = ~acemAsiran * i[3];\
+~dugah = ~rast * i[4];\
+~buselik = ~dugah * i[5];\
+~cargah = ~buselik * i[6];\
+~neva = ~cargah * i[0];\
+~huseyni = ~neva *i[1];\
+~acem = ~huseyni * i[2];\
+~gerdaniye = ~acem * i[3];\
+~muhayyer = ~gerdaniye * i[4];\
+~tizBuselik = ~muhayyer * i[5];\
+~tizCargah = ~tizBuselik * i[6];\
+~huseyni;\
+\
+\
+\pard\pardeftab560\ql\qnatural
+\cf3 Pbind\cf0 (\
+	\cf5 \\freq\cf0 , \cf3 Pseq\cf0 ([~cargah, ~neva, ~huseyni, ~acem, ~gerdaniye, ~muhayyer, ~tizBuselik, ~tizCargah], \cf3 inf\cf0 ),\
+	\cf5 \\dur\cf0 , \cf3 Pseq\cf0 ([1] / 2, 8),\
+	\cf5 \\amp\cf0 , 0.08,\
+	\cf5 \\octave\cf0 , 2,\
+	\cf5 \\stepsPerOctave\cf0 , 53\
+).play;\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 \
+\
+\pard\pardeftab560\ql\qnatural
+\cf3 Pbind\cf0 (\
+	\cf5 \\freq\cf0 , \cf3 Pseq\cf0 ([~cargah, ~neva, ~huseyni, ~acem, ~gerdaniye, ~muhayyer, ~tizBuselik, ~tizCargah].mirror, \cf3 inf\cf0 ),\
+	\cf5 \\dur\cf0 , \cf3 Pseq\cf0 ([1] / 2, \cf3 inf\cf0 ),\
+	\cf5 \\amp\cf0 , 0.08,\
+	\cf5 \\octave\cf0 , 2,\
+	\cf5 \\stepsPerOctave\cf0 , 53\
+).play;\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 \
+\
+i = 2 ** ([~t, ~t, ~b, ~t, ~t, ~t, ~b] / 53); \cf2 //Cmajor\cf0 \
+\
+~kabaCargah = 1;\
+~yegah = ~kabaCargah * i[0];\
+~huseyniAsiran = ~yegah * i[1];\
+~acemAsiran = ~huseyniAsiran * i[2];\
+~rast = ~acemAsiran * i[3];\
+~dugah = ~rast * i[4];\
+~buselik = ~dugah * i[5];\
+~cargah = ~buselik * i[6];\
+~neva = ~cargah * i[0];\
+~huseyni = ~neva *i[1];\
+~acem = ~huseyni * i[2];\
+~gerdaniye = ~acem * i[3];\
+~muhayyer = ~gerdaniye * i[4];\
+~tizBuselik = ~muhayyer * i[5];\
+~tizCargah = ~tizBuselik * i[6];\
+~huseyni;\
+\
+\
+\pard\pardeftab560\ql\qnatural
+\cf0 \
+(\
+\cf3 SynthDef\cf0 (\cf5 \\buf\cf0 , \{ \cf3 | out=0, bufnum = 0, \
+				rate = 0.1, startPos = 0, amp = 1.0, \
+				gate = 1, att = 0.1, dec = 1.1, sus = 1, rls = 0.2, \
+				pan = 0, wid = 2, loop = 0|\cf0 \
+	\cf3 var\cf0  env, audio;\
+	\cf2 //rate = rate * BufRateScale.kr(bufnum);\cf0 \
+	startPos = startPos * \cf3 BufFrames\cf0 .kr(bufnum);\
+	\
+	env = \cf3 EnvGen\cf0 .ar(\cf3 Env\cf0 .adsr(att, dec, sus, rls, 1, -1), gate, doneAction: 2);\
+	\
+	audio = \cf3 PlayBuf\cf0 .ar(1, bufnum, \cf3 BufRateScale\cf0 .kr(bufnum)*rate, startPos: startPos, loop:1);\
+	\
+	audio = \cf3 Pan2\cf0 .ar(audio, pan, amp*6);\
+	\cf2 //audio = PanAz.ar( 8, audio, pan, amp*6, width: wid);\cf0 \
+	\cf3 Out\cf0 .ar(out, audio* env);\
+\}).add;\
+)\
+\
+(\
+\cf3 Pdef\cf0 (\cf5 \\bufRand\cf0 , \cf3 Pbind\cf0 (*[\
+		\cf5 \\instrument\cf0 ,	\cf5 \\buf\cf0 ,\
+		\cf5 \\dur\cf0 ,		\cf3 Pseq\cf0 ([0.5], \cf3 inf\cf0 ),\
+		\cf5 \\startPos\cf0 ,	0,\
+		\cf5 \\rate\cf0 ,		\cf3 Pseq\cf0 ([~cargah, ~neva, ~huseyni, ~acem, ~gerdaniye, ~muhayyer, ~tizBuselik, ~tizCargah], \cf3 inf\cf0 ),\
+		\cf5 \\sus\cf0 ,		\cf3 Pseq\cf0 ([1], \cf3 inf\cf0 ),\
+		\cf5 \\pan\cf0 ,  		\cf3 Pwhite\cf0 (-0.5, 0.5, \cf3 inf\cf0 ),\
+		\cf5 \\bufnum\cf0 ,		\cf3 Pseq\cf0 ([~gir01], \cf3 inf\cf0 )\
+])).play;\
+)\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 \
+\pard\pardeftab560\ql\qnatural
+\cf0 (\
+\cf3 Pdef\cf0 (\cf5 \\bufRand\cf0 , \cf3 Pbind\cf0 (*[\
+		\cf5 \\instrument\cf0 ,	\cf5 \\buf\cf0 ,\
+		\cf5 \\dur\cf0 ,		\cf3 Pseq\cf0 ([0.1], \cf3 inf\cf0 ),\
+		\cf5 \\startPos\cf0 ,	0.0,\
+		\cf5 \\rate\cf0 ,		\cf3 Pseq\cf0 ([~cargah, ~neva, ~huseyni, ~acem, ~gerdaniye, ~muhayyer, ~tizBuselik, ~tizCargah].mirror2, \cf3 inf\cf0 ),\
+		\cf5 \\sus\cf0 ,		\cf3 Pseq\cf0 ([1], \cf3 inf\cf0 ),\
+		\cf5 \\pan\cf0 ,  		\cf3 Pwhite\cf0 (-0.5, 0.5, \cf3 inf\cf0 ),\
+		\cf5 \\bufnum\cf0 ,		\cf3 Pseq\cf0 ([~gir01], \cf3 inf\cf0 )\
+])).play;\
+)\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 \
+\
+\
+\
+\
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+
+\fs26 \cf2 //---------------------------------FFT--------------------------------------------//
+\fs18 \cf0 \
+\
+~gnB01 = \cf3 Buffer\cf0 .read(s, \cf4 "sounds/~zkm1/simek2_Rev.aif"\cf0 );\
+\
+~gnB01.play\
+\
+\pard\pardeftab560\ql\qnatural
+\cf0 (\
+\cf3 SynthDef\cf0 (\cf5 \\fftgrain\cf0 , \{ \cf3 |out, bufnum, sustain = 1, rate = 0.2, rate2 = 0.2|\cf0 \
+	\cf3 var\cf0  in, chain;\
+	in = \cf3 PlayBuf\cf0 .ar(1, bufnum, \cf3 BufRateScale\cf0 .kr(bufnum)*rate, loop: 1);\
+	chain = \cf3 FFT\cf0 (\{\cf3 LocalBuf\cf0 (2048, 2)\}.dup(8), in);\
+	chain = \cf3 PV_BrickWall\cf0 (\
+		chain, \
+		\cf3 SinOsc\cf0 .kr(\
+			rate2 * \
+			\cf3 XLine\cf0 .kr(\
+				1, \
+				15 * [1, 1.6], \
+				sustain\
+			), \
+			\cf3 Rand\cf0 (0, pi)\
+		);\
+	); \
+	\cf3 Out\cf0 .ar(out, \cf3 IFFT\cf0 (chain) * \cf3 XLine\cf0 .kr(2, 0.001, sustain, doneAction: 2)) \cf2 // inverse FFT\cf0 \
+\}).add;\
+)\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 \
+\
+\pard\pardeftab560\ql\qnatural
+\cf3 Pdef\cf0 (\cf5 \\fft01\cf0 ).play;\
+\cf3 Pdef\cf0 (\cf5 \\fft01\cf0 ).stop;\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 \
+\
+\
+\pard\pardeftab560\ql\qnatural
+\cf0 (\
+\cf3 Pdef\cf0 (\cf5 \\fft01\cf0 , \cf3 Pbind\cf0 (\
+	\cf5 \\instrument\cf0 , \cf5 \\fftgrain\cf0 ,\
+	\cf5 \\bufnum\cf0 , \cf3 Pseq\cf0 ([~gnB01], \cf3 inf\cf0 ), \
+	\cf5 \\rate\cf0 , \cf3 Pseq\cf0 ([1], \cf3 inf\cf0 ), \
+	\cf5 \\rate2\cf0 , \cf3 Pseq\cf0 ([4, 5, 3, 6, 2, 1], \cf3 inf\cf0 ), \
+	\cf5 \\legato\cf0 , \cf3 Pseq\cf0 ([3.5], \cf3 inf\cf0 ),\
+	\cf5 \\dur\cf0 , \cf3 Pseries\cf0 (0.1, 1, \cf3 inf\cf0 )*\cf3 Pseq\cf0 ([1, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2].mirror2, 1)\
+));\
+)\
+\
+\
+\cf2 //\cf0 \
+(\
+\cf3 Pdef\cf0 (\cf5 \\fft01\cf0 , \cf3 Pbind\cf0 (\
+	\cf5 \\instrument\cf0 , \cf5 \\fftgrain\cf0 ,\
+	\cf5 \\bufnum\cf0 , \cf3 Pseq\cf0 ([~gnB01], \cf3 inf\cf0 ), \
+	\cf5 \\rate\cf0 , \cf3 Pseq\cf0 ([0.5], \cf3 inf\cf0 ), \
+	\cf5 \\rate2\cf0 , \cf3 Pseq\cf0 ([4, 5, 3, 6, 2, 1], \cf3 inf\cf0 ), \
+	\cf5 \\legato\cf0 , \cf3 Pseq\cf0 ([3.5], \cf3 inf\cf0 ),\
+	\cf5 \\dur\cf0 , \cf3 Pseries\cf0 (0.1, 1, \cf3 inf\cf0 )*\cf3 Pseq\cf0 ([1, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2].mirror2, 1)\
+));\
+)\
+\
+\
+(\
+\cf3 Pdef\cf0 (\cf5 \\fft01\cf0 , \cf3 Pbind\cf0 (\
+	\cf5 \\instrument\cf0 , \cf5 \\fftgrain\cf0 ,\
+	\cf5 \\bufnum\cf0 , \cf3 Pseq\cf0 ([~agc01], \cf3 inf\cf0 ), \
+	\cf5 \\rate\cf0 , \cf3 Pseq\cf0 ([1], \cf3 inf\cf0 ), \
+	\cf5 \\rate2\cf0 , \cf3 Pseq\cf0 ([4, 5, 3, 6, 2, 1], \cf3 inf\cf0 ), \
+	\cf5 \\legato\cf0 , \cf3 Pseq\cf0 ([3.5], \cf3 inf\cf0 ),\
+	\cf5 \\dur\cf0 , \cf3 Pseq\cf0 ([1, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 3]*0.2, 1)\
+));\
+)\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 \
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+
+\fs28 \cf2 //------------------------DigitalDrum----------------------------//
+\fs18 \cf0 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf2 //SoundIn Trigger\cf0 \
+\
+\
+\pard\pardeftab560\ql\qnatural
+\cf0 ( \cf2 // trigger a synth \cf0 \
+\cf3 SynthDef\cf0 (\cf4 "help-EnvGen"\cf0 ,\{ \cf3 arg\cf0  out=0;\
+	\cf3 Out\cf0 .ar(out,\
+		\cf3 EnvGen\cf0 .kr(\cf3 Env\cf0 .perc,1.0,doneAction: 2) \
+			* \cf3 SinOsc\cf0 .ar(440,0,0.1)\
+	)\
+\}).send(s);\
+\
+\cf2 // This synth has no output. It only checks amplitude of input and looks for a transition from > 0.2\cf0 \
+\cf2 // to < 0.2\cf0 \
+\
+\cf3 SynthDef\cf0 (\cf4 "help-<= trig"\cf0 , \{\
+	\cf3 SendTrig\cf0 .kr(\cf3 Amplitude\cf0 .kr(\cf3 SoundIn\cf0 .ar(0)) <= 0.01);\
+\}).play(s);\
+\pard\pardeftab560\ql\qnatural
+
+\fs24 \cf0 \
+\pard\pardeftab560\ql\qnatural
+
+\fs18 \cf2 // responder to trigger synth\cf0 \
+\cf3 OSCresponderNode\cf0 (s.addr,\cf5 '/tr'\cf0 ,\{ \cf4 "triggered"\cf0 .postln; \cf3 Synth\cf0 .new(\cf4 "help-EnvGen"\cf0 ) \}).add;\
+)\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 \
+\
+\
+\
+\
+\
+\pard\pardeftab560\ql\qnatural
+\cf0 (\
+\cf3 SynthDef\cf0 (\cf5 'digDrum'\cf0 , \{\
+	\cf3 var\cf0  in, sinyal;\
+\pard\pardeftab720\ql\qnatural
+\cf0 \
+	p= \cf3 Trig\cf0 .ar(\cf3 Saw\cf0 .ar(18), \cf3 LFNoise2\cf0 .ar(4, 0.5, 5));\
+	y= \cf3 SinOsc\cf0 .ar(p*\cf3 SoundIn\cf0 .ar(0, 1.2));\
+	z= \cf3 SinOsc\cf0 .ar(p* \cf3 LFNoise2\cf0 .ar(4, 0.5, 5));\
+	in = \cf3 GrainIn\cf0 .ar(\
+			2, 	\cf2 //channelNum\cf0 \
+			y, 	\cf2 //trigger\cf0 \
+			y,	\cf2 //duration-the size of the grain\cf0 \
+			z,	\cf2 //input to granulate\cf0 \
+			p*z,	\cf2 //pan\cf0 \
+			-1	\cf2 //buf num containing a singal to use for the grain envelope. -1 uses a built-in Hanning envelope.\cf0 \
+		);\
+	in = in * \cf3 Amplitude\cf0 .kr(\cf3 SoundIn\cf0 .ar(0, 0.2));\
+	sinyal = \cf3 GVerb\cf0 .ar(\
+		in, \
+		20.2, \cf2 //room\cf0 \
+		4,\
+		0.4\
+	)*8;\
+\pard\pardeftab560\ql\qnatural
+\cf0 	\cf3 Out\cf0 .ar(0, sinyal*2);\
+\}).send(Server.default);\
+\
+~drum = Synth(\\\cf5 digDrum\cf0 );\
+)
+\f1\fs24 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+
+\f0\fs18 \cf0 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+
+\fs30 \cf0 \
+\cf2 //----------------------ZIRKONIUM--------------------------//\cf0 \
+\
+\cf2 //--messages
+\fs18 \cf0 \
+\
+\pard\tx560\pardeftab560\ql\qnatural\pardirnatural
+
+\fs26 \cf0 \CocoaLigature0 [ \cf4 \CocoaLigature1 "/pan/xy"\cf0 , channel=int, x=float, y=float, xspan=float, xspan=float, gain=float \CocoaLigature0 ]
+\fs18 \CocoaLigature1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 \
+\
+\
+\pard\pardeftab560\ql\qnatural
+
+\f1\b\fs24 \cf0 network address
+\f0\b0\fs18 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural
+\cf0 \
+z = \cf3 NetAddr\cf0 (\cf4 "localhost"\cf0 , 2001);\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf2 //ch1\cf0 \
+z.sendMsg(\cf4 "/pan/xy"\cf0 , 0, 0.0, 0.0, 0.0, 0.0, 1.0);\
+z.sendMsg(\cf4 "/pan/xy"\cf0 , 0, 0.1, 0.0, 0.0, 0.0, 1.0);\
+z.sendMsg(\cf4 "/pan/xy"\cf0 , 0, 0.2, 0.0, 0.0, 0.0, 1.0);\
+z.sendMsg(\cf4 "/pan/xy"\cf0 , 0, 0.3, 0.0, 0.0, 0.0, 1.0);\
+z.sendMsg(\cf4 "/pan/xy"\cf0 , 0, 0.4, 0.0, 0.0, 0.0, 1.0);\
+z.sendMsg(\cf4 "/pan/xy"\cf0 , 0, 0.5, 0.0, 0.0, 0.0, 1.0);\
+z.sendMsg(\cf4 "/pan/xy"\cf0 , 0, 0.6, 0.0, 0.0, 0.0, 1.0);\
+z.sendMsg(\cf4 "/pan/xy"\cf0 , 0, 0.7, 0.0, 0.0, 0.0, 1.0);\
+z.sendMsg(\cf4 "/pan/xy"\cf0 , 0, 0.8, 0.0, 0.0, 0.0, 1.0);\
+z.sendMsg(\cf4 "/pan/xy"\cf0 , 0, 0.9, 0.0, 0.0, 0.0, 1.0);\
+z.sendMsg(\cf4 "/pan/xy"\cf0 , 0, 1.0, 0.0, 0.0, 0.0, 1.0);\
+\
+z.sendMsg(\cf4 "/pan/xy"\cf0 , 0, 1.0, 0.1, 0.0, 0.0, 1.0);\
+z.sendMsg(\cf4 "/pan/xy"\cf0 , 0, 1.0, 0.2, 0.0, 0.0, 1.0);\
+z.sendMsg(\cf4 "/pan/xy"\cf0 , 0, 1.0, 0.3, 0.0, 0.0, 1.0);\
+z.sendMsg(\cf4 "/pan/xy"\cf0 , 0, 1.0, 4.0, 0.0, 0.0, 1.0);\
+z.sendMsg(\cf4 "/pan/xy"\cf0 , 0, 1.0, 7.0, 0.0, 0.0, 1.0);\
+z.sendMsg(\cf4 "/pan/xy"\cf0 , 0, 1.0, 8.0, 0.0, 0.0, 1.0);\
+z.sendMsg(\cf4 "/pan/xy"\cf0 , 0, 1.0, 9.0, 0.0, 0.0, 1.0);\
+z.sendMsg(\cf4 "/pan/xy"\cf0 , 0, 1.0, 10.0, 0.0, 0.0, 1.0);\
+z.sendMsg(\cf4 "/pan/xy"\cf0 , 0, 1.0, 11.0, 0.0, 0.0, 1.0);\
+z.sendMsg(\cf4 "/pan/xy"\cf0 , 0, 1.0, 12.0, 0.0, 0.0, 1.0);\
+z.sendMsg(\cf4 "/pan/xy"\cf0 , 0, 1.0, 13.0, 0.0, 0.0, 1.0);\
+z.sendMsg(\cf4 "/pan/xy"\cf0 , 0, 1.0, 14.0, 0.0, 0.0, 1.0);\
+z.sendMsg(\cf4 "/pan/xy"\cf0 , 0, 1.0, 15.0, 0.0, 0.0, 1.0);\
+z.sendMsg(\cf4 "/pan/xy"\cf0 , 0, 1.0, 16.0, 0.0, 0.0, 1.0);\
+z.sendMsg(\cf4 "/pan/xy"\cf0 , 0, 1.0, 17.0, 0.0, 0.0, 1.0);\
+z.sendMsg(\cf4 "/pan/xy"\cf0 , 0, 1.0, 18.0, 0.0, 0.0, 1.0);\
+\
+\
+\
+\
+z.sendMsg(\cf4 "/pan/xy"\cf0 , 1, 0.5, 0.0, 0.0, 0.0, 1.0);\
+\pard\tx560\pardeftab560\ql\qnatural\pardirnatural
+\cf0 \CocoaLigature0 \
+\
+\
+\
+\
+\
+\cf2 //:examp01\cf0 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 \CocoaLigature1 ~zrk = \{\
+	~delayTime = 0.1;\
+	~panx = 0.0;\
+	~pany = 0.0;\
+	~xspan = 0.0;\
+	~yspan = 0.0; \
+	z = \cf3 NetAddr\cf0 (\cf4 "localhost"\cf0 , 2001);\
+	\cf3 inf\cf0 .do\{ \cf3 |i|\cf0 \
+		~panx = sin(i*0.01);\
+		~pany = cos(i*0.01);\
+		i.postln;		\
+		z.sendMsg(\cf4 "/pan/xy"\cf0 , 0, ~panx, ~pany, ~xspan, ~yspan, 1.0);\
+		\cf2 //z.sendMsg("/pan/xy", 1, 1-~panx, 1-~pany, 0.3, 0.3, 1.0);\cf0 \
+		~delayTime.wait;\
+	\}\
+\}.fork \CocoaLigature0 \
+\pard\tx560\pardeftab560\ql\qnatural\pardirnatural
+\cf0 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 \CocoaLigature1 ~pany3 = -1.0;\
+~pany2 = -1.0;\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 \CocoaLigature0 \
+\pard\tx560\pardeftab560\ql\qnatural\pardirnatural
+\cf2 //:examp02 y=x\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 \CocoaLigature1 z = \cf3 NetAddr\cf0 (\cf4 "localhost"\cf0 , 2001);\CocoaLigature0 \
+\CocoaLigature1 	~delayTime2 = 0.05;\
+	~panx2 = -1.0;\
+	~pany2 = -1.0;\
+	~xspan = 0.0;\
+	~yspan = 0.0; \
+	~step = 0.1;\
+(\
+	\
+~zrk2 = \{\
+	\cf3 inf\cf0 .do\{ \cf3 |i|\cf0 	\
+		~pany2 = ~pany2 + ~step;\
+		~panx2 = ~pany2;\
+		~pany2.postln;		\
+		z.sendMsg(\cf4 "/pan/xy"\cf0 , 1, ~panx2, ~pany2, ~xspan, ~yspan, 1.0);\
+		~delayTime2.wait;\
+		\
+		if (~pany2 > 1, \{~step = -1*~step\});\
+		if (~pany2 < -1, \{~step = -1*~step\});\
+	\}\
+\}.fork \CocoaLigature0 \
+\pard\tx560\pardeftab560\ql\qnatural\pardirnatural
+\cf0 )\
+\
+\cf2 //:examp02 y=x\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 \CocoaLigature1 z = \cf3 NetAddr\cf0 (\cf4 "localhost"\cf0 , 2001);\CocoaLigature0 \
+\CocoaLigature1 	~delayTime3 = 0.05;\
+	~panx3 = 1.0;\
+	~pany3 = -1.0;\
+	~xspan = 0.0;\
+	~yspan = 0.0; \
+	~step3 = 0.1;\
+(	\
+~zrk3 = \{\
+	\cf3 inf\cf0 .do\{ \cf3 |i|\cf0 	\
+		~pany3 = ~pany3+~step3;\
+		~panx3 = -1*~pany3;\
+		~pany3.postln;		\
+		z.sendMsg(\cf4 "/pan/xy"\cf0 , 0, ~panx3, ~pany3, ~xspan, ~yspan, 1.0);\
+		~delayTime2.wait;\
+		\
+		if (~pany3 > 1, \{~step3 = -1*~step3\});\
+		if (~pany3 < -1, \{~step3 = -1*~step3\});\
+	\}\
+\}.fork \CocoaLigature0 \
+\pard\tx560\pardeftab560\ql\qnatural\pardirnatural
+\cf0 )\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\cf2 //:POsc dont work\cf0 \
+\pard\tx560\pardeftab560\ql\qnatural\pardirnatural
+\cf3 Pdef\cf0 (\cf5 \\zirkDef01\cf0 , \cf3 Posc\cf0 (\
+	\cf5 \\msg\cf0 , \cf3 Pseq\cf0 ([\
+		[\cf4 \CocoaLigature1 "/pan/xy"\cf0 , 0, 0.4 rrand: 0.5, 0.8, 0.3, 0.3, 1.0\CocoaLigature0 ],\
+		[\cf4 \CocoaLigature1 "/pan/xy"\cf0 , 1, 0.0 rrand: 1.0, 0.8, 0.3, 0.3, 1.0\CocoaLigature0 ],\
+		[\cf4 \CocoaLigature1 "/pan/xy"\cf0 , 0, 0.0 rrand: 1.0, 0.8, 0.3, 0.3, 1.0\CocoaLigature0 ],\
+		[\cf4 \CocoaLigature1 "/pan/xy"\cf0 , 1, 0.0 rrand: 1.0, 0.8, 0.3, 0.3, 1.0\CocoaLigature0 ]\
+		], \cf3 inf\cf0 ),\
+	\cf5 \\dur\cf0 , 0.1,\
+	\cf5 \CocoaLigature1 \\dest\cf0 , \cf3 NetAddr\cf0 (\cf4 "localhost"\cf0 , 2001)\CocoaLigature0 \
+));\
+\cf3 Pdef\cf0 (\cf5 \\zirkDef01\cf0 ).play;\
+\
+\
+\
+\pard\tx560\pardeftab560\ql\qnatural\pardirnatural
+\cf2 //--------------------------VISUALS---------------------------//\cf0 \
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf3 \CocoaLigature1 OF\cf0 .img(0,0,0,1280,720);\
+\cf3 OF\cf0 .bg(0,0,0)\
+\cf3 OF\cf0 .img(0,0,0,200,200);\
+\pard\tx560\pardeftab560\ql\qnatural\pardirnatural
+\cf0 \CocoaLigature0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf3 \CocoaLigature1 OF\cf0 .int(\cf4 "mirrorMode"\cf0 ,0);\
+\cf3 OF\cf0 .int(\cf4 "mirrorMode"\cf0 ,1);\
+\cf3 OF\cf0 .int(\cf4 "mirrorMode"\cf0 ,4);\
+\cf3 OF\cf0 .int(\cf4 "mirrorMode"\cf0 ,5);\CocoaLigature0 \
+\pard\tx560\pardeftab560\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf2 \CocoaLigature1 //:Small fill the screen by grid\cf0 \
+k = \{\
+	~delayTime = 0.1;\
+	~countX = 0; \
+	~countY = 0;\
+	~screenWidth = 1280;\
+	~screenHeight = 720;\
+	~fotoWidth = ~fotoHeight = ~screenWidth/20;\
+	~fotoHeight = ~fotoWidth;\
+	\cf3 inf\cf0 .do\{\
+	7.do\{ \cf3 |i|\cf0 \
+		i.postln;		\
+		\cf3 OF\cf0 .img(i, ~countX, ~countY, ~fotoWidth, ~fotoHeight);\
+		\
+		~countX = ~countX + ~fotoWidth;\
+		if (~countX>~screenWidth, \{~countX = 0;~countY = ~countY + ~fotoHeight\});\
+		if (~countY>~screenHeight, \{~countY = 0;\});\
+		~delayTime.wait;\
+	\}\
+	\}\
+	\
+\}.fork \
+\cf2 //:Small random position\cf0 \
+k = \{\
+	\cf3 OF\cf0 .img(0,0,0,1280,720);\
+	~delayTime = 0.02;\
+	~countX = 0; \
+	~countY = 0;\
+	~screenWidth = 1280;\
+	~screenHeight = 720;\
+	~fotoWidth = ~fotoHeight = ~screenWidth/20;\
+	~fotoHeight = ~fotoWidth;\
+	\cf3 inf\cf0 .do\{\
+	186.do\{ \cf3 |i|\cf0 \
+		i.postln;		\
+		\cf3 OF\cf0 .img(185.rand.asInteger, ~screenWidth.rand,  ~screenHeight.rand, 100, 100*720/1280);\
+		~delayTime.wait;\
+	\}\
+	\}\
+	\
+\}.fork \
+\
+\
+\cf2 //:Small random position  random size\cf0 \
+k = \{\
+	\cf3 OF\cf0 .img(0,0,0,1280,720);\
+	~delayTime = 0.05;\
+	~countX = 0; \
+	~countY = 0;\
+	~screenWidth = 1280;\
+	~screenHeight = 720;\
+	~fotoWidth = ~fotoHeight = ~screenWidth/20;\
+	~fotoHeight = ~fotoWidth;\
+	\cf3 inf\cf0 .do\{\
+	18.do\{ \cf3 |i|\cf0 \
+		i.postln;		\
+		\cf3 OF\cf0 .img(185.rand.asInteger, ~screenWidth.rand,  ~screenHeight.rand, 1000.rand, 600.rand);\
+		~delayTime.wait;\
+	\}\
+	\}\
+	\
+\}.fork \
+\
+\cf2 //:Center Slide show\cf0 \
+~delayTime = 0.01;\
+k = \{\
+	~delayTime = 0.05;\
+	~countX = 0; \
+	~countY = 0;\
+	~screenWidth = 1280;\
+	~screenHeight = 780;\
+	~fotoWidth = ~fotoHeight = ~screenWidth/20;\
+	~fotoHeight = ~fotoWidth;\
+	\cf3 inf\cf0 .do\{\
+		8.do\{ \cf3 |i|\cf0 \
+			186.postln;		\
+			\cf3 OF\cf0 .img(i, 0,0, ~screenWidth, ~screenHeight);\
+			~delayTime.wait;\
+		\}\
+	\}\
+	\
+\}.fork \
+\cf2 //:Random Slide show\cf0 \
+~delayTime = 0.01;\
+k = \{\
+	~delayTime = 0.1;\
+	~countX = 0; \
+	~countY = 0;\
+	~screenWidth = 1280;\
+	~screenHeight = 780;\
+	~fotoWidth = ~fotoHeight = ~screenWidth/20;\
+	~fotoHeight = ~fotoWidth;\
+	\cf3 inf\cf0 .do\{\
+		186.do\{ \cf3 |i|\cf0 \
+			186.postln;		\
+			\cf3 OF\cf0 .img(186.rand.asInteger, 0,0, ~screenWidth, ~screenHeight);\
+			~delayTime.wait;\
+		\}\
+	\}\
+	\
+\}.fork \
+\
+\cf2 //:Many images\cf0 \
+k = \{\
+	~delayTime = 0.01;\
+	~countX = 0; \
+	~countY = 0;\
+	~screenWidth = 1280;\
+	~screenHeight = 780;\
+	~fotoWidth = ~fotoHeight = ~screenWidth/20;\
+	~fotoHeight = ~fotoWidth;\
+	\
+	\cf3 inf\cf0 .do\{ \cf3 |i|\cf0 \
+				\
+		\cf3 OF\cf0 .img((0..200).choose.round, ~countX, ~countY, ~fotoWidth, ~fotoHeight);\
+		~countX = ~countX + ~fotoWidth;\
+		if (~countX>~screenWidth, \{~countX = 0;~countY = ~countY + ~fotoHeight\});\
+		if (~countY>~screenHeight, \{~countY = 0;\});\
+		~delayTime.wait;\
+	\}\
+	\
+\}.fork \
+\cf2 //:--\cf0 \
+\
+\cf3 OF\cf0 .int(\cf4 "yPosImage"\cf0 , 100)\
+\cf3 OF\cf0 .int(\cf4 "xPosImage"\cf0 , 100)\
+\cf3 OF\cf0 .int(\cf4 "wImg"\cf0 , 100 rrand: 500)\
+\cf3 OF\cf0 .int(\cf4 "mirrorMode"\cf0 ,0);\
+\cf2 //:Create Synth from function\cf0 \
+a = \cf3 SynthDef\cf0 (\cf5 \\synthFunc\cf0 , \{ \cf3 |delayTime = 0.01, countX = 0, countY = 0, screenWidth = 1280, screenHeight = 1024, fotoWidth, fotoHeight|\cf0 \
+	\
+	fotoWidth = screenWidth/20;\
+	fotoHeight = screenWidth/20;\
+	10.do\{ \cf3 |i|\cf0 \
+				\
+\cf2 //		OF.img((0..60).choose.round, countX, countY, fotoWidth, fotoHeight);\cf0 \
+\cf2 //		countX = countX + fotoWidth;\cf0 \
+\cf2 //		if (countX>screenWidth, \{countX = 0;countY = countY + fotoHeight\});\cf0 \
+\cf2 //		if (countY>screenHeight, \{countY = 0;\});\cf0 \
+		\cf2 //delayTime.wait;\cf0 \
+	\}\
+\
+	\
+	\
+	\}).send(s);\
+\
+\cf2 //:Play with width and height\cf0 \
+k = \{\
+	\cf3 inf\cf0 .do	\{\
+	\cf3 OF\cf0 .int(\cf4 "wImg"\cf0 , 100 rrand: 1500);\
+	\cf3 OF\cf0 .int(\cf4 "hImg"\cf0 , 100 rrand: 1500);			\
+	0.3.wait\
+	\}\
+	\
+\}.fork;\
+\cf2 //:Play with width and height\cf0 \
+k = \{\
+	\cf3 inf\cf0 .do	\{ \cf3 |i|\cf0 \
+	\cf3 OF\cf0 .int(\cf4 "wImg"\cf0 , i);\
+	\cf3 OF\cf0 .int(\cf4 "hImg"\cf0 , i);			\
+	0.3.wait\
+	\}\
+	\
+\}.fork;\
+\
+\cf2 //:Precieve\cf0 \
+\cf3 Preceive\cf0 (\
+	\cf5 'af1'\cf0  -> \{\
+		\
+		\cf3 OF\cf0 .img(0,0,0,200,200);\
+		\
+		\},\
+	\cf5 'af2'\cf0  -> \{\
+		\cf3 OF\cf0 .img(0,0,0,200,200);\
+		\},\
+	\cf5 'af3'\cf0  -> \{\
+		\cf3 OF\cf0 .img(\cf4 "af3"\cf0 );\
+		\},\
+	\cf5 'af4'\cf0  -> \{\
+		\cf3 OF\cf0 .img(\cf4 "af4"\cf0 );\
+		\},\
+	\cf5 'af5'\cf0  -> \{\
+		\cf3 OF\cf0 .img(\cf4 "af5"\cf0 );\
+		\},\
+	\cf5 'af6'\cf0  -> \{\
+		\cf3 OF\cf0 .img(\cf4 "af6"\cf0 );\
+		\},\
+	\cf5 'af7'\cf0  -> \{\
+		\cf3 OF\cf0 .img(\cf4 "af7"\cf0 );\
+		\},\
+	\cf5 '2'\cf0  -> \{\
+		~klk = \cf3 Synth\cf0 (\cf4 "over"\cf0 , [\
+			\cf5 \\atk\cf0 , 0.5,\
+			\cf5 \\sus\cf0 , 1,\
+			\cf5 \\rel\cf0 , 4,\
+			\cf5 \\pan\cf0 , 1.0.rand2,\
+			\cf5 \\freqs\cf0 ,  \{6000.0.linrand+80\}.dup(12),\
+			\cf5 \\rings\cf0 , \{0.1.rrand(3)\}.dup(12)\
+		]);\
+		\}\
+).play;\
+\
+\
+\cf2 //:Play Pdef\cf0 \
+\cf3 Pdef\cf0 (\cf5 \\fullScreen\cf0 ).play;	\
+\cf2 //:Fill the screen with a foto\cf0 \
+\cf3 Pdef\cf0 (\cf5 \\fullScreen\cf0 , \cf3 Posc\cf0 (\
+		\cf5 \\msg\cf0 , \cf3 Pseq\cf0 ([[\cf5 'img'\cf0 , 0, 0, 0, 600,600]], \cf3 inf\cf0 ),\
+		\cf5 \\dur\cf0 , \cf3 Pseq\cf0 ([~duyekDur], \cf3 inf\cf0 ),\
+		\cf5 \\dest\cf0 ,  [\cf3 NetAddr\cf0 .localAddr, \cf3 NetAddr\cf0 (\cf4 "localhost"\cf0 , 12345)]\
+		)\
+	);\
+	\
+\cf2 //:Duyek\cf0 \
+a = \cf3 Pdef\cf0 (\cf5 \\klank\cf0 , \cf3 Posc\cf0 (\
+		\cf5 \\msg\cf0 , \cf3 Pseq\cf0 ([\cf5 \\af1\cf0 , \cf5 \\af2\cf0 , \cf5 \\af3\cf0 , \cf5 \\af4\cf0 , \cf5 \\af5\cf0 , \cf5 \\af6\cf0 , \cf5 \\af7\cf0 ], \cf3 inf\cf0 ),\
+		\cf5 \\dur\cf0 , \cf3 Pseq\cf0 ([~duyekDur]*0.1, \cf3 inf\cf0 ),\
+		\cf5 \\dest\cf0 ,  [\cf3 NetAddr\cf0 .localAddr, \cf3 NetAddr\cf0 (\cf4 "localhost"\cf0 , 12345)]\
+		)\
+	);\
+\cf2 //:duyekKudDur\cf0 \
+\cf3 Pdef\cf0 (\cf5 \\klank\cf0 , \cf3 Posc\cf0 (\
+		\cf5 \\msg\cf0 , \cf3 Pseq\cf0 ([\cf5 \\af1\cf0 , \cf5 \\af2\cf0 ], \cf3 inf\cf0 ),\
+		\cf5 \\dur\cf0 , \cf3 Pseq\cf0 ([~duyekKudDur]*0.5, \cf3 inf\cf0 ),\
+		\cf5 \\dest\cf0 ,  [\cf3 NetAddr\cf0 .localAddr, \cf3 NetAddr\cf0 (\cf4 "localhost"\cf0 , 12345)]\
+		)\
+	);\
+\
+\cf2 //:Posc with predefine TempoClock\cf0 \
+\cf3 Pdef\cf0 (\cf5 \\klank\cf0 , \cf3 Posc\cf0 (\
+		\cf5 \\msg\cf0 , \cf3 Pseq\cf0 ([\\1, \\2, \\3, \\4], \cf3 inf\cf0 ),\
+		\cf5 \\dur\cf0 , \cf3 Pseq\cf0 ([~duyekDur]*4, \cf3 inf\cf0 ),\
+		\cf5 \\dest\cf0 ,  [\cf3 NetAddr\cf0 .localAddr, \cf3 NetAddr\cf0 (\cf4 "localhost"\cf0 , 12345)]\
+		)\
+	).play(~clock1);\
+\cf2 //:Other\cf0 \
+\
+\cf3 Posc\cf0 .play(\
+	[0,1,2,3,4],\
+	\cf5 \\dur\cf0 , 2\
+	\
+);\
+\cf2 //:--\cf0 \CocoaLigature0 \
+\pard\tx560\pardeftab560\ql\qnatural\pardirnatural
+\cf0 \
+\
+\
+\
+\cf2 //:-----\cf0 \CocoaLigature1 \
+\pard\pardeftab560\li1140\fi-1140\ql\qnatural
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 \
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+}
