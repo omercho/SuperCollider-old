@@ -290,7 +290,7 @@ JODA {
 			]
 		);
 		~dly = Synth.tail(~effe,"delay", 
-			[\in,  ~dlyBus, \out, ~limBus, \amp, 0.8
+			[\in,  ~dlyBus, \out, ~limBus, \amp, 0.0
 			]
 		);
 		~rlp = Synth.tail(~effe,"rlpf", 

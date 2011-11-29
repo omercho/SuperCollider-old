@@ -117,32 +117,124 @@ KafesReceives {
 			
 			\lC22_1 -> { 
 				~ats02.brt_(2.5).playPV1(0.01, 0.4, 0.1, mul:0.6, start:[0.105, 0.132, 0.208, 0.05].choose, out:  ~strTek.choose);
-				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
+~visRout.stop;
+~visRout = {
+	~seq = Pseq((0..11).mirror,inf).asStream;
+	~op = Pseq((100..100), inf).asStream;
+	5.do{
+		
+		OF.img(
+			~imageLib.at('ceket', ~seq.next), 
+			255, ~op.next, [0,0,0,0].choose, 0
+		);
+		0.1.wait;
+		//OF.black(255); 0.1.wait;
+		
+	};
+	OF.img(~imageLib.at('sleep', rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);
+}.fork;
 					},
 			\lC22_2 -> { 
 				~kik01.brt_(9.5).playPV5(0.001, 1.1, 1, mul:0.5, pv5a:[3.3, 2.632, 4.28, 8.605].choose, out: ~strTek.choose);
-				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
+~visRout.stop;
+~visRout = {
+	~seq = Pseq((0..11).mirror,inf).asStream;
+	~op = Pseq((100..100), inf).asStream;
+	3.do{
+		
+		OF.img(
+			~imageLib.at('ceket', ~seq.next), 
+			255, ~op.next, [0,0,0,0].choose, 0
+		);
+		0.1.wait;
+		//OF.black(255); 0.1.wait;
+		
+	};
+	OF.img(~imageLib.at('sleep', rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);
+}.fork;
 					},
 			\lC22_3 -> { 
 				~ats02.brt_(1.5).playBuf(0.01, 0.2, 0.6, mul:0.6, start:[0.73, 0.32, 0.28, 0.57].choose, out:  ~strTek.choose);
-				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
+~visRout.stop;
+~visRout = {
+	~seq = Pseq((0..11).mirror,inf).asStream;
+	~op = Pseq((100..100), inf).asStream;
+	OF.img(~imageLib.at('sleep', rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);
+	0.01.wait;
+	5.do{
+		
+		OF.img(
+			~imageLib.at('ceket', ~seq.next), 
+			255, ~op.next, [0,0,0,0].choose, 0
+		);
+		0.1.wait;
+		//OF.black(255); 0.1.wait;
+		
+	};
+	OF.img(~imageLib.at('sleep', rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);
+}.fork;
 					},
 			\lC22_4 -> { 
 				~ats02.brt_(11.5).playPV1(0.01, 0.4, 0.1, mul:0.2, start:[0.73, 0.32, 0.28, 0.57].choose, out:  ~strTek.choose); // ke
-				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
+~visRout.stop;
+~visRout = {
+	~seq = Pseq((0..11).mirror,inf).asStream;
+	~op = Pseq((100..100), inf).asStream;
+	5.do{
+		
+		OF.img(
+			~imageLib.at('ceket', ~seq.next), 
+			255, ~op.next, [0,0,0,0].choose, 0
+		);
+		0.1.wait;
+		//OF.black(255); 0.1.wait;
+		
+	};
+	OF.img(~imageLib.at('sleep', rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);
+}.fork;
 					},
 			\lC22_5 -> { 
 				~ats02.brt_(3.5).playBuf(0.01, 0.2, 0.2, mul:0.7, start:0.705, out:  ~strTek.choose); // dum
-				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
+~visRout.stop;
+~visRout = {
+	~seq = Pseq((0..11).mirror,inf).asStream;
+	~op = Pseq((100..100), inf).asStream;
+	5.do{
+		
+		OF.img(
+			~imageLib.at('ceket', ~seq.next), 
+			255, ~op.next, [0,0,0,0].choose, 0
+		);
+		0.1.wait;
+		//OF.black(255); 0.1.wait;
+		
+	};
+	OF.img(~imageLib.at('sleep', rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);
+}.fork;
 					},
 			\lC22_6 -> { 
 				~kik02.brt_([1.3, 2.632, 3.28, 4.605].choose).playPV5(0.001, 1.1, 1, mul:0.5, pv5a:[0.3, 0.632, 0.28, 0.605].choose, out: ~strTek.choose);
-				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 225, [0, 90, 180, 270].choose, 0 );
 					},
 			\lC22_7 -> { 
 				~ats02.brt_(17.5).playPV1(0.01, 0.2, 0.1, mul:0.27, start:[0.73, 0.32, 0.28, 0.57].choose, out: ~strTek.choose); // tek
 				~ats03.brt_(~kRB1 *1.02006).playBuf(0.001, 0.004, 0.8, mul:0.5, start: [0.32, 0.35, 0.6, 0.66].choose, out: ~strTek.choose);
-				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
+~visRout.stop;
+~visRout = {
+	~seq = Pseq((0..11).mirror,inf).asStream;
+	~op = Pseq((100..100), inf).asStream;
+	6.do{
+		
+		OF.img(
+			~imageLib.at('ceket', ~seq.next), 
+			255, ~op.next, [0,0,0,0].choose, 0
+		);
+		0.1.wait;
+		//OF.black(255); 0.1.wait;
+		
+	};
+	OF.img(~imageLib.at('sleep', rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);
+}.fork;
 					},
 
 			\lC31_A -> { 
@@ -798,38 +890,47 @@ Preceive(
 			}, 
 			\kP23 -> {//	|te
 				~kik02.brt_(4.0).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose); // te
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 			}, 
 			\kP24 -> {//	ke
 				~kik02.brt_(11.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose); // ke
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				},
 			
 		//4/4	
 			\kP25 -> {//	+dum2
 				~kik02.brt_(3.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kP26 -> {//	|dum
 				~kik02.brt_(3.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 
 				}, 
 			\kP27 -> {//	dum
 				~kik02.brt_(3.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				},
 			
 		//6/4
 			\kP28 -> {//	+tek2
 				~kik02.brt_(9.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				
 				}, 
 			\kP29 -> {//	|tek2
 				~kik02.brt_(9.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kP30 -> {//	tek2
 				~kik02.brt_(9.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			
 		//6/4
 			\kP31 -> {//	+dum2
 				~kik02.brt_(3.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kP32 -> {//	|ta2
 				
@@ -837,21 +938,26 @@ Preceive(
 			\kP33 -> {//	hek2
 				
 				~kik02.brt_(3.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				~kik02.brt_(11.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose); // ke
 				}, 
 			
 		//4/4
 			\kP34 -> {//	|te
 				~kik02.brt_(4.0).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose); // te
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kP35 -> {//	ke
 				~kik02.brt_(11.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose); // ke
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kP36 -> {//	|te
 				~kik02.brt_(4.0).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose); // te
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kP37 -> {//	ke
 				~kik02.brt_(11.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose); // ke
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				},
 
 // DEVR-i KEBIR -----------------------------
@@ -873,48 +979,60 @@ Preceive(
 				}, 
 			\kP39 -> {//	|dum2
 				~kik02.brt_(3.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 
 				}, 
 			\kP40 -> {//	|tek2
 				~kik02.brt_(9.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				},
 			
 		//4/4
 			\kP41 -> {//	+dum2
 				~kik02.brt_(3.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kP42 -> {//	|tek
 				~kik02.brt_(9.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kP43 -> {//	te'
 				~kik02.brt_(4.0).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose); // te
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kP44 -> {//	ke'
 				~kik02.brt_(11.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose); // ke
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				},
 			\kP45 -> {//	dum
 				~kik02.brt_(3.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			
 		//	4/4
 			\kP46 -> {//	+tek2
 				~kik02.brt_(9.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				
 				}, 
 			\kP47 -> {//	|tek2
 				~kik02.brt_(9.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				},
 			
 			
 		// 	6/4
 			\kP48 -> {//	+tek2
 				~kik02.brt_(9.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kP49 -> {//	+dum2
 				~kik02.brt_(3.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kP50 -> {//	|dum2
 				~kik02.brt_(3.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 
 				}, 
 			
@@ -924,21 +1042,26 @@ Preceive(
 			\kP52 -> {//	|hek
 				
 				~kik02.brt_(3.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				~kik02.brt_(11.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose); // ke
 				}, 
 			
 		//	 4/4
 			\kP53 -> {//	|te
 				~kik02.brt_(4.0).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose); // te
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kP54 -> {//	ke
 				~kik02.brt_(11.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose); // ke
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kP55 -> {//	|te
 				~kik02.brt_(4.0).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose); // te
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kP56 -> {//	ke
 				~kik02.brt_(11.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose); // ke
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				},
 			
 //BEREFSAN
@@ -965,30 +1088,37 @@ Preceive(
 		// 6/4
 			\kP59 -> {//	+dum2-3-4
 				~kik02.brt_(3.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kP60 -> {//	|tek2
 				~kik02.brt_(9.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			
 		//4/4
 			\kP61 -> {//	+dum2-3-4
 				~kik02.brt_(3.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			
 		//4/4
 			\kP62 -> {//	|dum2
 				~kik02.brt_(3.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 
 				}, 
 			\kP63 -> {//	tek2
 				~kik02.brt_(9.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 		//4/4
 			\kP64 -> {//	+dum2
 				~kik02.brt_(3.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kP65 -> {//	|dum2
 				~kik02.brt_(3.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 
 				}, 
 		//4/4	
@@ -998,21 +1128,26 @@ Preceive(
 			\kP67 -> {//	|hek
 				
 				~kik02.brt_(3.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				~kik02.brt_(11.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose); // ke
 				}, 
 			
 		//	 4/4
 			\kP68 -> {//	|te
 				~kik02.brt_(4.0).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose); // te
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kP69 -> {//	ke
 				~kik02.brt_(11.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose); // ke
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kP70 -> {//	|te
 				~kik02.brt_(4.0).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose); // te
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kP71 -> {//	ke
 				~kik02.brt_(11.5).playPV4B(0.001, 1.1, 1, mul:0.7, out: ~strTek.choose); // ke
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}
 		).play;		
 
@@ -1136,38 +1271,46 @@ Preceive(
 				}, 
 			\kk23 -> {//	|te
 				~kik02.brt_(4.0).playGverb(0.001, 1.1, 2, mul:0.5, room:8, rev:6, damp:0.95, out: ~strTek.choose); // te
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kk24 -> {//	ke
 				~kik02.brt_(11.5).playGverb(0.001, 1.1, 1, mul:0.3, room:8.4, rev:6, damp:0.91, out: ~strTek.choose); // ke
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				},
 			
 		//4/4	
 			\kk25 -> {//	+dum2
 				~kik02.brt_(3.5).playGverb(0.001, 1.1, 2, mul:0.8, room:8, rev:6, damp:0.95, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kk26 -> {//	|dum
 				~kik02.brt_(3.5).playGverb(0.001, 1.1, 2, mul:0.5, room:8, rev:6, damp:0.95, out: ~strTek.choose);
-
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kk27 -> {//	dum
 				~kik02.brt_(3.5).playGverb(0.001, 1.1, 2, mul:0.3, room:8, rev:6, damp:0.95, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				},
 			
 		//6/4
 			\kk28 -> {//	+tek2
 				~kik02.brt_(9.5).playGverb(0.001, 1.1, 1, mul:0.9, room:8.4, rev:6, damp:0.91, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				
 				}, 
 			\kk29 -> {//	|tek2
 				~kik02.brt_(9.5).playGverb(0.001, 1.1, 1, mul:0.5, room:8.4, rev:6, damp:0.91, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kk30 -> {//	tek2
 				~kik02.brt_(9.5).playGverb(0.001, 1.1, 1, mul:0.3, room:8.4, rev:6, damp:0.91, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			
 		//6/4
 			\kk31 -> {//	+dum2
 				~kik02.brt_(3.5).playGverb(0.001, 1.1, 2, mul:0.8, room:8, rev:6, damp:0.95, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kk32 -> {//	|ta2
 				
@@ -1186,12 +1329,15 @@ Preceive(
 				}, 
 			\kk35 -> {//	ke
 				~kik02.brt_(11.5).playGverb(0.001, 1.1, 1, mul:0.3, room:8.4, rev:6, damp:0.91, out: ~strTek.choose); // ke
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kk36 -> {//	|te
 				~kik02.brt_(4.0).playGverb(0.001, 1.1, 2, mul:0.5, room:8, rev:6, damp:0.95, out: ~strTek.choose); // te
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kk37 -> {//	ke
 				~kik02.brt_(11.5).playGverb(0.001, 1.1, 1, mul:0.3, room:8.4, rev:6, damp:0.91, out: ~strTek.choose); // ke
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				},
 
 // DEVR-i KEBIR -----------------------------
@@ -1202,48 +1348,60 @@ Preceive(
 				}, 
 			\kk39 -> {//	|dum2
 				~kik02.brt_(3.5).playGverb(0.001, 1.1, 2, mul:0.5, room:8, rev:6, damp:0.95, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 
 				}, 
 			\kk40 -> {//	|tek2
 				~kik02.brt_(9.5).playGverb(0.001, 1.1, 1, mul:0.5, room:8.4, rev:6, damp:0.91, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				},
 			
 		//4/4
 			\kk41 -> {//	+dum2
 				~kik02.brt_(3.5).playGverb(0.001, 1.1, 2, mul:0.8, room:8, rev:6, damp:0.95, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kk42 -> {//	|tek
 				~kik02.brt_(9.5).playGverb(0.001, 1.1, 1, mul:0.5, room:8.4, rev:6, damp:0.91, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kk43 -> {//	te'
 				~kik02.brt_(4.0).playGverb(0.001, 1.1, 2, mul:0.5, room:8, rev:6, damp:0.95, out: ~strTek.choose); // te
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kk44 -> {//	ke'
 				~kik02.brt_(11.5).playGverb(0.001, 1.1, 1, mul:0.3, room:8.4, rev:6, damp:0.91, out: ~strTek.choose); // ke
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				},
 			\kk45 -> {//	dum
 				~kik02.brt_(3.5).playGverb(0.001, 1.1, 2, mul:0.3, room:8, rev:6, damp:0.95, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			
 		//	4/4
 			\kk46 -> {//	+tek2
 				~kik02.brt_(9.5).playGverb(0.001, 1.1, 1, mul:0.9, room:8.4, rev:6, damp:0.91, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				
 				}, 
 			\kk47 -> {//	|tek2
 				~kik02.brt_(9.5).playGverb(0.001, 1.1, 1, mul:0.5, room:8.4, rev:6, damp:0.91, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				},
 			
 			
 		// 	6/4
 			\kk48 -> {//	+tek2
 				~kik02.brt_(9.5).playGverb(0.001, 1.1, 1, mul:0.9, room:8.4, rev:6, damp:0.91, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kk49 -> {//	+dum2
 				~kik02.brt_(3.5).playGverb(0.001, 1.1, 2, mul:0.8, room:8, rev:6, damp:0.95, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kk50 -> {//	|dum2
 				~kik02.brt_(3.5).playGverb(0.001, 1.1, 2, mul:0.5, room:8, rev:6, damp:0.95, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 
 				}, 
 			
@@ -1253,27 +1411,33 @@ Preceive(
 			\kk52 -> {//	|hek
 				
 				~kik02.brt_(3.5).playGverb(0.001, 1.1, 2, mul:0.5, room:8, rev:6, damp:0.95, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				~kik02.brt_(11.5).playGverb(0.001, 1.1, 1, mul:0.5, room:8.4, rev:6, damp:0.91, out: ~strTek.choose); // ke
 				}, 
 			
 		//	 4/4
 			\kk53 -> {//	|te
 				~kik02.brt_(4.0).playGverb(0.001, 1.1, 2, mul:0.5, room:8, rev:6, damp:0.95, out: ~strTek.choose); // te
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kk54 -> {//	ke
 				~kik02.brt_(11.5).playGverb(0.001, 1.1, 1, mul:0.3, room:8.4, rev:6, damp:0.91, out: ~strTek.choose); // ke
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kk55 -> {//	|te
 				~kik02.brt_(4.0).playGverb(0.001, 1.1, 2, mul:0.5, room:8, rev:6, damp:0.95, out: ~strTek.choose); // te
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kk56 -> {//	ke
 				~kik02.brt_(11.5).playGverb(0.001, 1.1, 1, mul:0.3, room:8.4, rev:6, damp:0.91, out: ~strTek.choose); // ke
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				},
 			
 //BEREFSAN
 		// 6/4
 			\kk57 -> {//	+dum2-3-4
 				~kik02.brt_(3.5).playGverb(0.001, 1.1, 2, mul:0.8, room:8, rev:6, damp:0.95, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kk58 -> {//	|tek2
 				
@@ -1282,30 +1446,37 @@ Preceive(
 		// 6/4
 			\kk59 -> {//	+dum2-3-4
 				~kik02.brt_(3.5).playGverb(0.001, 1.1, 2, mul:0.8, room:8, rev:6, damp:0.95, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kk60 -> {//	|tek2
 				~kik02.brt_(9.5).playGverb(0.001, 1.1, 1, mul:0.5, room:8.4, rev:6, damp:0.91, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			
 		//4/4
 			\kk61 -> {//	+dum2-3-4
 				~kik02.brt_(3.5).playGverb(0.001, 1.1, 2, mul:0.8, room:8, rev:6, damp:0.95, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			
 		//4/4
 			\kk62 -> {//	|dum2
 				~kik02.brt_(3.5).playGverb(0.001, 1.1, 2, mul:0.5, room:8, rev:6, damp:0.95, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 
 				}, 
 			\kk63 -> {//	tek2
 				~kik02.brt_(9.5).playGverb(0.001, 1.1, 1, mul:0.3, room:8.4, rev:6, damp:0.91, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 		//4/4
 			\kk64 -> {//	+dum2
 				~kik02.brt_(3.5).playGverb(0.001, 1.1, 2, mul:0.8, room:8, rev:6, damp:0.95, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kk65 -> {//	|dum2
 				~kik02.brt_(3.5).playGverb(0.001, 1.1, 2, mul:0.5, room:8, rev:6, damp:0.95, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 
 				}, 
 		//4/4	
@@ -1315,21 +1486,26 @@ Preceive(
 			\kk67 -> {//	|hek
 				
 				~kik02.brt_(3.5).playGverb(0.001, 1.1, 2, mul:0.5, room:8, rev:6, damp:0.95, out: ~strTek.choose);
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				~kik02.brt_(11.5).playGverb(0.001, 1.1, 1, mul:0.5, room:8.4, rev:6, damp:0.91, out: ~strTek.choose); // ke
 				}, 
 			
 		//	 4/4
 			\kk68 -> {//	|te
 				~kik02.brt_(4.0).playGverb(0.001, 1.1, 2, mul:0.5, room:8, rev:6, damp:0.95, out: ~strTek.choose); // te
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kk69 -> {//	ke
 				~kik02.brt_(11.5).playGverb(0.001, 1.1, 1, mul:0.3, room:8.4, rev:6, damp:0.91, out: ~strTek.choose); // ke
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kk70 -> {//	|te
 				~kik02.brt_(4.0).playGverb(0.001, 1.1, 2, mul:0.5, room:8, rev:6, damp:0.95, out: ~strTek.choose); // te
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}, 
 			\kk71 -> {//	ke
 				~kik02.brt_(11.5).playGverb(0.001, 1.1, 1, mul:0.3, room:8.4, rev:6, damp:0.91, out: ~strTek.choose); // ke
+				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				}
 		).play;
 		

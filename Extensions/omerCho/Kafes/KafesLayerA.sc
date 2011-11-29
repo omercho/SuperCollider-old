@@ -1260,7 +1260,7 @@ fork{
 		var dur = Pwhite(0.2, 0.5, inf).asStream;
 
 		~gou02.brt_(~kP01.next *0.89000).playBuf(0.001, 1.1, 5.1, mul:0.0001+0.01*(i%13), out: ~strTek.choose);
-		OF.img(~imageLib.at('sleep', rrand(0,28)), 255, 87, [90, 180, 270].choose, 0);
+		
 		dur.next.wait;
 		
 		
@@ -1412,10 +1412,10 @@ fork{
 	~dur = Pseq([0.25, 0.36, 0.47, 0.58, 0.69, 0.80, 0.91, 0.94]/3, inf).asStream;
 	8.do{
 		
-		~gou02.brt_(~kPseq01 *0.89000).playPV5(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);
+		//~gou02.brt_(~kPseq01 *0.89000).playPV5(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);
 		~dur.next.wait;
 		
-		~gou02.brt_(~kPseq01 *1.23700).playPV5(0.001, 1.1, 16.1, mul:0.01, out: ~strHep);
+		//~gou02.brt_(~kPseq01 *1.23700).playPV5(0.001, 1.1, 16.1, mul:0.01, out: ~strHep);
 		~ats06.brt_(~kPseq01 *1.82101).playPV1(0.01, 1.0, 1.1, mul:0.9, start:0.5, out: ~strCok.choose);
 		~dur.next.wait;
 
@@ -1424,6 +1424,7 @@ fork{
 	0.001.wait;
 	
 	~met02.brt_(~kRD4 *1.01000).playGverb(0.001, 3.1, 16.1, mul:0.5, room:55, rev:13.5, damp:0.71, out:~strCok.choose);
+	OF.img(~imageLib.at('sleep', rrand(0,28)), 255, 87, [90, 180, 270].choose, 0);
 	~ats02.brt_(~kRB4 *1.82101).playPV1(0.01, 1.0, 1.1, mul:0.9, start:0.5, out: ~strCok.choose);
 	
 };
