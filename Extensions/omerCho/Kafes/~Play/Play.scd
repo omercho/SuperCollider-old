@@ -399,9 +399,9 @@ fork{
 
 (
 fork{
-	144.do{|i|
+	73.do{|i|
 		var dur = Pseq([0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]/4, inf).asStream;
-		~gou02.brt_([~kRE2, ~kRC6].choose *0.89000).playBuf(0.001, 1.1, 5.1, mul:0.0001+0.001*(i%70), out: ~strTek.choose);
+		~gou02.brt_([~kRD2, ~kRD6].choose *0.89000).playBuf(0.001, 1.1, 5.1, mul:0.0001+0.001*(i%70), out: ~strTek.choose);
 		dur.next.wait;
 		
 		

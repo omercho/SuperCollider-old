@@ -239,6 +239,7 @@ KafesReceives {
 
 			\lC31_A -> { 
 				fork{
+					OF.img(~imageLib.at(['yumruk'], rrand(0,7)), 205, 127, [90, 180, 270].choose, 0);
 					fork{
 						OF.destructBig;
 						0.04.wait;
@@ -263,6 +264,7 @@ KafesReceives {
 					},
 			\lC31_B -> { 
 				fork{
+					OF.img(~imageLib.at(['yumruk'], rrand(0,7)), 205, 127, [90, 180, 270].choose, 0);
 					fork{
 						OF.destructBig;
 						0.04.wait;
@@ -289,7 +291,7 @@ KafesReceives {
 
 				
 				fork{
-					
+					OF.img(~imageLib.at(['yumruk'], rrand(0,7)), 205, 127, [90, 180, 270].choose, 0);
 					fork{
 						OF.destructBig;
 						0.04.wait;

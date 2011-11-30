@@ -228,8 +228,8 @@ fork{
 
 ~layC32.stop;
 ~layC33 = Posc(
-	\msg, Pseq([	Pseq([\lC31_C, \lC31_D], 8), Pseq([\lC31_E], 1) ], inf),
-	\dur, Pseq([	Pseq([0.5], 8), Pseq([2.5], 1) ]*2, 1)
+	\msg, Pseq([	Pseq([\lC31_C, \lC31_D], 4), Pseq([\lC31_E], 1) ], inf),
+	\dur, Pseq([	Pseq([0.5], 4), Pseq([2.5], 1) ]*2, 1)
 ).play;		
 		
 
