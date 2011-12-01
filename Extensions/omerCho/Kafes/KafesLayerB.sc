@@ -196,7 +196,7 @@ fork{
 			\layer_B_9 -> {//	+dum2
 "LayerB FAHTE".postln;
 	
-~tol06.brt_(~kRB4 *1.23700).playGverbR(0.001, 3.1, 5.1, mul:0.5, room:55, rev:13.5, damp:0.71, out: ~strCok.choose);
+~tol06.brt_(~kRA7 *1.23700).playGverbR(0.001, 3.1, 6.1, mul:0.5, room:55, rev:13.5, damp:0.81, out: ~strCok.choose);
 
 	
 				}, 
@@ -1115,14 +1115,7 @@ fork{
 	~met02.brt_(~kRA4 *1.01000).playGverb(0.001, 2.1, 18.1, mul:0.8, room:18.41, rev:13.5, damp:0.51, out:~strTek.choose);
 	OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 
-	//:--rectFade
-	~blackFade={
-		~fade = Pseq((0..255), inf).asStream;
-		48.do{
-			OF.rectOp(-100, -100, 1380, 1124, ~fade.next); 
-			0.04.wait;
-		};
-	}.fork;	
+	
 };
 				
 				}, 

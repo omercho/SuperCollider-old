@@ -388,12 +388,23 @@ fork{
 		fork{
 			3.do{|i|
 				~tol06.brt_(~kRA7 *1.23700).playGverb(0.001, 1.1, 16.1, mul:0.3, room:[22,3,31].at(i&3), rev:[2,12,31].at(i&3), damp:0.71, out: ~strTek.choose);
+				OF.img(~imageLib.at('eller', (0..11).choose), 200, 100, 0, 0);
 				(0.5/4).wait;
 			};
 		};
 		0.265.wait;
 		~tol06.brt_(~kRB2 *1.23700).playGverb(0.001, 2.1, 16.1, mul:0.5, room:55, rev:13.5, damp:0.71, out: ~strTek.choose);
+		OF.img(~imageLib.at('eller', (0..11).choose), 200, 100, 0, 0);
+		OF.int("mirrorMode", 6); 
 		0.1.wait;
+		//:--rectFade
+		~blackFade={
+			~fade = Pseq((0..255), inf).asStream;
+			148.do{
+				OF.rectOp(-100, -100, 1380, 1124, ~fade.next); 
+				0.07.wait;
+			};
+		}.fork;
 	
 	};
 	0.5.wait;
@@ -414,6 +425,7 @@ fork{
 	~tol06.brt_(~kRB2 *1.23700).playBufR(0.01, 2.5, 1.1, mul:0.5, out: ~strTek.choose);
 	0.01.wait;
 	~tol06.brt_(~kRA1 *1.23700).playBufR(0.01, 4.5, 4.1, mul:0.5, out: ~strTek.choose);
+	OF.int("mirrorMode", 0); 
 	2.9.wait;
 	fork{
 		
@@ -425,22 +437,29 @@ fork{
 	~gir01.brt_(10.5).playBufR(0.01, 1, 1, loop:0, out: ~strTek.choose);
 
 	~tol07.brt_(~kRC4 *1.07500).playBuf(0.001, 1.9, 3.01, mul:0.3, out: ~strTek.choose);
+	OF.img(~imageLib.at('eller', (0..11).choose), 200, 100, 0, 0);
 	0.265.wait;
 	fork{
 
 		
 		~tol06.brt_(~kRD7 *1.23700).playGverb(0.001, 1.1, 16.1, mul:0.5, room:45, rev:3.5, damp:0.71, out: ~strTek.choose);
+		OF.img(~imageLib.at('eller', (0..11).choose), 200, 100, 0, 0);
 		0.4.wait;
 		
 		~tol06.brt_(~kRD7 *1.23700).playGverb(0.001, 1.1, 16.1, mul:0.3, room:15, rev:23.5, damp:0.71, out: ~strTek.choose);
+		OF.img(~imageLib.at('eller', (0..11).choose), 200, 100, 0, 0);
 		0.3.wait;
 		
-		~tol07.brt_(~kRD7 *1.23700).playGverb(0.001, 1.1, 16.1, mul:0.4, room:9, rev:20.5, damp:0.81, out: ~strTek.choose);
+		~tol06.brt_(~kRD7 *1.23700).playGverb(0.001, 1.1, 16.1, mul:0.4, room:49, rev:20.5, damp:0.81, out: ~strTek.choose);
+		OF.img(~imageLib.at('eller', (0..11).choose), 200, 100, 0, 0);
 		0.2.wait;
 		
-		~tol03.brt_(~kRD7 *1.23700).playGverb(0.001, 1.1, 16.1, mul:0.6, room:15, rev:2.5, damp:0.71, out: ~strTek.choose);
+		~tol06.brt_(~kRD7 *1.23700).playGverb(0.001, 1.1, 16.1, mul:0.6, room:15, rev:2.5, damp:0.71, out: ~strTek.choose);
+		OF.img(~imageLib.at('eller', (0..11).choose), 200, 100, 0, 0);
 		0.2.wait;
-		~tol07.brt_(~kRD4 *1.23700).playGverb(0.001, 1.1, 16.1, mul:0.3, room:55, rev:13.5, damp:0.71, out: ~strTek.choose);
+		~tol06.brt_(~kRD4 *1.23700).playGverb(0.001, 1.1, 16.1, mul:0.5, room:55, rev:13.5, damp:0.51, out: ~strTek.choose);
+		OF.img(~imageLib.at('eller', (0..11).choose), 200, 100, 0, 0);
+		OF.int("mirrorMode", 6); 
 
 	};
 	0.5.wait;
@@ -459,8 +478,10 @@ fork{
 			var freqs = frq + (12 *( i % 26)); 
 			
 			~tol07.brt_(~kPseq01 *1.07500).playPV2(0.001, 0.9, 0.4, mul:~amp, out: ~strTek.choose);
+			OF.int("mirrorMode", [1,2,3,4,5,6].choose); 
 			( dur - (0.01*(i%29)) ).yield;
 			~gou02.brt_(~kPseq01 *0.89000).playPV5(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);
+			OF.img(~imageLib.at('eller', (0..11).choose), 200, 100, 0, 0);
 			( dur - (0.01*(i%29)) ).yield;
 		};
 	};
@@ -1832,6 +1853,15 @@ fork{
 
 				}, 
 			\layer_A_67 -> {//	|hek
+
+	//:--rectFade
+	~blackFade={
+		~fade = Pseq((0..255), inf).asStream;
+		48.do{
+			OF.rectOp(-100, -100, 1380, 1124, ~fade.next); 
+			0.04.wait;
+		};
+	}.fork;
 
 	fork{
 		3.do{
