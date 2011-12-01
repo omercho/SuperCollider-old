@@ -901,7 +901,8 @@ fork{
 		};
 		~gou01.brt_(~kRD5 *0.89000).playPV2(0.001, 1.1, 5.1, mul: 0.9, out: ~strTek.choose);
 		~kik03.brt_(1.5).playPV5(0.001, 1.1, 1, mul:0.4, out: ~strTek.choose); // dum
-		
+		OF.int("mirrorMode", 0);
+		OF.bMask(255);
 		9.do{
 			var dur = Pseq([0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]/4, inf).asStream;
 			
@@ -974,8 +975,8 @@ fork{
 //:--bMask
 ~bMask.stop;
 ~bMask={
-	~fade = Pseq((0..0).reverse, 256).asStream;
-	256.do{
+	~fade = Pseq((0..0).reverse, 286).asStream;
+	286.do{
 		OF.bMask(255); 
 		0.08.wait;
 	};
@@ -986,8 +987,8 @@ fork{
 
 ~bMask.stop;
 ~bMask={
-	~fade = Pseq((0..0).reverse, 256).asStream;
-	256.do{
+	~fade = Pseq((0..0).reverse, 286).asStream;
+	286.do{
 		OF.bMask(255); 
 		0.08.wait;
 	};
@@ -1000,8 +1001,8 @@ fork{
 				
 ~bMask.stop;
 ~bMask={
-	~fade = Pseq((0..0).reverse, 256).asStream;
-	256.do{
+	~fade = Pseq((0..0).reverse, 296).asStream;
+	296.do{
 		OF.bMask(255); 
 		0.08.wait;
 	};
@@ -1026,13 +1027,13 @@ fork{
 				}, 
 			\layer_B_63 -> {//	tek2
 
-~met02.brt_(~kRC1 *1.01000).playGverb(0.001, 0.1, 8.1, mul:0.5, room:55, rev:3.5, damp:0.71, out:~strTek.choose);
-				
+~met02.brt_(~kRB1 *1.01000).playGverb(0.001, 0.1, 8.1, mul:0.5, room:55, rev:7.5, damp:0.81, out:~strTek.choose);
+OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );				
 				}, 
 		//-------------------------------------------lev5-4/4--24s-----------------------------------------------
 			\layer_B_64 -> {//	+dum2
-~met02.brt_(~kRC3 *1.01000).playGverb(0.001, 0.1, 8.1, mul:0.8, room:55, rev:13.5, damp:0.71, out:~strTek.choose);
-				
+~met02.brt_(~kRB3 *1.01000).playGverb(0.001, 0.1, 8.1, mul:0.8, room:55, rev:13.5, damp:0.71, out:~strTek.choose);
+OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );				
 				}, 
 			\layer_B_65 -> {//	|dum2
 
@@ -1056,6 +1057,7 @@ fork{
 	};
 	2.5.wait;
 	~kik02.brt_(5.5).playGverb(0.001, 1.1, 1, mul: ~mul01.next, room:8.4, rev:1, damp:0.91, out: ~strTek.choose);
+	OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 
 
 };
@@ -1074,7 +1076,8 @@ fork{
 		
 	};
 	~tht01.brt_(~kRA1 *1.05000).playBuf(0.01, 15, 1.1, mul:0.4, out: ~strTek.choose);
-	~met02.brt_(~kRA7 *1.01000).playGverb(0.001, 0.1, 8.1, mul:0.8, room:55, rev:3.5, damp:0.71, out:~strTek.choose);	
+	~met02.brt_(~kRA7 *1.01000).playGverb(0.001, 0.1, 8.1, mul:0.8, room:55, rev:3.5, damp:0.71, out:~strTek.choose);
+	OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );	
 };
 
 				}, 
@@ -1090,7 +1093,8 @@ fork{
 		
 	};
 	~tht01.brt_(~kRA1 *1.05000).playBuf(0.01, 15, 1.1, mul:0.4, out: ~strTek.choose);
-	~met02.brt_(~kRA5 *1.01000).playGverb(0.001, 0.1, 8.1, mul:1.3, room:55, rev:3.5, damp:0.71, out:~strTek.choose);	
+	~met02.brt_(~kRA5 *1.01000).playGverb(0.001, 0.1, 8.1, mul:1.3, room:55, rev:3.5, damp:0.71, out:~strTek.choose);
+	OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );	
 };
 				
 				}, 
@@ -1108,7 +1112,17 @@ fork{
 		
 	};
 	~tht01.brt_(~kRA1 *1.05000).playBuf(0.01, 15, 1.1, mul:0.4, out: ~strTek.choose);
-	~met02.brt_(~kRA4 *1.01000).playGverb(0.001, 2.1, 18.1, mul:0.8, room:18.41, rev:13.5, damp:0.51, out:~strTek.choose);	
+	~met02.brt_(~kRA4 *1.01000).playGverb(0.001, 2.1, 18.1, mul:0.8, room:18.41, rev:13.5, damp:0.51, out:~strTek.choose);
+	OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
+
+	//:--rectFade
+	~blackFade={
+		~fade = Pseq((0..255), inf).asStream;
+		48.do{
+			OF.rectOp(-100, -100, 1380, 1124, ~fade.next); 
+			0.04.wait;
+		};
+	}.fork;	
 };
 				
 				}, 

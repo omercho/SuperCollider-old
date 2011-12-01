@@ -352,12 +352,12 @@ void testApp::update(){
 
             if ( m.getAddress() == "bMask" )	{
                 ofSetColor(255, 255, 255, m.getArgAsInt32(0) );
-                image[235].draw(0, 0, 1280, 1024);
+                image[262].draw(0, 0, 1280, 1024);
             }	//mask
 
             if ( m.getAddress() == "wMask" )	{
                 ofSetColor(255, 255, 255, m.getArgAsInt32(0) );
-                image[236].draw(0, 0, 1280, 1024);
+                image[263].draw(0, 0, 1280, 1024);
             }	//mask
 
             if ( m.getAddress() == "mirror0" )	{

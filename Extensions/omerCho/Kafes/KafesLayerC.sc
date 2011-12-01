@@ -402,7 +402,7 @@ fork{
 			\layer_C_57 -> {//	+dum2-3-4
 
 ~layC34 = Posc(
-	\msg, Pseq([ Pseq([\lC31_1a], 1),	Pseq([\lC4_2, \lC31_3, \bitA1], 7), Pseq([\lC4_2], 1) ], inf),
+	\msg, Pseq([ Pseq([\lC31_1a], 1),	Pseq([\lC4_1, \lC31_3, \bitA1], 7), Pseq([\lC4_2], 1) ], inf),
 	\dur, Pseq([	Pseq([0.25], 8), Pseq([1], 1) ], 11)
 ).play;
 
@@ -444,7 +444,7 @@ fork{
 
 ~cemb01.stop;
 ~cemb01 = Posc(
-	\msg, Pshuf(
+	\msg, Pseq(
 		[
 		//cember
 		\kk1, \bt23, \aP24, 
@@ -474,13 +474,13 @@ fork{
 				
 ~layC34.stop;
 ~layC34 = Posc(
-	\msg, Pshuf([ Pseq([\lC31_1c], 1),	Pseq([\lC4_2, \lC31_3, \bitA1], 7), Pseq([\lC4_2], 1) ], inf),
+	\msg, Pseq([ Pseq([\lC31_1c], 1),	Pxrand([\lC4_2, \lC31_3, \bitA1], 7), Pseq([\lC4_2], 1) ], inf),
 	\dur, Pseq([	Pseq([0.25], 8), Pseq([1], 1) ], 6)
 ).play;
 
 ~cemb01.stop;
 ~cemb01 = Posc(
-	\msg, Pshuf(
+	\msg, Pseq(
 		[
 		//cember
 		\kk1, \aP23, \aP24, 
@@ -560,7 +560,7 @@ fork{
 		\kk4, \kP26, \aP27, 
 		\kP28, \kk29, \kP30,
 		\kP31, \kP32, \aP33, 
-		\kk34, \kP35, \kk46, \bt17
+		\kk34, \kP35, \kk46, \kP17
 		], inf
 	),
 	\dur, Pseq(
@@ -595,9 +595,9 @@ fork{
 		//cember
 		\kk1, \kk2, \kP24, 
 		\kk4, \kP26, \bt27, 
-		\kP28, \kk29, \kP30,
-		\kP31, \kP32, \bt33, 
-		\kk34, \kP35, \kk46, \bt17
+		\aP28, \kk29, \kP30,
+		\kP31, \kP32, \aP33, 
+		\kk34, \kP35, \kk46, \kP18
 		], inf
 	),
 	\dur, Pseq(
@@ -619,7 +619,7 @@ fork{
 
 ~layC34.stop;
 ~layC34 = Posc(
-	\msg, Pseq([ Pseq([\bitB3], 1),	Pseq([\bt22, \kk22, \bt9], 7), Pseq([\bitA1], 1) ], inf),
+	\msg, Pseq([ Pseq([\bitB3], 1),	Pseq([\aP22, \kk22, \kP9], 7), Pseq([\bitA1], 1) ], inf),
 	\dur, Pseq([	Pseq([0.25], 8), Pseq([1], 1) ], 11)
 ).play;
 
@@ -630,9 +630,9 @@ fork{
 		//cember
 		\kP9, \bt13, \bt28, 
 		\kk4, \kP26, \bitA5, 
-		\bt28, \kk29, \bt3,
-		\kP31, \bt10, \kp13, 
-		\kk24, \kP35, \kk46, \bt17
+		\bt28, \kk29, \kk3,
+		\kP31, \bt10, \kP13, 
+		\kk24, \kP35, \kk46, \bt27
 		], inf
 	),
 	\dur, Pseq(
@@ -653,7 +653,7 @@ fork{
 
 ~layC34.stop;
 ~layC34 = Posc(
-	\msg, Pseq([ Pseq([\bitA1], 1),	Pseq([\es, \es, \bt9], 7), Pseq([\bit04], 1) ], inf),
+	\msg, Pseq([ Pseq([\bitA1], 1),	Pseq([\es, \es, \kk2], 7), Pseq([\es], 1) ], inf),
 	\dur, Pseq([	Pseq([0.25], 8), Pseq([1], 1) ], 11)
 ).play;
 
@@ -662,11 +662,11 @@ fork{
 	\msg, Pseq(
 		[
 		//cember
-		\kP9, \bt13, \bt28, 
+		\kP9, \aP13, \bt28, 
 		\kk4, \kP26, \bitA5, 
-		\bt28, \kk29, \bt3,
+		\bt28, \kk29, \bt4,
 		\kP31, \bt10, \kp13, 
-		\kk24, \kP35, \kk46, \bt17
+		\aP24, \kP35, \kk46, \aP17
 		], inf
 	),
 	\dur, Pseq(
@@ -688,7 +688,7 @@ fork{
 
 ~layC34.stop;
 ~layC34 = Posc(
-	\msg, Pshuf([ Pseq([\lC31_1b], 1),	Pseq([\lC4_1b, \bitA1, \bitA3], 7), Pseq([\lC4_2b], 1) ], inf),
+	\msg, Pseq([ Pseq([\lC31_1b], 1),	Pxrand([\lC4_1b, \bitA1, \bitA3], 7), Pseq([\lC4_2b], 1) ], inf),
 	\dur, Pseq([	Pseq([0.25], 8), Pseq([1], 1) ], 9)
 ).play;
 
@@ -699,9 +699,9 @@ fork{
 		//cember
 		\kk1, \kP23, \kP24, 
 		\kk25, \kP26, \kk27, 
-		\kk28, \bt29, \kP30,
+		\kk28, \bt29, \kk30,
 		\kP31, \aP32, \bt33, 
-		\aP34, \kP35, \aP46, \bt37
+		\aP34, \kP35, \aP46, \bt32
 		], inf
 	),
 	\dur, Pseq(
@@ -733,7 +733,7 @@ fork{
 		//cember
 		\kk1, \aP23, \aP24, 
 		\aP25, \kP26, \aP27, 
-		\aP28, \aP29, \kP30,
+		\aP28, \kP29, \kP30,
 		\kP31, \aP32, \aP33, 
 		\aP34, \kP35, \aP46, \aP37
 		], inf
@@ -756,7 +756,7 @@ fork{
 
 ~layC34.stop;
 ~layC34 = Posc(
-	\msg, Pseq([ Pseq([\lC31_1a], 1),	Pseq([\lC4_2, \lC31_3, \bitA5], 7), Pseq([\lC4_2], 1) ], inf),
+	\msg, Pseq([ Pseq([\kP5], 1),	Pxrand([\kk2, \lC31_3, \kP6], 7), Pseq([\lC4_2], 1) ], inf),
 	\dur, Pseq([	Pseq([0.25], 8), Pseq([1], 1) ], 9)
 ).play;
 
@@ -766,10 +766,10 @@ fork{
 		[
 		//cember
 		\kk1, \kP23, \kP24, 
-		\kk25, \kP26, \kk27, 
+		\kk25, \aP26, \kk27, 
 		\kk28, \aP29, \kP30,
-		\kP31, \kP32, \bt33, 
-		\aP34, \kP35, \aP46, \bt37
+		\kP31, \aP32, \kP33, 
+		\aP34, \aP35, \kP46, \kk37
 		], inf
 	),
 	\dur, Pseq(
