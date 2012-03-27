@@ -202,52 +202,21 @@ Pdef(\bufRand).stop;
 
 
 
-//--------------------Bummer--------------//
+//--------------------Kaffer--------------//
 
 
-~int1 = Bummer.read(s, "sounds/_Evfer/int01.aif");
-~int2 = Bummer.read(s, "sounds/_Evfer/int02.aif");
-~int3 = Bummer.read(s, "sounds/_Evfer/int03.aif");
-~int4 = Bummer.read(s, "sounds/_Evfer/int04.aif");
-~int5 = Bummer.read(s, "sounds/_Evfer/int05.aif");
-~int6 = Bummer.read(s, "sounds/_Evfer/int06.aif");
-~gir1 = Bummer.read(s, "sounds/_Evfer/gir01.aif");
-~gir2 = Bummer.read(s, "sounds/_Evfer/gir02.aif");
-~gir3 = Bummer.read(s, "sounds/_Evfer/gir03.aif");
-~brdk1 = Bummer.read(s, "sounds/_Evfer/bardak1.aif");
-~dlStr = Bummer.read(s, "sounds/_Evfer/dlStr.aif");
-~dlyStr1 = Bummer.read(s, "sounds/_Evfer/dlyStrA1.aif");
-~dlyStr2 = Bummer.read(s, "sounds/_Evfer/dlyStrA2.aif");
-~dlyStr3 = Bummer.read(s, "sounds/_Evfer/dlyStrA3.aif");
+		~gou01 = Kaffer.read(Server.default, "sounds/_kafes/goun/01.aif");
+		~gou02 = Kaffer.read(Server.default, "sounds/_kafes/goun/02.aif");
+		~gou03 = Kaffer.read(Server.default, "sounds/_kafes/goun/03.aif");
+		~gou04 = Kaffer.read(Server.default, "sounds/_kafes/goun/04.aif");
+		~gou05 = Kaffer.read(Server.default, "sounds/_kafes/goun/05.aif");
 
 
-~thol01 = Bummer.read(s, "sounds/-genesis/~thol/thol15.aiff");
-~thol02 = Bummer.read(s, "sounds/-genesis/~thol/thol16.aiff");
-~thol03 = Bummer.read(s, "sounds/-genesis/~thol/thol22.aiff");
-~thol04 = Bummer.read(s, "sounds/-genesis/~thol/thol32.aiff");
-~thol05 = Bummer.read(s, "sounds/-genesis/~thol/thol52.aiff");
-~thol06 = Bummer.read(s, "sounds/-genesis/~thol/thol67.aiff");
-~thol07 = Bummer.read(s, "sounds/-genesis/~thol/thol69.aiff");
-~thol08 = Bummer.read(s, "sounds/-genesis/~thol/thol89.aiff");
-~thol09 = Bummer.read(s, "sounds/-genesis/~thol/thol93.aiff");
-~thol10 = Bummer.read(s, "sounds/-genesis/~thol/thol98.aiff");
-~thol11 = Bummer.read(s, "sounds/-genesis/~thol/thol128.aiff");
 
 
-~thol01.play;
-~thol02.play;
-~thol03.play;
-~thol04.play;
-~thol05.play;
-~thol06.play;
-~thol07.play;
-~thol08.play;
-~thol09.play;
-~thol10.play;
-~thol11.play;
-
-~gir1.play0;
-
+~gou01.play;
+~gou01.playBuf(0.1, 2, 2, 0.9);
+~gou01.playBufR(0.1, 5, 6, 0.9);
 
 ~int1.play0(0.001, 0.5, 2.1, 0.7, loop: 0);
 

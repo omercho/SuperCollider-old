@@ -10,6 +10,14 @@ testApp::testApp(){
 void testApp::setup(){
     
     {
+    	ofTrueTypeFont::setGlobalDpi(72);
+        
+        verdana14.loadFont("verdana.ttf", 34, true, true);
+        verdana14.setLineHeight(18.0f);
+        verdana14.setLetterSpacing(1.037);
+
+    }
+    {
         myVideo = new ofVideoPlayer();
         vidVol = 0;
         playVideo = 0;
@@ -703,7 +711,13 @@ void testApp::keyPressed  (int key){
 	}	
 	if(key == 'b' or key == 'B'){
 		ofBackground(0,0,0);
-	}	
+	}
+	
+    if (key == 'q' or key == 'Q') {
+        ofSetColor(225);
+        verdana14.drawString("Special thanks to Dimitris Politis and Aris Bezas", 230, 335);
+        
+    }
 	{
 //	if(key == 'c' or key == 'C')	{
 //	{

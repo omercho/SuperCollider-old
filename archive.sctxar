@@ -1,48 +1,11 @@
 var o, p;
 o = [
-	Archive.prNew,  IdentityDictionary.prNew,  Array.prNew(32),  Array.prNew(32),  
+	Archive.prNew,  IdentityDictionary.prNew,  Array.prNew(32),  Array.prNew(3),  
 	Event.prNew,  Array.prNew(12),  " post ",  Rect.prNew,  
-	Event.prNew,  Array.prNew(12),  "00JODA00.scd",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/JODA/00JODA00.scd",  
-	Rect.prNew,  Event.prNew,  Array.prNew(12),  "101022_03_BufProcess.rtf",  
-	"/Users/omerchatziserif/Dropbox/SC/+02OCT2010/101022_03_BufProcess.rtf",  Rect.prNew,  Event.prNew,  Array.prNew(12),  
-	"111129_ia~TransBeingsCut8.rtf",  "/Users/omerchatziserif/Dropbox/SC/-Projects/4_IperatouLiveOct2010@NewFortress/__ia~BBCUT__/111129_ia~TransBeingsCut8.rtf",  Rect.prNew,  Event.prNew,  
-	Array.prNew(12),  "ChekingOuts.rtf",  "/Users/omerchatziserif/Dropbox/SC/ChekingOuts.rtf",  Rect.prNew,  
-	Event.prNew,  Array.prNew(12),  "JODA.sc",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/JODA/JODA.sc",  
-	Rect.prNew,  Event.prNew,  Array.prNew(12),  "JODABaxx.sc",  
-	"/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/JODA/JODABaxx.sc",  Rect.prNew,  Event.prNew,  Array.prNew(12),  
-	"JODAFlowJer.sc",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/JODA/JODAFlowJer.sc",  Rect.prNew,  Event.prNew,  
-	Array.prNew(12),  "JODAFlowMic.sc",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/JODA/JODAFlowMic.sc",  Rect.prNew,  
-	Event.prNew,  Array.prNew(12),  "JODAIndust.sc",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/JODA/JODAIndust.sc",  
-	Rect.prNew,  Event.prNew,  Array.prNew(12),  "JODAKaos.sc",  
-	"/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/JODA/JODAKaos.sc",  Rect.prNew,  Event.prNew,  Array.prNew(12),  
-	"JODANeyDef.sc",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/JODA/JODANeyDef.sc",  Rect.prNew,  Event.prNew,  
-	Array.prNew(12),  "KafesLayerA.sc",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/Kafes/KafesLayerA.sc",  Rect.prNew,  
-	Event.prNew,  Array.prNew(12),  "KafesLayerB.sc",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/Kafes/KafesLayerB.sc",  
-	Rect.prNew,  Event.prNew,  Array.prNew(12),  "KafesLayerC.sc",  
-	"/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/Kafes/KafesLayerC.sc",  Rect.prNew,  Event.prNew,  Array.prNew(12),  
-	"KafesLoad.scd",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/startupKafes/KafesLoad.scd",  Rect.prNew,  Event.prNew,  
-	Array.prNew(12),  "KafesOSCRutines.rtf",  "/Users/omerchatziserif/Dropbox/SC/-Projects/9_Kafes@ZKM/~OSC/KafesOSCRutines.rtf",  Rect.prNew,  
-	Event.prNew,  Array.prNew(12),  "kafesOSC_02.rtf",  "/Users/omerchatziserif/Dropbox/SC/-Projects/9_Kafes@ZKM/~OSC/kafesOSC_02.rtf",  
-	Rect.prNew,  Event.prNew,  Array.prNew(12),  "KafesPLayers.sc",  
-	"/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/Kafes/KafesPLayers.sc",  Rect.prNew,  Event.prNew,  Array.prNew(12),  
-	"KafesReceives.sc",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/Kafes/KafesReceives.sc",  Rect.prNew,  Event.prNew,  
-	Array.prNew(12),  "KafesSpat.sc",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/Kafes/KafesSpat.sc",  Rect.prNew,  
-	Event.prNew,  Array.prNew(12),  "KafesSynthDefs.sc",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/Kafes/KafesSynthDefs.sc",  
-	Rect.prNew,  Event.prNew,  Array.prNew(12),  "Kaffer.sc",  
-	"/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/Kafes/Kaffer.sc",  Rect.prNew,  Event.prNew,  Array.prNew(12),  
-	"kaffersList.scd",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/Kafes/kaffersList.scd",  Rect.prNew,  Event.prNew,  
-	Array.prNew(12),  "KafGendy.sc",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/Kafes/-KafesUgens/KafGendy.sc",  Rect.prNew,  
-	Event.prNew,  Array.prNew(12),  "kafMotion_dictionary.scd",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/Kafes/~KafesOF/scCode/ABHelp/kafMotion_dictionary.scd",  
-	Rect.prNew,  Event.prNew,  Array.prNew(12),  "kafMotion_loadImages.scd",  
-	"/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/Kafes/~KafesOF/scCode/ABHelp/kafMotion_loadImages.scd",  Rect.prNew,  Event.prNew,  Array.prNew(12),  
-	"kafMotion_playImages.scd",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/Kafes/~KafesOF/scCode/ABHelp/kafMotion_playImages.scd",  Rect.prNew,  Event.prNew,  
-	Array.prNew(12),  "Play.scd",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/Kafes/~Play/Play.scd",  Rect.prNew,  
-	Event.prNew,  Array.prNew(12),  "ServerOptions.html",  "/Users/omerchatziserif/Applications/SuperCollider/Help/ServerArchitecture/ServerOptions.html",  
+	Event.prNew,  Array.prNew(12),  "Play.scd",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/Kafes/~Play/Play.scd",  
 	Rect.prNew,  Event.prNew,  Array.prNew(12),  "tryout.scd",  
-	"/Users/omerchatziserif/Library/Application Support/SuperCollider/tryout.scd",  Rect.prNew,  Event.prNew,  Array.prNew(12),  
-	"~kafesPresentationFinal01.scd",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/Kafes/~kafesPresentationFinal01.scd",  Rect.prNew,  " post ",  
-	Array.prNew(4),  Rect.prNew,  Rect.prNew,  Rect.prNew,  
-	Rect.prNew
+	"/Users/omerchatziserif/Library/Application Support/SuperCollider/tryout.scd",  Rect.prNew,  " post ",  Array.prNew(4),  
+	Rect.prNew,  Rect.prNew,  Rect.prNew,  Rect.prNew
 ];
 p = [
 	// Archive
@@ -59,16 +22,9 @@ p = [
 		nil,  nil,  nil,  nil,  
 		nil,  nil,  nil,  nil,  
 		nil,  nil,  nil,  nil,  
-		'currentDoc',  o[163],  'documentBrowserRects',  o[164] ],  
+		'currentDoc',  o[18],  'documentBrowserRects',  o[19] ],  
 	// Array
-	3, [ o[4],  o[8],  o[13],  o[18],  
-		o[23],  o[28],  o[33],  o[38],  
-		o[43],  o[48],  o[53],  o[58],  
-		o[63],  o[68],  o[73],  o[78],  
-		o[83],  o[88],  o[93],  o[98],  
-		o[103],  o[108],  o[113],  o[118],  
-		o[123],  o[128],  o[133],  o[138],  
-		o[143],  o[148],  o[153],  o[158] ],  
+	3, [ o[4],  o[8],  o[13] ],  
 	// Event
 	4, [ array: o[5],  size: 2,  
 		proto: nil,  parent: nil,  
@@ -100,340 +56,21 @@ p = [
 		nil,  nil,  'path',  o[16],  
 		'bounds',  o[17],  nil,  nil ],  
 	// Rect
-	17, [ left: 500.000000,  top: 4.000000,  
-		width: 1020.000000,  height: 1024.000000 ],  
-	// Event
-	18, [ array: o[19],  size: 3,  
-		proto: nil,  parent: nil,  
-		know: true ],  
-	// Array
-	19, [ 'name',  o[20],  nil,  nil,  
-		nil,  nil,  'path',  o[21],  
-		'bounds',  o[22],  nil,  nil ],  
-	// Rect
-	22, [ left: 500.000000,  top: 4.000000,  
-		width: 1020.000000,  height: 1024.000000 ],  
-	// Event
-	23, [ array: o[24],  size: 3,  
-		proto: nil,  parent: nil,  
-		know: true ],  
-	// Array
-	24, [ 'name',  o[25],  nil,  nil,  
-		nil,  nil,  'path',  o[26],  
-		'bounds',  o[27],  nil,  nil ],  
-	// Rect
-	27, [ left: 500.000000,  top: 4.000000,  
-		width: 1020.000000,  height: 1024.000000 ],  
-	// Event
-	28, [ array: o[29],  size: 3,  
-		proto: nil,  parent: nil,  
-		know: true ],  
-	// Array
-	29, [ 'name',  o[30],  nil,  nil,  
-		nil,  nil,  'path',  o[31],  
-		'bounds',  o[32],  nil,  nil ],  
-	// Rect
-	32, [ left: 500.000000,  top: 4.000000,  
-		width: 1020.000000,  height: 1024.000000 ],  
-	// Event
-	33, [ array: o[34],  size: 3,  
-		proto: nil,  parent: nil,  
-		know: true ],  
-	// Array
-	34, [ 'name',  o[35],  nil,  nil,  
-		nil,  nil,  'path',  o[36],  
-		'bounds',  o[37],  nil,  nil ],  
-	// Rect
-	37, [ left: 500.000000,  top: 4.000000,  
-		width: 1020.000000,  height: 1024.000000 ],  
-	// Event
-	38, [ array: o[39],  size: 3,  
-		proto: nil,  parent: nil,  
-		know: true ],  
-	// Array
-	39, [ 'name',  o[40],  nil,  nil,  
-		nil,  nil,  'path',  o[41],  
-		'bounds',  o[42],  nil,  nil ],  
-	// Rect
-	42, [ left: 500.000000,  top: 4.000000,  
-		width: 1020.000000,  height: 1024.000000 ],  
-	// Event
-	43, [ array: o[44],  size: 3,  
-		proto: nil,  parent: nil,  
-		know: true ],  
-	// Array
-	44, [ 'name',  o[45],  nil,  nil,  
-		nil,  nil,  'path',  o[46],  
-		'bounds',  o[47],  nil,  nil ],  
-	// Rect
-	47, [ left: 500.000000,  top: 4.000000,  
-		width: 1020.000000,  height: 1024.000000 ],  
-	// Event
-	48, [ array: o[49],  size: 3,  
-		proto: nil,  parent: nil,  
-		know: true ],  
-	// Array
-	49, [ 'name',  o[50],  nil,  nil,  
-		nil,  nil,  'path',  o[51],  
-		'bounds',  o[52],  nil,  nil ],  
-	// Rect
-	52, [ left: 500.000000,  top: 4.000000,  
-		width: 1020.000000,  height: 1024.000000 ],  
-	// Event
-	53, [ array: o[54],  size: 3,  
-		proto: nil,  parent: nil,  
-		know: true ],  
-	// Array
-	54, [ 'name',  o[55],  nil,  nil,  
-		nil,  nil,  'path',  o[56],  
-		'bounds',  o[57],  nil,  nil ],  
-	// Rect
-	57, [ left: 500.000000,  top: 4.000000,  
-		width: 1020.000000,  height: 1024.000000 ],  
-	// Event
-	58, [ array: o[59],  size: 3,  
-		proto: nil,  parent: nil,  
-		know: true ],  
-	// Array
-	59, [ 'name',  o[60],  nil,  nil,  
-		nil,  nil,  'path',  o[61],  
-		'bounds',  o[62],  nil,  nil ],  
-	// Rect
-	62, [ left: 500.000000,  top: 4.000000,  
-		width: 1020.000000,  height: 1024.000000 ],  
-	// Event
-	63, [ array: o[64],  size: 3,  
-		proto: nil,  parent: nil,  
-		know: true ],  
-	// Array
-	64, [ 'name',  o[65],  nil,  nil,  
-		nil,  nil,  'path',  o[66],  
-		'bounds',  o[67],  nil,  nil ],  
-	// Rect
-	67, [ left: 500.000000,  top: 4.000000,  
-		width: 1020.000000,  height: 1024.000000 ],  
-	// Event
-	68, [ array: o[69],  size: 3,  
-		proto: nil,  parent: nil,  
-		know: true ],  
-	// Array
-	69, [ 'name',  o[70],  nil,  nil,  
-		nil,  nil,  'path',  o[71],  
-		'bounds',  o[72],  nil,  nil ],  
-	// Rect
-	72, [ left: 500.000000,  top: 4.000000,  
-		width: 1020.000000,  height: 1024.000000 ],  
-	// Event
-	73, [ array: o[74],  size: 3,  
-		proto: nil,  parent: nil,  
-		know: true ],  
-	// Array
-	74, [ 'name',  o[75],  nil,  nil,  
-		nil,  nil,  'path',  o[76],  
-		'bounds',  o[77],  nil,  nil ],  
-	// Rect
-	77, [ left: 500.000000,  top: 4.000000,  
-		width: 1020.000000,  height: 1024.000000 ],  
-	// Event
-	78, [ array: o[79],  size: 3,  
-		proto: nil,  parent: nil,  
-		know: true ],  
-	// Array
-	79, [ 'name',  o[80],  nil,  nil,  
-		nil,  nil,  'path',  o[81],  
-		'bounds',  o[82],  nil,  nil ],  
-	// Rect
-	82, [ left: 500.000000,  top: 4.000000,  
-		width: 1020.000000,  height: 1024.000000 ],  
-	// Event
-	83, [ array: o[84],  size: 3,  
-		proto: nil,  parent: nil,  
-		know: true ],  
-	// Array
-	84, [ 'name',  o[85],  nil,  nil,  
-		nil,  nil,  'path',  o[86],  
-		'bounds',  o[87],  nil,  nil ],  
-	// Rect
-	87, [ left: 500.000000,  top: 4.000000,  
-		width: 1020.000000,  height: 1024.000000 ],  
-	// Event
-	88, [ array: o[89],  size: 3,  
-		proto: nil,  parent: nil,  
-		know: true ],  
-	// Array
-	89, [ 'name',  o[90],  nil,  nil,  
-		nil,  nil,  'path',  o[91],  
-		'bounds',  o[92],  nil,  nil ],  
-	// Rect
-	92, [ left: 500.000000,  top: 4.000000,  
-		width: 1020.000000,  height: 1024.000000 ],  
-	// Event
-	93, [ array: o[94],  size: 3,  
-		proto: nil,  parent: nil,  
-		know: true ],  
-	// Array
-	94, [ 'name',  o[95],  nil,  nil,  
-		nil,  nil,  'path',  o[96],  
-		'bounds',  o[97],  nil,  nil ],  
-	// Rect
-	97, [ left: 500.000000,  top: 4.000000,  
-		width: 1020.000000,  height: 1024.000000 ],  
-	// Event
-	98, [ array: o[99],  size: 3,  
-		proto: nil,  parent: nil,  
-		know: true ],  
-	// Array
-	99, [ 'name',  o[100],  nil,  nil,  
-		nil,  nil,  'path',  o[101],  
-		'bounds',  o[102],  nil,  nil ],  
-	// Rect
-	102, [ left: 500.000000,  top: 4.000000,  
-		width: 1020.000000,  height: 1024.000000 ],  
-	// Event
-	103, [ array: o[104],  size: 3,  
-		proto: nil,  parent: nil,  
-		know: true ],  
-	// Array
-	104, [ 'name',  o[105],  nil,  nil,  
-		nil,  nil,  'path',  o[106],  
-		'bounds',  o[107],  nil,  nil ],  
-	// Rect
-	107, [ left: 500.000000,  top: 4.000000,  
-		width: 1020.000000,  height: 1024.000000 ],  
-	// Event
-	108, [ array: o[109],  size: 3,  
-		proto: nil,  parent: nil,  
-		know: true ],  
-	// Array
-	109, [ 'name',  o[110],  nil,  nil,  
-		nil,  nil,  'path',  o[111],  
-		'bounds',  o[112],  nil,  nil ],  
-	// Rect
-	112, [ left: 500.000000,  top: 4.000000,  
-		width: 1020.000000,  height: 1024.000000 ],  
-	// Event
-	113, [ array: o[114],  size: 3,  
-		proto: nil,  parent: nil,  
-		know: true ],  
-	// Array
-	114, [ 'name',  o[115],  nil,  nil,  
-		nil,  nil,  'path',  o[116],  
-		'bounds',  o[117],  nil,  nil ],  
-	// Rect
-	117, [ left: 500.000000,  top: 4.000000,  
-		width: 1020.000000,  height: 1024.000000 ],  
-	// Event
-	118, [ array: o[119],  size: 3,  
-		proto: nil,  parent: nil,  
-		know: true ],  
-	// Array
-	119, [ 'name',  o[120],  nil,  nil,  
-		nil,  nil,  'path',  o[121],  
-		'bounds',  o[122],  nil,  nil ],  
-	// Rect
-	122, [ left: 500.000000,  top: 4.000000,  
-		width: 1020.000000,  height: 1024.000000 ],  
-	// Event
-	123, [ array: o[124],  size: 3,  
-		proto: nil,  parent: nil,  
-		know: true ],  
-	// Array
-	124, [ 'name',  o[125],  nil,  nil,  
-		nil,  nil,  'path',  o[126],  
-		'bounds',  o[127],  nil,  nil ],  
-	// Rect
-	127, [ left: 500.000000,  top: 4.000000,  
-		width: 1020.000000,  height: 1024.000000 ],  
-	// Event
-	128, [ array: o[129],  size: 3,  
-		proto: nil,  parent: nil,  
-		know: true ],  
-	// Array
-	129, [ 'name',  o[130],  nil,  nil,  
-		nil,  nil,  'path',  o[131],  
-		'bounds',  o[132],  nil,  nil ],  
-	// Rect
-	132, [ left: 500.000000,  top: 4.000000,  
-		width: 1020.000000,  height: 1024.000000 ],  
-	// Event
-	133, [ array: o[134],  size: 3,  
-		proto: nil,  parent: nil,  
-		know: true ],  
-	// Array
-	134, [ 'name',  o[135],  nil,  nil,  
-		nil,  nil,  'path',  o[136],  
-		'bounds',  o[137],  nil,  nil ],  
-	// Rect
-	137, [ left: 500.000000,  top: 4.000000,  
-		width: 1020.000000,  height: 1024.000000 ],  
-	// Event
-	138, [ array: o[139],  size: 3,  
-		proto: nil,  parent: nil,  
-		know: true ],  
-	// Array
-	139, [ 'name',  o[140],  nil,  nil,  
-		nil,  nil,  'path',  o[141],  
-		'bounds',  o[142],  nil,  nil ],  
-	// Rect
-	142, [ left: 500.000000,  top: 4.000000,  
-		width: 1020.000000,  height: 1024.000000 ],  
-	// Event
-	143, [ array: o[144],  size: 3,  
-		proto: nil,  parent: nil,  
-		know: true ],  
-	// Array
-	144, [ 'name',  o[145],  nil,  nil,  
-		nil,  nil,  'path',  o[146],  
-		'bounds',  o[147],  nil,  nil ],  
-	// Rect
-	147, [ left: 500.000000,  top: 4.000000,  
-		width: 1020.000000,  height: 1024.000000 ],  
-	// Event
-	148, [ array: o[149],  size: 3,  
-		proto: nil,  parent: nil,  
-		know: true ],  
-	// Array
-	149, [ 'name',  o[150],  nil,  nil,  
-		nil,  nil,  'path',  o[151],  
-		'bounds',  o[152],  nil,  nil ],  
-	// Rect
-	152, [ left: 500.000000,  top: 4.000000,  
-		width: 1020.000000,  height: 1024.000000 ],  
-	// Event
-	153, [ array: o[154],  size: 3,  
-		proto: nil,  parent: nil,  
-		know: true ],  
-	// Array
-	154, [ 'name',  o[155],  nil,  nil,  
-		nil,  nil,  'path',  o[156],  
-		'bounds',  o[157],  nil,  nil ],  
-	// Rect
-	157, [ left: 0.000000,  top: 428.000000,  
+	17, [ left: 0.000000,  top: 428.000000,  
 		width: 500.000000,  height: 600.000000 ],  
-	// Event
-	158, [ array: o[159],  size: 3,  
-		proto: nil,  parent: nil,  
-		know: true ],  
 	// Array
-	159, [ 'name',  o[160],  nil,  nil,  
-		nil,  nil,  'path',  o[161],  
-		'bounds',  o[162],  nil,  nil ],  
+	19, [ o[20],  o[21],  o[22],  o[23] ],  
 	// Rect
-	162, [ left: 500.000000,  top: 4.000000,  
-		width: 1020.000000,  height: 1024.000000 ],  
-	// Array
-	164, [ o[165],  o[166],  o[167],  o[168] ],  
-	// Rect
-	165, [ left: 0.000000,  top: 4.000000,  
+	20, [ left: 0.000000,  top: 4.000000,  
 		width: 130.000000,  height: 1002.000000 ],  
 	// Rect
-	166, [ left: 135.000000,  top: 4.000000,  
+	21, [ left: 135.000000,  top: 4.000000,  
 		width: 800.000000,  height: 1022.000000 ],  
 	// Rect
-	167, [ left: 940.000000,  top: 4.000000,  
+	22, [ left: 940.000000,  top: 4.000000,  
 		width: 735.000000,  height: 1022.000000 ],  
 	// Rect
-	168, [ left: 940.000000,  top: 4.000000,  
+	23, [ left: 940.000000,  top: 4.000000,  
 		width: 735.000000,  height: 1022.000000 ]
 ];
 prUnarchive(o,p);

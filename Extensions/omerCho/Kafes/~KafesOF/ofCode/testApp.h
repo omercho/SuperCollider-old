@@ -55,6 +55,8 @@ class testApp : public ofBaseApp{
 		int imgWidth, imgHeight;
 		
 		bool full;
+    
+        ofTrueTypeFont	verdana14;
 
 		
 	private:
