@@ -7,12 +7,14 @@ KafesReceives {
 
 	*initClass {
 		StartUp add: {
+			
+/*			this.devriKebir;
 			this.lC1;
-			this.devriKebir;
 			this.aP;
 			this.kP;
 			this.kk;
 			this.bit;
+*/
 
 		}
 	}	

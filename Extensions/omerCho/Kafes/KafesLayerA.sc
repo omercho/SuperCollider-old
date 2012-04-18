@@ -111,16 +111,18 @@ fork{
 	//~gou02.brt_(~kRC7 *0.89000).playGverbR(0.001, 1.1, 10.1, mul:0.3, room:55, rev:13.5, damp:0.71, out: ~strCok.choose);
 	~gou02.brt_(~kRC1 *0.89000).playGverb(0.001, 1.1, 10.1, mul:0.2, room:55, rev:3.5, damp:0.81, out: ~strHep.choose);
 	OF.img(~imageLib.at('box', 3), 200, 100, 0, 0);
+	
 	0.31.wait;
+	OF.img(~imageLib.at('box', 4), 200, 100, 0, 0);
 	~gou02.brt_(~kRB4 *0.89000).playGverb(0.001, 1.1, 10.1, mul:0.25, room:55, rev:3.5, damp:0.91, out: ~strCok.choose);
 	//~bth02.brt_(~kRC1 *1.00011).playPV2(0.001, 10.3, 0.3, mul:0.5, out: ~strTek.choose);
-	OF.img(~imageLib.at('box', 4), 200, 100, 0, 0);
+	
 	0.25.wait;
 	//aud
 	fork{
 		~kPseq01 = Pseq([~kRC1, ~kRC3, ~kRC5, ~kRD1, ~kRC4, ~kRD1, ~kRC1, ~kRD1]/2, inf).asStream;
 		//~spira = Pseq((0..23).reverse, inf).asStream;
-		~spira = Pseq((0..3).reverse, inf).asStream;
+		~spira = Pseq((0..1).reverse, inf).asStream;
 		23.do {|i|
 		~tht02.brt_(~kPseq01.next *1.47500).playPV2(0.001, 10.3, 0.3, mul:0.09+(0.04*(i%9)), out: ~spira);
 		0.1- (0.04*(i%15)).wait;	
@@ -140,7 +142,7 @@ fork{
 	0.8.wait;
 	//aud
 	fork{
-		~circ = Pseq((0..3), inf).asStream;
+		~circ = Pseq((0..1), inf).asStream;
 		//~circ = Pseq((0..13), inf).asStream;
 		15.do {
 			~bth02.brt_(~kRA1 *1.00011).playPV2(0.001, 10.3, 0.3, mul:0.2, out: ~circ);
@@ -244,7 +246,7 @@ fork {
 	
 	//~gou02.brt_(~kRB4 *0.89000).playGverb(0.001, 1.1, 10.1, mul:0.3, room:55, rev:13.5, damp:0.71, out: ~strTek.choose);				
 	fork{
-		~spirOut = Pseq((3..0), inf).asStream;
+		~spirOut = Pseq((1..0), inf).asStream;
 		//~spirOut = Pseq((23..00), inf).asStream;
 		~kPseq01 = Pseq([~kRC1, ~kRC3, ~kRC5, ~kRD1, ~kRC4, ~kRD1, ~kRC1, ~kRD1]/2, inf).asStream;
 		23.do {|i|
