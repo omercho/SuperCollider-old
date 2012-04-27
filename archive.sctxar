@@ -1,20 +1,23 @@
 var o, p;
 o = [
-	Archive.prNew,  IdentityDictionary.prNew,  Array.prNew(32),  Array.prNew(10),  
+	Archive.prNew,  IdentityDictionary.prNew,  Array.prNew(32),  Array.prNew(12),  
 	Event.prNew,  Array.prNew(12),  " post ",  Rect.prNew,  
 	Event.prNew,  Array.prNew(12),  "KafesLayerA.sc",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/Kafes/KafesLayerA.sc",  
 	Rect.prNew,  Event.prNew,  Array.prNew(12),  "KafesLayerB.sc",  
 	"/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/Kafes/KafesLayerB.sc",  Rect.prNew,  Event.prNew,  Array.prNew(12),  
 	"KafesLayerC.sc",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/Kafes/KafesLayerC.sc",  Rect.prNew,  Event.prNew,  
 	Array.prNew(12),  "KafesLoadEngine.sc",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/Kafes/KafesLoadEngine.sc",  Rect.prNew,  
-	Event.prNew,  Array.prNew(12),  "KafesReceives.sc",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/Kafes/KafesReceives.sc",  
-	Rect.prNew,  Event.prNew,  Array.prNew(12),  "KafesSpat.sc",  
-	"/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/Kafes/KafesSpat.sc",  Rect.prNew,  Event.prNew,  Array.prNew(12),  
-	"Kaffer.sc",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/Kafes/Kaffer.sc",  Rect.prNew,  Event.prNew,  
-	Array.prNew(12),  "Play.scd",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/Kafes/~Play/Play.scd",  Rect.prNew,  
-	Event.prNew,  Array.prNew(12),  "tryout.scd",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/tryout.scd",  
-	Rect.prNew,  " post ",  Array.prNew(4),  Rect.prNew,  
-	Rect.prNew,  Rect.prNew,  Rect.prNew
+	Event.prNew,  Array.prNew(12),  "kafesOSC_03.rtf",  "/Users/omerchatziserif/Dropbox/SC/-Projects/9_Kafes@ZKM/~OSC/kafesOSC_03.rtf",  
+	Rect.prNew,  Event.prNew,  Array.prNew(12),  "KafesReceives.sc",  
+	"/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/Kafes/KafesReceives.sc",  Rect.prNew,  Event.prNew,  Array.prNew(12),  
+	"KafesSpat.sc",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/Kafes/KafesSpat.sc",  Rect.prNew,  Event.prNew,  
+	Array.prNew(12),  "Kaffer.sc",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/Kafes/Kaffer.sc",  Rect.prNew,  
+	Event.prNew,  Array.prNew(12),  "Play.scd",  "/Users/omerchatziserif/Library/Application Support/SuperCollider/Extensions/omerCho/Kafes/~Play/Play.scd",  
+	Rect.prNew,  Event.prNew,  Array.prNew(12),  "tryout.scd",  
+	"/Users/omerchatziserif/Library/Application Support/SuperCollider/tryout.scd",  Rect.prNew,  Event.prNew,  Array.prNew(12),  
+	"VisualGlobalOSC02.rtf",  "/Users/omerchatziserif/Dropbox/SC/-Projects/9_Kafes@ZKM/~OSC/VisualGlobalOSC02.rtf",  Rect.prNew,  " post ",  
+	Array.prNew(4),  Rect.prNew,  Rect.prNew,  Rect.prNew,  
+	Rect.prNew
 ];
 p = [
 	// Archive
@@ -31,11 +34,11 @@ p = [
 		nil,  nil,  nil,  nil,  
 		nil,  nil,  nil,  nil,  
 		nil,  nil,  nil,  nil,  
-		'currentDoc',  o[53],  'documentBrowserRects',  o[54] ],  
+		'currentDoc',  o[63],  'documentBrowserRects',  o[64] ],  
 	// Array
 	3, [ o[4],  o[8],  o[13],  o[18],  
 		o[23],  o[28],  o[33],  o[38],  
-		o[43],  o[48] ],  
+		o[43],  o[48],  o[53],  o[58] ],  
 	// Event
 	4, [ array: o[5],  size: 2,  
 		proto: nil,  parent: nil,  
@@ -144,21 +147,43 @@ p = [
 		nil,  nil,  'path',  o[51],  
 		'bounds',  o[52],  nil,  nil ],  
 	// Rect
-	52, [ left: 0.000000,  top: 428.000000,  
-		width: 500.000000,  height: 600.000000 ],  
+	52, [ left: 500.000000,  top: 4.000000,  
+		width: 1020.000000,  height: 1024.000000 ],  
+	// Event
+	53, [ array: o[54],  size: 3,  
+		proto: nil,  parent: nil,  
+		know: true ],  
 	// Array
-	54, [ o[55],  o[56],  o[57],  o[58] ],  
+	54, [ 'name',  o[55],  nil,  nil,  
+		nil,  nil,  'path',  o[56],  
+		'bounds',  o[57],  nil,  nil ],  
 	// Rect
-	55, [ left: 0.000000,  top: 4.000000,  
+	57, [ left: 0.000000,  top: 428.000000,  
+		width: 500.000000,  height: 600.000000 ],  
+	// Event
+	58, [ array: o[59],  size: 3,  
+		proto: nil,  parent: nil,  
+		know: true ],  
+	// Array
+	59, [ 'name',  o[60],  nil,  nil,  
+		nil,  nil,  'path',  o[61],  
+		'bounds',  o[62],  nil,  nil ],  
+	// Rect
+	62, [ left: 500.000000,  top: 4.000000,  
+		width: 1020.000000,  height: 1024.000000 ],  
+	// Array
+	64, [ o[65],  o[66],  o[67],  o[68] ],  
+	// Rect
+	65, [ left: 0.000000,  top: 4.000000,  
 		width: 130.000000,  height: 1002.000000 ],  
 	// Rect
-	56, [ left: 135.000000,  top: 4.000000,  
+	66, [ left: 135.000000,  top: 4.000000,  
 		width: 800.000000,  height: 1022.000000 ],  
 	// Rect
-	57, [ left: 940.000000,  top: 4.000000,  
+	67, [ left: 940.000000,  top: 4.000000,  
 		width: 735.000000,  height: 1022.000000 ],  
 	// Rect
-	58, [ left: 940.000000,  top: 4.000000,  
+	68, [ left: 940.000000,  top: 4.000000,  
 		width: 735.000000,  height: 1022.000000 ]
 ];
 prUnarchive(o,p);

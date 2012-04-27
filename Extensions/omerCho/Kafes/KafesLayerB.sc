@@ -18,6 +18,8 @@ KafesLayerB {
 		//-------------------------------------------lev1-8/4--48s-----------------------------------------------KafesGlobals
 			\layer_B_1 -> {//	|dum2 ---------------- 12
 
+~cifteDuyekOSC.fork;
+
 OF.rect(0,0,1280, 1024);
 OF.int("mirrorMode", 0);
 			
@@ -99,7 +101,7 @@ fork {
 			\layer_B_4 -> {//	+dum2
 
 ~gou02.brt_(~kRC3 *0.89000).playPV2(0.001, 1.1, 10.1, mul:0.6, out: ~strTek.choose);
-OF.img(~imageLib.at('kostum', rrand(0,3)), 100, 205, 0, 0);
+OF.img(~imageLib.at('kostum', rrand(0,3)), 100, 250, 0, 0);
 
 fork{
 	0.5.wait;

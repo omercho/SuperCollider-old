@@ -45,7 +45,7 @@ KafesReceives {
 			////---------Cifteduyek from C_4 to C_8--------/////
 			
 			\lC4_A -> { 
-				~ats02.brt_(9.5).playPV1(0.01, 0.4, 0.6, mul:0.3, start:[0.105, 0.132, 0.208, 0.05].choose, out:  ~strTek.choose); 
+				~ats02.brt_([~kRA2,~kRD3, ~kRA4,~kRD4].choose).playPV1(0.01, 0.4, 0.6, mul:0.3, start: rrand(0.001,0.905), out:  ~strTek.choose); 
 				//:mirrorMode
 				~mirorMod = {
 					3.do{
@@ -57,7 +57,7 @@ KafesReceives {
 				}.fork;
 					},
 			\lC4_B -> { 
-				~ats02.brt_(3.5).playBuf(0.01, 0.2, 0.8, mul:0.35, start:[0.705, 0.632, 0.728, 0.605].choose, out:  ~strTek.choose); 
+				~ats01.brt_([~kRA2,~kRD3, ~kRA4,~kRD4].choose).playPV4(0.01, 0.2, 0.8, mul:0.35, start:rrand(0.001,0.905), out:  ~strTek.choose); 
 				//:mirrorMode
 				~mirorMod = {
 					3.do{
@@ -71,8 +71,9 @@ KafesReceives {
 					},
 			\lC4_C -> { 
 
-				~ats02.brt_(3.0).playBuf(0.01, 0.2, 2.1, mul:0.4, start:[0.3, 0.632, 0.28, 0.605].choose, out:  ~strTek.choose);
-				~ats02.brt_(3.5).playBuf(0.01, 0.2, 0.8, mul:0.35, start:[0.705, 0.632, 0.728, 0.605].choose, out:  ~strTek.choose); 
+				~ats03.brt_(3.0).playPV2(0.01, 0.2, 2.1, mul:0.4, start:rrand(0.001,0.905), out:  ~strTek.choose);
+
+				~ats02.brt_(3.5).playPV5(0.01, 0.2, 0.8, mul:0.35, start: rrand(0.001,0.905), out:  ~strTek.choose); 
 				//:mirrorMode
 				~mirorMod = {
 					3.do{
@@ -92,7 +93,7 @@ KafesReceives {
 			////-------------from C_22 to C_31-------------/////
 			
 			\lC22_1 -> { 
-				~ats02.brt_(2.5).playPV1(0.01, 0.4, 0.1, mul:0.6, start:[0.105, 0.132, 0.208, 0.05].choose, out:  ~strTek.choose);
+				~ats02.brt_(2.5).playPV1(0.01, 0.4, 0.1, mul:0.6, start:rrand(0.001,0.905), out:  ~strTek.choose);
 ~visRout.stop;
 ~visRout = {
 	~seq = Pseq((0..11).mirror,inf).asStream;
@@ -111,7 +112,7 @@ KafesReceives {
 }.fork;
 					},
 			\lC22_2 -> { 
-				~kik01.brt_(9.5).playPV5(0.001, 1.1, 1, mul:0.5, pv5a:[3.3, 2.632, 4.28, 8.605].choose, out: ~strTek.choose);
+				~kik01.brt_(rrand(9.9,8.905)).playPV5(0.001, 1.1, 1, mul:0.5, pv5a:[3.3, 2.632, 4.28, 8.605].choose, out: ~strTek.choose);
 ~visRout.stop;
 ~visRout = {
 	~seq = Pseq((0..11).mirror,inf).asStream;
@@ -130,7 +131,7 @@ KafesReceives {
 }.fork;
 					},
 			\lC22_3 -> { 
-				~ats02.brt_(1.5).playBuf(0.01, 0.2, 0.6, mul:0.6, start:[0.73, 0.32, 0.28, 0.57].choose, out:  ~strTek.choose);
+				~ats02.brt_(rrand(1.001,6.905)).playBuf(0.01, 0.2, 0.6, mul:0.6, start:rrand(0.001,0.905), out:  ~strTek.choose);
 ~visRout.stop;
 ~visRout = {
 	~seq = Pseq((0..11).mirror,inf).asStream;
@@ -151,7 +152,7 @@ KafesReceives {
 }.fork;
 					},
 			\lC22_4 -> { 
-				~ats02.brt_(11.5).playPV1(0.01, 0.4, 0.1, mul:0.2, start:[0.73, 0.32, 0.28, 0.57].choose, out:  ~strTek.choose); // ke
+				~ats02.brt_(11.5).playPV1(0.01, 0.4, 0.1, mul:0.2, start:rrand(0.001,0.905), out:  ~strTek.choose); // ke
 ~visRout.stop;
 ~visRout = {
 	~seq = Pseq((0..11).mirror,inf).asStream;
@@ -170,7 +171,7 @@ KafesReceives {
 }.fork;
 					},
 			\lC22_5 -> { 
-				~ats02.brt_(3.5).playBuf(0.01, 0.2, 0.2, mul:0.7, start:0.705, out:  ~strTek.choose); // dum
+				~ats02.brt_(3.5).playPV2(0.01, 0.2, 0.2, mul:0.7, start:0.705, out:  ~strTek.choose); // dum
 ~visRout.stop;
 ~visRout = {
 	~seq = Pseq((0..11).mirror,inf).asStream;
@@ -193,8 +194,8 @@ KafesReceives {
 				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 225, [0, 90, 180, 270].choose, 0 );
 					},
 			\lC22_7 -> { 
-				~ats02.brt_(17.5).playPV1(0.01, 0.2, 0.1, mul:0.27, start:[0.73, 0.32, 0.28, 0.57].choose, out: ~strTek.choose); // tek
-				~ats03.brt_(~kRB1 *1.02006).playBuf(0.001, 0.004, 0.8, mul:0.5, start: [0.32, 0.35, 0.6, 0.66].choose, out: ~strTek.choose);
+				~ats02.brt_(17.5).playPV1(0.01, 0.2, 0.1, mul:0.27, start:rrand(0.001,0.905), out: ~strTek.choose); // tek
+				~ats03.brt_([~kRB2,~kRC2,~kRE2,~kRF2,~kRG2].choose *1.02006).playBuf(0.001, 0.004, 0.8, mul:0.5, start: rrand(0.401,0.905), out: ~strTek.choose);
 ~visRout.stop;
 ~visRout = {
 	~seq = Pseq((0..11).mirror,inf).asStream;
@@ -223,7 +224,7 @@ KafesReceives {
 
 			\lC31_A -> { 
 				fork{
-					OF.img(~imageLib.at(['yumruk'], rrand(0,7)), 205, 127, [90, 180, 270].choose, 0);
+					OF.img(~imageLib.at('yumruk', rrand(0,7)), 205, 127, [90, 180, 270].choose, 0);
 					fork{
 						OF.destructBig;
 						0.04.wait;
@@ -248,7 +249,7 @@ KafesReceives {
 					},
 			\lC31_B -> { 
 				fork{
-					OF.img(~imageLib.at(['yumruk'], rrand(0,7)), 205, 127, [90, 180, 270].choose, 0);
+					OF.img(~imageLib.at('yumruk', rrand(0,7)), 205, 127, [90, 180, 270].choose, 0);
 					fork{
 						OF.destructBig;
 						0.04.wait;
@@ -275,7 +276,7 @@ KafesReceives {
 
 				
 				fork{
-					OF.img(~imageLib.at(['yumruk'], rrand(0,7)), 205, 127, [90, 180, 270].choose, 0);
+					OF.img(~imageLib.at('yumruk', rrand(0,7)), 205, 127, [90, 180, 270].choose, 0);
 					fork{
 						OF.destructBig;
 						0.04.wait;

@@ -17,7 +17,7 @@ KafesLayerA {
 			\layer_A_1 -> {//	|dum2 ---------------- 12
 //audio
 fork{
-	~tol08.brt_(~kRC1 *1.07500).playBuf(0.001, 0.3, 0.1, mul:1.1, out: ~strHep);
+	//~tol08.brt_(~kRC1 *1.07500).playBuf(0.001, 0.3, 0.1, mul:1.1, out: ~strHep);
 	
 	0.265.wait;
 	
@@ -285,7 +285,7 @@ fork{
 		var dur = Pseq([0.25, 0.36, 2.47, 0.58, 0.69, 0.80, 0.91, 0.94], inf).asStream;
 		var amp = Pseq([0.25, 0.36, 0.47, 0.58, 0.69, 0.80, 0.91, 0.94]/2, inf).asStream;
 		~gou02.brt_(~kRD3 *0.89000).playPV2(0.001, 1.1, 10.1, mul:amp, out: ~strTek.choose);
-		OF.img(~imageLib.at(['el1', 'el2'], rrand(0,4)), [55, 155, 100, 55].choose, 255, 0, 0);
+		OF.img(~imageLib.at(['el1', 'el2'].choose, rrand(0,4)), [55, 155, 100, 55].choose, 255, 0, 0);
 		OF.int("mirrorMode", [5, 4, 3].at(3));
 		dur.next.wait;
 	
@@ -864,7 +864,11 @@ fork{
 			\layer_A_28 -> {//	+tek2
 
 fork{
+	
 	1.5.wait;
+	OF.feedback("activate", 0);
+	OF.int("mirrorMode", 0);
+	OF.bMask(255);
 	
 	~kik02.brt_(1.5).playPV2(0.001, 1.1, 1, mul:0.1, out: ~strCok.choose); // dum
 	KafSinVib.ar(0.1, 0.1, 18.0, mul:0.3, freq1: ~kA1, freq2: ~kA1+3, vib1: 2.1, vib2: 4, out: ~strCok.choose).play;
@@ -1365,6 +1369,7 @@ fork{
 		};
 		
 		2.0.wait;
+		/*
 		~gouA1 = {
 			 ~kP01 = Pxrand([
 						~kRA1, ~kRA2, ~kRA3, ~kRA4, ~kRA5, ~kRA6, ~kRA7, 
@@ -1386,6 +1391,7 @@ fork{
 			};
 			
 		}.fork;
+		*/
 	}
 
 }
@@ -1407,7 +1413,7 @@ fork{
 "LayerA DEVR-i KEBIR level 3  4/4".postln;
 ~ats06.brt_(~kRA4/2 *1.82101).playGverbR(0.01, 4.0, 9.1, mul:3.7, start:[0.0].choose, out: ~strCok.choose);
 
-
+/*
 ~gouA2 = {
 	 ~kP01 = Pxrand([
 				~kRA1, ~kRA2, ~kRA3, ~kRA4, ~kRA5, ~kRA6, ~kRA7, 
@@ -1429,7 +1435,7 @@ fork{
 	};
 	
 }.fork;
-
+*/
 
 				
 				}, 

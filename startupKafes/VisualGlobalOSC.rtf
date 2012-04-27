@@ -1,0 +1,299 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue191;\red0\green115\blue0;\red96\green96\blue96;
+}
+\deftab560
+\pard\pardeftab560\ql\qnatural
+
+\f0\fs18 \cf0 ~visualGlobalOSC = \{\
+\
+~feedActivata.remove; ~feedActivata = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/feedTog'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			\cf2 OF\cf0 .feedback(\cf4 "activate"\cf0 , 1);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\}\{\
+			\cf2 OF\cf0 .feedback(\cf4 "activate"\cf0 , 0);\
+		\};\
+	\
+\}).add;\
+\
+~fd1.remove; ~fd1 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/feed1'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			\cf2 OF\cf0 .feedback(\cf4 "speedXY"\cf0 , -1, -1); //upLeft\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\}\
+	\
+\}).add;\
+\
+~fd2.remove; ~fd2 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/feed2'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			\cf2 OF\cf0 .feedback(\cf4 "speedXY"\cf0 , -1, 0); //up\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\}\
+	\
+\}).add;\
+\
+~fd3.remove; ~fd3 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/feed3'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			\cf2 OF\cf0 .feedback(\cf4 "speedXY"\cf0 , -1, 1); //upRight\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\}\
+	\
+\}).add;\
+\
+~fd4.remove; ~fd4 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/feed4'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			\cf2 OF\cf0 .feedback(\cf4 "speedXY"\cf0 , 0, -1);//left\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\}\
+	\
+\}).add;\
+\
+~fd5.remove; ~fd5 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/feed5'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			\cf2 OF\cf0 .feedback(\cf4 "speedXY"\cf0 , 0, 0);//MIDEN\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\}\
+	\
+\}).add;\
+\
+~fd6.remove; ~fd6 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/feed6'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			\cf2 OF\cf0 .feedback(\cf4 "speedXY"\cf0 , 0, 1); //right\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\}\
+	\
+\}).add;\
+\
+~fd7.remove; ~fd7 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/feed7'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			\cf2 OF\cf0 .feedback(\cf4 "speedXY"\cf0 , 1, -1); //downLeft\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\}\
+	\
+\}).add;\
+\
+~fd8.remove; ~fd8 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/feed8'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			\cf2 OF\cf0 .feedback(\cf4 "speedXY"\cf0 , 1, 0); //down\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\}\
+	\
+\}).add;\
+\
+~fd9.remove; ~fd9 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/feed9'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			\cf2 OF\cf0 .feedback(\cf4 "speedXY"\cf0 , 1, 1); //downRight\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\}\
+	\
+\}).add;\
+\
+\
+\
+\
+////////\
+\
+~mr0.remove; ~mr0 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/mir0'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			\cf2 OF\cf0 .int(\cf4 "mirrorMode"\cf0 , 0);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\}\
+	\
+\}).add;\
+\
+~mr1.remove; ~mr1 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/mir1'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			\cf2 OF\cf0 .int(\cf4 "mirrorMode"\cf0 , 1);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\}\
+	\
+\}).add;\
+\
+~mr2.remove; ~mr2 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/mir2'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			\cf2 OF\cf0 .int(\cf4 "mirrorMode"\cf0 , 2);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\}\
+	\
+\}).add;\
+\
+~mr3.remove; ~mr3 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/mir3'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			\cf2 OF\cf0 .int(\cf4 "mirrorMode"\cf0 , 3);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\}\
+	\
+\}).add;\
+\
+~mr4.remove; ~mr4 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/mir4'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			\cf2 OF\cf0 .int(\cf4 "mirrorMode"\cf0 , 4);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\}\
+	\
+\}).add;\
+\
+~mr5.remove; ~mr5 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/mir5'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			\cf2 OF\cf0 .int(\cf4 "mirrorMode"\cf0 , 5);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\}\
+	\
+\}).add;\
+\
+~mr6.remove; ~mr6 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/mir6'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			\cf2 OF\cf0 .int(\cf4 "mirrorMode"\cf0 , 6);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\}\
+	\
+\}).add;\
+\
+~mr7.remove; ~mr7 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/mir7'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			\cf2 OF\cf0 .int(\cf4 "mirrorMode"\cf0 , 7);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\}\
+	\
+\}).add;\
+\
+~mr8.remove; ~mr8 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/mir8'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			\cf2 OF\cf0 .int(\cf4 "mirrorMode"\cf0 , 8);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\}\
+	\
+\}).add;\
+\
+~mr9.remove; ~mr9 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/mir9'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			\cf2 OF\cf0 .int(\cf4 "mirrorMode"\cf0 , 9);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\}\
+	\
+\}).add;\
+\
+~mr10.remove; ~mr10 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/mir10'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			\cf2 OF\cf0 .int(\cf4 "mirrorMode"\cf0 , 10);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\}\
+	\
+\}).add;\
+\
+//////\
+\
+~ola0.remove; ~ola0 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/olaMiden'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			\cf2 OF\cf0 .feedback(\cf4 "activate"\cf0 , 0);\
+\cf2 			OF\cf0 .int(\cf4 "mirrorMode"\cf0 , 0);\
+			\cf2 OF\cf0 .bMask(255);\cf2 \
+			OF\cf0 .black(255);\
+			\cf2 OF\cf0 .rect(0,0,1280, 1024);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\}\{\
+			~met03.brt_(~kRA1 *0.99900).playBufR(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
+		\};\
+	\
+\}).add;\
+\
+\
+~t1.remove; ~t1 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/intro'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~met03OSC.fork;\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\}\{\
+			//~met03.brt_(~kRA1 *0.99900).playPV1(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
+		\};\
+	\
+\}).add;\
+\
+~t2.remove; ~t2 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/zencir'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~zencirPlay.fork;\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\}\{\
+			//~met03.brt_(~kRC7 *0.99900).playPV1(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
+		\};\
+	\
+\}).add;\
+\
+\
+~t3.remove; ~t3 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/cifteDuyek'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~cifteDuyekOSC.fork;\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\};\
+	\
+\}).add;\
+\
+~t4.remove; ~t4 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/fahte'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~fahteOSC.fork;\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\};\
+	\
+\}).add;\
+\
+~t5.remove; ~t5 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/cember'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~cemberOSC.fork;\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\};\
+	\
+\}).add;\
+\
+~t6.remove; ~t6 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/devriKebir'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~devriKebirOSC.fork;\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\};\
+	\
+\}).add;\
+\
+~t6.remove; ~t6 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/berefsan'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~berefsanOSC.fork;\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\};\
+	\
+\}).add;\
+\
+\
+\};\
+\
+\
+\
+~visualGlobalOSC.fork;\
+\
+}

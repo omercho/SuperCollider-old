@@ -1,0 +1,299 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue191;\red0\green115\blue0;}
+\deftab560
+\pard\pardeftab560\ql\qnatural
+
+\f0\fs18 \cf0 \
+\
+~devriKebirOSC = \{\
+\
+~p1.remove; ~p1 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push1'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~gou02.brt_(~kRA1 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+\cf2 			OF\cf0 .img(~imageLib.at(\cf3 'sleep'\cf0 , rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\}\
+	\
+\}).add;\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 \
+\pard\pardeftab560\ql\qnatural
+\cf0 ~p2.remove; ~p2 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push2'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~gou02.brt_(~kRA2 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);\
+\cf2 			OF\cf0 .img(~imageLib.at(\cf3 'sleep'\cf0 , rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\}\
+	\
+\}).add;\
+\
+~p3.remove; ~p3 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push3'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~gou02.brt_(~kRA3 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);\
+\cf2 			OF\cf0 .img(~imageLib.at(\cf3 'sleep'\cf0 , rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\}\
+	\
+\}).add;\
+\
+~p4.remove; ~p4 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push4'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~gou02.brt_(~kRA4 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);\
+\cf2 			OF\cf0 .img(~imageLib.at(\cf3 'sleep'\cf0 , rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\}\
+	\
+\}).add;\
+\
+~p5.remove; ~p5 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push5'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~gou02.brt_(~kRA5 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);\
+\cf2 			OF\cf0 .img(~imageLib.at(\cf3 'sleep'\cf0 , rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\}\
+	\
+\}).add;\
+\
+~p6.remove; ~p6 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push6'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~gou02.brt_(~kRA6 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);\
+\cf2 			OF\cf0 .img(~imageLib.at(\cf3 'sleep'\cf0 , rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\}\
+	\
+\}).add;\
+\
+~p7.remove; ~p7 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push7'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~gou02.brt_(~kRA7 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);\
+\cf2 			OF\cf0 .img(~imageLib.at(\cf3 'sleep'\cf0 , rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\}\
+	\
+\}).add;\
+\
+~p8.remove; ~p8 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push8'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~gou02.brt_(~kRB1 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);\
+\cf2 			OF\cf0 .img(~imageLib.at(\cf3 'sleep'\cf0 , rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\};\
+	\
+\}).add;\
+\
+~p9.remove; ~p9 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push9'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~gou02.brt_(~kRB2 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);\
+\cf2 			OF\cf0 .img(~imageLib.at(\cf3 'sleep'\cf0 , rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\};\
+	\
+\}).add;\
+\
+~p10.remove; ~p10 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push10'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~gou02.brt_(~kRB3 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);\
+\cf2 			OF\cf0 .img(~imageLib.at(\cf3 'sleep'\cf0 , rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\};\
+	\
+\}).add;\
+\
+~p11.remove; ~p11 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push11'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~gou02.brt_(~kRB4 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);\
+\cf2 			OF\cf0 .img(~imageLib.at(\cf3 'sleep'\cf0 , rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\};\
+	\
+\}).add;\
+\
+~p12.remove; ~p12 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push12'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~gou02.brt_(~kRB5 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);\
+\cf2 			OF\cf0 .img(~imageLib.at(\cf3 'sleep'\cf0 , rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\};\
+	\
+\}).add;\
+\
+~p13.remove; ~p13 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push13'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~gou02.brt_(~kRB6 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);\
+\cf2 			OF\cf0 .img(~imageLib.at(\cf3 'sleep'\cf0 , rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\};\
+	\
+\}).add;\
+\
+~p14.remove; ~p14 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push14'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~gou02.brt_(~kRB7 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);\
+\cf2 			OF\cf0 .img(~imageLib.at(\cf3 'sleep'\cf0 , rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\};\
+	\
+\}).add;\
+\
+~p15.remove; ~p15 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push15'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~gou02.brt_(~kRC1 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);\
+\cf2 			OF\cf0 .img(~imageLib.at(\cf3 'sleep'\cf0 , rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\};\
+	\
+\}).add;\
+\
+~p16.remove; ~p16 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push16'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~gou02.brt_(~kRC2 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);\
+\cf2 			OF\cf0 .img(~imageLib.at(\cf3 'sleep'\cf0 , rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\};\
+	\
+\}).add;\
+\
+~p17.remove; ~p17 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push17'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~gou02.brt_(~kRC3 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);\
+\cf2 			OF\cf0 .img(~imageLib.at(\cf3 'sleep'\cf0 , rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\};\
+	\
+\}).add;\
+\
+~p18.remove; ~p18 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push18'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~gou02.brt_(~kRC4 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);\
+\cf2 			OF\cf0 .img(~imageLib.at(\cf3 'sleep'\cf0 , rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\};\
+	\
+\}).add;\
+\
+~p19.remove; ~p19 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push19'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~gou02.brt_(~kRC5 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);\
+\cf2 			OF\cf0 .img(~imageLib.at(\cf3 'sleep'\cf0 , rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\};\
+	\
+\}).add;\
+\
+~p20.remove; ~p20 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push20'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~gou02.brt_(~kRC6 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);\
+\cf2 			OF\cf0 .img(~imageLib.at(\cf3 'sleep'\cf0 , rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\};\
+	\
+\}).add;\
+\
+~p21.remove; ~p21 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push21'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~gou02.brt_(~kRC7 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);\
+\cf2 			OF\cf0 .img(~imageLib.at(\cf3 'sleep'\cf0 , rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\};\
+	\
+\}).add;\
+\
+~p22.remove; ~p22 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push22'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~gou02.brt_(~kRD1 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);\
+\cf2 			OF\cf0 .img(~imageLib.at(\cf3 'sleep'\cf0 , rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\};\
+	\
+\}).add;\
+\
+~p23.remove; ~p23 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push23'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~gou02.brt_(~kRD2 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);\
+\cf2 			OF\cf0 .img(~imageLib.at(\cf3 'sleep'\cf0 , rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\};\
+	\
+\}).add;\
+\
+~p24.remove; ~p24 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push24'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~gou02.brt_(~kRD3 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);\
+\cf2 			OF\cf0 .img(~imageLib.at(\cf3 'sleep'\cf0 , rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\};\
+	\
+\}).add;\
+\
+~p25.remove; ~p25 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push25'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~gou02.brt_(~kRD4 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);\
+\cf2 			OF\cf0 .img(~imageLib.at(\cf3 'sleep'\cf0 , rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\};\
+	\
+\}).add;\
+\
+~p26.remove; ~p26 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push26'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~gou02.brt_(~kRD5 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);\
+\cf2 			OF\cf0 .img(~imageLib.at(\cf3 'sleep'\cf0 , rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\};\
+	\
+\}).add;\
+\
+~p27.remove; ~p27 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push27'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~gou02.brt_(~kRD6 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);\
+\cf2 			OF\cf0 .img(~imageLib.at(\cf3 'sleep'\cf0 , rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\};\
+	\
+\}).add;\
+\
+~p28.remove; ~p28 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push28'\cf0 , \{ \cf2 |t, r, m|\cf0  \
+		if( m[1] == 1 ) \{\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
+\cf0 			~gou02.brt_(~kRD7 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);\
+\cf2 			OF\cf0 .img(~imageLib.at(\cf3 'sleep'\cf0 , rrand(0,28)), 255, 127, [90, 180, 270].choose, 0);\
+\pard\pardeftab560\ql\qnatural
+\cf0 		\};\
+	\
+\}).add;\
+\
+\};\
+\
+\
+\
+\
+}
