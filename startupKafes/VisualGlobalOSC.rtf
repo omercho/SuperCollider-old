@@ -209,13 +209,14 @@
 		if( m[1] == 1 ) \{\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
 \cf0 			\cf2 OF\cf0 .feedback(\cf4 "activate"\cf0 , 0);\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
 \cf2 			OF\cf0 .int(\cf4 "mirrorMode"\cf0 , 0);\
 			\cf2 OF\cf0 .bMask(255);\cf2 \
 			OF\cf0 .black(255);\
 			\cf2 OF\cf0 .rect(0,0,1280, 1024);\
 \pard\pardeftab560\ql\qnatural
 \cf0 		\}\{\
-			~met03.brt_(~kRA1 *0.99900).playBufR(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
+			//~met03.brt_(~kRA1 *0.99900).playBufR(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
 		\};\
 	\
 \}).add;\

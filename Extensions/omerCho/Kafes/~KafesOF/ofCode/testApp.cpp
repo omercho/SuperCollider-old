@@ -360,12 +360,12 @@ void testApp::update(){
 
             if ( m.getAddress() == "bMask" )	{
                 ofSetColor(255, 255, 255, m.getArgAsInt32(0) );
-                image[262].draw(0, 0, 1280, 1024);
+                image[273].draw(0, 0, 1280, 1024);
             }	//mask
 
             if ( m.getAddress() == "wMask" )	{
                 ofSetColor(255, 255, 255, m.getArgAsInt32(0) );
-                image[263].draw(0, 0, 1280, 1024);
+                image[274].draw(0, 0, 1280, 1024);
             }	//mask
 
             if ( m.getAddress() == "mirror0" )	{
@@ -506,7 +506,7 @@ void testApp::draw(){
 			texScreen.draw(ofGetWidth()/2 +1, 0, ofGetWidth(), ofGetHeight());					
         break;
 
-        //rightLeft & upDown
+        //rightLeft & upDown - outside
         case 7:
 			texScreen.loadScreenData(0, 0,ofGetWidth()/2, ofGetHeight());
 			ofSetColor(255,255,255,255);
@@ -525,26 +525,46 @@ void testApp::draw(){
 			texScreen.draw(0, ofGetHeight()/2+1, ofGetWidth(), ofGetHeight());
             
         break;
-        
-        case 8:
-			
-            texScreen.loadScreenData(1280/2-800/2, 1024/2-800/2, 800, 800);
-			ofSetColor(255,255,255,255);
-            texScreen.draw(1280/2-800/2, 1024/2-800/2, 400, 400);					
-			
-            texScreen.loadScreenData(1280/2-800/2, 1024/2-800/2, 800, 800);
-			ofSetColor(255,255,255,255);
-            texScreen.draw(1280/2-800/2+400, 1024/2-800/2, 400, 400);					
-								
-            texScreen.loadScreenData(1280/2-800/2, 1024/2-800/2, 800, 800);
-			ofSetColor(255,255,255,255);
-            texScreen.draw(1280/2-800/2, 1024/2-800/2+400, 400, 400);					
 
-            texScreen.loadScreenData(1280/2-800/2, 1024/2-800/2, 800, 800);
+            //rightLeft & upDown - inside
+        case 8:
+			texScreen.loadScreenData(0, 0,ofGetWidth()/2, ofGetHeight());
 			ofSetColor(255,255,255,255);
-            texScreen.draw(1280/2-800/2+400, 1024/2-800/2+400, 400, 400);
+			texScreen.draw(1, 0, ofGetWidth()/2, ofGetHeight());					
 			
-        break;
+            texScreen.loadScreenData(ofGetWidth()/2, 0,ofGetWidth(), ofGetHeight());
+			ofSetColor(255,255,255,255);
+			texScreen.draw(ofGetWidth()/2 -1, 0, ofGetWidth(), ofGetHeight());
+            
+            texScreen.loadScreenData(0, 0,ofGetWidth(), ofGetHeight()/2);
+			ofSetColor(255,255,255,255);
+			texScreen.draw(0, 1, ofGetWidth(), ofGetHeight()/2);					
+			
+            texScreen.loadScreenData(0, ofGetHeight()/2,ofGetWidth(), ofGetHeight());
+			ofSetColor(255,255,255,255);
+			texScreen.draw(0, ofGetHeight()/2-1, ofGetWidth(), ofGetHeight());
+            
+            break;
+            
+//        case 8:
+//			
+//            texScreen.loadScreenData(1280/2-800/2, 1024/2-800/2, 800, 800);
+//			ofSetColor(255,255,255,255);
+//            texScreen.draw(1280/2-800/2, 1024/2-800/2, 400, 400);					
+//			
+//            texScreen.loadScreenData(1280/2-800/2, 1024/2-800/2, 800, 800);
+//			ofSetColor(255,255,255,255);
+//            texScreen.draw(1280/2-800/2+400, 1024/2-800/2, 400, 400);					
+//								
+//            texScreen.loadScreenData(1280/2-800/2, 1024/2-800/2, 800, 800);
+//			ofSetColor(255,255,255,255);
+//            texScreen.draw(1280/2-800/2, 1024/2-800/2+400, 400, 400);					
+//
+//            texScreen.loadScreenData(1280/2-800/2, 1024/2-800/2, 800, 800);
+//			ofSetColor(255,255,255,255);
+//            texScreen.draw(1280/2-800/2+400, 1024/2-800/2+400, 400, 400);
+//			
+//        break;
 
         case 9:
 			

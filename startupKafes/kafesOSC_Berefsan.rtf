@@ -1,20 +1,19 @@
 {\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
 {\fonttbl\f0\fnil\fcharset0 Monaco;}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue191;\red0\green115\blue0;\red191\green0\blue0;
-}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue191;\red0\green115\blue0;}
 \deftab560
 \pard\pardeftab560\ql\qnatural
 
-\f0\fs18 \cf0 \
-\
-~cemberOSC = \{\
+\f0\fs18 \cf0 ~berefsanOSC = \{\
 \
 ~p1.remove; ~p1 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push1'\cf0 , \{ \cf2 |t, r, m|\cf0  \
 		if( m[1] == 1 ) \{\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
-\cf0 			~ats05.brt_(1.5).playPV5(0.01, 0.2, 0.1, mul:0.27, start:rrand(0.001,0.75), out: ~strTek.choose); \cf4 // tek\cf0 \
+\cf0 			~bth01.brt_([~kRA1,~kRD1].choose *1.00011).playPV2(0.001, 8.3, 2.3, mul:[0.6, 0.2,0.3,0.4].choose, out: ~strTek.choose);\
 \pard\pardeftab560\ql\qnatural
-\cf0 		\}\
+\cf0 		\}\{\
+			~bth01.brt_([~kRB1,~kRC1,~kRE1,~kRF1,~kRG1].choose *1.00011).playPV2(0.001, 9.3, 3.3, mul:[0.1, 0.2,0.3,0.4].choose, out: ~strTek.choose);\
+		\};\
 	\
 \}).add;\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
@@ -23,61 +22,73 @@
 \cf0 ~p2.remove; ~p2 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push2'\cf0 , \{ \cf2 |t, r, m|\cf0  \
 		if( m[1] == 1 ) \{\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
-\cf0 			~ats04.brt_(17.5).playPV1(0.01, 0.2, 0.1, mul:0.27, start:rrand(0.001,0.905), out: ~strTek.choose); \cf4 // tek\cf0 \
+\cf0 			~bth01.brt_([~kRA2,~kRD2].choose *1.00011).playPV4(0.001, 9.3, 4.3, mul:[0.6, 0.2,0.3,0.4].choose, out: ~strTek.choose);\
 \pard\pardeftab560\ql\qnatural
-\cf0 		\}\
+\cf0 		\}\{\
+			~bth01.brt_([~kRB2,~kRC2,~kRE2,~kRF2,~kRG2].choose *1.00011).playPV2(0.001, 6.3, 6.3, mul:[0.1, 0.2,0.3,0.4].choose, out: ~strTek.choose);\
+		\};\
 	\
 \}).add;\
 \
 ~p3.remove; ~p3 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push3'\cf0 , \{ \cf2 |t, r, m|\cf0  \
 		if( m[1] == 1 ) \{\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
-\cf0 			~ats02.brt_(17.5).playPV2(0.01, 0.2, 0.1, mul:0.27, start:rrand(0.001,0.905), out: ~strTek.choose); \cf4 // tek\cf0 \
+\cf0 			~bth05.brt_([~kRA3,~kRD3].choose *1.00011).playPV1(0.001, 12.3, 0.3, mul:[0.1, 0.2,0.3,0.4].choose, out: ~strTek.choose);\
 \pard\pardeftab560\ql\qnatural
-\cf0 		\}\
+\cf0 		\}\{\
+			~bth05.brt_([~kRB3,~kRC3,~kRE3,~kRF3,~kRG3].choose *1.00011).playPV2(0.001, 2.3, 1.3, mul:[0.1, 0.2,0.3,0.4].choose,  out: ~strTek.choose);\
+		\};\
 	\
 \}).add;\
 \
 ~p4.remove; ~p4 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push4'\cf0 , \{ \cf2 |t, r, m|\cf0  \
 		if( m[1] == 1 ) \{\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
-\cf0 			~ats02.brt_((0.5..2.5).choose).playPV1(0.01, 0.4, 0.6, mul:0.3, start:[0.105, 0.132, 0.208, 0.05].choose, out:  ~strTek.choose); \
+\cf0 			~bth03.brt_(~kRB4 *1.00011).playGverb(0.001, 0.3, 0.3, mul:0.2, out: ~strTek.choose);\
 \pard\pardeftab560\ql\qnatural
-\cf0 		\}\
+\cf0 		\}\{\
+			~bth05.brt_([~kRB4,~kRC4,~kRE4,~kRF4,~kRG4].choose *1.00011).playPV2(0.001, 1.3, 1.3, mul:[0.1, 0.2,0.3,0.4].choose,  out: ~strTek.choose);\
+		\};\
 	\
 \}).add;\
 \
 ~p5.remove; ~p5 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push5'\cf0 , \{ \cf2 |t, r, m|\cf0  \
 		if( m[1] == 1 ) \{\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
-\cf0 			~ats01.brt_((0.5..2.5).choose).playPV2(0.01, 0.4, 0.6, mul:0.3, start:[0.105, 0.132, 0.208, 0.05].choose, out:  ~strTek.choose); \
+\cf0 			~met03.brt_(~kRA5 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
 \pard\pardeftab560\ql\qnatural
-\cf0 		\}\
+\cf0 		\}\{\
+			~met03.brt_(~kRA5 *0.99900).playBufR(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
+		\};\
 	\
 \}).add;\
 \
 ~p6.remove; ~p6 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push6'\cf0 , \{ \cf2 |t, r, m|\cf0  \
 		if( m[1] == 1 ) \{\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
-\cf0 			~ats04.brt_((0.5..9.5).choose).playPV2(0.01, 0.4, 0.6, mul:0.3, start:[0.105, 0.132, 0.208, 0.05].choose, out:  ~strTek.choose); \
+\cf0 			~met03.brt_(~kRA6 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
 \pard\pardeftab560\ql\qnatural
-\cf0 		\}\
+\cf0 		\}\{\
+			~met03.brt_(~kRA6 *0.99900).playBufR(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
+		\};\
 	\
 \}).add;\
 \
 ~p7.remove; ~p7 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push7'\cf0 , \{ \cf2 |t, r, m|\cf0  \
 		if( m[1] == 1 ) \{\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
-\cf0 			~ats05.brt_((0.5..9.5).choose).playPV2(0.01, 0.4, 0.6, mul:0.3, start:[0.105, 0.132, 0.208, 0.05].choose, out:  ~strTek.choose); \
+\cf0 			~met03.brt_(~kRA7 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
 \pard\pardeftab560\ql\qnatural
-\cf0 		\}\
+\cf0 		\}\{\
+			~met03.brt_(~kRA7 *0.99900).playBufR(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
+		\};\
 	\
 \}).add;\
 \
 ~p8.remove; ~p8 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push8'\cf0 , \{ \cf2 |t, r, m|\cf0  \
 		if( m[1] == 1 ) \{\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
-\cf0 			~tol03.brt_(~kRB1 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
+\cf0 			~met03.brt_(~kRB1 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
 \pard\pardeftab560\ql\qnatural
 \cf0 		\};\
 	\
@@ -86,7 +97,7 @@
 ~p9.remove; ~p9 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push9'\cf0 , \{ \cf2 |t, r, m|\cf0  \
 		if( m[1] == 1 ) \{\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
-\cf0 			~tol03.brt_(~kRB2 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
+\cf0 			~met03.brt_(~kRB2 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
 \pard\pardeftab560\ql\qnatural
 \cf0 		\};\
 	\
@@ -95,7 +106,7 @@
 ~p10.remove; ~p10 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push10'\cf0 , \{ \cf2 |t, r, m|\cf0  \
 		if( m[1] == 1 ) \{\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
-\cf0 			~tol03.brt_(~kRB3 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
+\cf0 			~met03.brt_(~kRB3 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
 \pard\pardeftab560\ql\qnatural
 \cf0 		\};\
 	\
@@ -104,7 +115,7 @@
 ~p11.remove; ~p11 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push11'\cf0 , \{ \cf2 |t, r, m|\cf0  \
 		if( m[1] == 1 ) \{\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
-\cf0 			~tol03.brt_(~kRB4 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
+\cf0 			~met03.brt_(~kRB4 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
 \pard\pardeftab560\ql\qnatural
 \cf0 		\};\
 	\
@@ -113,7 +124,7 @@
 ~p12.remove; ~p12 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push12'\cf0 , \{ \cf2 |t, r, m|\cf0  \
 		if( m[1] == 1 ) \{\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
-\cf0 			~tol03.brt_(~kRB5 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
+\cf0 			~met03.brt_(~kRB5 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
 \pard\pardeftab560\ql\qnatural
 \cf0 		\};\
 	\
@@ -122,7 +133,7 @@
 ~p13.remove; ~p13 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push13'\cf0 , \{ \cf2 |t, r, m|\cf0  \
 		if( m[1] == 1 ) \{\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
-\cf0 			~tol03.brt_(~kRB6 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
+\cf0 			~met03.brt_(~kRB6 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
 \pard\pardeftab560\ql\qnatural
 \cf0 		\};\
 	\
@@ -131,7 +142,7 @@
 ~p14.remove; ~p14 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push14'\cf0 , \{ \cf2 |t, r, m|\cf0  \
 		if( m[1] == 1 ) \{\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
-\cf0 			~tol03.brt_(~kRB7 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
+\cf0 			~met03.brt_(~kRB7 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
 \pard\pardeftab560\ql\qnatural
 \cf0 		\};\
 	\
@@ -140,7 +151,7 @@
 ~p15.remove; ~p15 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push15'\cf0 , \{ \cf2 |t, r, m|\cf0  \
 		if( m[1] == 1 ) \{\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
-\cf0 			~tol03.brt_(~kRC1 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
+\cf0 			~met03.brt_(~kRC1 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
 \pard\pardeftab560\ql\qnatural
 \cf0 		\};\
 	\
@@ -149,7 +160,7 @@
 ~p16.remove; ~p16 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push16'\cf0 , \{ \cf2 |t, r, m|\cf0  \
 		if( m[1] == 1 ) \{\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
-\cf0 			~tol03.brt_(~kRC2 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
+\cf0 			~met03.brt_(~kRC2 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
 \pard\pardeftab560\ql\qnatural
 \cf0 		\};\
 	\
@@ -158,7 +169,7 @@
 ~p17.remove; ~p17 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push17'\cf0 , \{ \cf2 |t, r, m|\cf0  \
 		if( m[1] == 1 ) \{\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
-\cf0 			~tol03.brt_(~kRC3 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
+\cf0 			~met03.brt_(~kRC3 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
 \pard\pardeftab560\ql\qnatural
 \cf0 		\};\
 	\
@@ -167,7 +178,7 @@
 ~p18.remove; ~p18 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push18'\cf0 , \{ \cf2 |t, r, m|\cf0  \
 		if( m[1] == 1 ) \{\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
-\cf0 			~tol03.brt_(~kRC4 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
+\cf0 			~met03.brt_(~kRC4 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
 \pard\pardeftab560\ql\qnatural
 \cf0 		\};\
 	\
@@ -176,7 +187,7 @@
 ~p19.remove; ~p19 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push19'\cf0 , \{ \cf2 |t, r, m|\cf0  \
 		if( m[1] == 1 ) \{\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
-\cf0 			~tol03.brt_(~kRC5 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
+\cf0 			~met03.brt_(~kRC5 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
 \pard\pardeftab560\ql\qnatural
 \cf0 		\};\
 	\
@@ -185,7 +196,7 @@
 ~p20.remove; ~p20 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push20'\cf0 , \{ \cf2 |t, r, m|\cf0  \
 		if( m[1] == 1 ) \{\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
-\cf0 			~tol03.brt_(~kRC6 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
+\cf0 			~met03.brt_(~kRC6 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
 \pard\pardeftab560\ql\qnatural
 \cf0 		\};\
 	\
@@ -194,7 +205,7 @@
 ~p21.remove; ~p21 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push21'\cf0 , \{ \cf2 |t, r, m|\cf0  \
 		if( m[1] == 1 ) \{\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
-\cf0 			~tol03.brt_(~kRC7 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
+\cf0 			~met03.brt_(~kRC7 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
 \pard\pardeftab560\ql\qnatural
 \cf0 		\};\
 	\
@@ -203,7 +214,7 @@
 ~p22.remove; ~p22 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push22'\cf0 , \{ \cf2 |t, r, m|\cf0  \
 		if( m[1] == 1 ) \{\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
-\cf0 			~tol03.brt_(~kRD1 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
+\cf0 			~met03.brt_(~kRD1 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
 \pard\pardeftab560\ql\qnatural
 \cf0 		\};\
 	\
@@ -212,7 +223,7 @@
 ~p23.remove; ~p23 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push23'\cf0 , \{ \cf2 |t, r, m|\cf0  \
 		if( m[1] == 1 ) \{\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
-\cf0 			~tol03.brt_(~kRD2 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
+\cf0 			~met03.brt_(~kRD2 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
 \pard\pardeftab560\ql\qnatural
 \cf0 		\};\
 	\
@@ -221,7 +232,7 @@
 ~p24.remove; ~p24 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push24'\cf0 , \{ \cf2 |t, r, m|\cf0  \
 		if( m[1] == 1 ) \{\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
-\cf0 			~tol03.brt_(~kRD3 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
+\cf0 			~met03.brt_(~kRD3 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
 \pard\pardeftab560\ql\qnatural
 \cf0 		\};\
 	\
@@ -230,7 +241,7 @@
 ~p25.remove; ~p25 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push25'\cf0 , \{ \cf2 |t, r, m|\cf0  \
 		if( m[1] == 1 ) \{\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
-\cf0 			~tol03.brt_(~kRD4 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
+\cf0 			~met03.brt_(~kRD4 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
 \pard\pardeftab560\ql\qnatural
 \cf0 		\};\
 	\
@@ -239,7 +250,7 @@
 ~p26.remove; ~p26 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push26'\cf0 , \{ \cf2 |t, r, m|\cf0  \
 		if( m[1] == 1 ) \{\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
-\cf0 			~tol03.brt_(~kRD5 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
+\cf0 			~met03.brt_(~kRD5 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
 \pard\pardeftab560\ql\qnatural
 \cf0 		\};\
 	\
@@ -248,7 +259,7 @@
 ~p27.remove; ~p27 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push27'\cf0 , \{ \cf2 |t, r, m|\cf0  \
 		if( m[1] == 1 ) \{\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
-\cf0 			~tol03.brt_(~kRD6 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
+\cf0 			~met03.brt_(~kRD6 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
 \pard\pardeftab560\ql\qnatural
 \cf0 		\};\
 	\
@@ -257,7 +268,7 @@
 ~p28.remove; ~p28 = \cf2 OSCresponder\cf0 (\cf2 nil\cf0 , \cf3 '/1/push28'\cf0 , \{ \cf2 |t, r, m|\cf0  \
 		if( m[1] == 1 ) \{\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
-\cf0 			~tol03.brt_(~kRD7 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
+\cf0 			~met03.brt_(~kRD7 *0.99900).playBuf(2.1, 1.1, 16.1, mul:0.7, out: ~strTek.choose);\
 \pard\pardeftab560\ql\qnatural
 \cf0 		\};\
 	\

@@ -197,6 +197,7 @@ fork{
 		//-------------------------------------------lev1-4/4--24s-----------------------------------------------
 			\layer_B_9 -> {//	+dum2
 "LayerB FAHTE".postln;
+~fahteOSC.fork;
 	
 ~tol06.brt_(~kRA7 *1.23700).playGverbR(0.001, 3.1, 6.1, mul:0.5, room:55, rev:13.5, damp:0.81, out: ~strCok.choose);
 
@@ -302,21 +303,27 @@ fork {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		//-------------------------------------------lev1-4/4--24s-----------------------------------------------
 			\layer_B_22 -> {//	+dum2
-"LayerB CEMBER".postln;				
+"LayerB CEMBER".postln;	
+~cemberOSC.fork;			
 
 fork{
 
-//:-gonca1
-~visRout.stop;
+
+/*~visRout.stop;
 ~visRout = {
-	~seq = Pslide((0..7),inf, 3, 1, 0).asStream;
-	18.do{
+	~seq = Pseq((0..28).mirror,inf).asStream;
+	~op = Pseq((100..100), inf).asStream;
+	inf.do{
 		
-		OF.img(~imageLib.at('gonca', ~seq.next), 255, 255, 0, 0);
-		0.02.wait;
+		OF.img(
+			~imageLib.at('sleep', ~seq.next), 
+			255, ~op.next, [0,0,0,0].choose, 0
+		);
+		0.05.wait;
+		//OF.black(255); 0.1.wait;
 		
 	}
-}.fork;
+}.fork;*/
 
 	fork{
 		~kPseq01 = Pseq([~kRC4, ~kRC4, ~kRD1, ~kRC1, ~kRC4, ~kRC7, ~kRB7, ~kRC1].rotate(1)/1.5, inf).asStream;
@@ -325,11 +332,23 @@ fork{
 			var starts = strt + (0.02 *( i % 24)); 
 			
 			~ats03.brt_(~kRA6 *1.02006).playBuf(0.001, 0.9, 0.01, mul:0.3, start: 0.0 + (0.01 *( i % 30)), out: ~strCok.choose);
-			//OF.img(~imageLib.at('gonca', ~seq0.next), 255, 255, 0, 0);
+			OF.img(~imageLib.at('elayak', ~seq0.next), 250 , 250- (2.01 *( i % 30)), 0, 0);
 			( dur - (0.0025*(i%40)) ).yield;
 	
 		};
 		~ats03.brt_(~kRB1 *1.82101).playPV3(0.01, 2.5, 3.1, mul:0.5, pv3a:2.0, start:0.1, out: ~strCok.choose);
+		~visRout.stop;
+		~fadeOut = Pseq((255..0), 24).asStream;
+		~visRout = {
+			~seq = Pslide((0..4),inf, 3, 1, 0).asStream;
+			~op = Pseq((0..255), inf).asStream;
+			68.do{
+				
+				OF.img(~imageLib.at('yuz', ~seq.next), 255, ~op.next, 0, 0);
+				0.2.wait;
+				
+			}
+		}.fork;
 
 		
 	};
@@ -340,12 +359,12 @@ fork{
 ~visRout.stop;
 ~visRout = {
 	~group = Pseq([
-		Pseq(['el1'],7),
-		Pseq(['el2'],4)
+		Pseq(['el1'],18),
+		Pseq(['el2'],10)
 	], inf).asStream;
 	~seq = Pseq([
-		Pseq((0..8).mirror,9),
-		Pseq((0..4).mirror,5)
+		Pseq((0..8).mirror2,1),
+		Pseq((0..4).mirror2,1)
 	], inf).asStream;
 	~op = Pseq((0..255), inf).asStream;
 	inf.do{
@@ -372,7 +391,7 @@ fork{
 		fork{
 			~visRout.stop;
 			0.2.wait;
-			OF.img(~imageLib.at('sleepSag', 1), 255, 255, 0, 0);
+			OF.img(~imageLib.at('yumruk', 2), 250, 255, 0, 0);
 			
 			};
 		
@@ -661,46 +680,54 @@ fork{
 		//-------------------------------------------lev1-6/4--36s-----------------------------------------------
 			\layer_B_38 -> {//	+dum2
 "LayerB DEVR-i KEBIR".postln;
+~devriKebirOSC.fork;
 
+~gou02.brt_(~kRC1 *0.89000).playBufR(0.001, 2.1, 2.1, mul:0.9, out: ~strTek.choose);
 
-~gou02.brt_(~kRC1 *0.89000).playBufR(0.001, 2.1, 2.1, mul:0.9, out: ~strTek.choose);				
 
 
 				
 				}, 
 			\layer_B_39 -> {//	|dum2
 				
-~gou02.brt_(~kRC1 *0.89000).playBufR(0.001, 3.1, 3.1, mul:0.9, out: ~strTek.choose);				
+~gou02.brt_(~kRC1 *0.89000).playBufR(0.001, 3.1, 3.1, mul:0.9, out: ~strTek.choose);
+
 				
 				}, 
 			\layer_B_40 -> {//	|tek2
 				
-~gou02.brt_(~kRC1 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);	
+~gou02.brt_(~kRC1 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);
+
 
 				},
 			
 		//-------------------------------------------lev2-4/4--24s-----------------------------------------------
 			\layer_B_41 -> {//	+dum
 ~gou02.brt_(~kRC1 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);	
-~gou02.brt_(~kRC3 *0.89000).playBufR(0.001, 1.1, 2.1, mul:0.9, out: ~strTek.choose);				
+~gou02.brt_(~kRC3 *0.89000).playBufR(0.001, 1.1, 2.1, mul:0.9, out: ~strTek.choose);
+OF.destruct;
 
 				}, 
 			\layer_B_42 -> {//	|tek
 
 ~gou02.brt_(~kRB7 *0.89000).playBufR(0.001, 4.1, 2.1, mul:1.9, out: ~strTek.choose);								
-~gou02.brt_(~kRB7 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);	
+~gou02.brt_(~kRB7 *0.89000).playBuf(0.001, 1.1, 10.1, mul:0.09, out: ~strTek.choose);
+OF.destruct;	
 
 				}, 
 			\layer_B_43 -> {//	te'
 				
 ~gou02.brt_(~kRC1 *0.89000).playBufR(0.001, 6.1, 2.1, mul:0.9, out: ~strTek.choose);
+
 				}, 
 			\layer_B_44 -> {//	ke'
 
-~gou02.brt_(~kRB5 *0.89000).playBufR(0.001, 8.1, 2.1, mul:0.9, out: ~strTek.choose);				
+~gou02.brt_(~kRB5 *0.89000).playBufR(0.001, 8.1, 2.1, mul:0.9, out: ~strTek.choose);
+
 				},
 			\layer_B_45 -> {//	|dum
 ~gou02.brt_(~kRC1 *0.89000).playBufR(0.001, 5.1, 2.1, mul:0.9, out: ~strTek.choose);
+
 
 				}, 
 			
@@ -709,11 +736,13 @@ fork{
 
 ~gou02.brt_(~kRC4 *0.89000).playBufR(0.001, 3.1, 2.1, mul:0.9, out: ~strTek.choose);
 
+
 				
 				}, 
 			\layer_B_47 -> {//	|tek2
 
 ~gou02.brt_(~kRC2 *0.89000).playBufR(0.001, 1.1, 4.1, mul:0.9, out: ~strTek.choose);
+
 
 				
 				},
@@ -727,6 +756,7 @@ fork{
 	28.do{
 		var dur = Pseq([0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]*4, inf).asStream;
 		~gou02.brt_(~kRC1 *0.89000).playPV2(0.001, 1.1, 5.1, mul:~amp.next, out: ~strTek.choose);
+		OF.destruct;
 		dur.next.wait;
 		
 		
@@ -741,8 +771,9 @@ fork{
 fork{
 	~amp = Pseq((0.05..0.55), 28).asStream;
 	28.do{
-		var dur = Pseq([0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25], inf).asStream;
+		var dur = Pseq([0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]*2, inf).asStream;
 		~gou02.brt_(~kRC1 *0.89000).playPV2(0.001, 1.1, 5.1, mul:~amp.next, out: ~strTek.choose);
+		OF.destruct;
 		dur.next.wait;
 		
 		
@@ -755,6 +786,7 @@ fork{
 	28.do{
 		var dur = Pseq([0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]*1.1, inf).asStream;
 		~gou02.brt_(~kRC4 *0.89000).playPV2(0.001, 1.1, 5.1, mul:~amp.next, out: ~strTek.choose);
+		OF.destruct;
 		dur.next.wait;
 		
 		
@@ -775,6 +807,7 @@ fork{
 		var dur = Pseq([0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]*3, inf).asStream;
 		
 		~gou02.brt_(~kP.next *0.89000).playPV2(0.001, 1.1, 5.1, mul:~amp.next, out: ~strTek.choose);
+		OF.destruct;
 		dur.next.wait;
 		
 		
@@ -788,6 +821,7 @@ fork{
 	28.do{
 		var dur = Pseq([0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]*1.1, inf).asStream;
 		~gou02.brt_(~kRC4 *0.89000).playPV2(0.001, 1.1, 5.1, mul:~amp.next, out: ~strTek.choose);
+		OF.destruct;
 		dur.next.wait;
 		
 		
@@ -802,9 +836,11 @@ fork{
 fork{
 	~amp = Pseq((0.05..0.55), 28).asStream;
 	~dur = Pseq([0.25, 0.5, 0.25, 0.25, 0.25, 0.5, 0.25, 0.25]/2, inf).asStream;
+	~kP = Pseq([~kRC4, ~kRC4, ~kRD1, ~kRC1, ~kRC4, ~kRC7, ~kRB7, ~kRC1].rotate(1), inf).asStream;
 	28.do{
 		var dur = Pseq([0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]*4, inf).asStream;
-		~gou02.brt_(~kRC1 *[0.89000, 0.9000, 0.8000, 0.79000].choose).playPV2(0.001, 1.1, 5.1, mul:~amp.next, out: ~strTek.choose);
+		~gou02.brt_(~kP.next *0.89000).playPV2(0.001, 1.1, 5.1, mul:~amp.next, out: ~strTek.choose);
+		OF.destruct;
 		~dur.next.wait;
 		
 		
@@ -842,7 +878,7 @@ fork{
 		
 		};
 	};*/
-
+~visRout.stop;
 ~gouA1.stop;
 ~gouA2.stop;
 
@@ -971,7 +1007,8 @@ fork{
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		//-------------------------------------------lev1-6/4--36s-----------------------------------------------
 			\layer_B_57 -> {//	+dum2-3-4
-"LayerB BEREFSAN".postln;				
+"LayerB BEREFSAN".postln;
+~berefsanOSC.fork;				
 			
 ~met02.brt_(~kRB1 *1.01000).playGverbR(0.001, 5.1, 2.1, mul:0.9, room:55, rev:3.5, damp:0.71, out:~strCok.choose);
 //:--bMask
@@ -1029,19 +1066,20 @@ fork{
 				}, 
 			\layer_B_63 -> {//	tek2
 
-~met02.brt_(~kRB1 *1.01000).playGverb(0.001, 0.1, 8.1, mul:0.5, room:55, rev:7.5, damp:0.81, out:~strTek.choose);
-OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );				
+//~met02.brt_(~kRB1 *1.01000).playGverb(0.001, 0.1, 8.1, mul:0.5, room:55, rev:7.5, damp:0.81, out:~strTek.choose);
+//OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );				
 				}, 
 		//-------------------------------------------lev5-4/4--24s-----------------------------------------------
 			\layer_B_64 -> {//	+dum2
-~met02.brt_(~kRB3 *1.01000).playGverb(0.001, 0.1, 8.1, mul:0.8, room:55, rev:13.5, damp:0.71, out:~strTek.choose);
-OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );				
+//~met02.brt_(~kRB3 *1.01000).playGverb(0.001, 0.1, 8.1, mul:0.8, room:55, rev:13.5, damp:0.71, out:~strTek.choose);
+//OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );				
 				}, 
 			\layer_B_65 -> {//	|dum2
 
 fork{		
 	
-	~kik03.brt_(1.5).playPV2(0.001, 1.1, 1, mul:0.1, out: ~strTek.choose); // dum				
+	~kik03.brt_(1.5).playPV2(0.001, 1.1, 1, mul:0.1, out: ~strTek.choose); // dum
+	OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );				
 	~kf = KafSinVib.ar(0.1, 0.1, 8.0, mul:0.3, freq1: ~kA1, freq2: ~kA1+3, vib1: 2.1, vib2: 4, out: ~strTek.choose).play;
 	0.8.wait;
 	fork{
@@ -1051,6 +1089,7 @@ fork{
 		8.do {|i|
 			
 			~kik03.brt_(9.5).playGverb(0.001, 1.1, 1, mul: ~mul01.next, room:8.4, rev:1, damp:0.91, out: ~strTek.choose);
+			OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 			~dur01.next.wait;
 		
 		};
@@ -1072,7 +1111,8 @@ fork{
 	5.do{
 		var dur = Pseq([0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]/4, inf).asStream;
 		var amp = Pbrown(0.05, 0.5, 0.2, inf).asStream;
-		~tht02.brt_(~kRA1 *1.05000).playBuf(0.01, 15, 1.1, mul:amp, out: ~strTek.choose);
+		~tht01.brt_(~kRA1 *1.05000).playBuf(0.01, 15, 1.1, mul:amp, out: ~strTek.choose);
+		OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 		dur.next.wait;
 		
 		
@@ -1090,6 +1130,7 @@ fork{
 		var dur = Pseq([0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]/4, inf).asStream;
 		var amp = Pbrown(0.05, 0.5, 0.2, inf).asStream;
 		~tht02.brt_(~kRA1 *1.05000).playBuf(0.01, 15, 1.1, mul:amp, out: ~strTek.choose);
+		OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 		dur.next.wait;
 		
 		
@@ -1109,6 +1150,7 @@ fork{
 		var dur = Pseq([0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]/4, inf).asStream;
 		var amp = Pbrown(0.05, 0.5, 0.2, inf).asStream;
 		~tht02.brt_(~kRA1 *1.05000).playBuf(0.01, 15, 1.1, mul:amp, out: ~strTek.choose);
+		OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 		dur.next.wait;
 		
 		
