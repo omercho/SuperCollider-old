@@ -40,7 +40,7 @@ void testApp::setup(){
 		ofEnableSmoothing();
 		ofEnableAlphaBlending();
 		ofBackground(0,0,0);
-		ofSetFrameRate(25);
+		ofSetFrameRate(40);
 		ofSetWindowTitle("cutMotion - real time interactive stop motion engine");
 		
 		texScreen.allocate(ofGetWidth(), ofGetHeight(),GL_RGB);// GL_RGBA); 

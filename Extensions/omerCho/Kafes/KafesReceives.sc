@@ -463,19 +463,19 @@ KafesReceives {
 
 
 			\lC31_2 -> { 
-				~ats02.brt_(3.5).playPV1(0.01, 0.4, 5.1, mul:0.8, start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // dum
+				~ats02.brt_(3.5).playPV1(0.01, 0.4, 5.1, mul: rrand(0.8,0.4), start:[0.73, 0.1, 0.28, 0.57].choose, out:  ~strTek.choose); // dum
 				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 				
 				
 					},
 			\lC31_3 -> { 
-				~kik02.brt_(19.5).playPV5(0.001, 1.1, 1, mul:[0.73, 0.8, 0.28, 0.57].choose, out: ~strTek.choose);
+				~kik02.brt_(rrand(10.5, 19.5)).playPV5(0.001, 1.1, 1, mul:[0.73, 0.8, 0.28, 0.57].choose, out: ~strTek.choose);
 				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 					},
 					
 					
 			\lC34_1 -> { 
-				~kik02.brt_(2.5).playPV5(0.001, 1.1, 1, mul:0.6, out: ~strTek.choose);
+				~kik02.brt_(2.5).playPV5(0.001, 1.1, 1, mul: rrand(0.8,0.2), out: ~strTek.choose);
 				OF.img(~imageLib.at('exit', rrand(0,48)), 255, 255, [0, 90, 180, 270].choose, 0 );
 					}
 					

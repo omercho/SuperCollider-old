@@ -402,7 +402,7 @@ fork{
 			\layer_C_57 -> {//	+dum2-3-4
 
 ~layC34 = Posc(
-	\msg, Pseq([ Pseq([\lC31_1a], 1),	Pseq([\lC4_1, \lC31_3, \bitA1], 7), Pseq([\lC4_2], 1) ], inf),
+	\msg, Pseq([ Pseq([\lC31_1a], 1),	Prand([\lC4_1, \lC31_3, \bitA1], 7), Pseq([\lC4_2], 1) ], inf),
 	\dur, Pseq([	Pseq([0.25], 8), Pseq([1], 1) ], 11)
 ).play;
 
@@ -412,10 +412,10 @@ fork{
 		[
 		//cember
 		\kk1, \aP23, \aP24, 
-		\aP25, \aP26, \aP27, 
+		\aP25, \nil, \aP27, 
 		\aP28, \aP29, \aP30,
-		\aP31, \aP32, \aP33, 
-		\aP34, \aP35, \aP36, \aP37
+		\aP31, \nil, \aP33, 
+		\aP34, \nil, \aP36, \nil
 		], inf
 	),
 	\dur, Pseq(
@@ -584,7 +584,7 @@ fork{
 
 ~layC34.stop;
 ~layC34 = Posc(
-	\msg, Pseq([  Pseq([\lC31_1a], 1),Pseq([\bt1, \lC31_3, \bitB2], 7),  Pseq([\bitA1], 1) ], inf),
+	\msg, Pseq([  Pseq([\lC31_1a], 1),Pshuf([\bt1, \lC31_3, \bitB2], 7),  Pseq([\bitA1], 1) ], inf),
 	\dur, Pseq([	Pseq([0.25], 4), Pseq([0.5], 4), Pseq([1], 1) ], 12)
 ).play;
 
@@ -593,10 +593,10 @@ fork{
 	\msg, Pxrand(
 		[
 		//cember
-		\kk1, \kk2, \kP24, 
+		\kk1, \nil, \kP24, 
 		\kk4, \kP26, \bt27, 
 		\aP28, \kk29, \kP30,
-		\kP31, \kP32, \aP33, 
+		\kP31, \nil, \aP33, 
 		\kk34, \kP35, \kk46, \kP18
 		], inf
 	),

@@ -139,7 +139,7 @@
 	};
 
 	a = SCMenuItem(g, "boot local server + load Kafes");
-	a.action = { f.(Server.local, "Local", Color.white, Color.red) };
+	a.action = {KafesLoadEngine.loadKafs;};
 	a.setShortCut("¤", true, false); // Cmd-ctrl-alt-1
 	
 	a = SCMenuItem(g, "~PlayFile");
@@ -156,7 +156,12 @@
 	a.setShortCut("9", true, false); // Cmd-ctrl-alt-9
 	
 	a = SCMenuItem(g, "open Play file");
-	a.action = { (Platform.userAppSupportDir ++ "/Extensions/omerCho/Kafes/~Play/Play.scd").openTextFile; };
+	a.action = {
+		OF.feedback("activate", 0);
+		OF.int("mirrorMode", 0);
+		OF.bMask(255);
+		OF.black(255);
+	};
 	a.setShortCut("0", true, false); // Cmd-ctrl-alt-0
 
 	

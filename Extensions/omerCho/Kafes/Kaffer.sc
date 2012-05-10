@@ -23,6 +23,7 @@ Kaffer : Buffer {
 	var <>btrig = 0, <>bstart = 0, <>bend = 1, <>breset = 0, <>bpan = 0;
 	var <>brt = 1.0, <>brt1 = 1.0, <>brt2 = 1.0, <>brt3 = 1.0, <>brt1Dur = 1.0, <>brt2Dur = 0.5, <>btrDur = 0.2, <>bvib = 1;
 	var <>broom = 125, <>brev = 1, <>bdamp = 0.5;
+	var <>bfroom = 0.5, <>bfmix = 0.5, <>bfdamp = 0.5;
 	var <>bpv1a = 0.1, <>bpv1b = 0.1;
 	var <>bpv2a = 0.1, <>bpv2b = 0.5;
 	var <>bpv3a = 0.1, <>bpv3b = 0.1;
@@ -32,10 +33,21 @@ Kaffer : Buffer {
 	*initClass {
 		StartUp add: {
 			
-			//this.loadKafs;
+			this.panAzChannels;
 
 		}
 	}
+
+	*panAzChannels {
+		
+		
+		
+			~pCh = 4;
+		
+
+		
+	}
+
 
 	// PV1 FFT with PV_BrickWall
 	playPV1 { arg  att, sus, rls, mul, trig, rate, rate2, start, loop, pan, out;
@@ -69,7 +81,7 @@ Kaffer : Buffer {
 						BufFrames.kr(bufnum) * bstart,
 						loop: bloop.binaryValue
 					);
-			chain = FFT({LocalBuf(2048, 2)}.dup(2), player);
+			chain = FFT({LocalBuf(2048, ~pCh)}.dup(~pCh), player);
 			chain = PV_BrickWall(chain, 
 				SinOsc.kr(
 					brt2 * XLine.kr(1, 15 * [1, 1.6], bsus), 
@@ -116,10 +128,16 @@ Kaffer : Buffer {
 						),
 						loop: bloop.binaryValue
 					);
-			chain = FFT({LocalBuf(2048, 2)}.dup(2), player);
+			chain = FFT({LocalBuf(2048, ~pCh)}.dup(~pCh), player);
 			chain = PV_BrickWall(chain, Line.kr(0, -1, bsus));
+			chain = PanAz.ar(~pCh,
+				IFFT(chain), 
+				LFSaw.kr(MouseX.kr(0.2, 8, 'exponential')),
+				0.8,
+				1.8
+			);
  
-			Out.ar(bout, IFFT(chain) * bmul *env);
+			Out.ar(bout, chain * bmul *env);
 		}).play(Server.default);
 	}
 
@@ -161,7 +179,13 @@ Kaffer : Buffer {
 					);
 			chain = FFT(LocalBuf(2048), player);
 			chain = PV_BinScramble(chain, bpv2a , 0.1, bpv2b );
-			Out.ar(bout, IFFT(chain) * bmul *env);
+			chain = PanAz.ar(~pCh,
+				IFFT(chain), 
+				LFSaw.kr(MouseX.kr(0.2, 8, 'exponential')),
+				0.8,
+				1.8
+			);
+			Out.ar(bout, chain * bmul *env);
 		}).play(Server.default);
 	}
 
@@ -214,6 +238,59 @@ Kaffer : Buffer {
 	}
 
 
+	// PV3 Pan
+	playPV3Pan { arg  att, sus, rls, mul, trig, rate, rate2, start, loop, pv3a, pan, out;
+
+		batt = att ? batt;
+		bsus = sus ? bsus;
+		brls = rls ? brls;
+		bmul = mul ? bmul;
+		btrig = trig ? btrig;
+		brt = rate ? brt;
+		brt2 = rate2 ? brt2;
+		bstart = start ? bstart;
+		bpan = pan ? bpan;
+		bout = out ? bout;
+		bloop = loop ? bloop;
+		
+		bpv3a = pv3a ? bpv3a;
+		
+		
+		^~pv3Pan = SynthDef("playPV3", { |panRate = 0.01|
+			var player, chain, panlayer, env;
+			
+			env =  EnvGen.ar(
+				Env.new([0, 1, 0.8,  0], [batt, bsus, brls], 'linear', loop, releaseNode: nil), 
+				1, 
+				doneAction: 2
+			);
+			player = PlayBuf.ar(
+						numChannels,
+						bufnum, 
+						BufRateScale.kr(bufnum) * brt,
+						btrig,
+						BufFrames.kr(bufnum) * bstart,
+						loop: bloop.binaryValue
+					);
+			chain = FFT(LocalBuf(2048), player);
+			chain = PV_BinShift(
+				chain, 
+				bpv3a,
+				SinOsc.kr(
+					brt2 , 
+					Rand(0, pi)
+				);
+			);
+			chain = PanAz.ar(~pCh,
+				IFFT(chain), 
+				LFSaw.kr(MouseX.kr(0.2, 8, 'exponential')),
+				0.8,
+				1.8
+			);
+			Out.ar(bout, chain * bmul *env);
+		}).play(Server.default);
+	}
+
 	// PV4 FFT with PV_MagShift
 	playPV4 { arg  att, sus, rls, mul, trig, rate, rate2, start, loop, pv4a, pan, out;
 
@@ -250,6 +327,57 @@ Kaffer : Buffer {
 			chain = FFT(LocalBuf(2048), player);
 			chain = PV_MagShift(chain,  XLine.kr(0.25 * [1, 1.6], 4, bsus), bpv4a ); 
 			Out.ar(bout, IFFT(chain) * bmul *env);
+		}).play(Server.default);
+	}
+
+	// PV4 Pan
+	playPV4Pan { arg  att, sus, rls, mul, trig, rate, rate2, start, loop, pv4a, pan, out;
+
+		batt = att ? batt;
+		bsus = sus ? bsus;
+		brls = rls ? brls;
+		bmul = mul ? bmul;
+		btrig = trig ? btrig;
+		brt = rate ? brt;
+		brt2 = rate2 ? brt2;
+		bstart = start ? bstart;
+		bpan = pan ? bpan;
+		bout = out ? bout;
+		bloop = loop ? bloop;
+		
+		bpv4a = pv4a ? bpv4a;
+		
+		^~pv4Pan = SynthDef("playPV4", { |panRate = 0.1|
+			var player, chain, panlayer, env;
+			
+			env =  EnvGen.ar(
+				Env.new([0, 1, 0.8,  0], [batt, bsus, brls], 'linear', loop, releaseNode: nil), 
+				1, 
+				doneAction: 2
+			);
+			player = PlayBuf.ar(
+						numChannels,
+						bufnum, 
+						BufRateScale.kr(bufnum) * brt,
+						btrig,
+						BufFrames.kr(bufnum) * bstart,
+						loop: bloop.binaryValue
+					);
+			chain = FFT({LocalBuf(2048, ~pCh)}.dup(~pCh), player);
+			chain = PV_MagShift(chain,  XLine.kr(0.25 * [1, 1.6], 4, bsus), SinOsc.kr(
+					brt2 , 
+					Rand(0, pi)
+				); 
+			);
+			chain = PanAz.ar(~pCh,
+				IFFT(chain), 
+				LFSaw.kr(MouseX.kr(0.2, 8, 'exponential')),
+				0.8,
+				1.8
+			);
+			//chain = Pan2.ar(IFFT(chain), SinOsc.kr(SinOsc.kr(0.01).range(0.05, 0.09)).range(-1, 1));
+
+			Out.ar(bout, chain * bmul *env);
 		}).play(Server.default);
 	}
 
@@ -374,7 +502,7 @@ Kaffer : Buffer {
 		}).play(Server.default);
 	}
 
-	//with PlayBuf
+	//transBuf
 	transBuf { arg  att, sus, rls, mul, trig, rt, rt1, rt2, rt3, rt1Dur, rt2Dur, trDur, vib, start, loop, pan, out;
 
 		batt = att ? batt;
@@ -459,7 +587,7 @@ Kaffer : Buffer {
 		}.play(Server.default);
 	}
 
-	//with BufRD to be able to reverse a buffer
+	//with BufRD to reverse a buffer
 	playBufR { arg  att, sus, rls, mul, trig, rate, start, end, reset, loop, pan, out;
 
 		batt = att ? batt;
@@ -512,6 +640,52 @@ Kaffer : Buffer {
 			player * bmul;
 		}.play(Server.default);
 	}
+
+	//with freeVerb------------------------------------------------------------------------------------------------------------------------------------
+	playFverb { arg  att, sus, rls, mul, trig, rate, start, loop, froom, fmix, fdamp, pan, out;
+
+		batt = att ? batt;
+		bsus = sus ? bsus;
+		brls = rls ? brls;
+		bmul = mul ? bmul;
+		btrig = trig ? btrig;
+		brt = rate ? brt;
+		bstart = start ? bstart;
+		bfroom = froom ? bfroom;
+		bfmix = fmix ? bfmix;
+		bfdamp = fdamp ? bfdamp;
+		bpan = pan ? bpan;
+		bout = out ? bout;
+		bloop = loop ? bloop;
+		
+		^{ var player, panlayer, env;
+			
+			env =  EnvGen.ar(
+				Env.new([0, 1, 0.8,  0], [batt, bsus, brls], -4, loop, releaseNode: nil), 
+				1, 
+				doneAction: 2
+			);
+			player = PlayBuf.ar(
+						numChannels,
+						bufnum, 
+						BufRateScale.kr(bufnum) * brt,
+						btrig,
+						BufFrames.kr(bufnum) * bstart,
+						loop: bloop.binaryValue
+					);
+			
+			player = FreeVerb.ar(
+				player,
+				bfmix, 
+				bfroom, 
+				bfdamp, 
+				bmul);
+
+			//player = Pan2.ar(player, bpan);
+			Out.ar(bout, player *env);
+		}.play(Server.default);
+	}
+
 
 	//with PlayBuf Gverb
 	playGverb { arg  att, sus, rls, mul, trig, rate, start, loop, room, rev, damp, pan, out;

@@ -49,6 +49,13 @@ KafSinVib : UGen {
 			player = player.sin**2/20+ player;
 			player = DelayL.ar(player, 0.5, 0.006, 0.5, player);
 			
+			player = PanAz.ar(2,
+				player, 
+				SinOsc.kr(SinOsc.kr(0.01).range(0.05, 0.09)).range(-1, 1),
+				0.8,
+				2
+			);
+			
 			Out.ar(out, player *mul *env);
 		}).play(~sources);
 	}
