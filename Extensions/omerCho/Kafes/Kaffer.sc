@@ -42,7 +42,7 @@ Kaffer : Buffer {
 		
 		
 		
-			~pCh = 4;
+			~pCh = 2;
 		
 
 		
@@ -87,8 +87,14 @@ Kaffer : Buffer {
 					brt2 * XLine.kr(1, 15 * [1, 1.6], bsus), 
 					Rand(0, pi)
 				);
-			); 
-			Out.ar(bout, IFFT(chain) * bmul *env);
+			);
+			chain = PanAz.ar(~pCh,
+				IFFT(chain), 
+				LFSaw.kr(MouseY.kr(0.2, 8, 'exponential')),
+				0.8,
+				1.8
+			);
+			Out.ar(bout, chain * bmul *env);
 		}).play(Server.default);
 	}
 
@@ -233,7 +239,13 @@ Kaffer : Buffer {
 					Rand(0, pi)
 				);
 			);
-			Out.ar(bout, IFFT(chain) * bmul *env);
+			chain = PanAz.ar(~pCh,
+				IFFT(chain), 
+				LFSaw.kr(MouseY.kr(0.2, 8, 'exponential')),
+				0.8,
+				1.8
+			);
+			Out.ar(bout, chain * bmul *env);
 		}).play(Server.default);
 	}
 
@@ -325,8 +337,14 @@ Kaffer : Buffer {
 						loop: bloop.binaryValue
 					);
 			chain = FFT(LocalBuf(2048), player);
-			chain = PV_MagShift(chain,  XLine.kr(0.25 * [1, 1.6], 4, bsus), bpv4a ); 
-			Out.ar(bout, IFFT(chain) * bmul *env);
+			chain = PV_MagShift(chain,  XLine.kr(0.25 * [1, 1.6], 4, bsus), bpv4a );
+			chain = PanAz.ar(~pCh,
+				IFFT(chain), 
+				LFSaw.kr(MouseX.kr(0.2, 8, 'exponential')),
+				0.8,
+				1.8
+			);
+			Out.ar(bout, chain * bmul *env);
 		}).play(Server.default);
 	}
 
@@ -416,8 +434,14 @@ Kaffer : Buffer {
 						loop: bloop.binaryValue
 					);
 			chain = FFT(LocalBuf(2048), player);
-			chain = PV_MagShift(chain,  XLine.kr(0.25 * [1, 1.6], 4, bsus), bpv4a ); 
-			Out.ar(bout, IFFT(chain) * bmul *env);
+			chain = PV_MagShift(chain,  XLine.kr(0.25 * [1, 1.6], 4, bsus), bpv4a );
+			chain = PanAz.ar(~pCh,
+				IFFT(chain), 
+				LFSaw.kr(MouseY.kr(0.2, 8, 'exponential')),
+				0.8,
+				1.8
+			); 
+			Out.ar(bout, chain * bmul *env);
 		}).play(Server.default);
 	}
 
@@ -460,8 +484,14 @@ Kaffer : Buffer {
 			chain = FFT(LocalBuf(2048), player);
 			chain = PV_ConformalMap(chain, bpv5a, bpv5b); 
 			// --- pvc1 -1.0 -> 1.0 ---- pvc1 -1.0 -> 1.0
+			chain = PanAz.ar(~pCh,
+				IFFT(chain), 
+				LFSaw.kr(MouseX.kr(0.2, 8, 'exponential')),
+				0.8,
+				1.8
+			);
 			
-			Out.ar(bout, IFFT(chain) * bmul *env);
+			Out.ar(bout, chain * bmul *env);
 		}).play(Server.default);
 	}
 
@@ -548,8 +578,14 @@ Kaffer : Buffer {
 						BufFrames.kr(bufnum) * bstart,
 						loop: bloop.binaryValue
 					);
+			player = PanAz.ar(~pCh,
+				player, 
+				SinOsc.kr(SinOsc.kr(0.01).range(0.05, 0.09)).range(-1, 1),
+				0.8,
+				1.8
+			);
 
-			Out.ar(bout, player*2 *bmul *env);
+			Out.ar(bout, player *bmul *env);
 		}.play(Server.default);
 	}
 
@@ -582,7 +618,13 @@ Kaffer : Buffer {
 						BufFrames.kr(bufnum) * bstart,
 						loop: bloop.binaryValue
 					);
-			//player = Pan2.ar(player, bpan);
+			player = PanAz.ar(~pCh,
+				player, 
+				SinOsc.kr(SinOsc.kr(0.01).range(0.05, 0.09)).range(-1, 1),
+				0.8,
+				1.8
+			);
+			
 			Out.ar(bout, player * bmul *env);
 		}.play(Server.default);
 	}
@@ -679,8 +721,14 @@ Kaffer : Buffer {
 				bfmix, 
 				bfroom, 
 				bfdamp, 
-				bmul);
-
+				bmul
+			);
+			player = PanAz.ar(~pCh,
+				player, 
+				SinOsc.kr(SinOsc.kr(0.01).range(0.05, 0.09)).range(-1, 1),
+				0.8,
+				1.8
+			);
 			//player = Pan2.ar(player, bpan);
 			Out.ar(bout, player *env);
 		}.play(Server.default);
@@ -730,7 +778,12 @@ Kaffer : Buffer {
 				-11.dbamp, 
 				-9.dbamp,
 				broom, bmul);
-			//player = Pan2.ar(player, bpan);
+			player = PanAz.ar(~pCh,
+				player, 
+				SinOsc.kr(SinOsc.kr(0.01).range(0.05, 0.09)).range(-0.5, 0.5),
+				0.8,
+				1.8
+			);
 			Out.ar(bout, player.sum/2 *env);
 		}.play(Server.default);
 	}
@@ -784,8 +837,14 @@ Kaffer : Buffer {
 				-3.dbamp,
 				-11.dbamp, 
 				-9.dbamp,
-				broom, bmul);
-			//player = Pan2.ar(player, bpan);
+				broom, bmul
+			);
+			player = PanAz.ar(~pCh,
+				player, 
+				SinOsc.kr(SinOsc.kr(0.01).range(0.05, 0.09)).range(-1, 1),
+				0.8,
+				1.8
+			);
 			Out.ar(bout, player.sum/2 *env);
 		}.play(Server.default);
 	}
@@ -852,8 +911,14 @@ Kaffer : Buffer {
 				-3.dbamp,
 				-11.dbamp, 
 				-9.dbamp,
-				broom, bmul);
-			//player = Pan2.ar(player, bpan);
+				broom, bmul
+			);
+			player = PanAz.ar(~pCh,
+				player, 
+				SinOsc.kr(SinOsc.kr(0.01).range(0.05, 0.09)).range(-1, 1),
+				0.8,
+				1.8
+			);
 			Out.ar(bout, player.sum *env);
 		}.play(Server.default);
 	}

@@ -22,12 +22,12 @@ SynthDef(\gendy01,{|i, k, out, amp = 0.5, gate = 1,
 (
 ~ff = ~kA1;
 
-KafGendy.ar(1.1, 0.1, 4.3, 4.8,
+KafGendy.ar(1.1, 0.1, 14.3, 4.8,
 	freq: [~ff*2, ~ff*3, ~ff*4, ~ff*5], 
 	freqrlp1: ~kA1/2, 
 	freqrlp2: ~ff*2,
 	mul: 0.4,
-	out: [0,1]
+	out: [0]
 ).play;
 )
 */
@@ -50,7 +50,7 @@ KafGendy : UGen {
 			ses = Limiter.ar(ses, 0.3);
 		
 			ses = ses.sin;
-			ses = PanAz.ar(2,
+			ses = PanAz.ar(~pCh,
 				ses, 
 				SinOsc.kr(SinOsc.kr(0.01).range(0.05, 0.09)).range(-1, 1),
 				0.8,

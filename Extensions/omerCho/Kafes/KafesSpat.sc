@@ -2,6 +2,18 @@
 
 KafesSpat {
 	
+	*ch1{
+	
+		~strCok = [ [0] ];
+		~strHep = ~strCok;
+		~strTek = [ 0 ];
+		~spira = Pseq((0..1).reverse, inf).asStream;
+		~spirOut = Pseq((1..0), inf).asStream;
+		~circ = Pseq((0..1), inf).asStream;
+
+		
+	}
+
 	*ch2{
 	
 		~strCok = [ [0,1] ];

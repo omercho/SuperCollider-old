@@ -15,7 +15,7 @@
 	}).send(s);
 
 default args  att= 0.01, sus = 0.1, rls = 2.5, mul = 0.8, loop = 0, freq = 55, vib=4, out = 0;
-KafSinVib.ar(0.1, 0.1, 8.0, mul:0.8, freq1: 55, freq2: 57, vib1: 2.1, vib2: 4).play;
+KafSinVib.ar(0.1, 0.1, 8.0, mul:0.8, freq1: 55, freq2: 57, vib1: 2.1, vib2: 4, out: [0,1]).play;
 */
 
 KafSinVib : UGen { 
@@ -49,7 +49,7 @@ KafSinVib : UGen {
 			player = player.sin**2/20+ player;
 			player = DelayL.ar(player, 0.5, 0.006, 0.5, player);
 			
-			player = PanAz.ar(2,
+			player = PanAz.ar(~pCh,
 				player, 
 				SinOsc.kr(SinOsc.kr(0.01).range(0.05, 0.09)).range(-1, 1),
 				0.8,

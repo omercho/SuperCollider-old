@@ -34,7 +34,7 @@ KafesLoadEngine {
 		KafesLayerB.load;
 		KafesLayerC.load;
 		KafesPLayers.load;
-		KafesSpat.ch2;
+		KafesSpat.ch1;
 
 		
 		

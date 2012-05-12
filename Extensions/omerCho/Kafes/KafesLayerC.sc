@@ -402,7 +402,7 @@ fork{
 			\layer_C_57 -> {//	+dum2-3-4
 
 ~layC34 = Posc(
-	\msg, Pseq([ Pseq([\lC31_1a], 1),	Prand([\lC4_1, \lC31_3, \bitA1], 7), Pseq([\lC4_2], 1) ], inf),
+	\msg, Pseq([ Pseq([\lC31_1a], 1),	Pseq([\lC4_1, \lC31_3, \bitA1], 7), Pseq([\lC4_2], 1) ], inf),
 	\dur, Pseq([	Pseq([0.25], 8), Pseq([1], 1) ], 11)
 ).play;
 
@@ -413,7 +413,7 @@ fork{
 		//cember
 		\kk1, \aP23, \aP24, 
 		\aP25, \nil, \aP27, 
-		\aP28, \aP29, \aP30,
+		\aP28, \nil, \aP30,
 		\aP31, \nil, \aP33, 
 		\aP34, \nil, \aP36, \nil
 		], inf
@@ -438,7 +438,7 @@ fork{
 
 ~layC34.stop;
 ~layC34 = Posc(
-	\msg, Pshuf([ Pseq([\lC31_1d], 1),	Pseq([\lC4_2, \lC31_3, \bitA1], 7), Pseq([\lC4_2], 1) ], inf),
+	\msg, Pseq([ Pseq([\lC31_1d], 1),	Pseq([\lC4_2, \lC31_3, \es], 6), Pseq([\lC4_2], 1) ], inf),
 	\dur, Pseq([	Pseq([0.25], 8), Pseq([1], 1) ], 4)
 ).play;
 
@@ -447,9 +447,9 @@ fork{
 	\msg, Pseq(
 		[
 		//cember
-		\kk1, \bt23, \aP24, 
+		\kk1, \bt1, \aP24, 
 		\kk4, \kP26, \aP27, 
-		\bt18, \kP29, \kP30,
+		\bt2, \kP29, \kP30,
 		\kP31, \kP32, \aP33, 
 		\aP34, \kP35, \kk46, \aP37
 		], inf
@@ -474,7 +474,7 @@ fork{
 				
 ~layC34.stop;
 ~layC34 = Posc(
-	\msg, Pseq([ Pseq([\lC31_1c], 1),	Pxrand([\lC4_2, \lC31_3, \bitA1], 7), Pseq([\lC4_2], 1) ], inf),
+	\msg, Pseq([ Pseq([\lC31_1c], 1),	Pxrand([\lC4_2, \lC31_3, \es], 7), Pseq([\lC4_2], 1) ], inf),
 	\dur, Pseq([	Pseq([0.25], 8), Pseq([1], 1) ], 6)
 ).play;
 
@@ -594,7 +594,7 @@ fork{
 		[
 		//cember
 		\kk1, \nil, \kP24, 
-		\kk4, \kP26, \bt27, 
+		\kk4, \kP26, \bt2, 
 		\aP28, \kk29, \kP30,
 		\kP31, \nil, \aP33, 
 		\kk34, \kP35, \kk46, \kP18
@@ -628,11 +628,11 @@ fork{
 	\msg, Pxrand(
 		[
 		//cember
-		\kP9, \bt13, \bt28, 
+		\kP9, \bt2, \bt3, 
 		\kk4, \kP26, \bitA5, 
-		\bt28, \kk29, \kk3,
-		\kP31, \bt10, \kP13, 
-		\kk24, \kP35, \kk46, \bt27
+		\bt5, \kk29, \kk3,
+		\kP31, \bt1, \kP13, 
+		\kk24, \kP35, \kk46, \bt2
 		], inf
 	),
 	\dur, Pseq(
@@ -662,10 +662,10 @@ fork{
 	\msg, Pseq(
 		[
 		//cember
-		\kP9, \aP13, \bt28, 
+		\kP9, \aP13, \bt3, 
 		\kk4, \kP26, \bitA5, 
-		\bt28, \kk29, \bt4,
-		\kP31, \bt10, \kp13, 
+		\bt5, \kk29, \bt4,
+		\kP31, \bt2, \kp13, 
 		\aP24, \kP35, \kk46, \aP17
 		], inf
 	),
@@ -699,9 +699,9 @@ fork{
 		//cember
 		\kk1, \kP23, \kP24, 
 		\kk25, \kP26, \kk27, 
-		\kk28, \bt29, \kk30,
-		\kP31, \aP32, \bt33, 
-		\aP34, \kP35, \aP46, \bt32
+		\kk28, \bt2, \kk30,
+		\kP31, \aP32, \bt3, 
+		\aP34, \kP35, \aP46, \bt4
 		], inf
 	),
 	\dur, Pseq(
@@ -803,7 +803,7 @@ fork{
 		\kk25, \kP26, \kk27, 
 		\kk28, \kP29, \kP30,
 		\kP31, \kP32, \kk33, 
-		\bt34, \kP35, \bt24, \bt37
+		\bt1, \kP35, \bt3, \bt4
 		], inf
 	),
 	\dur, Pseq(
@@ -838,9 +838,9 @@ fork{
 	\msg, Pseq(
 		[
 		//cember
-		\kP11, \bt11, \kk24, 
+		\kP11, \bt1, \kk24, 
 		\kk4, \kP13, \kP2, 
-		\bt18, \kP49, \kP14,
+		\bt3, \kP49, \kP14,
 		\kP31, \kP8, \kP22
 		], inf
 	),
